@@ -1,4 +1,4 @@
-from lib.sockets.asyncore_test import TCPServer
+from lib.sockets.tcp_server import TCPServer
 import asyncore
 
 if __name__ == "__main__":

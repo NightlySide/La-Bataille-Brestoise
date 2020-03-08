@@ -1,0 +1,2 @@
+class GR:
+    clients = []

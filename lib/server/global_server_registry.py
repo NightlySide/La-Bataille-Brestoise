@@ -1,5 +1,5 @@
 class GSR:
-    clients = {}
+    clients = []
     loop = None
 
     @classmethod

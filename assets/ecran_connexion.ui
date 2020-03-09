@@ -47,6 +47,20 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Pseudo</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="input_username">
+        <property name="placeholderText">
+         <string>Veuillez entrer votre pseudo</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="spacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>

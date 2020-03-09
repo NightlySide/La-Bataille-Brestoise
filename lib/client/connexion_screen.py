@@ -19,6 +19,7 @@ class EcranConnexion(QMainWindow):
         self.btn_connect = self.findChild(QPushButton, 'btn_connect')
         self.btn_local = self.findChild(QPushButton, 'btn_local')
         self.server_list = self.findChild(QListWidget, 'server_list')
+        self.input_username = self.findChild(QLineEdit, 'input_username')
 
         # On connecte les boutons aux méthodes
         self.btn_connect.clicked.connect(self.connect_from_list)
@@ -43,21 +44,23 @@ class EcranConnexion(QMainWindow):
         self.connect(nom, ip, port)
 
     def connect_local(self):
-        nom, ip, port = LocalServerDialog.getLocalServerAddr()
+        nom, ip, port = LocalServerDialog.get_local_server_addr()
         self.connect(nom, ip, port)
 
     def connect(self, nom, ip, port):
-        loop = asyncio.new_event_loop()
-        game_loop = asyncio.new_event_loop()
+        loop = asyncio.get_event_loop()
         GCR.setEventLoop(loop)
+        t = None
         try:
-            loop.run_until_complete(TCPClientProtocol.create("TEST", "127.0.0.1", 25566))
+            username = self.input_username.text()
+            loop.run_until_complete(TCPClientProtocol.create(nom, ip, port, "Anonyme" if username == "" else username))
             self.open_game()
             t = Thread(target=loop.run_forever)
             t.start()
 
         except KeyboardInterrupt:
             print("\nFin du programme client")
+            t.stop()
             loop.close()
 
     def open_game(self):
@@ -81,7 +84,7 @@ class LocalServerDialog(QDialog):
         self.port = self.findChild(QLineEdit, "input_port")
 
     @staticmethod
-    def getLocalServerAddr(parent = None):
+    def get_local_server_addr(parent=None):
         dialog = LocalServerDialog(parent)
         result = dialog.exec_()
         return dialog.nom.text(), dialog.ip.text(), dialog.port.text()

@@ -13,28 +13,32 @@ class EcranJeu(QMainWindow):
         super().__init__(parent)
         uic.loadUi('assets/ecran_jeu.ui', self)
 
-        # On cherche les éléments
+        # On cherche les éléments de l'écran
         self.game_scr = self.findChild(QWidget, 'game_canvas')
         self.minimap = self.findChild(QLabel, 'minimap')
         self.chatbox_widget = self.findChild(QWidget, 'chatbox_anchor')
-        self.chatbox = ChatBox(self.chatbox_widget)
         self.input_chatbox = self.findChild(QLineEdit, 'input_chat')
         self.btn_send_chatbox = self.findChild(QPushButton, 'btn_sendchat')
 
-        # On connecte les fonctions
+        # On connecte les signaux/évènements
         self.btn_send_chatbox.clicked.connect(self.send_chat)
         self.input_chatbox.editingFinished.connect(self.send_chat)
 
+        # Paramètrage de la minimap
         minimap_background = QPixmap("assets/images/rade_brest.png")
         self.minimap.setPixmap(minimap_background)
         self.game_scr.setMouseTracking(True)
 
+        # Création de la chatbox
+        self.chatbox = ChatBox(self.chatbox_widget)
         self.chatbox.add_line("[+] Vous avez rejoint la partie")
         self.chatbox.update()
         GCR.chatbox = self.chatbox
 
+        # On donne un titre à la fenêtre
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")
 
+        # On itère toutes les X secondes pour mettre à jour l'écran
         self.timer = QTimer()
         self.timer.timeout.connect(self.update)
         self.timer.start(update_delta)

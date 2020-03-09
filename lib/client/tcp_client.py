@@ -5,14 +5,16 @@ import asyncio
 
 class TCPClientProtocol(asyncio.Protocol):
 
-    def __init__(self):
+    def __init__(self, nom, username):
         self.transport = None
         self.id = None
+        self.nom = nom
+        self.username = username
 
     @classmethod
-    async def create(cls, nom, host, port):
+    async def create(cls, nom, host, port, username):
         transport, protocol = await GCR.getEventLoop().create_connection(
-            lambda: TCPClientProtocol(),
+            lambda: TCPClientProtocol(nom, username),
             host, port)
 
     def connection_made(self, transport):
@@ -29,14 +31,13 @@ class TCPClientProtocol(asyncio.Protocol):
 
     def request_client_id(self):
         print("[ ] Demande d'un id client")
-        self.send({"action": "request_id"})
+        self.send({"action": "request_id", "username": self.username})
 
     def ping(self):
         self.send({"action": "ping"})
 
     def data_received(self, data):
         message = pickle.loads(data)
-        print("Data received : ", message)
         if isinstance(message, dict):
             if message["action"] == "request_id":
                 print("[+] Reçu identifiant : " + message["id"])

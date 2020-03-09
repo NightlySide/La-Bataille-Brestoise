@@ -2,6 +2,8 @@ class GCR:
 
     tcp_client = None
     loop = None
+    chatbox = None
+    id = None
 
     @classmethod
     def getTcpClient(cls):
@@ -22,3 +24,10 @@ class GCR:
     @classmethod
     def setEventLoop(cls, loop):
         cls.loop = loop
+
+    @classmethod
+    def getId(cls):
+        if cls.id is None:
+            print("Le client n'a pas encore reçu d'identifiant !")
+            return None
+        return cls.id

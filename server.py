@@ -1,4 +1,5 @@
 from lib.server.tcp_server import TCPServer
+from lib.server.global_server_registry import GSR
 import asyncio
 import socket
 
@@ -20,29 +21,14 @@ def motd(port):
     print(msg)
 
 
-async def main():
-    # Get a reference to the event loop as we plan to use
-    # low-level APIs.
-    loop = asyncio.get_running_loop()
-
-    HOST = "127.0.0.1"
-    PORT = 25566
-
-    server = await loop.create_server(
-        lambda: TCPServer(),
-        HOST, PORT)
-
-    async with server:
-        print("[+] Serveur lancé")
-        motd(PORT)
-        await server.serve_forever()
-
-
 if __name__ == "__main__":
+    PORT = 25566
     print("[ ] Lancement du serveur")
     loop = asyncio.get_event_loop()
+    GSR.setEventLoop(loop)
     try:
-        loop.run_until_complete(main())
+        print(motd(PORT))
+        loop.run_until_complete(TCPServer.create("127.0.0.1", PORT))
     except KeyboardInterrupt:
         print("\nFin du programme serveur")
         loop.close()

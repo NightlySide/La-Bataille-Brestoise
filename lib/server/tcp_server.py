@@ -11,6 +11,16 @@ class TCPServer(asyncio.Protocol):
         self.transport = None
         self.peername = None
 
+    @classmethod
+    async def create(cls, host, port):
+        server = await GSR.getEventLoop().create_server(
+            lambda: TCPServer(),
+            host, port)
+
+        async with server:
+            print("[+] Serveur lancé")
+            await server.serve_forever()
+
     def connection_made(self, transport):
         peername = transport.get_extra_info('peername')
         print('[+] Connection ouverte sur {}'.format(peername))
@@ -22,25 +32,29 @@ class TCPServer(asyncio.Protocol):
         message = pickle.loads(data)
         print('<-- Données reçues : {!r}'.format(message))
 
-        if message["action"] == "request_id":
-            reponse = str(uuid.uuid4())
-        elif message["action"] == "ping":
-            reponse = "pong"
-        elif message["action"] == "echo":
-            reponse = message
-        elif message["action"] == "nb_people_online":
-            reponse = len(GSR.clients)
-        elif message["action"] == "chat":
-            reponse = message
-            user, msg = message["user"], message["msg"]
-            for peername in GSR.clients:
-                if peername != self.peername:
-                    print('--> Envoi : {!r}'.format(reponse))
-                    GSR.clients[peername].transport.write(pickle.dumps(message))
+        if isinstance(message, dict):
+            reponse = {"action": message["action"]}
+            if message["action"] == "request_id":
+                reponse["id"] = str(uuid.uuid4())
+            elif message["action"] == "ping":
+                reponse["msg"] = "pong"
+            elif message["action"] == "echo":
+                reponse = message
+            elif message["action"] == "nb_people_online":
+                reponse["length"] = len(GSR.clients)
+            elif message["action"] == "chat":
+                reponse = message
+                user, msg = message["user"], message["msg"]
+                for peername in GSR.clients:
+                    if peername != self.peername:
+                        print('--> Envoi : {!r}'.format(reponse))
+                        GSR.clients[peername].transport.write(pickle.dumps(message))
+            else:
+                reponse["msg"] = "[+] Commande non reconnue !"
+            print('--> Envoi : {!r}'.format(reponse))
+            self.transport.write(pickle.dumps(reponse))
         else:
-            reponse = "[+] Commande non reconnue !"
-        print('--> Envoi : {!r}'.format(reponse))
-        self.transport.write(pickle.dumps(reponse))
+            print("[-] Format reçu inconnu : {!r}".format(message))
 
     def connection_lost(self, exc) -> None:
         ip, port = self.peername

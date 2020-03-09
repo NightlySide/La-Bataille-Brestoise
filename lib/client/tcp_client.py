@@ -1,60 +1,55 @@
+from lib.client.global_client_registry import GCR
 import pickle
 import asyncio
 
 
-class TCPClient():
+class TCPClientProtocol(asyncio.Protocol):
 
-    def __init__(self, host, port, chunk_size=8192):
-        self.addr = (host, port)
-        self.chunk_size = chunk_size
-        self.writer = None
-        self.reader = None
+    def __init__(self):
+        self.transport = None
         self.id = None
 
-    async def connect(self, host=None, port=None):
-        ip = host if host is not None else self.addr[0]
-        p = port if port is not None else self.addr[1]
-        print(f"[ ] Connexion en cours au ({ip}, {p})")
-        if self.writer is not None:
-            await self.close()
-        try:
-            self.reader, self.writer = await asyncio.open_connection(ip, p)
-            print(f"[+] Connecté au serveur avec succès !")
-            await self.request_client_id()
-        except ConnectionRefusedError:
-            print(f"[-] ERREUR : le serveur {host} n'est pas atteignable sur {port}")
+    @classmethod
+    async def create(cls, nom, host, port):
+        transport, protocol = await GCR.getEventLoop().create_connection(
+            lambda: TCPClientProtocol(),
+            host, port)
 
-    async def send(self, data):
-        if self.writer is None:
-            raise Exception("Le client n'est pas connecté, tentez client.connect()")
-        self.writer.write(pickle.dumps(data))
-        await self.writer.drain()
-        return await self.recv()
+    def connection_made(self, transport):
+        self.transport = transport
+        GCR.setTcpClient(self)
+        addr = transport.get_extra_info('peername')
+        print(f'[+] Connecté au serveur : {addr}')
+        self.request_client_id()
 
-    async def ping(self):
-        print(await self.send({"action": "ping"}))
+    def send(self, data):
+        if self.transport is None:
+            raise Exception("Le client n'est pas connecté à un serveur")
+        self.transport.write(pickle.dumps(data))
 
-    async def request_client_id(self):
+    def request_client_id(self):
         print("[ ] Demande d'un id client")
-        requete = {"action": "request_id"}
-        self.id = await self.send(requete)
-        if self.id is not None:
-            print(f"[+] Reçu identifiant : {self.id}")
-        else:
-            print("[-] Attention pas d'identifiant reçu")
+        self.send({"action": "request_id"})
 
-    async def recv(self):
-        if self.reader is None:
-            raise Exception("Le client n'est pas connecté, tentez client.connect()")
-        data = await self.reader.read(self.chunk_size)
-        if len(data) > 0:
-            return pickle.loads(data)
-        else:
-            print("[-] Le client n'a pas reçu de données !")
-            return
+    def ping(self):
+        self.send({"action": "ping"})
 
-    async def close(self):
-        print("[-] Fermeture du socket")
-        self.writer.close()
-        await self.writer.wait_closed()
-        self.writer = self.reader = None
+    def data_received(self, data):
+        message = pickle.loads(data)
+        print("Data received : ", message)
+        if isinstance(message, dict):
+            if message["action"] == "request_id":
+                print("[+] Reçu identifiant : " + message["id"])
+                self.id = message["id"]
+                GCR.id = message["id"]
+            elif message["action"] == "chat":
+                GCR.chatbox.add_line(f"({message['user']}): {message['msg']}")
+            else:
+                print("[-] Réponse serveur non reconnue : {!r}".format(message))
+        else:
+            print("[-] Format reçu inconnu : {!r}".format(message))
+
+    def connection_lost(self, exc):
+        print('[-] Le serveur a fermé la connexion')
+        self.transport.close()
+        self.transport = None

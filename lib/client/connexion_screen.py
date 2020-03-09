@@ -2,9 +2,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5 import uic
 import asyncio
-from lib.client.tcp_client import TCPClient
+from lib.client.tcp_client import TCPClientProtocol
 from lib.client.game_screen import EcranJeu
 from lib.client.global_client_registry import GCR
+from threading import Thread
 
 
 class EcranConnexion(QMainWindow):
@@ -46,16 +47,18 @@ class EcranConnexion(QMainWindow):
         self.connect(nom, ip, port)
 
     def connect(self, nom, ip, port):
-        loop = asyncio.get_event_loop()
-        client = TCPClient(ip, int(port))
-        GCR.setTcpClient(client)
+        loop = asyncio.new_event_loop()
+        game_loop = asyncio.new_event_loop()
         GCR.setEventLoop(loop)
         try:
-            loop.run_until_complete(client.connect())
+            loop.run_until_complete(TCPClientProtocol.create("TEST", "127.0.0.1", 25566))
+            self.open_game()
+            t = Thread(target=loop.run_forever)
+            t.start()
+
         except KeyboardInterrupt:
             print("\nFin du programme client")
             loop.close()
-        self.open_game()
 
     def open_game(self):
         print("[ ] Ouverture du jeu en cours...")
@@ -64,6 +67,7 @@ class EcranConnexion(QMainWindow):
         self.game.closed.connect(self.show)
         self.game.show()
         self.hide()
+
 
 class LocalServerDialog(QDialog):
 

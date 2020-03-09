@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1229</width>
-    <height>642</height>
+    <height>651</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,13 +76,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QTextBrowser" name="chatbox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QWidget" name="chatbox_anchor" native="true">
         <property name="minimumSize">
          <size>
           <width>400</width>

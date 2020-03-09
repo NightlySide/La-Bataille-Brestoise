@@ -5,8 +5,7 @@ import sys
 
 async def main():
     await client.connect()
-    print(await client.send({"action": "echo", "msg": "Hello world"}))
-    print(await client.send({"action": "nb_people_online"}))
+    print(await client.send({"action": "echo", "msg": "Hello world!"}))
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()

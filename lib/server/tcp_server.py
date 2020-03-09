@@ -7,8 +7,9 @@ from lib.game_registry import GR
 class TCPServer(asyncio.Protocol):
 
     def __init__(self):
-        super().__init__()
         print("[+] Serveur lancé !")
+        self.transport = None
+        self.peername = None
 
     def connection_made(self, transport):
         peername = transport.get_extra_info('peername')

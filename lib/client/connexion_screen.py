@@ -3,11 +3,14 @@ from PyQt5.QtGui import *
 from PyQt5 import uic
 import asyncio
 from lib.client.tcp_client import TCPClient
+from lib.client.game_screen import EcranJeu
+from lib.client.global_client_registry import GCR
 
 
 class EcranConnexion(QMainWindow):
     def __init__(self,  parent=None):
         super().__init__(parent)
+        self.game = None
         uic.loadUi('assets/ecran_connexion.ui', self)
 
         # On cherche les éléments
@@ -17,7 +20,7 @@ class EcranConnexion(QMainWindow):
         self.server_list = self.findChild(QListWidget, 'server_list')
 
         # On connecte les boutons aux méthodes
-        self.btn_connect.clicked.connect(self.connect)
+        self.btn_connect.clicked.connect(self.connect_from_list)
         self.btn_local.clicked.connect(self.connect_local)
 
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")
@@ -34,25 +37,33 @@ class EcranConnexion(QMainWindow):
             self.server_list.addItem(QListWidgetItem(f"{nom} | {ip} | {port}"))
         self.server_list.setCurrentRow(0)
 
-    def connect(self):
+    def connect_from_list(self):
         nom, ip, port = self.server_list.currentItem().text().split(" | ")
-        loop = asyncio.get_event_loop()
-        client = TCPClient(ip, int(port))
-        try:
-            loop.run_until_complete(client.connect())
-        except KeyboardInterrupt:
-            print("\nFin du programme client")
-            loop.close()
+        self.connect(nom, ip, port)
 
     def connect_local(self):
         nom, ip, port = LocalServerDialog.getLocalServerAddr()
+        self.connect(nom, ip, port)
+
+    def connect(self, nom, ip, port):
         loop = asyncio.get_event_loop()
         client = TCPClient(ip, int(port))
+        GCR.setTcpClient(client)
+        GCR.setEventLoop(loop)
         try:
             loop.run_until_complete(client.connect())
         except KeyboardInterrupt:
             print("\nFin du programme client")
             loop.close()
+        self.open_game()
+
+    def open_game(self):
+        print("[ ] Ouverture du jeu en cours...")
+        self.game = EcranJeu(self)
+
+        self.game.closed.connect(self.show)
+        self.game.show()
+        self.hide()
 
 class LocalServerDialog(QDialog):
 

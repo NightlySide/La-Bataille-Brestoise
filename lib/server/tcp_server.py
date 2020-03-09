@@ -1,7 +1,7 @@
 import asyncio
 import pickle
 import uuid
-from lib.game_registry import GR
+from lib.server.global_server_registry import GSR
 
 
 class TCPServer(asyncio.Protocol):
@@ -16,7 +16,7 @@ class TCPServer(asyncio.Protocol):
         print('[+] Connection ouverte sur {}'.format(peername))
         self.transport = transport
         self.peername = peername
-        GR.clients.append(peername)
+        GSR.clients[peername] = self
 
     def data_received(self, data):
         message = pickle.loads(data)
@@ -29,7 +29,14 @@ class TCPServer(asyncio.Protocol):
         elif message["action"] == "echo":
             reponse = message
         elif message["action"] == "nb_people_online":
-            reponse = len(GR.clients)
+            reponse = len(GSR.clients)
+        elif message["action"] == "chat":
+            reponse = message
+            user, msg = message["user"], message["msg"]
+            for peername in GSR.clients:
+                if peername != self.peername:
+                    print('--> Envoi : {!r}'.format(reponse))
+                    GSR.clients[peername].transport.write(pickle.dumps(message))
         else:
             reponse = "[+] Commande non reconnue !"
         print('--> Envoi : {!r}'.format(reponse))
@@ -38,5 +45,5 @@ class TCPServer(asyncio.Protocol):
     def connection_lost(self, exc) -> None:
         ip, port = self.peername
         self.transport.close()
-        GR.clients.remove(self.peername)
+        GSR.clients.pop(self.peername, None)
         print(f"({ip}:{port}) Connexion fermée ")

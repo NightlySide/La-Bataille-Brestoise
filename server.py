@@ -1,5 +1,23 @@
 from lib.server.tcp_server import TCPServer
 import asyncio
+import socket
+
+
+def motd(port):
+    host_name = socket.gethostname()
+    host_ip = socket.gethostbyname(host_name)
+    msg = f"""
+    #------------------------La Bataille Brestoise SERVEUR----------------------#
+    #
+    #       HOST NAME : {host_name}
+    #       IP = {host_ip}
+    #       PORT = {port}
+    #       Nb max joueurs = 10
+    #
+    #                               Have Fun !!!
+    #---------------------------------------------------------------------------#
+    """
+    print(msg)
 
 
 async def main():
@@ -7,11 +25,16 @@ async def main():
     # low-level APIs.
     loop = asyncio.get_running_loop()
 
+    HOST = "127.0.0.1"
+    PORT = 25566
+
     server = await loop.create_server(
         lambda: TCPServer(),
-        '127.0.0.1', 25566)
+        HOST, PORT)
 
     async with server:
+        print("[+] Serveur lancé")
+        motd(PORT)
         await server.serve_forever()
 
 

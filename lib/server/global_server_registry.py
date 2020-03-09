@@ -1,2 +1,2 @@
-class GR:
-    clients = []
+class GSR:
+    clients = {}

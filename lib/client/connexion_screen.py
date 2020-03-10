@@ -45,6 +45,7 @@ class EcranConnexion(QMainWindow):
         # On connecte les boutons aux méthodes
         self.btn_connect.clicked.connect(self.connect_from_list)
         self.btn_local.clicked.connect(self.connect_local)
+        self.server_list.itemDoubleClicked.connect(self.connect_from_list)
 
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")
 
@@ -90,7 +91,6 @@ class EcranConnexion(QMainWindow):
         loop = asyncio.get_event_loop()
         # On en fait la boucle principale
         GCR.setEventLoop(loop)
-        t = None
         try:
             # On ouvre la connexion au serveur
             username = self.input_username.text()
@@ -99,12 +99,10 @@ class EcranConnexion(QMainWindow):
             # L'astuce réside ici
             # On contient les évènements réseau dans un autre Thread
             # Comme ça le thread PyQt peut continuer de tourner
-            t = Thread(target=loop.run_forever)
-            t.start()
+            GCR.tcp_thread = Thread(target=loop.run_forever)
+            GCR.tcp_thread.start()
         except KeyboardInterrupt:
             print("\nFin du programme client")
-            t.stop()
-            loop.close()
 
     def open_game(self):
         """
@@ -120,6 +118,10 @@ class EcranConnexion(QMainWindow):
         self.game.closed.connect(self.show)
         self.game.show()
         self.hide()
+
+    def closeEvent(self, event):
+        if GCR.loop is not None:
+            GCR.getEventLoop().stop()
 
 
 class LocalServerDialog(QDialog):

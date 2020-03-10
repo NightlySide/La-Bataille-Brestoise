@@ -14,6 +14,7 @@ class GCR:
     """
 
     tcp_client = None # tunnel TCP
+    tcp_thread = None
     loop = None # boucle des évènements
     chatbox = None # chatbox en jeu
     id = None # identifiant unique du client

@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import *
-from lib.client.connexion_screen import EcranConnexion
-from lib.client.game_screen import EcranJeu
+from lib.client.client.connexion_screen import EcranConnexion
 import sys
 
 

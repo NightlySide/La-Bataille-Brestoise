@@ -4,6 +4,7 @@ from PyQt5.QtCore import pyqtSignal, Qt, QTimer
 from PyQt5 import uic
 from lib.client.global_client_registry import GCR
 from lib.client.chatbox import ChatBox
+from lib.client.canvas_jeu import CanvasJeu
 
 
 class EcranJeu(QMainWindow):
@@ -15,7 +16,7 @@ class EcranJeu(QMainWindow):
         uic.loadUi('assets/ecran_jeu.ui', self)
 
         # On cherche les éléments de l'écran
-        self.game_scr = self.findChild(QWidget, 'game_canvas')
+        self.game_scr_widget = self.findChild(QWidget, 'game_canvas')
         self.minimap = self.findChild(QLabel, 'minimap')
         self.chatbox_widget = self.findChild(QWidget, 'chatbox_anchor')
         self.input_chatbox = self.findChild(QLineEdit, 'input_chat')
@@ -28,7 +29,9 @@ class EcranJeu(QMainWindow):
         # Paramétrage de la minimap
         minimap_background = QPixmap("assets/images/rade_brest.png")
         self.minimap.setPixmap(minimap_background)
-        self.game_scr.setMouseTracking(True)
+
+        # Création du jeu
+        self.game_canvas = CanvasJeu(self.game_scr_widget)
 
         # Création de la chatbox
         self.chatbox = ChatBox(self.chatbox_widget)

@@ -19,7 +19,7 @@ class GCR:
     id = None # identifiant unique du client
     # Liste des serveurs préenregistrés
     serveurs = [["Localhost", "127.0.0.1", "25566"],
-                ["Evril server", "ieta-docs.ddns.net", "25566"]]
+                ["Evril server", "192.168.9.15", "25566"]]
 
     @classmethod
     def getTcpClient(cls):

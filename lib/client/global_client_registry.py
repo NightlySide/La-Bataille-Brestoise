@@ -1,9 +1,25 @@
 class GCR:
+    """
+    Registre global de variables globales.
+    Dans toutes structures de jeu, les variables globales sont
+    nécessaire. Cette classe agit comme un registre qui permet
+    de contenir ces variables
 
-    tcp_client = None
-    loop = None
-    chatbox = None
-    id = None
+    Attributes:
+        tcp_client (TCPClientProtocol): tunnel tcp vers le serveur
+        loop (asyncio.EventLoop): boucle des évènements
+        chatbox (ChatBox): chatbox du jeu
+        id (str): identifiant unique du client (uuid)
+        serveurs (list): liste des serveurs enregistrés
+    """
+
+    tcp_client = None # tunnel TCP
+    loop = None # boucle des évènements
+    chatbox = None # chatbox en jeu
+    id = None # identifiant unique du client
+    # Liste des serveurs préenregistrés
+    serveurs = [["Localhost", "127.0.0.1", "25566"],
+                ["Evril server", "ieta-docs.ddns.net", "25566"]]
 
     @classmethod
     def getTcpClient(cls):

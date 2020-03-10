@@ -7,6 +7,7 @@ from lib.client.chatbox import ChatBox
 
 
 class EcranJeu(QMainWindow):
+    # Signal de fermeture (par défaut il n'existe pas)
     closed = pyqtSignal()
 
     def __init__(self,  parent=None, update_delta=100):
@@ -24,7 +25,7 @@ class EcranJeu(QMainWindow):
         self.btn_send_chatbox.clicked.connect(self.send_chat)
         self.input_chatbox.editingFinished.connect(self.send_chat)
 
-        # Paramètrage de la minimap
+        # Paramétrage de la minimap
         minimap_background = QPixmap("assets/images/rade_brest.png")
         self.minimap.setPixmap(minimap_background)
         self.game_scr.setMouseTracking(True)

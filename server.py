@@ -28,7 +28,7 @@ if __name__ == "__main__":
     GSR.setEventLoop(loop)
     try:
         print(motd(PORT))
-        loop.run_until_complete(TCPServer.create("127.0.0.1", PORT))
+        loop.run_until_complete(TCPServer.create(socket.gethostbyname(socket.gethostname()), PORT))
     except KeyboardInterrupt:
         print("\nFin du programme serveur")
         loop.close()

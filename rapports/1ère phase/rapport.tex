@@ -1,0 +1,87 @@
+% chercher des documents LaTeX dans styles, corps et bib
+\makeatletter\def\input@path{{styles/}{corps/}}\makeatother
+
+% Utiliser le style rapport.cls
+\documentclass{rapport}
+\usepackage{fancyhdr}
+
+\fancyhead[L,C]{}
+\fancyhead[R]{Rapport de 1ère phase}
+\fancyfoot[C]{Alexandre Froehlich \& Guillaume Leinen}
+\fancyfoot[L]{U.E. 2.4}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\title{Rapport de 1ère phase - UE 2.4.}
+
+\author{Alexandre \textsc{Froehlich} \& Guillaume \textsc{Leinen}\\
+  \texttt{alexandre.froehlich@ensta-bretagne.org}
+  \texttt{guillaume.leinen@ensta-bretagne.org}}
+\date{10 mars 2020}
+\doctype{Projet Info.\\ U.E. 2.4.}
+\promo{FISE 2022}
+\etablissement{\textsc{Ensta} Bretagne\\2, rue François Verny\\
+  29806 \textsc{Brest} cedex\\\textsc{France}\\Tel +33 (0)2 98 34 88 00\\ \url{www.ensta-bretagne.fr}}
+\logoEcole{\includegraphics[height=4.2cm]{logo_ENSTA_Bretagne_Vertical_CMJN}}
+
+% Métadonnées à include dans le pdf
+\hypersetup{%
+  pdftitle={Rapport première phase},
+  pdfauthor={Alexandre Froehlich, Guillaume Leinen},
+  pdfkeywords={},
+  bookmarksnumbered,
+  pdfstartview={FitH},
+  citecolor=blue,
+  breaklinks=true
+}%
+
+% creer le glossaire
+\makeglossaries
+% creer l'index
+\makeindex
+
+\pagestyle{fancy}
+
+\begin{document}
+% Début du préambule
+\frontmatter
+% inclure la liste des acronymes
+\input{acronymes}
+% creer le titre ici
+\maketitle
+
+\clearpage
+
+% table des matieres
+\tableofcontents
+
+\clearpage
+
+% Partie principale
+\mainmatter
+% chargement du fichier corps.tex
+\input{corps}
+
+\appendix
+
+\input{annexes}
+
+\clearpage
+\phantomsection
+%\label{sec:index}
+%\addcontentsline{toc}{section}{Index}
+%\printindex
+
+\printglossaries
+
+
+\clearpage
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

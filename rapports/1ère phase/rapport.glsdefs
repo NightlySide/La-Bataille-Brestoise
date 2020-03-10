@@ -1,0 +1,540 @@
+\ifglsentryexists{iot}{}%
+{%
+\gls@defglossaryentry{iot}%
+{%
+name={Internet of Things},%
+sort={Internet of Things},%
+type={glo},%
+first={\protect \textsc {IoT}},%
+firstplural={\protect \textsc {IoT}s},%
+text={\protect \textsc {IoT}},%
+plural={\protect \textsc {IoT}s},%
+description={Ensembles des objets dits "connectés". Cela va du smartphone, à la télévision, au frigo...},%
+descriptionplural={Ensembles des objets dits "connectés". Cela va du smartphone, à la télévision, au frigo...},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{ia}{}%
+{%
+\gls@defglossaryentry{ia}%
+{%
+name={Intelligence Artificielle},%
+sort={Intelligence Artificielle},%
+type={glo},%
+first={\protect \textsc {IA}},%
+firstplural={\protect \textsc {IA}s},%
+text={\protect \textsc {IA}},%
+plural={\protect \textsc {IA}s},%
+description={Algorithme ou machine qui a pour but de simuler une intelligence},%
+descriptionplural={Algorithme ou machine qui a pour but de simuler une intelligence},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{enigma}{}%
+{%
+\gls@defglossaryentry{enigma}%
+{%
+name={Enigma},%
+sort={Enigma},%
+type={glo},%
+first={\protect \textsc {Enigma}},%
+firstplural={\protect \textsc {Enigma}s},%
+text={\protect \textsc {Enigma}},%
+plural={\protect \textsc {Enigma}s},%
+description={Machine servant au chiffrement et déchiffrement de messages, d'informations principalement employée par les Allemands},%
+descriptionplural={Machine servant au chiffrement et déchiffrement de messages, d'informations principalement employée par les Allemands},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{alphago}{}%
+{%
+\gls@defglossaryentry{alphago}%
+{%
+name={AlphaGo},%
+sort={AlphaGo},%
+type={glo},%
+first={\protect \textsc {AlphaGo}},%
+firstplural={\protect \textsc {AlphaGo}s},%
+text={\protect \textsc {AlphaGo}},%
+plural={\protect \textsc {AlphaGo}s},%
+description={Programme informatique qui a pour but de jouer au Go, il a remporté de nombreux prix face à de grands joueurs humains},%
+descriptionplural={Programme informatique qui a pour but de jouer au Go, il a remporté de nombreux prix face à de grands joueurs humains},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{resneurone}{}%
+{%
+\gls@defglossaryentry{resneurone}%
+{%
+name={Réseau Neuronal},%
+sort={Réseau Neuronal},%
+type={glo},%
+first={\protect \textsc {R\'eseau Neuronal}},%
+firstplural={\protect \textsc {R\'eseau Neuronal}s},%
+text={\protect \textsc {R\'eseau Neuronal}},%
+plural={\protect \textsc {R\'eseau Neuronal}s},%
+description={Programme ou système que l'on va entraîner à reconnaitre des motifs, des tendances, ...},%
+descriptionplural={Programme ou système que l'on va entraîner à reconnaitre des motifs, des tendances, ...},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{dataset}{}%
+{%
+\gls@defglossaryentry{dataset}%
+{%
+name={Dataset},%
+sort={Dataset},%
+type={glo},%
+first={\protect \textsc {dataset}},%
+firstplural={\protect \textsc {dataset}s},%
+text={\protect \textsc {dataset}},%
+plural={\protect \textsc {dataset}s},%
+description={Ensemble de données. Peut être des images, des vidéos, du texte, ...},%
+descriptionplural={Ensemble de données. Peut être des images, des vidéos, du texte, ...},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{pixel}{}%
+{%
+\gls@defglossaryentry{pixel}%
+{%
+name={Pixel},%
+sort={Pixel},%
+type={glo},%
+first={\protect \textsc {pixel}},%
+firstplural={\protect \textsc {pixel}s},%
+text={\protect \textsc {pixel}},%
+plural={\protect \textsc {pixel}s},%
+description={Unité élémentaire composant une image, possède une unique couleur},%
+descriptionplural={Unité élémentaire composant une image, possède une unique couleur},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{MNIST}{}%
+{%
+\gls@defglossaryentry{MNIST}%
+{%
+name={MNIST Dataset},%
+sort={MNIST Dataset},%
+type={glo},%
+first={\protect \textsc {MNIST}},%
+firstplural={\protect \textsc {MNIST}s},%
+text={\protect \textsc {MNIST}},%
+plural={\protect \textsc {MNIST}s},%
+description={Ensemble de données du Mixed National Institute of Standards and Technology, un dataset contenant des chiffres écrits à la main},%
+descriptionplural={Ensemble de données du Mixed National Institute of Standards and Technology, un dataset contenant des chiffres écrits à la main},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{CNN}{}%
+{%
+\gls@defglossaryentry{CNN}%
+{%
+name={Convolutional Neural Network},%
+sort={Convolutional Neural Network},%
+type={glo},%
+first={\protect \textsc {CNN}},%
+firstplural={\protect \textsc {CNN}s},%
+text={\protect \textsc {CNN}},%
+plural={\protect \textsc {CNN}s},%
+description={Réseau neuronal dans lequel le motif de connexion entre les neurones est inspiré du cortex visuel des animaux},%
+descriptionplural={Réseau neuronal dans lequel le motif de connexion entre les neurones est inspiré du cortex visuel des animaux},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{RCNN}{}%
+{%
+\gls@defglossaryentry{RCNN}%
+{%
+name={Regions Convolutional Neural Network},%
+sort={Regions Convolutional Neural Network},%
+type={glo},%
+first={\protect \textsc {R-CNN}},%
+firstplural={\protect \textsc {R-CNN}s},%
+text={\protect \textsc {R-CNN}},%
+plural={\protect \textsc {R-CNN}s},%
+description={Un CNN qui ne travaille que sur une région donnée d'une information en entrée},%
+descriptionplural={Un CNN qui ne travaille que sur une région donnée d'une information en entrée},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{TPU}{}%
+{%
+\gls@defglossaryentry{TPU}%
+{%
+name={Tensor Processing Unit},%
+sort={Tensor Processing Unit},%
+type={glo},%
+first={\protect \textsc {TPU}},%
+firstplural={\protect \textsc {TPU}s},%
+text={\protect \textsc {TPU}},%
+plural={\protect \textsc {TPU}s},%
+description={Matériel spécifiquement conçu par Google pour calculer les tenseurs, structure mathématique au c?ur de ses algorithmes},%
+descriptionplural={Matériel spécifiquement conçu par Google pour calculer les tenseurs, structure mathématique au c?ur de ses algorithmes},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{framework}{}%
+{%
+\gls@defglossaryentry{framework}%
+{%
+name={Framework},%
+sort={Framework},%
+type={glo},%
+first={\protect \textsc {framework}},%
+firstplural={\protect \textsc {framework}s},%
+text={\protect \textsc {framework}},%
+plural={\protect \textsc {framework}s},%
+description={Cadre de travail, c'est souvent un ensemble de méthodes et de fonctions définies dans une bibliothèque},%
+descriptionplural={Cadre de travail, c'est souvent un ensemble de méthodes et de fonctions définies dans une bibliothèque},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{npl}{}%
+{%
+\gls@defglossaryentry{npl}%
+{%
+name={Natural Processing Language},%
+sort={Natural Processing Language},%
+type={glo},%
+first={\protect \textsc {Natural Processing Language}},%
+firstplural={\protect \textsc {Natural Processing Language}s},%
+text={\protect \textsc {Natural Processing Language}},%
+plural={\protect \textsc {Natural Processing Language}s},%
+description={Ensemble de techniques qui ont pour but d'harmoniser le langage humain et le langage machine},%
+descriptionplural={Ensemble de techniques qui ont pour but d'harmoniser le langage humain et le langage machine},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{appsuper}{}%
+{%
+\gls@defglossaryentry{appsuper}%
+{%
+name={Apprentissage supervisé},%
+sort={Apprentissage supervisé},%
+type={glo},%
+first={\protect \textsc {apprentissage supervis\'e}},%
+firstplural={\protect \textsc {apprentissage supervis\'e}s},%
+text={\protect \textsc {apprentissage supervis\'e}},%
+plural={\protect \textsc {apprentissage supervis\'e}s},%
+description={Apprentissage de prédiction avec un dataset d'entrée et le résultat supposé en sortie},%
+descriptionplural={Apprentissage de prédiction avec un dataset d'entrée et le résultat supposé en sortie},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{appnonsuper}{}%
+{%
+\gls@defglossaryentry{appnonsuper}%
+{%
+name={Apprentissage non-supervisé},%
+sort={Apprentissage non-supervisé},%
+type={glo},%
+first={\protect \textsc {apprentissage non-supervis\'e}},%
+firstplural={\protect \textsc {apprentissage non-supervis\'e}s},%
+text={\protect \textsc {apprentissage non-supervis\'e}},%
+plural={\protect \textsc {apprentissage non-supervis\'e}s},%
+description={Apprentissage sans prédiction, on laisse le réseau neuronal "explorer"},%
+descriptionplural={Apprentissage sans prédiction, on laisse le réseau neuronal "explorer"},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{apprenfor}{}%
+{%
+\gls@defglossaryentry{apprenfor}%
+{%
+name={Apprentissage par renforcement},%
+sort={Apprentissage par renforcement},%
+type={glo},%
+first={\protect \textsc {apprentissage par renforcement}},%
+firstplural={\protect \textsc {apprentissage par renforcement}s},%
+text={\protect \textsc {apprentissage par renforcement}},%
+plural={\protect \textsc {apprentissage par renforcement}s},%
+description={Apprentissage par sélection ou récompense. On récompense le réseau neuronal pour les réponses les plus adaptées qu'il donne},%
+descriptionplural={Apprentissage par sélection ou récompense. On récompense le réseau neuronal pour les réponses les plus adaptées qu'il donne},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{deep}{}%
+{%
+\gls@defglossaryentry{deep}%
+{%
+name={Deep Learning},%
+sort={Deep Learning},%
+type={glo},%
+first={\protect \textsc {deep learning}},%
+firstplural={\protect \textsc {deep learning}s},%
+text={\protect \textsc {deep learning}},%
+plural={\protect \textsc {deep learning}s},%
+description={Apprentissage profond. Devenu un terme générique pour parler d'un algorithme possèdant un réseau neuronal},%
+descriptionplural={Apprentissage profond. Devenu un terme générique pour parler d'un algorithme possèdant un réseau neuronal},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{transfer}{}%
+{%
+\gls@defglossaryentry{transfer}%
+{%
+name={Transfer Learning},%
+sort={Transfer Learning},%
+type={glo},%
+first={\protect \textsc {transfer learning}},%
+firstplural={\protect \textsc {transfer learning}s},%
+text={\protect \textsc {transfer learning}},%
+plural={\protect \textsc {transfer learning}s},%
+description={Concept qui prend un réseau neuronal pré-entraîné et qui l'exploite sur une application similaire sans passer par la phase d'apprentissage exclusif},%
+descriptionplural={Concept qui prend un réseau neuronal pré-entraîné et qui l'exploite sur une application similaire sans passer par la phase d'apprentissage exclusif},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

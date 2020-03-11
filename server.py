@@ -1,5 +1,6 @@
 from lib.server.tcp_server import TCPServer
 from lib.server.global_server_registry import GSR
+from lib.common.logger import Logger
 import asyncio
 import socket
 
@@ -23,12 +24,13 @@ def motd(port):
 
 if __name__ == "__main__":
     PORT = 25566
-    print("[ ] Lancement du serveur")
+    GSR.log = Logger(Logger.DEBUG)
+    GSR.log.log(Logger.INFORMATION, "Lancement du serveur ...")
     loop = asyncio.get_event_loop()
     GSR.setEventLoop(loop)
     try:
-        print(motd(PORT))
-        loop.run_until_complete(TCPServer.create(socket.gethostbyname(socket.gethostname()), PORT))
+        motd(PORT)
+        loop.run_until_complete(TCPServer.create('', PORT))
     except KeyboardInterrupt:
-        print("\nFin du programme serveur")
+        GSR.log.log(Logger.INFORMATION, "Fin du programme serveur")
         loop.close()

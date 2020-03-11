@@ -2,6 +2,8 @@ from lib.client.global_client_registry import GCR
 import pickle
 import asyncio
 
+from lib.common.logger import Logger
+
 
 class TCPClientProtocol(asyncio.Protocol):
     """
@@ -55,8 +57,7 @@ class TCPClientProtocol(asyncio.Protocol):
         self.transport = transport
         # On définit ce protocole comme celui à utiliser
         GCR.setTcpClient(self)
-        addr = transport.get_extra_info('peername')
-        print(f'[+] Connecté au serveur : {addr}')
+        GCR.log.log(Logger.INFORMATION, "Connecté au serveur {}".format(transport.get_extra_info('peername')))
         # On demande au serveur de nous attribuer un identifiant
         self.request_client_id()
 
@@ -69,14 +70,15 @@ class TCPClientProtocol(asyncio.Protocol):
             data (any): données à transmettre
         """
         if self.transport is None:
-            raise Exception("Le client n'est pas connecté à un serveur")
+            GCR.log.log(Logger.ERREUR, "Le client n'est pas connecté à un serveur")
+            return
         self.transport.write(pickle.dumps(data))
 
     def request_client_id(self):
         """
         Fait la demande au serveur d'un identifiant unique
         """
-        print("[ ] Demande d'un id client")
+        GCR.log.log(Logger.INFORMATION, "Demande d'un id client")
         self.send({"action": "request_id", "username": self.username})
 
     def ping(self):
@@ -100,18 +102,17 @@ class TCPClientProtocol(asyncio.Protocol):
         # Si la réponse est dans le bon format
         if isinstance(message, dict):
             if message["action"] == "request_id":
-                print("[+] Reçu identifiant : " + message["id"])
-                self.id = message["id"]
-                GCR.id = message["id"]
+                GCR.log.log(Logger.DEBUG, "Reçu identifiant : {}".format(message["id"]))
+                GCR.id = self.id = message["id"]
             elif message["action"] == "chat":
                 # On met à jour la chatbox
                 GCR.chatbox.add_line(f"({message['user']}): {message['msg']}")
             else:
                 # Sinon on ne connait pas (encore) la demande
-                print("[-] Réponse serveur non reconnue : {!r}".format(message))
+                GCR.log.log(Logger.AVERTISSEMENT, "Réponse serveur non reconnue : {!r}".format(message))
         else:
             # On a reçu un autre type de données
-            print("[-] Format reçu inconnu : {!r}".format(message))
+            GCR.log.log(Logger.AVERTISSEMENT, "Format reçu inconnu : {!r}".format(message))
 
     def connection_lost(self, exc):
         """
@@ -122,6 +123,6 @@ class TCPClientProtocol(asyncio.Protocol):
             exc (Exception): objet exception pour lever une erreur
                 si erreur il y a
         """
-        print('[-] Le serveur a fermé la connexion')
+        GCR.log.log(Logger.INFORMATION, "Fermeture de la connexion")
         self.transport.close()
         self.transport = None

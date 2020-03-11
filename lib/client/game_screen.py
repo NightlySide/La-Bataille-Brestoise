@@ -5,6 +5,7 @@ from PyQt5 import uic
 from lib.client.global_client_registry import GCR
 from lib.client.chatbox import ChatBox
 from lib.client.canvas_jeu import CanvasJeu
+from lib.common.logger import Logger
 
 
 class EcranJeu(QMainWindow):
@@ -32,6 +33,7 @@ class EcranJeu(QMainWindow):
 
         # Création du jeu
         self.game_canvas = CanvasJeu(self.game_scr_widget)
+        self.game_canvas.setMouseTracking(True)
 
         # Création de la chatbox
         self.chatbox = ChatBox(self.chatbox_widget)
@@ -51,15 +53,10 @@ class EcranJeu(QMainWindow):
         if e.key() == Qt.Key_Escape:
             self.close()
 
-    def mouseMoveEvent(self, e):
-        x = e.x()
-        y = e.y()
-        text = "x: {0},  y: {1}".format(x, y)
-        self.setWindowTitle(text)
-
     def closeEvent(self, event):
-        print("[ ] Closing client")
+        GCR.log.log(Logger.INFORMATION, "Fermeture de la fenêtre de jeu")
         if GCR.loop is not None:
+            GCR.tcp_client.transport.close()
             GCR.getEventLoop().call_soon_threadsafe(GCR.getEventLoop().stop)
             GCR.loop = None
             GCR.tcp_thread.join()

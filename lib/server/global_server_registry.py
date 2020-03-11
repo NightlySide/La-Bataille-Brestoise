@@ -1,6 +1,7 @@
 class GSR:
     clients = []
     loop = None
+    log = None
 
     @classmethod
     def getEventLoop(cls):

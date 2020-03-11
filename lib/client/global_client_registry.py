@@ -1,3 +1,5 @@
+import random
+
 class GCR:
     """
     Registre global de variables globales.
@@ -16,11 +18,14 @@ class GCR:
     tcp_client = None # tunnel TCP
     tcp_thread = None
     loop = None # boucle des évènements
+    log = None
     chatbox = None # chatbox en jeu
     id = None # identifiant unique du client
     # Liste des serveurs préenregistrés
     serveurs = [["Localhost", "127.0.0.1", "25566"],
                 ["Evril server", "192.168.9.15", "25566"]]
+
+    names = ["Petit lapin", "Quiche lorraine", "Choupinou", "Rutabaga"]
 
     @classmethod
     def getTcpClient(cls):
@@ -48,3 +53,7 @@ class GCR:
             print("Le client n'a pas encore reçu d'identifiant !")
             return None
         return cls.id
+
+    @classmethod
+    def getRandomName(cls):
+        return random.choice(cls.names)

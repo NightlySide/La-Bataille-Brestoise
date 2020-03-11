@@ -1,11 +1,14 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import Qt
 from PyQt5 import uic
 import asyncio
 from lib.client.tcp_client import TCPClientProtocol
 from lib.client.game_screen import EcranJeu
 from lib.client.global_client_registry import GCR
 from threading import Thread
+
+from lib.common.logger import Logger
 
 
 class EcranConnexion(QMainWindow):
@@ -77,6 +80,10 @@ class EcranConnexion(QMainWindow):
         # On se connecte
         self.connect(nom, ip, port)
 
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.close()
+
     def connect(self, nom, ip, port):
         """
         Appelée finalement pour se connecter au serveur et ouvrir
@@ -94,7 +101,9 @@ class EcranConnexion(QMainWindow):
         try:
             # On ouvre la connexion au serveur
             username = self.input_username.text()
-            loop.run_until_complete(TCPClientProtocol.create(nom, ip, port, "Anonyme" if username == "" else username))
+            if username == "":
+                username = GCR.getRandomName()
+            loop.run_until_complete(TCPClientProtocol.create(nom, ip, port, username))
             self.open_game()
             # L'astuce réside ici
             # On contient les évènements réseau dans un autre Thread
@@ -102,7 +111,7 @@ class EcranConnexion(QMainWindow):
             GCR.tcp_thread = Thread(target=loop.run_forever)
             GCR.tcp_thread.start()
         except KeyboardInterrupt:
-            print("\nFin du programme client")
+            GCR.log.log(Logger.INFORMATION, "Fin du programme client")
 
     def open_game(self):
         """
@@ -110,7 +119,7 @@ class EcranConnexion(QMainWindow):
         connexion jusqu'à ce que la fenêtre de jeu soit
         fermée.
         """
-        print("[ ] Ouverture du jeu en cours...")
+        GCR.log.log(Logger.INFORMATION, "Ouverture du jeu en cours ...")
         self.game = EcranJeu(self)
 
         # On connecte la fermeture de la fenêtre de jeu
@@ -118,10 +127,6 @@ class EcranConnexion(QMainWindow):
         self.game.closed.connect(self.show)
         self.game.show()
         self.hide()
-
-    def closeEvent(self, event):
-        if GCR.loop is not None:
-            GCR.getEventLoop().stop()
 
 
 class LocalServerDialog(QDialog):

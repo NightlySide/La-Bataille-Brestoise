@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QTextBrowser
-
+from PyQt5.QtCore import Qt
 
 class ChatBox(QTextBrowser):
     """
@@ -24,6 +24,7 @@ class ChatBox(QTextBrowser):
         self.setAcceptRichText(True)
         self.setReadOnly(True)
         self.setMinimumSize(400, 250)
+        self.setFocusPolicy(Qt.NoFocus)
 
     def add_line(self, line):
         """

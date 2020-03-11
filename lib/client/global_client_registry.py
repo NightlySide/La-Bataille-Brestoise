@@ -20,6 +20,7 @@ class GCR:
     loop = None # boucle des évènements
     log = None
     chatbox = None # chatbox en jeu
+    joueur = None
     id = None # identifiant unique du client
     # Liste des serveurs préenregistrés
     serveurs = [["Localhost", "127.0.0.1", "25566"],

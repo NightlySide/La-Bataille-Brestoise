@@ -1,0 +1,10 @@
+[22:53:37][INFO] Connexion ouverte sur ('127.0.0.1', 54958)
+[22:53:37][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[22:53:37][INFO] Petit lapin a rejoint la partie
+[22:53:37][DEBUG] --> Envoi : {'action': 'request_id', 'id': '15e03a02-bd09-428b-a158-d4cd2f5ab3db'}
+[22:53:43][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '15e03a02-bd09-428b-a158-d4cd2f5ab3db', 'msg': 'lll'}
+[22:53:43][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Petit lapin', 'msg': 'lll'}
+[22:53:46][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '15e03a02-bd09-428b-a158-d4cd2f5ab3db', 'msg': 'bite'}
+[22:53:46][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Petit lapin', 'msg': 'bite'}
+[22:53:48][INFO] Connexion fermée avec ('127.0.0.1', 54958)
+[22:54:25][INFO] Fin du programme serveur

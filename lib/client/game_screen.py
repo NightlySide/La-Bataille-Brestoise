@@ -5,14 +5,16 @@ from PyQt5 import uic
 from lib.client.global_client_registry import GCR
 from lib.client.chatbox import ChatBox
 from lib.client.canvas_jeu import CanvasJeu
+from lib.common.joueur import Joueur
 from lib.common.logger import Logger
+import functools
 
 
 class EcranJeu(QMainWindow):
     # Signal de fermeture (par défaut il n'existe pas)
     closed = pyqtSignal()
 
-    def __init__(self,  parent=None, update_delta=100):
+    def __init__(self,  parent=None, update_delta=10):
         super().__init__(parent)
         uic.loadUi('assets/ecran_jeu.ui', self)
 
@@ -41,12 +43,15 @@ class EcranJeu(QMainWindow):
         self.chatbox.update()
         GCR.chatbox = self.chatbox
 
+        # Création du joueur
+        GCR.joueur = Joueur()
+
         # On donne un titre à la fenêtre
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")
 
         # On itère toutes les X secondes pour mettre à jour l'écran
         self.timer = QTimer()
-        self.timer.timeout.connect(self.update)
+        self.timer.timeout.connect(functools.partial(self.update, update_delta))
         self.timer.start(update_delta)
 
     def keyPressEvent(self, e):
@@ -72,5 +77,8 @@ class EcranJeu(QMainWindow):
                         "user": GCR.getTcpClient().id,
                         "msg": message})
 
-    def update(self):
+    def update(self, delta):
+        super().update()
         self.chatbox.update()
+        GCR.joueur.update(delta)
+        self.game_canvas.update()

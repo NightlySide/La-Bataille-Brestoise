@@ -58,6 +58,11 @@ class EcranJeu(QMainWindow):
         self.setWindowTitle(text)
 
     def closeEvent(self, event):
+        print("[ ] Closing client")
+        if GCR.loop is not None:
+            GCR.getEventLoop().call_soon_threadsafe(GCR.getEventLoop().stop)
+            GCR.loop = None
+            GCR.tcp_thread.join()
         self.closed.emit()
         event.accept()
 

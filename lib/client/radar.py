@@ -62,11 +62,11 @@ class Radar(QWidget):
 
         original_pen = qp.pen()
         new_pen = QPen()
-        new_pen.setColor(Qt.darkGray)
-        new_pen.setWidth(5)
+        new_pen.setColor(Qt.green)
+        new_pen.setWidth(2)
         qp.setPen(new_pen)
         qp.drawLine(origin, dest)
-        qt.setPen(original_pen)
+        qp.setPen(original_pen)
 
         for e in self.enemies:
             for pos, tps in self.points_to_draw:

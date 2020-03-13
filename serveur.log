@@ -668,3 +668,25 @@
 [22:11:00][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Quiche lorraine', 'msg': 'Haha'}
 [22:11:09][INFO] Connexion fermée avec ('127.0.0.1', 49822)
 [22:19:19][INFO] Fin du programme serveur
+[22:21:11][INFO] Lancement du serveur ...
+[22:21:11][INFO] Serveur lancé
+[22:21:17][INFO] Connexion ouverte sur ('127.0.0.1', 49958)
+[22:21:17][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[22:21:17][INFO] Choupinou a rejoint la partie
+[22:21:17][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'ce97442d-8b62-489a-845e-a1f30cb2a609'}
+[22:21:20][INFO] Connexion fermée avec ('127.0.0.1', 49958)
+[22:21:29][INFO] Connexion ouverte sur ('127.0.0.1', 49962)
+[22:21:29][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[22:21:29][INFO] Choupinou a rejoint la partie
+[22:21:29][DEBUG] --> Envoi : {'action': 'request_id', 'id': '2a5f26ea-6b62-4c3e-bc95-6d799f63ae47'}
+[22:21:31][INFO] Connexion fermée avec ('127.0.0.1', 49962)
+[22:21:40][INFO] Connexion ouverte sur ('127.0.0.1', 49966)
+[22:21:40][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[22:21:40][INFO] Choupinou a rejoint la partie
+[22:21:40][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'e03e99db-1fa7-42f9-a200-b86a900c7ca3'}
+[22:21:46][INFO] Connexion fermée avec ('127.0.0.1', 49966)
+[22:21:53][INFO] Connexion ouverte sur ('127.0.0.1', 49968)
+[22:21:53][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[22:21:53][INFO] Rutabaga a rejoint la partie
+[22:21:53][DEBUG] --> Envoi : {'action': 'request_id', 'id': '35ea4e76-db24-40f4-b3b3-a96702522367'}
+[22:22:02][INFO] Connexion fermée avec ('127.0.0.1', 49968)

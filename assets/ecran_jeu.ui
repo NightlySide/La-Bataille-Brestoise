@@ -50,8 +50,8 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>400</width>
-          <height>300</height>
+          <width>0</width>
+          <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -61,7 +61,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Minimap</string>
+         <string/>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

@@ -1,5 +1,8 @@
 import numpy as np
 
+from lib.client.global_client_registry import GCR
+from lib.common.logger import Logger
+
 
 class Vecteur:
 
@@ -28,3 +31,17 @@ class Vecteur:
         if isinstance(autre, int) or isinstance(autre, float):
             return Vecteur(self.x * autre, self.y * autre)
         return Vecteur(self.x * autre.x, self.y * autre.y)
+
+    @staticmethod
+    def produit_vectoriel(v1, v2):
+        return v1.x * v2.y - v1.y * v2.x
+
+    @staticmethod
+    def est_entre(a, b, c, epsilon=1):
+        produit_vect = (c.y - a.y) * (b.x - a.x) - (c.x - a.x) * (b.y - a.y)
+        if abs(produit_vect) > epsilon:
+            return False
+        dot_prod = (c.x - a.x) * (b.x - a.x) + (c.y - a.y)*(b.y - a.y)
+        if dot_prod < 0:
+            return False
+        return True

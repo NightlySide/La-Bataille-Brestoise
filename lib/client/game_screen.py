@@ -1,10 +1,11 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import *
 from PyQt5.QtCore import pyqtSignal, Qt, QTimer
 from PyQt5 import uic
+
 from lib.client.global_client_registry import GCR
 from lib.client.chatbox import ChatBox
 from lib.client.canvas_jeu import CanvasJeu
+from lib.client.radar import Radar
 from lib.common.joueur import Joueur
 from lib.common.logger import Logger
 import functools
@@ -14,7 +15,7 @@ class EcranJeu(QMainWindow):
     # Signal de fermeture (par défaut il n'existe pas)
     closed = pyqtSignal()
 
-    def __init__(self,  parent=None, update_delta=10):
+    def __init__(self, parent=None, update_delta=1):
         super().__init__(parent)
         uic.loadUi('assets/ecran_jeu.ui', self)
 
@@ -30,8 +31,8 @@ class EcranJeu(QMainWindow):
         self.input_chatbox.editingFinished.connect(self.send_chat)
 
         # Paramétrage de la minimap
-        minimap_background = QPixmap("assets/images/rade_brest.png")
-        self.minimap.setPixmap(minimap_background)
+        # minimap_background = QPixmap("assets/images/rade_brest.png")
+        self.radar = Radar(125, 90, self.minimap)
 
         # Création du jeu
         self.game_canvas = CanvasJeu(self.game_scr_widget)
@@ -43,7 +44,7 @@ class EcranJeu(QMainWindow):
         self.chatbox.update()
         GCR.chatbox = self.chatbox
 
-        # Création du joueur
+        # Création du joueur et de la camera
         GCR.joueur = Joueur()
 
         # On donne un titre à la fenêtre
@@ -51,7 +52,7 @@ class EcranJeu(QMainWindow):
 
         # On itère toutes les X secondes pour mettre à jour l'écran
         self.timer = QTimer()
-        self.timer.timeout.connect(functools.partial(self.update, update_delta))
+        self.timer.timeout.connect(functools.partial(self.update, update_delta / 1000))
         self.timer.start(update_delta)
 
     def keyPressEvent(self, e):
@@ -73,12 +74,13 @@ class EcranJeu(QMainWindow):
         if message != "":
             self.input_chatbox.setText("")
             GCR.getTcpClient().send({
-                        "action": "chat",
-                        "user": GCR.getTcpClient().id,
-                        "msg": message})
+                "action": "chat",
+                "user": GCR.getTcpClient().id,
+                "msg": message})
 
     def update(self, delta):
         super().update()
         self.chatbox.update()
         GCR.joueur.update(delta)
         self.game_canvas.update()
+        self.radar.update()

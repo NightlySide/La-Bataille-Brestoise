@@ -10,6 +10,8 @@ from lib.common.joueur import Joueur
 from lib.common.logger import Logger
 import functools
 
+from lib.common.vecteur import Vecteur
+
 
 class EcranJeu(QMainWindow):
     # Signal de fermeture (par défaut il n'existe pas)
@@ -44,8 +46,8 @@ class EcranJeu(QMainWindow):
         self.chatbox.update()
         GCR.chatbox = self.chatbox
 
-        # Création du joueur et de la camera
-        GCR.joueur = Joueur()
+        # Création du joueur
+        GCR.joueur = Joueur(Vecteur(700, 300))
 
         # On donne un titre à la fenêtre
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")

@@ -1,6 +1,9 @@
 import numpy as np
 from PyQt5.QtCore import Qt
 
+from lib.client.global_client_registry import GCR
+from lib.common.logger import Logger
+
 
 class Carte(np.ndarray):
 
@@ -29,16 +32,28 @@ class Carte(np.ndarray):
         self.cell_size = getattr(obj, 'cell_size', None)
 
     def get_tile(self, x, y):
-        return self[x, y]
-
-    def render(self, qp):
         p, q = self.shape
-        for i in range(p):
-            for j in range(q):
-                if self.get_tile(i, j) == 1:
+        if 0 < x < p - 1 and 0 < y < q - 1:
+            return self[x, y]
+        return None
+
+    def render(self, qp, window_size):
+        center = (window_size[0] // 2, window_size[1] // 2)
+        center_in_cells = (center[0] // self.cell_size[0], center[1] // self.cell_size[1])
+        i0, j0 = GCR.joueur.position.x, GCR.joueur.position.y
+        for i in range(-center_in_cells[0], center_in_cells[0]):
+            for j in range(-center_in_cells[1], center_in_cells[1]):
+                tile = self.get_tile(int(i0 + i), int(j0 + j))
+                if tile is None:
+                    qp.setPen(Qt.black)
+                    qp.setBrush(Qt.black)
+                elif tile == 1:
                     qp.setPen(Qt.black)
                     qp.setBrush(Qt.darkBlue)
                 else:
                     qp.setPen(Qt.black)
                     qp.setBrush(Qt.blue)
-                qp.drawRect(i * self.cell_size[0], j * self.cell_size[1], self.cell_size[0], self.cell_size[1])
+                qp.drawRect(center[0] + i * self.cell_size[0],
+                            center[1] + j * self.cell_size[1],
+                            self.cell_size[0],
+                            self.cell_size[1])

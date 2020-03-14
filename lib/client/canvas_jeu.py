@@ -11,6 +11,7 @@ from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
 from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
+from lib.common.image_vers_tableau import img_vers_array
 
 
 class CanvasJeu(QLabel):
@@ -21,7 +22,9 @@ class CanvasJeu(QLabel):
         self.setMaximumSize(800, 600)
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
-        self.carte = Carte((50, 50), (16, 16), np.array([[randint(0, 1) for _ in range(50)] for _ in range(50)]))
+
+        rade_data = img_vers_array("assets/carte_rade_brest.jpg")
+        self.carte = Carte(rade_data.shape, (8, 8), rade_data)
 
     def keyPressEvent(self, e):
         dir = Vecteur()
@@ -29,23 +32,23 @@ class CanvasJeu(QLabel):
             self.parent().parent().parent().close()
         elif e.key() == Qt.Key_Left:
             GCR.log.log(Logger.DEBUG, "Flèche gauche")
-            dir.y -= 1
+            dir.x -= 1
         elif e.key() == Qt.Key_Right:
             GCR.log.log(Logger.DEBUG, "Flèche droite")
-            dir.y += 1
+            dir.x += 1
         elif e.key() == Qt.Key_Up:
             GCR.log.log(Logger.DEBUG, "Flèche haut")
-            dir.x -= 1
+            dir.y -= 1
         elif e.key() == Qt.Key_Down:
             GCR.log.log(Logger.DEBUG, "Flèche bas")
-            dir.x += 1
+            dir.y += 1
         GCR.joueur.direction = dir
 
     def paintEvent(self, e):
         qp = QPainter(self)
 
         # on dessine la carte
-        self.carte.render(qp)
+        self.carte.render(qp, (self.width(), self.height()))
 
         qp.drawImage(QRect(self.width() // 2, self.height() // 2, 50, 50), GCR.joueur.image)
 
@@ -53,8 +56,6 @@ class CanvasJeu(QLabel):
         x = e.x()
         y = e.y()
         text = "x: {0},  y: {1}".format(x, y)
-        GCR.joueur.position.x = x
-        GCR.joueur.position.y = y
         self.parent().parent().parent().setWindowTitle(text)
 
     def mousePressEvent(self, e):

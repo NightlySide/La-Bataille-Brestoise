@@ -690,3 +690,152 @@
 [22:21:53][INFO] Rutabaga a rejoint la partie
 [22:21:53][DEBUG] --> Envoi : {'action': 'request_id', 'id': '35ea4e76-db24-40f4-b3b3-a96702522367'}
 [22:22:02][INFO] Connexion fermée avec ('127.0.0.1', 49968)
+[22:25:05][INFO] Connexion ouverte sur ('127.0.0.1', 50004)
+[22:25:05][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[22:25:05][INFO] Rutabaga a rejoint la partie
+[22:25:05][DEBUG] --> Envoi : {'action': 'request_id', 'id': '7460eabd-80cd-470a-b15d-1ba88da322fc'}
+[22:25:33][INFO] Connexion fermée avec ('127.0.0.1', 50004)
+[22:26:57][INFO] Fin du programme serveur
+[08:30:16][INFO] Lancement du serveur ...
+[08:30:16][INFO] Serveur lancé
+[08:30:34][INFO] Connexion ouverte sur ('127.0.0.1', 58880)
+[08:30:34][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:30:34][INFO] Rutabaga a rejoint la partie
+[08:30:34][DEBUG] --> Envoi : {'action': 'request_id', 'id': '25319dfc-d974-46d1-8b59-4a9b008f80c0'}
+[08:30:52][INFO] Connexion fermée avec ('127.0.0.1', 58880)
+[08:33:20][INFO] Connexion ouverte sur ('127.0.0.1', 58886)
+[08:33:20][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:33:20][INFO] Rutabaga a rejoint la partie
+[08:33:20][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b7ef6571-3167-4d53-bdae-aec1ee752c46'}
+[08:33:31][INFO] Connexion fermée avec ('127.0.0.1', 58886)
+[08:39:23][INFO] Connexion ouverte sur ('127.0.0.1', 58910)
+[08:39:23][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:39:23][INFO] Rutabaga a rejoint la partie
+[08:39:23][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'c80853c4-bb6a-4071-b423-736366d0ed11'}
+[08:39:23][INFO] Connexion fermée avec ('127.0.0.1', 58910)
+[08:40:03][INFO] Connexion ouverte sur ('127.0.0.1', 58912)
+[08:40:03][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[08:40:03][INFO] Petit lapin a rejoint la partie
+[08:40:03][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b2cecd8f-bd78-4409-8573-bdf7eaa73b06'}
+[08:40:04][INFO] Connexion fermée avec ('127.0.0.1', 58912)
+[08:40:34][INFO] Connexion ouverte sur ('127.0.0.1', 58920)
+[08:40:34][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Quiche lorraine'}
+[08:40:34][INFO] Quiche lorraine a rejoint la partie
+[08:40:34][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'ce97c869-e6f0-4f13-980a-f08f549618a2'}
+[08:40:34][INFO] Connexion fermée avec ('127.0.0.1', 58920)
+[08:41:23][INFO] Connexion ouverte sur ('127.0.0.1', 58922)
+[08:41:23][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[08:41:23][INFO] Petit lapin a rejoint la partie
+[08:41:23][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'cc34dd80-856e-4402-9212-9cb8b22ddfc5'}
+[08:41:32][INFO] Connexion fermée avec ('127.0.0.1', 58922)
+[08:41:34][INFO] Connexion ouverte sur ('127.0.0.1', 58924)
+[08:41:34][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Quiche lorraine'}
+[08:41:34][INFO] Quiche lorraine a rejoint la partie
+[08:41:34][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'caf34304-fc88-4e55-b79f-38c6e6f6acdf'}
+[08:41:39][INFO] Connexion fermée avec ('127.0.0.1', 58924)
+[08:42:22][INFO] Connexion ouverte sur ('127.0.0.1', 58926)
+[08:42:22][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Quiche lorraine'}
+[08:42:22][INFO] Quiche lorraine a rejoint la partie
+[08:42:22][DEBUG] --> Envoi : {'action': 'request_id', 'id': '124f8394-3b52-45c1-a8fd-cbcb5b34963c'}
+[08:42:36][INFO] Connexion fermée avec ('127.0.0.1', 58926)
+[08:42:59][INFO] Connexion ouverte sur ('127.0.0.1', 58942)
+[08:42:59][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[08:42:59][INFO] Petit lapin a rejoint la partie
+[08:42:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': '49d7e950-3ff9-4a87-8e06-b9e875a9d6e4'}
+[08:43:39][INFO] Connexion fermée avec ('127.0.0.1', 58942)
+[08:44:11][INFO] Connexion ouverte sur ('127.0.0.1', 58948)
+[08:44:11][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:44:11][INFO] Rutabaga a rejoint la partie
+[08:44:11][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'a33b1f03-83c8-45e1-a70c-0607d4293ead'}
+[08:44:16][INFO] Connexion fermée avec ('127.0.0.1', 58948)
+[08:44:36][INFO] Connexion ouverte sur ('127.0.0.1', 58950)
+[08:44:36][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[08:44:36][INFO] Choupinou a rejoint la partie
+[08:44:36][DEBUG] --> Envoi : {'action': 'request_id', 'id': '9940f4e2-59da-4e80-a282-cb7e990a3e32'}
+[08:44:54][INFO] Connexion fermée avec ('127.0.0.1', 58950)
+[08:45:05][INFO] Connexion ouverte sur ('127.0.0.1', 58952)
+[08:45:05][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[08:45:05][INFO] Petit lapin a rejoint la partie
+[08:45:05][DEBUG] --> Envoi : {'action': 'request_id', 'id': '6983096b-a919-40eb-9414-5836b4d05c43'}
+[08:45:08][INFO] Connexion fermée avec ('127.0.0.1', 58952)
+[08:45:23][INFO] Connexion ouverte sur ('127.0.0.1', 58958)
+[08:45:23][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[08:45:23][INFO] Choupinou a rejoint la partie
+[08:45:23][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'e7696055-8969-42f8-97c8-b0e4f2d08515'}
+[08:45:34][INFO] Connexion fermée avec ('127.0.0.1', 58958)
+[08:46:43][INFO] Connexion ouverte sur ('127.0.0.1', 58962)
+[08:46:43][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[08:46:43][INFO] Petit lapin a rejoint la partie
+[08:46:43][DEBUG] --> Envoi : {'action': 'request_id', 'id': '1e2013cf-dcdb-46be-9953-457f02caa585'}
+[08:47:00][INFO] Connexion fermée avec ('127.0.0.1', 58962)
+[08:48:00][INFO] Connexion ouverte sur ('127.0.0.1', 58964)
+[08:48:00][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Quiche lorraine'}
+[08:48:00][INFO] Quiche lorraine a rejoint la partie
+[08:48:00][DEBUG] --> Envoi : {'action': 'request_id', 'id': '4f05e238-1329-4636-9b45-fc507b2c8c30'}
+[08:48:01][INFO] Connexion fermée avec ('127.0.0.1', 58964)
+[08:48:24][INFO] Connexion ouverte sur ('127.0.0.1', 58970)
+[08:48:24][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:48:24][INFO] Rutabaga a rejoint la partie
+[08:48:24][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'fd584045-cd9a-478d-b0f1-6ad2a0848386'}
+[08:48:43][INFO] Connexion fermée avec ('127.0.0.1', 58970)
+[08:50:13][INFO] Connexion ouverte sur ('127.0.0.1', 58974)
+[08:50:13][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[08:50:13][INFO] Petit lapin a rejoint la partie
+[08:50:13][DEBUG] --> Envoi : {'action': 'request_id', 'id': '3b11f402-1abe-48d2-9eba-f407ec1e1416'}
+[08:50:55][INFO] Connexion fermée avec ('127.0.0.1', 58974)
+[08:52:23][INFO] Connexion ouverte sur ('127.0.0.1', 58978)
+[08:52:23][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:52:23][INFO] Rutabaga a rejoint la partie
+[08:52:23][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b1715f88-a025-41e0-b9bf-94340806d7af'}
+[08:52:32][INFO] Connexion fermée avec ('127.0.0.1', 58978)
+[08:53:00][INFO] Connexion ouverte sur ('127.0.0.1', 58982)
+[08:53:00][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:53:00][INFO] Rutabaga a rejoint la partie
+[08:53:00][DEBUG] --> Envoi : {'action': 'request_id', 'id': '0a6b9391-29e1-4e01-b363-46ac99904acc'}
+[08:53:24][INFO] Connexion fermée avec ('127.0.0.1', 58982)
+[08:53:51][INFO] Connexion ouverte sur ('127.0.0.1', 58988)
+[08:53:51][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Petit lapin'}
+[08:53:51][INFO] Petit lapin a rejoint la partie
+[08:53:51][DEBUG] --> Envoi : {'action': 'request_id', 'id': '346f4ac5-e0cc-450a-880e-d9b0ebaa42ef'}
+[08:53:53][INFO] Connexion fermée avec ('127.0.0.1', 58988)
+[08:53:57][INFO] Connexion ouverte sur ('127.0.0.1', 58990)
+[08:53:57][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[08:53:57][INFO] Rutabaga a rejoint la partie
+[08:53:57][DEBUG] --> Envoi : {'action': 'request_id', 'id': '0a1f7abb-fa92-42cf-8fae-1fdd7fbe3533'}
+[08:54:16][INFO] Connexion fermée avec ('127.0.0.1', 58990)
+[08:54:26][INFO] Connexion ouverte sur ('127.0.0.1', 58992)
+[08:54:26][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Quiche lorraine'}
+[08:54:26][INFO] Quiche lorraine a rejoint la partie
+[08:54:26][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'a2bfdfa2-3e58-41f2-8eea-3e4e226aff18'}
+[08:55:12][DEBUG] <-- Données reçues : {'action': 'chat', 'user': 'a2bfdfa2-3e58-41f2-8eea-3e4e226aff18', 'msg': "J'ai eu une révélation cette nuit"}
+[08:55:12][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Quiche lorraine', 'msg': "J'ai eu une révélation cette nuit"}
+[08:55:17][DEBUG] <-- Données reçues : {'action': 'chat', 'user': 'a2bfdfa2-3e58-41f2-8eea-3e4e226aff18', 'msg': "Du coup j'ai codé la map "}
+[08:55:17][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Quiche lorraine', 'msg': "Du coup j'ai codé la map "}
+[08:56:03][DEBUG] <-- Données reçues : {'action': 'chat', 'user': 'a2bfdfa2-3e58-41f2-8eea-3e4e226aff18', 'msg': 'Pas mal hein ?'}
+[08:56:03][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Quiche lorraine', 'msg': 'Pas mal hein ?'}
+[08:56:14][INFO] Connexion fermée avec ('127.0.0.1', 58992)
+[09:40:12][INFO] Connexion ouverte sur ('127.0.0.1', 60300)
+[09:40:12][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[09:40:12][INFO] Rutabaga a rejoint la partie
+[09:40:12][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'd87855f2-557c-4db3-b6f8-4638cf94a8c8'}
+[09:40:46][INFO] Connexion fermée avec ('127.0.0.1', 60300)
+[09:41:15][INFO] Connexion ouverte sur ('127.0.0.1', 60302)
+[09:41:15][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[09:41:15][INFO] Rutabaga a rejoint la partie
+[09:41:15][DEBUG] --> Envoi : {'action': 'request_id', 'id': '2092d758-c6d9-4256-801b-f8129b1625ca'}
+[09:42:09][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '2092d758-c6d9-4256-801b-f8129b1625ca', 'msg': "J'ai chargé la rade de brest"}
+[09:42:09][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Rutabaga', 'msg': "J'ai chargé la rade de brest"}
+[09:42:13][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '2092d758-c6d9-4256-801b-f8129b1625ca', 'msg': "Ici c'est le port militaire"}
+[09:42:13][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Rutabaga', 'msg': "Ici c'est le port militaire"}
+[09:42:36][INFO] Connexion fermée avec ('127.0.0.1', 60302)
+[09:42:49][INFO] Connexion ouverte sur ('127.0.0.1', 60310)
+[09:42:49][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[09:42:49][INFO] Rutabaga a rejoint la partie
+[09:42:49][DEBUG] --> Envoi : {'action': 'request_id', 'id': '7d3cd8ec-5515-4dcb-9bd0-3aeb88ba4532'}
+[09:43:07][INFO] Connexion fermée avec ('127.0.0.1', 60310)
+[09:43:51][INFO] Connexion ouverte sur ('127.0.0.1', 60334)
+[09:43:51][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[09:43:51][INFO] Choupinou a rejoint la partie
+[09:43:51][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b5c90580-8b28-432b-88e4-95ba94f2eae6'}
+[09:44:51][INFO] Connexion fermée avec ('127.0.0.1', 60334)
+[09:47:19][INFO] Fin du programme serveur

@@ -32,6 +32,9 @@ class Vecteur:
             return Vecteur(self.x * autre, self.y * autre)
         return Vecteur(self.x * autre.x, self.y * autre.y)
 
+    def __repr__(self):
+        return f"Vecteur : ({self.x}, {self.y})"
+
     @staticmethod
     def produit_vectoriel(v1, v2):
         return v1.x * v2.y - v1.y * v2.x

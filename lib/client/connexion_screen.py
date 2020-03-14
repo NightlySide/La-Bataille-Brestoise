@@ -1,12 +1,16 @@
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QUrl
 from PyQt5 import uic
 import asyncio
 from lib.client.tcp_client import TCPClientProtocol
 from lib.client.game_screen import EcranJeu
 from lib.client.global_client_registry import GCR
 from threading import Thread
+
+import os, sys
 
 from lib.common.logger import Logger
 
@@ -53,8 +57,15 @@ class EcranConnexion(QMainWindow):
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")
 
         # On met l'image sur le logo
-        pix = QPixmap("assets/images/logo.png")
-        self.logo.setPixmap(pix)
+        self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
+        self.videoWidget = QVideoWidget(self.logo)
+        self.logo.setFixedSize(800, 9/16 * 800)
+        self.videoWidget.setFixedSize(800, 9/16 * 800)
+        app_root = os.path.abspath(os.path.dirname(sys.argv[0]))
+        movie_path = os.path.join(app_root, "assets", "background_video.mp4")
+        self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(movie_path)))
+        self.mediaPlayer.setVideoOutput(self.videoWidget)
+        self.mediaPlayer.play()
 
         # On paramètre la liste des serveurs
         for k in range(len(GCR.serveurs)):
@@ -94,6 +105,8 @@ class EcranConnexion(QMainWindow):
             ip (str): l'adresse IP (IPv4) de l'hôte
             port (int): le port de l'hôte
         """
+        # On arrête d'abord la lecture de la video
+        self.mediaPlayer.stop()
         # On récupère la boucle des évènements
         loop = asyncio.get_event_loop()
         # On en fait la boucle principale

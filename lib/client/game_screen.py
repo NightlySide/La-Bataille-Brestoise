@@ -17,7 +17,7 @@ class EcranJeu(QMainWindow):
     # Signal de fermeture (par défaut il n'existe pas)
     closed = pyqtSignal()
 
-    def __init__(self, parent=None, update_delta=1):
+    def __init__(self, parent=None, update_delta=1/60*1000):
         super().__init__(parent)
         uic.loadUi('assets/ecran_jeu.ui', self)
 

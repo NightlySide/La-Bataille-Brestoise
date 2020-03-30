@@ -18,8 +18,7 @@ class CanvasJeu(QLabel):
 
     def __init__(self, parent=None, refresh_rate=1/30):
         super().__init__(parent)
-        self.setMinimumSize(800, 600)
-        self.setMaximumSize(800, 600)
+        self.setFixedSize(800, 600)
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
 

@@ -1,0 +1,22 @@
+[08:36:12][INFO] Lancement du serveur ...
+[08:36:12][INFO] Serveur lancé
+[08:37:00][INFO] Connexion ouverte sur ('192.168.1.30', 59666)
+[08:37:00][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[08:37:00][INFO] Choupinou a rejoint la partie
+[08:37:00][DEBUG] --> Envoi : {'action': 'request_id', 'id': '99a80c8e-a1a8-46d2-a5ef-b96dc6e69443'}
+[08:37:28][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '99a80c8e-a1a8-46d2-a5ef-b96dc6e69443', 'msg': 'yhihj'}
+[08:37:28][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Choupinou', 'msg': 'yhihj'}
+[08:38:24][INFO] Connexion fermée avec ('192.168.1.30', 59666)
+[17:39:04][INFO] Lancement du serveur ...
+[17:39:04][INFO] Serveur lancé
+[17:39:29][INFO] Connexion ouverte sur ('127.0.0.1', 45862)
+[17:39:29][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Rutabaga'}
+[17:39:29][INFO] Rutabaga a rejoint la partie
+[17:39:29][DEBUG] --> Envoi : {'action': 'request_id', 'id': '9f173420-57ee-4341-bb38-afb76788648f'}
+[17:40:14][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '9f173420-57ee-4341-bb38-afb76788648f', 'msg': 'Hello'}
+[17:40:14][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Rutabaga', 'msg': 'Hello'}
+[17:41:55][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '9f173420-57ee-4341-bb38-afb76788648f', 'msg': 'Wesh'}
+[17:41:55][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Rutabaga', 'msg': 'Wesh'}
+[17:42:20][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '9f173420-57ee-4341-bb38-afb76788648f', 'msg': 'Hello'}
+[17:42:20][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Rutabaga', 'msg': 'Hello'}
+[17:42:31][INFO] Connexion fermée avec ('127.0.0.1', 45862)

@@ -27,8 +27,7 @@ class Radar(QWidget):
         self.to_remove = []
         self.temps_affichage = 300 / self.speed
 
-        self.setMaximumSize(400, 300)
-        self.setMinimumSize(400, 300)
+        self.setFixedSize(400, 300)
 
     def update(self):
         if time.perf_counter() - self.time_counter > self.refresh_rate:

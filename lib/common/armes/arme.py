@@ -6,6 +6,7 @@ from random import randint
 class Arme():
 
     def __init__(self,refresh_rate=1):
+
         self.nom_arme= ""
         self.DPS = 0
         self.degats_instantannee = 0
@@ -16,10 +17,23 @@ class Arme():
         self.refresh_rate = 1/50
 
     def degats(self, entiteEnnemie, Degat):
-        #inflige les dégats en un refresh rate
-        entiteEnnemie.VIE =- Degat
+        """
+        est appelé par la fonction "dammage", permet d'infliger des dégats pendant un incrément de temps.
+                        Args:
+                            self: arme
+                            entiteEnnemie: la cible qui va recevoir les dégats, objet entité
+                            Degat: dégats infligés sur un incrément de temps
+        """
+        entiteEnnemie.Vie =- Degat
 
-    def dammage(self, entiteEnnemie, refresh_rate = self.refresh_rate):
+    def dammage(self, entiteEnnemie, refresh_rate = self.refresh_rate)
+        """
+        permet d'infliger des dégats à une cible "EntiteEnnemie". Les dégats sont infligés différemment en fonction du type de l'arme
+        arme à dégats continus: inflige les dégats en continu selon un temps de refresh refresh_rate. 
+        Args:
+            entiteEnnemie: la cible qui va recevoir les dégats, objet entité
+            refresh_rate: segmentation des dégats continus en petits dégats instantannés sur une petite portion de temps
+        """
         self._timer = QTimer()
         if self.DPS == 0 :
             #arme à dégats instantannées
@@ -35,6 +49,14 @@ class Arme():
                 self._timer.timeout.connect(self.degats(entiteEnnemie, self.DPS//refresh_rate))
 
     def equiper(self):
+        """
+        permet à un joueur d'équiper une arme. Elle sert à attendre un délai de mise en oeuvre d'une arme avant de pouvoir tirer.
+        plus l'arme est importante et plus son temps d'équipement est grand. une arme de conception plus récente aura un temps d'équipement plus court.
+
+        Args:
+            self: objet arme
+
+        """
         t0 = time.perf_counter()
         t=t0
         if t > t0 + self.tps_mise_en_oeuvre :

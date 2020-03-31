@@ -20,3 +20,69 @@
 [17:42:20][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '9f173420-57ee-4341-bb38-afb76788648f', 'msg': 'Hello'}
 [17:42:20][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Rutabaga', 'msg': 'Hello'}
 [17:42:31][INFO] Connexion fermée avec ('127.0.0.1', 45862)
+[10:14:44][INFO] Lancement du serveur ...
+[10:14:44][INFO] Serveur lancé
+[10:15:50][INFO] Connexion ouverte sur ('127.0.0.1', 55098)
+[10:15:50][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Quiche lorraine'}
+[10:15:50][INFO] Quiche lorraine a rejoint la partie
+[10:15:50][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'fad02702-beb8-4500-ac5c-dbb6a1acffc0'}
+[10:16:07][INFO] Connexion fermée avec ('127.0.0.1', 55098)
+[10:17:12][INFO] Connexion ouverte sur ('127.0.0.1', 55160)
+[10:17:12][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Choupinou'}
+[10:17:12][INFO] Choupinou a rejoint la partie
+[10:17:12][DEBUG] --> Envoi : {'action': 'request_id', 'id': '7236c419-1e13-4271-a9fb-957aedd40197'}
+[10:17:23][INFO] Connexion fermée avec ('127.0.0.1', 55160)
+[10:40:19][INFO] Connexion ouverte sur ('127.0.0.1', 55572)
+[10:40:19][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': None}
+[10:40:19][INFO] Connexion fermée avec ('127.0.0.1', 55572)
+[10:41:08][INFO] Lancement du serveur ...
+[10:41:08][INFO] Serveur lancé
+[10:41:14][INFO] Connexion ouverte sur ('127.0.0.1', 55604)
+[10:41:14][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': None}
+[10:41:14][INFO] Connexion fermée avec ('127.0.0.1', 55604)
+[10:41:47][INFO] Fin du programme serveur
+[10:41:49][INFO] Lancement du serveur ...
+[10:41:49][INFO] Serveur lancé
+[10:41:54][INFO] Connexion ouverte sur ('127.0.0.1', 55612)
+[10:41:54][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Baleine sale'}
+[10:41:54][INFO] Baleine sale a rejoint la partie
+[10:41:54][DEBUG] --> Envoi : {'action': 'request_id', 'id': '5be4e35d-8c79-43d4-9a24-8e69a27d71ab'}
+[10:42:01][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '5be4e35d-8c79-43d4-9a24-8e69a27d71ab', 'msg': 'qsd'}
+[10:42:01][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Baleine sale', 'msg': 'qsd'}
+[10:42:13][INFO] Connexion fermée avec ('127.0.0.1', 55612)
+[10:42:14][INFO] Connexion ouverte sur ('127.0.0.1', 55614)
+[10:42:14][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Antilope dynamique'}
+[10:42:14][INFO] Antilope dynamique a rejoint la partie
+[10:42:14][DEBUG] --> Envoi : {'action': 'request_id', 'id': '97610a69-3054-40d6-b295-f7e2c1e0b981'}
+[10:42:16][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '97610a69-3054-40d6-b295-f7e2c1e0b981', 'msg': 'sdqd'}
+[10:42:16][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Antilope dynamique', 'msg': 'sdqd'}
+[10:42:17][INFO] Connexion fermée avec ('127.0.0.1', 55614)
+[10:42:19][INFO] Connexion ouverte sur ('127.0.0.1', 55616)
+[10:42:19][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Girafe sauvage'}
+[10:42:19][INFO] Girafe sauvage a rejoint la partie
+[10:42:19][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'd0894c0a-c7b0-4e4a-9678-50affc31f57c'}
+[10:42:20][DEBUG] <-- Données reçues : {'action': 'chat', 'user': 'd0894c0a-c7b0-4e4a-9678-50affc31f57c', 'msg': 'qsdqd'}
+[10:42:20][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Girafe sauvage', 'msg': 'qsdqd'}
+[10:42:22][INFO] Connexion fermée avec ('127.0.0.1', 55616)
+[10:42:22][INFO] Connexion ouverte sur ('127.0.0.1', 55618)
+[10:42:22][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Requin adorable'}
+[10:42:22][INFO] Requin adorable a rejoint la partie
+[10:42:22][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b7065e16-e021-483c-b61d-1f3f279c1c1f'}
+[10:42:25][DEBUG] <-- Données reçues : {'action': 'chat', 'user': 'b7065e16-e021-483c-b61d-1f3f279c1c1f', 'msg': 'qsdqsd'}
+[10:42:25][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Requin adorable', 'msg': 'qsdqsd'}
+[10:42:26][INFO] Connexion fermée avec ('127.0.0.1', 55618)
+[10:53:27][INFO] Connexion ouverte sur ('127.0.0.1', 55744)
+[10:53:27][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Lynx maladroit'}
+[10:53:27][INFO] Lynx maladroit a rejoint la partie
+[10:53:27][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'd5534b6b-3835-4e1c-b098-d3eca95c9b3a'}
+[10:53:35][INFO] Connexion fermée avec ('127.0.0.1', 55744)
+[11:11:58][INFO] Fin du programme serveur
+[11:12:00][INFO] Lancement du serveur ...
+[11:12:00][INFO] Serveur lancé
+[11:12:36][INFO] Connexion ouverte sur ('127.0.0.1', 55874)
+[11:12:36][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Chat tendu'}
+[11:12:36][INFO] Chat tendu a rejoint la partie
+[11:12:36][DEBUG] --> Envoi : {'action': 'request_id', 'id': '3e89feec-3664-43ee-87df-b31ec4230613'}
+[11:12:39][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '3e89feec-3664-43ee-87df-b31ec4230613', 'msg': 'qsdsq'}
+[11:12:39][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Chat tendu', 'msg': 'qsdsq'}
+[11:12:41][INFO] Connexion fermée avec ('127.0.0.1', 55874)

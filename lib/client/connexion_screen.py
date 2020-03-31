@@ -56,7 +56,7 @@ class EcranConnexion(QMainWindow):
 
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")
 
-        # On met l'image sur le logo
+        # On créer un widget vidéo et on place notre vidéo en lecture
         self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
         self.videoWidget = QVideoWidget(self.logo)
         self.logo.setFixedSize(800, 9/16 * 800)
@@ -92,6 +92,13 @@ class EcranConnexion(QMainWindow):
         self.connect(nom, ip, port)
 
     def keyPressEvent(self, event):
+        """
+        Fonction héritée de Qt qui permet de prendre en charge les évènements du type
+        touche clavier.
+
+        Args:
+            event (QKeyEvent): évènement de type touche de clavier
+        """
         if event.key() == Qt.Key_Escape:
             self.close()
 

@@ -21,6 +21,7 @@ class ChatBox(QTextBrowser):
         self.lines = []
         self.need_update = False
 
+        # On paramètre la chatbox avec les paramètres de Qt
         self.setAcceptRichText(True)
         self.setReadOnly(True)
         self.setMinimumSize(400, 250)

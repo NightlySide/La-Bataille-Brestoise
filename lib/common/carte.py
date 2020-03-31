@@ -2,7 +2,6 @@ import numpy as np
 from PyQt5.QtCore import Qt
 
 from lib.client.global_client_registry import GCR
-from lib.common.logger import Logger
 
 
 class Carte(np.ndarray):

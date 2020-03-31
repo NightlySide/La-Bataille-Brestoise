@@ -12,5 +12,6 @@ def img_vers_array(img_path):
             data[i, j] = 0 if pixels[i, j][0] < 50 else 1
     return data
 
+
 if __name__ == "__main__":
     print(img_vers_array("../../assets/carte_rade_brest.jpg"))

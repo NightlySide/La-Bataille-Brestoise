@@ -70,13 +70,13 @@ class Carte(np.ndarray):
                 rendre la carte.
         """
         # On récupère le centre de la fenètre
-        center = (window_size[0] // 2, window_size[1] // 2)
-        center_in_cells = (center[0] // self.cell_size[0], center[1] // self.cell_size[1])
+        center = (window_size[0] / 2, window_size[1] / 2)
+        center_in_cells = (center[0] / self.cell_size[0], center[1] / self.cell_size[1])
         # On récupère la position du joueur
         i0, j0 = GCR.joueur.position.x, GCR.joueur.position.y
         # On dessine autour du joueur au milieu de l'écran
-        for i in range(-center_in_cells[0], center_in_cells[0]):
-            for j in range(-center_in_cells[1], center_in_cells[1]):
+        for i in range(-int(center_in_cells[0]), int(center_in_cells[0])):
+            for j in range(-int(center_in_cells[1]), int(center_in_cells[1])):
                 # On récupère la tuile
                 tile = self.get_tile(int(i0 + i), int(j0 + j))
                 # Si la tuile n'existe pas on la fait en noir
@@ -96,3 +96,12 @@ class Carte(np.ndarray):
                             center[1] + j * self.cell_size[1],
                             self.cell_size[0],
                             self.cell_size[1])
+
+    def can_player_see(self, entity, window_size):
+        center = (window_size[0] // 2, window_size[1] // 2)
+        xp, yp = GCR.joueur.position.x, GCR.joueur.position.y
+        xe, ye = entity.position.x, entity.position.y
+        if xp - center[0] <= xe < xp + center[0] \
+                and yp - center[1] <= ye < yp + center[1]:
+            return True
+        return False

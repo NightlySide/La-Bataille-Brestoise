@@ -20,7 +20,7 @@ class Vecteur:
         """
         Retourne la distance eulerienne du vecteur
         """
-        return np.sqrt(np.pow(self.x, 2) + np.pow(self.y, 2))
+        return np.sqrt(np.power(self.x, 2) + np.power(self.y, 2))
 
     def normaliser(self):
         """
@@ -88,13 +88,13 @@ class Vecteur:
     @staticmethod
     def est_entre(a, b, c, epsilon=1):
         """
-        Va vérifier si un point b désigné par un Vecteur se situe
-        entre les points a et c, avec une précision de epsilon.
+        Va vérifier si un point c désigné par un Vecteur se situe
+        entre les points a et b, avec une précision de epsilon.
 
         Args:
             a (Vecteur): point de départ
-            b (Vecteur): point à tester
-            c (Vecteur): point d'arrivée
+            c (Vecteur): point à tester
+            b (Vecteur): point d'arrivée
             epsilon (float): précision
         """
         # On calcule le produit vectoriel pour savoir si les points
@@ -108,5 +108,5 @@ class Vecteur:
         if dot_prod < 0:
             return False
 
-        # Dans ce cas B est bien entre A et C
+        # Dans ce cas C est bien entre A et B
         return True

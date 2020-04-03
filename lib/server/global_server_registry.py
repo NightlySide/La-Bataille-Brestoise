@@ -20,6 +20,9 @@ class GSR:
     loop = None
     log = None
     game_loop = None
+    carte = None
+    entities = []
+    server = None
 
     @classmethod
     def getEventLoop(cls):

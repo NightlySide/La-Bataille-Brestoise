@@ -27,6 +27,7 @@ class TCPServer(asyncio.Protocol):
         self.transport = None
         self.peername = None
         self.client = None
+        GSR.server = self
 
     @classmethod
     async def create(cls, host, port):
@@ -123,6 +124,13 @@ class TCPServer(asyncio.Protocol):
             self.transport.write(pickle.dumps(reponse))
         else:
             GSR.log.log(Logger.AVERTISSEMENT, "[-] Format reçu inconnu : {!r}".format(message))
+
+    def send_all(self, action, data):
+        message = {"action": action}
+        for key in data:
+            message[key] = data[key]
+        for client in GSR.clients:
+            client.transport.write(pickle.dumps(message))
 
     def connection_lost(self, exc) -> None:
         """

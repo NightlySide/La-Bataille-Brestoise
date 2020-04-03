@@ -17,9 +17,10 @@ class Entite:
 
     def __init__(self):
         self.vie = 20
-        self.vitesse = 5
+        self.vitesse = 1
         self.image = None
         self.position = Vecteur(200, 200)
+        self.direction = Vecteur()
 
     def set_image(self, img_path):
         """
@@ -28,7 +29,7 @@ class Entite:
         Args:
             img_path (str): chemin d'accès relatif à l'image
         """
-        self.image = QImage(img_path)
+        self.image = img_path
 
     def is_alive(self):
         """
@@ -46,4 +47,8 @@ class Entite:
         """
         # Si on a définit une image on la dessine
         if self.image is not None:
-            qp.drawImage(QRect(self.position.x, self.position.y, 25, 25), self.image)
+            qp.drawImage(QRect(self.position.x, self.position.y, 25, 25), QImage(self.image))
+
+    def update(self, delta):
+        self.position += self.direction * self.vitesse
+        self.direction = Vecteur()

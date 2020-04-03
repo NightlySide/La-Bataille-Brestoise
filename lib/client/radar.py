@@ -6,6 +6,7 @@ from PyQt5.QtCore import QPoint, Qt
 from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtWidgets import QWidget
 
+from lib.client.global_client_registry import GCR
 from lib.common.vecteur import Vecteur
 
 
@@ -36,8 +37,9 @@ class Radar(QWidget):
         self.speed = speed
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
-        self.enemies = [(randint(-int(radius*0.75), int(radius*0.75)) + 400//2,
-                         randint(-int(radius*0.75), int(radius*0.75)) + 300//2) for _ in range(20)]
+        #self.enemies = [(randint(-int(radius*0.75), int(radius*0.75)) + 400//2,
+        #                 randint(-int(radius*0.75), int(radius*0.75)) + 300//2) for _ in range(20)]
+        self.enemies = []
         self.points_to_draw = []
         self.to_remove = []
         self.temps_affichage = 300 / self.speed
@@ -54,6 +56,7 @@ class Radar(QWidget):
         if time.perf_counter() - self.time_counter > self.refresh_rate:
             self.time_counter = time.perf_counter()
             super().update()
+            self.enemies = GCR.entities
             # On met à jour l'angle en fonction de la vitesse
             self.angle += self.refresh_rate * self.speed
             self.angle %= 360
@@ -61,8 +64,8 @@ class Radar(QWidget):
             # on fait la liste des points à retirer
             self.to_remove = []
             for pt in self.points_to_draw:
-                pt[1] -= self.refresh_rate
-                if pt[1] <= 0:
+                pt[2] -= self.refresh_rate
+                if pt[2] <= 0:
                     self.to_remove.append(pt)
 
             # on supprime les élents en question
@@ -87,6 +90,7 @@ class Radar(QWidget):
         # On crée les QPoint correspondants
         origin = QPoint(x0, y0)
         dest = QPoint(x, y)
+        direction = Vecteur(np.cos(self.angle * np.pi / 180), np.sin(self.angle * np.pi / 180))
 
         # On dessine les cercles intermédiaires (4)
         for k in range(1, 5):
@@ -109,29 +113,34 @@ class Radar(QWidget):
         # Pour chaque ennemi détecté
         for e in self.enemies:
             # On fait le tour des points déjà détectés
-            for pos, tps in self.points_to_draw:
+            for ent, player_pos, tps in self.points_to_draw:
                 # Si le point est déjà présent on sort de la boucle
-                if pos == e:
+                if ent == e:
                     break
             # Sinon on le dessine
             else:
                 # On vérifie si le point est sur le faisceau
-                if Vecteur.est_entre(Vecteur(x0, y0), Vecteur(x, y), Vecteur(e[0], e[1]), epsilon=500):
+                lim_detect = GCR.joueur.position + direction * GCR.joueur.detection_radius
+                diff = lim_detect - GCR.joueur.position
+                print(diff)
+                if Vecteur.est_entre(GCR.joueur.position, lim_detect, e.position, epsilon=10):
                     # On l'ajoute aux points à dessiner
-                    self.points_to_draw.append([e, self.temps_affichage])
+                    self.points_to_draw.append([e, GCR.joueur.position, self.temps_affichage])
 
         # Pour chaque points à dessiner
-        for pt in self.points_to_draw:
+        for ent, player_pos, tps in self.points_to_draw:
             original_pen = qp.pen()
             new_pen = QPen()
             # Si il reste moins de 100° avant de repasser dessus
             # On l'affiche en gris
-            if pt[1] < 100 / self.speed:
+            if tps < 100 / self.speed:
                 new_pen.setColor(Qt.darkGray)
             # Sinon on le met en rouge
             else:
                 new_pen.setColor(Qt.red)
             new_pen.setWidth(5)
             qp.setPen(new_pen)
-            qp.drawPoint(*pt[0])
+            x = (ent.position.x - player_pos.x) * 8 / GCR.joueur.detection_radius + x0
+            y = (ent.position.y - player_pos.y) * 8 / GCR.joueur.detection_radius + y0
+            qp.drawPoint(x, y)
             qp.setPen(original_pen)

@@ -35,6 +35,7 @@ class GCR:
                "Belette", "Biche", "Bison", "Boa", "Buse", "Girafe", "Hamster", "Gorille", "Guêpe", "Poisson",
                "Jaguar", "Krill", "Lion", "Requin", "Renne", "Salamandre", "Grenouille", "Python", "Loup", "Lynx",
                "Chat", "Taupe", "Tortue", "Urubu", "Triton"]
+    entities = []
 
     @classmethod
     def getTcpClient(cls):

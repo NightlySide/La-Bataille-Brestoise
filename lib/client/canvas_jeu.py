@@ -1,6 +1,6 @@
 import time
 
-from PyQt5.QtGui import QPainter
+from PyQt5.QtGui import QPainter, QImage
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt, QRect
 
@@ -80,7 +80,12 @@ class CanvasJeu(QLabel):
         # On dessine la carte
         self.carte.render(qp, (self.width(), self.height()))
         # On vient dessiner le joueur par dessus la carte
-        qp.drawImage(QRect(self.width() // 2, self.height() // 2, 50, 50), GCR.joueur.image)
+        qp.drawImage(QRect(self.width() // 2, self.height() // 2, 50, 50), QImage(GCR.joueur.image))
+        for entity in GCR.entities:
+            if self.carte.can_player_see(entity, (self.width(), self.height())):
+                x = (entity.position.x - GCR.joueur.position.x) * self.carte.cell_size[0]
+                y = (entity.position.y - GCR.joueur.position.y) * self.carte.cell_size[1]
+                qp.drawImage(QRect(x, y, 16, 16), QImage(entity.image))
 
     def mouseMoveEvent(self, e):
         """

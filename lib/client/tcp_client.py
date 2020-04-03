@@ -107,6 +107,8 @@ class TCPClientProtocol(asyncio.Protocol):
             elif message["action"] == "chat":
                 # On met à jour la chatbox
                 GCR.chatbox.add_line(f"({message['user']}): {message['msg']}")
+            elif message["action"] == "update_entities":
+                GCR.entities = message["data"]
             else:
                 # Sinon on ne connait pas (encore) la demande
                 GCR.log.log(Logger.AVERTISSEMENT, "Réponse serveur non reconnue : {!r}".format(message))

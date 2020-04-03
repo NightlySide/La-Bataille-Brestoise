@@ -1,3 +1,7 @@
+from lib.common.logger import Logger
+import lib.server.game_loop
+
+
 class GSR:
     """
     Registre global de variables globales.
@@ -11,9 +15,11 @@ class GSR:
         log (Logger): logger des évènements
     """
 
+    game_loop_thread = None
     clients = []
     loop = None
     log = None
+    game_loop = None
 
     @classmethod
     def getEventLoop(cls):

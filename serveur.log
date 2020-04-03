@@ -86,3 +86,556 @@
 [11:12:39][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '3e89feec-3664-43ee-87df-b31ec4230613', 'msg': 'qsdsq'}
 [11:12:39][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Chat tendu', 'msg': 'qsdsq'}
 [11:12:41][INFO] Connexion fermée avec ('127.0.0.1', 55874)
+[08:50:20][INFO] Lancement du serveur ...
+[08:50:20][INFO] Serveur lancé
+[08:50:30][INFO] Connexion ouverte sur ('127.0.0.1', 39406)
+[08:50:30][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Araignée timide'}
+[08:50:30][INFO] Araignée timide a rejoint la partie
+[08:50:30][DEBUG] --> Envoi : {'action': 'request_id', 'id': '012fd297-de36-41c5-a9e5-afaa525b2978'}
+[08:50:44][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '012fd297-de36-41c5-a9e5-afaa525b2978', 'msg': "Et c'est en multi"}
+[08:50:44][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Araignée timide', 'msg': "Et c'est en multi"}
+[08:50:57][INFO] Connexion ouverte sur ('127.0.0.1', 39410)
+[08:50:57][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Anaconda accueillant'}
+[08:50:57][INFO] Anaconda accueillant a rejoint la partie
+[08:50:57][DEBUG] --> Envoi : {'action': 'request_id', 'id': '5f44341b-8114-461b-b8ed-453ba422f67f'}
+[08:51:03][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '5f44341b-8114-461b-b8ed-453ba422f67f', 'msg': 'un autre client'}
+[08:51:03][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Anaconda accueillant', 'msg': 'un autre client'}
+[08:51:09][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '012fd297-de36-41c5-a9e5-afaa525b2978', 'msg': 'bonjour'}
+[08:51:09][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Araignée timide', 'msg': 'bonjour'}
+[08:54:33][INFO] Connexion fermée avec ('127.0.0.1', 39406)
+[08:54:38][INFO] Connexion fermée avec ('127.0.0.1', 39410)
+[15:03:26][INFO] Lancement du serveur ...
+[15:03:26][INFO] Serveur lancé
+[15:03:34][INFO] Fin du programme serveur
+[15:04:19][INFO] Lancement du serveur ...
+[15:04:19][INFO] Initialization du serveur
+[15:04:19][INFO] Serveur lancé
+[15:09:23][INFO] Fin du programme serveur
+[15:09:24][INFO] Lancement du serveur ...
+[15:09:24][INFO] Initialization du serveur
+[15:09:24][INFO] Serveur lancé
+[15:09:30][INFO] Fin du programme serveur
+[15:12:21][INFO] Lancement du serveur ...
+[15:12:21][INFO] Initialization du serveur
+[15:13:07][INFO] Fin du programme serveur
+[15:13:11][INFO] Lancement du serveur ...
+[15:13:11][INFO] Initialization du serveur
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Updating
+[15:13:11][INFO] Fini d'itérer
+[15:13:11][INFO] Serveur lancé
+[15:20:51][INFO] Fin du programme serveur
+[15:26:40][INFO] Lancement du serveur ...
+[15:26:40][INFO] Initialization du serveur
+[15:26:40][INFO] Serveur lancé
+[15:26:40][INFO] Updating
+[15:26:40][INFO] Updating
+[15:26:40][INFO] Updating
+[15:26:40][INFO] Updating
+[15:26:40][INFO] Updating
+[15:26:40][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Updating
+[15:26:41][INFO] Fini d'itérer
+[15:26:46][INFO] Fermeture du serveur
+[15:32:03][INFO] Lancement du serveur ...
+[15:32:03][INFO] Serveur lancé
+[15:32:03][INFO] Initialization du serveur
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:03][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:04][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:05][INFO] Updating
+[15:32:06][INFO] Updating
+[15:32:06][INFO] Updating
+[15:32:06][INFO] Updating
+[15:32:06][INFO] Updating
+[15:33:40][INFO] Lancement du serveur ...
+[15:33:40][INFO] Initialization du serveur
+[15:33:40][INFO] Serveur lancé
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:40][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:41][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:42][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:33:43][INFO] Updating
+[15:42:28][INFO] Lancement du serveur ...
+[15:42:28][INFO] Initialization du serveur
+[15:42:28][INFO] Fini d'itérer
+[15:42:28][INFO] Serveur lancé
+[15:42:59][INFO] Lancement du serveur ...
+[15:42:59][INFO] Initialization du serveur
+[15:43:05][INFO] Lancement du serveur ...
+[15:43:05][INFO] Initialization du serveur
+[15:43:05][INFO] Fini d'itérer
+[15:43:05][INFO] Serveur lancé
+[15:43:05][INFO] Updating
+[15:43:26][INFO] Fermeture du serveur
+[15:43:44][INFO] Lancement du serveur ...
+[15:43:44][INFO] Initialization du serveur
+[15:43:44][INFO] Fini d'itérer
+[15:43:44][INFO] Serveur lancé
+[15:52:38][INFO] Fermeture du serveur
+[15:52:39][INFO] Lancement du serveur ...
+[15:52:39][INFO] Initialization du serveur
+[15:52:39][INFO] Fini d'itérer
+[15:52:39][INFO] Serveur lancé
+[15:53:50][INFO] Fermeture du serveur
+[15:53:51][INFO] Lancement du serveur ...
+[15:53:51][INFO] Initialization du serveur
+[15:53:51][INFO] Fini d'itérer
+[15:53:51][INFO] Serveur lancé
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:51][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Updating
+[15:53:52][INFO] Fermeture du serveur
+[15:54:30][INFO] Lancement du serveur ...
+[15:54:30][INFO] Initialization du serveur
+[15:54:30][INFO] Fini d'itérer
+[15:54:30][INFO] Serveur lancé
+[15:54:31][INFO] Updating
+[15:54:32][INFO] Updating
+[15:54:33][INFO] Updating
+[15:54:34][INFO] Updating
+[15:54:35][INFO] Updating
+[15:54:36][INFO] Updating
+[15:54:37][INFO] Updating
+[15:54:38][INFO] Fermeture du serveur

@@ -33,5 +33,7 @@ if __name__ == "__main__":
         motd(PORT)
         loop.run_until_complete(TCPServer.create('', PORT))
     except KeyboardInterrupt:
-        GSR.log.log(Logger.INFORMATION, "Fin du programme serveur")
+        # Le serveur ferme donc on arrête le thread
+        GSR.game_loop.stop()
         loop.close()
+        GSR.log.log(Logger.INFORMATION, "Fermeture du serveur")

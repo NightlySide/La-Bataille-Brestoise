@@ -1,8 +1,10 @@
 import asyncio
 import pickle
+import threading
 import uuid
 
 from lib.common.logger import Logger
+from lib.server.game_loop import GameLoop
 from lib.server.global_server_registry import GSR
 from lib.server.client import Client
 
@@ -40,6 +42,9 @@ class TCPServer(asyncio.Protocol):
         server = await GSR.getEventLoop().create_server(
             lambda: TCPServer(),
             host, port)
+
+        # On crée le thread de la boucle du jeu et on le démarre
+        GSR.game_loop = GameLoop()
 
         # On fait tourner le serveur
         async with server:

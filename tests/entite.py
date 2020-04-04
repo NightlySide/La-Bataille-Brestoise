@@ -9,6 +9,8 @@ class TestEntite(unittest.TestCase):
     def test_classe(self):
         e = Entite()
         self.assertIsInstance(e, Entite)
+        self.assertEqual(e.image, None)
+        self.assertIsInstance(e.direction, Vecteur)
 
     def test_position(self):
         e = Entite()

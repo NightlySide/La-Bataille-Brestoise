@@ -19,3 +19,12 @@
 [10:54:27][DEBUG] <-- Données reçues : {'action': 'chat', 'user': None, 'msg': 'Bonjour !'}
 [10:54:27][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Alpaga timide', 'msg': 'Bonjour !'}
 [10:55:06][INFO] Connexion fermée avec ('127.0.0.1', 51710)
+[14:56:28][INFO] Lancement du serveur ...
+[14:56:28][INFO] Initialisation du serveur
+[14:56:28][INFO] Initialisation terminée
+[14:56:28][INFO] Serveur lancé
+[14:56:34][INFO] Connexion ouverte sur ('127.0.0.1', 56878)
+[14:56:34][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Buse réfléchi'}
+[14:56:34][INFO] Buse réfléchi a rejoint la partie
+[14:56:34][DEBUG] --> Envoi : {'action': 'request_id', 'id': '53ce19bc-063f-419f-acca-5d813975107f'}
+[14:57:05][INFO] Connexion fermée avec ('127.0.0.1', 56878)

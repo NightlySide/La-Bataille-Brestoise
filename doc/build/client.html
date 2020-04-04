@@ -1,0 +1,997 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="fr" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Client &mdash; Documentation La bataille Brestoise 1.0</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Serveur" href="serveur.html" />
+    <link rel="prev" title="Documentation du projet : La bataille brestoise !" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> La bataille Brestoise
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Le projet</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#canvas-jeu">Canvas Jeu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chatbox">ChatBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecran-de-connexion">Ecran de Connexion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecran-de-jeu">Ecran de Jeu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#global-client-registry">Global Client Registry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#radar">Radar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#client-tcp">Client TCP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="serveur.html">Serveur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mecanismes.html">Mecanismes de Jeu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Les auteurs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="alexandre.html">Alexandre Froehlich</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guillaume.html">Guillaume Leinen</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">La bataille Brestoise</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Client</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/client.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="client">
+<h1>Client<a class="headerlink" href="#client" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="canvas-jeu">
+<h2>Canvas Jeu<a class="headerlink" href="#canvas-jeu" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="lib.client.canvas_jeu.CanvasJeu">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.canvas_jeu.</code><code class="sig-name descname">CanvasJeu</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em>, <em class="sig-param">refresh_rate=0.03333333333333333</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Canvas sur lequel on va venir dessiner toute la partie jeu, cela inclut la carte
+le joueur et les autres entités</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>QWidget</em>) – (OPTIONNEL) le parent auquel rattacher
+la fenêtre.</p></li>
+<li><p><strong>refresh_rate</strong> (<em>float</em>) – la vitesse de rafraîchissement de l’écran pour avoir
+un framerate constant</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="lib.client.canvas_jeu.CanvasJeu.carte">
+<code class="sig-name descname">carte</code><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.carte" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>les données de la carte de jeu, les tuiles sur lesquelles
+on peut naviguer ou non.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mecanismes.html#lib.common.carte.Carte" title="lib.common.carte.Carte">Carte</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.canvas_jeu.CanvasJeu.keyPressEvent">
+<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction héritée de Qt qui permet de prendre en charge les évènements du type
+touche clavier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>QKeyEvent</em>) – évènement de type touche de clavier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.canvas_jeu.CanvasJeu.mouseMoveEvent">
+<code class="sig-name descname">mouseMoveEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.mouseMoveEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois que la souris
+est bougée sur le canvas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>QMouseEvent</em>) – évènement du type déplacement de souris</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.canvas_jeu.CanvasJeu.mousePressEvent">
+<code class="sig-name descname">mousePressEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.mousePressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois qu’un
+bouton de la souris est pressé</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>QMouseEvent</em>) – évènement du type souris</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.canvas_jeu.CanvasJeu.paintEvent">
+<code class="sig-name descname">paintEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.paintEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois qu’on rafraîchit l’écran.
+On va venir alors peindre sur le canvas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>QPaintEvent</em>) – évènement du type peinture de l’écran</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.canvas_jeu.CanvasJeu.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction appelée pour rafraîchir le canvas. C’est cette fonction
+qui va venir limiter le nombre d’appels de manière à avoir un
+taux de rafraîchissement de la surface constant.
+Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="chatbox">
+<h2>ChatBox<a class="headerlink" href="#chatbox" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="lib.client.chatbox.ChatBox">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.chatbox.</code><code class="sig-name descname">ChatBox</code><span class="sig-paren">(</span><em class="sig-param">parent</em>, <em class="sig-param">size=50</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Contrôle la chatbox du jeu. Classe nécessaire pour pouvoir
+utiliser PyQt5 dans un thread différent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>QWidget</em>) – le parent auquel la chatbox est attachée</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – le nombre maximal de lignes dans la chatbox</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="lib.client.chatbox.ChatBox.max_size">
+<code class="sig-name descname">max_size</code><a class="headerlink" href="#lib.client.chatbox.ChatBox.max_size" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le nombre maximal de lignes dans la chatbox</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.chatbox.ChatBox.lines">
+<code class="sig-name descname">lines</code><a class="headerlink" href="#lib.client.chatbox.ChatBox.lines" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>les lignes de la chatbox</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.chatbox.ChatBox.need_update">
+<code class="sig-name descname">need_update</code><a class="headerlink" href="#lib.client.chatbox.ChatBox.need_update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>indique si la chatbox doit être mise à jour</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.chatbox.ChatBox.add_line">
+<code class="sig-name descname">add_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox.add_line" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Ajoute la ligne “line” aux lignes de la chatbox
+pour le prochain update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>line</strong> (<em>str</em>) – la ligne à ajouter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.chatbox.ChatBox.add_lines">
+<code class="sig-name descname">add_lines</code><span class="sig-paren">(</span><em class="sig-param">lines</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox.add_lines" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Ajoute la liste de lignes aux lignes de la chatbox
+pour le prochain update.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>lines</strong> (<em>list</em>) – liste des lignes à ajouter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.chatbox.ChatBox.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour la chatbox. Fonction appelée par le Thread
+contenant PyQt5.
+La mise à jour ne s’effectue que si elle est nécessaire.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ecran-de-connexion">
+<h2>Ecran de Connexion<a class="headerlink" href="#ecran-de-connexion" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="lib.client.connexion_screen.EcranConnexion">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.connexion_screen.</code><code class="sig-name descname">EcranConnexion</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fenêtre de connexion au serveur de jeu. Permet à l’utilisateur
+de choisir un pseudo pour sa partie, de sélectionner un serveur
+disponible ou d’en ajouter un.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>QWidget</em>) – (OPTIONNEL) le parent auquel rattacher
+la fenêtre.</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="lib.client.connexion_screen.EcranConnexion.game">
+<code class="sig-name descname">game</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.game" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>la fenêtre de jeu qui s’ouvrira
+une fois connecté.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QMainWindow</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.connexion_screen.EcranConnexion.logo">
+<code class="sig-name descname">logo</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.logo" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>référence au logo affiché sur l’écran</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QLabel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.connexion_screen.EcranConnexion.btn_connect">
+<code class="sig-name descname">btn_connect</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.btn_connect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>bouton de connexion au serveur
+sélectionné dans la liste</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QPushButton</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.connexion_screen.EcranConnexion.btn_local">
+<code class="sig-name descname">btn_local</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.btn_local" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>bouton pour entrer manuellement
+les informations de connexion au serveur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QPushButton</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.connexion_screen.EcranConnexion.server_list">
+<code class="sig-name descname">server_list</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.server_list" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>liste des serveurs enregistrés</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QListWidget</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.connexion_screen.EcranConnexion.input_username">
+<code class="sig-name descname">input_username</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.input_username" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>pseudo du joueur, devient “Anonyme”
+si la case est laissée vide</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QLineEdit</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.connexion_screen.EcranConnexion.connect">
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param">nom</em>, <em class="sig-param">ip</em>, <em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée finalement pour se connecter au serveur et ouvrir
+la fenêtre de jeu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nom</strong> (<em>str</em>) – le nom affiché du serveur</p></li>
+<li><p><strong>ip</strong> (<em>str</em>) – l’adresse IP (IPv4) de l’hôte</p></li>
+<li><p><strong>port</strong> (<em>int</em>) – le port de l’hôte</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.connexion_screen.EcranConnexion.connect_from_list">
+<code class="sig-name descname">connect_from_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect_from_list" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée lorsque l’utilisateur clique sur le bouton “Connecter”
+Se connecter à partir d’un serveur enregistré</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.connexion_screen.EcranConnexion.connect_local">
+<code class="sig-name descname">connect_local</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect_local" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée lorsque l’utilisateur clique sur le bouton “Connexion locale”
+Ouvre la boite de dialogue correspondante</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.connexion_screen.EcranConnexion.keyPressEvent">
+<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction héritée de Qt qui permet de prendre en charge les évènements du type
+touche clavier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QKeyEvent</em>) – évènement de type touche de clavier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.connexion_screen.EcranConnexion.open_game">
+<code class="sig-name descname">open_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.open_game" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Ouvre la fenêtre de jeu et cache la fenêtre de
+connexion jusqu’à ce que la fenêtre de jeu soit
+fermée.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ecran-de-jeu">
+<h2>Ecran de Jeu<a class="headerlink" href="#ecran-de-jeu" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="lib.client.game_screen.EcranJeu">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.game_screen.</code><code class="sig-name descname">EcranJeu</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em>, <em class="sig-param">update_delta=16.666666666666668</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fenetre Qt qui contient tout ce qui touche à l’écran de jeu.
+Cela comporte la chatbox, le canvas de jeu, les informations sur la vie du joueur,
+et son radar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<em>QWidget</em>) – (OPTIONNEL) le parent auquel rattacher
+la fenêtre.</p></li>
+<li><p><strong>update_delta</strong> (<em>float</em>) – temps entre deux itérations (fixe) de rendu
+pour afficher un framerate constant. Fixé par défaut à 60fps.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="lib.client.game_screen.EcranJeu.closed">
+<code class="sig-name descname">closed</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.closed" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>signal émit par la fenêtre pour signaler quelle s’est
+fermée correctement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QSignal</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.game_screen.EcranJeu.game_canvas">
+<code class="sig-name descname">game_canvas</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.game_canvas" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>canvas du jeu sur lequel on retrouve la carte
+et le joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lib.client.canvas_jeu.CanvasJeu" title="lib.client.canvas_jeu.CanvasJeu">CanvasJeu</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.game_screen.EcranJeu.radar">
+<code class="sig-name descname">radar</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.radar" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>radar de détection du joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lib.client.radar.Radar" title="lib.client.radar.Radar">Radar</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.game_screen.EcranJeu.chatbox">
+<code class="sig-name descname">chatbox</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.chatbox" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>boite de chat entre les joueurs d’un même serveur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lib.client.chatbox.ChatBox" title="lib.client.chatbox.ChatBox">ChatBox</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.game_screen.EcranJeu.input_chatbox">
+<code class="sig-name descname">input_chatbox</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.input_chatbox" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>boite de texte pour envoyer un message sur le chat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QLineEdit</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.game_screen.EcranJeu.btn_send_chatbox">
+<code class="sig-name descname">btn_send_chatbox</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.btn_send_chatbox" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>bouton pour envoyer un message sur le chat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>QPushButton</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.game_screen.EcranJeu.closeEvent">
+<code class="sig-name descname">closeEvent</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.closeEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction héritée de Qt, appelée lorsque le signal de fermeture de la
+fenêtre est emit. On ferme le thread TCP puis le thread Qt et enfin
+on émet le signal qui indique que la fermeture s’est bien déroulée.
+:param event: évènement du type fermeture de fenêtre
+:type event: QCloseEvent</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.game_screen.EcranJeu.keyPressEvent">
+<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction héritée de Qt qui permet de prendre en charge les évènements du type
+touche clavier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>e</strong> (<em>QKeyEvent</em>) – évènement de type touche de clavier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.game_screen.EcranJeu.send_chat">
+<code class="sig-name descname">send_chat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.send_chat" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet d’envoyer le contenu de l’entrée chat au serveur pour
+le transmettre dans la chatbox.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.game_screen.EcranJeu.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">delta</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction appelée pour rafraîchir l’écran de jeu et tous ses
+composants (chatbox, joueur, canvas de jeu, radar)
+Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="global-client-registry">
+<h2>Global Client Registry<a class="headerlink" href="#global-client-registry" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="lib.client.global_client_registry.GCR">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.global_client_registry.</code><code class="sig-name descname">GCR</code><a class="headerlink" href="#lib.client.global_client_registry.GCR" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Registre global de variables globales.
+Dans toutes structures de jeu, les variables globales sont
+nécessaire. Cette classe agit comme un registre qui permet
+de contenir ces variables</p>
+<dl class="attribute">
+<dt id="lib.client.global_client_registry.GCR.tcp_client">
+<code class="sig-name descname">tcp_client</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.tcp_client" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>tunnel tcp vers le serveur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lib.client.tcp_client.TCPClientProtocol" title="lib.client.tcp_client.TCPClientProtocol">TCPClientProtocol</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.global_client_registry.GCR.loop">
+<code class="sig-name descname">loop</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.loop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>boucle des évènements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>asyncio.EventLoop</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.global_client_registry.GCR.chatbox">
+<code class="sig-name descname">chatbox</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.chatbox" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>chatbox du jeu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lib.client.chatbox.ChatBox" title="lib.client.chatbox.ChatBox">ChatBox</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.global_client_registry.GCR.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>identifiant unique du client (uuid)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.global_client_registry.GCR.serveurs">
+<code class="sig-name descname">serveurs</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.serveurs" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>liste des serveurs enregistrés</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.global_client_registry.GCR.getEventLoop">
+<em class="property">classmethod </em><code class="sig-name descname">getEventLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Retourne la référence au thread tcp si il existe</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.global_client_registry.GCR.getId">
+<em class="property">classmethod </em><code class="sig-name descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getId" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Retourne l’identifiant unique du client si il existe</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.global_client_registry.GCR.getRandomName">
+<em class="property">classmethod </em><code class="sig-name descname">getRandomName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getRandomName" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Retourne un nom d’utilisateur généré aléatoirement.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.global_client_registry.GCR.getTcpClient">
+<em class="property">classmethod </em><code class="sig-name descname">getTcpClient</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getTcpClient" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Retourne la référence au client tcp</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.global_client_registry.GCR.setEventLoop">
+<em class="property">classmethod </em><code class="sig-name descname">setEventLoop</code><span class="sig-paren">(</span><em class="sig-param">loop</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.setEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Définit la référence au thread tcp</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>loop</strong> (<em>asyncio.EventLoop</em>) – boucle des évènements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.global_client_registry.GCR.setTcpClient">
+<em class="property">classmethod </em><code class="sig-name descname">setTcpClient</code><span class="sig-paren">(</span><em class="sig-param">client</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.setTcpClient" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Définit la référence au client tcp</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="radar">
+<h2>Radar<a class="headerlink" href="#radar" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="lib.client.radar.Radar">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.radar.</code><code class="sig-name descname">Radar</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">speed=5</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">refresh_rate=0.03333333333333333</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Radar du joueur, permet de détecter les entités aux alentours
+et de les afficher de façon compréhensible à l’écran.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>int</em>) – rayon d’affichage du radar en pixels</p></li>
+<li><p><strong>speed</strong> (<em>int</em>) – vitesse de rotation du rayon en degrés par seconde</p></li>
+<li><p><strong>parent</strong> (<em>QWidget</em>) – (OPTIONNEL) le parent auquel rattacher
+la fenêtre.</p></li>
+<li><p><strong>refresh_rate</strong> (<em>float</em>) – la vitesse de rafraîchissement de l’écran pour avoir
+un framerate constant</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="lib.client.radar.Radar.angle">
+<code class="sig-name descname">angle</code><a class="headerlink" href="#lib.client.radar.Radar.angle" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>angle entre la position de départ et celle du faisceau</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.radar.Radar.points_to_draw">
+<code class="sig-name descname">points_to_draw</code><a class="headerlink" href="#lib.client.radar.Radar.points_to_draw" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>points à dessiner sur le radar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.radar.Radar.to_remove">
+<code class="sig-name descname">to_remove</code><a class="headerlink" href="#lib.client.radar.Radar.to_remove" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>points à retirer de la liste des points à dessiner</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.radar.Radar.temps_affichage">
+<code class="sig-name descname">temps_affichage</code><a class="headerlink" href="#lib.client.radar.Radar.temps_affichage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>temps en secondes d’affichage d’un point
+au radar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.radar.Radar.paintEvent">
+<code class="sig-name descname">paintEvent</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar.paintEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois qu’on rafraîchit l’écran.
+On va venir alors peindre sur le radar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QPaintEvent</em>) – évènement du type peinture de l’écran</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.radar.Radar.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction appelée pour rafraîchir le radar. C’est cette fonction
+qui va venir limiter le nombre d’appels de manière à avoir un
+taux de rafraîchissement de la surface constant.
+Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="client-tcp">
+<h2>Client TCP<a class="headerlink" href="#client-tcp" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="lib.client.tcp_client.TCPClientProtocol">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.tcp_client.</code><code class="sig-name descname">TCPClientProtocol</code><span class="sig-paren">(</span><em class="sig-param">nom</em>, <em class="sig-param">username</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Classe protocole permettant de créer un tunnel TCP bidirectionnel
+entre le serveur et le client.
+A cause des spécificités de la bibliothèque asyncio, on est
+obligé de passer par ce qu’on appelle une fonction “usine” qui
+va instancier la connexion en utilisant cette classe comme protocole.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nom</strong> (<em>str</em>) – le nom du serveur qui sera affiché</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – le nom d’utilisateur du joueur</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="lib.client.tcp_client.TCPClientProtocol.transport">
+<code class="sig-name descname">transport</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.transport" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le buffer d’écriture sur le tunnel TCP</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>asyncio.Transport</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.tcp_client.TCPClientProtocol.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>identifiant unique du client (uuid) fourni par le serveur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.tcp_client.TCPClientProtocol.nom">
+<code class="sig-name descname">nom</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.nom" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le nom du serveur qui sera affiché</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="lib.client.tcp_client.TCPClientProtocol.username">
+<code class="sig-name descname">username</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.username" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le nom d’utilisateur du joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.tcp_client.TCPClientProtocol.connection_lost">
+<code class="sig-name descname">connection_lost</code><span class="sig-paren">(</span><em class="sig-param">exc</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.connection_lost" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée lorsque l’évènement “connexion perdue” se réalise.
+Ferme la connexion du côté client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>exc</strong> (<em>Exception</em>) – objet exception pour lever une erreur
+si erreur il y a</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.tcp_client.TCPClientProtocol.connection_made">
+<code class="sig-name descname">connection_made</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.connection_made" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée lorsque l’évènement “connexion réalisée” se produit.
+On définit alors ce tunnel comme étant celui que le client
+devra utiliser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>transport</strong> (<em>asyncio.Transport</em>) – le buffer d’écriture du tunnel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.tcp_client.TCPClientProtocol.create">
+<em class="property">async classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">nom</em>, <em class="sig-param">host</em>, <em class="sig-param">port</em>, <em class="sig-param">username</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.create" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction usine qui instancie la connexion et utilise
+cette classe comme protocole.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nom</strong> (<em>str</em>) – le nom du serveur qui sera affiché</p></li>
+<li><p><strong>host</strong> (<em>str</em>) – l’ip (IPv4) du serveur auquel se connecter</p></li>
+<li><p><strong>port</strong> (<em>int</em>) – le port du serveur auquel se connecter</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – le nom d’utilisateur du joueur</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.tcp_client.TCPClientProtocol.data_received">
+<code class="sig-name descname">data_received</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.data_received" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée lorsque l’évènement “données reçues” se produit.
+Permet la reception en asynchrone de données du serveur
+et d’agir en fonction de la nature de la réponse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>any</em>) – données reçues encodées à l’aide de pickle</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.tcp_client.TCPClientProtocol.ping">
+<code class="sig-name descname">ping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.ping" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Envoi un ping au serveur. Ce dernier répondra “pong”
+si le message est bien reçu.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.tcp_client.TCPClientProtocol.request_client_id">
+<code class="sig-name descname">request_client_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.request_client_id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fait la demande au serveur d’un identifiant unique</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="lib.client.tcp_client.TCPClientProtocol.send">
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.send" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de transmettre les données “data” au serveur
+en TCP en encodant les données à l’aide de pickle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>any</em>) – données à transmettre</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="serveur.html" class="btn btn-neutral float-right" title="Serveur" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Documentation du projet : La bataille brestoise !" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Alexandre FROEHLICH, Guillaume LEINEN
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

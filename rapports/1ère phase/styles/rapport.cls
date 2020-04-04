@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{rapport}[2014/10/08]
 
-\LoadClass[pdftex,11pt,a4paper,twoside]{article}
+\LoadClass[pdftex,12pt,a4paper,twoside]{article}
 \RequirePackage{etex}
 \RequirePackage[a4paper,vdivide={*,22cm,4cm}]{geometry}
 
@@ -52,6 +52,7 @@
 \RequirePackage{eurosym} % pour le symbole euro
 \RequirePackage{float}
 \RequirePackage{multicol}
+\RequirePackage{float}
 
 \RequirePackage{tipa}
 

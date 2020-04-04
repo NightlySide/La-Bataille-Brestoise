@@ -1,0 +1,21 @@
+[10:24:15][INFO] Lancement du serveur ...
+[10:24:15][INFO] Initialisation du serveur
+[10:24:15][INFO] Initialisation terminée
+[10:24:15][INFO] Serveur lancé
+[10:25:23][INFO] Connexion ouverte sur ('127.0.0.1', 41830)
+[10:25:23][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Anguille souriant'}
+[10:25:23][INFO] Anguille souriant a rejoint la partie
+[10:25:23][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'a6033520-b345-4073-8b70-9da5b01fe86c'}
+[10:26:07][INFO] Connexion fermée avec ('127.0.0.1', 41830)
+[10:47:05][INFO] Fermeture du serveur
+[10:54:02][INFO] Lancement du serveur ...
+[10:54:02][INFO] Initialisation du serveur
+[10:54:03][INFO] Initialisation terminée
+[10:54:03][INFO] Serveur lancé
+[10:54:04][INFO] Connexion ouverte sur ('127.0.0.1', 51710)
+[10:54:04][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Alpaga timide'}
+[10:54:04][INFO] Alpaga timide a rejoint la partie
+[10:54:04][DEBUG] --> Envoi : {'action': 'request_id', 'id': '48be91bc-147f-42b9-9304-3b0f9ff1dd7b'}
+[10:54:27][DEBUG] <-- Données reçues : {'action': 'chat', 'user': None, 'msg': 'Bonjour !'}
+[10:54:27][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Alpaga timide', 'msg': 'Bonjour !'}
+[10:55:06][INFO] Connexion fermée avec ('127.0.0.1', 51710)

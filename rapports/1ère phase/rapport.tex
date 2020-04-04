@@ -64,11 +64,12 @@
 % chargement du fichier corps.tex
 \input{corps}
 
+\clearpage 
 \appendix
-
+\pagestyle{empty}
 \input{annexes}
 
-\clearpage
+%\clearpage
 \phantomsection
 %\label{sec:index}
 %\addcontentsline{toc}{section}{Index}
@@ -77,7 +78,7 @@
 \printglossaries
 
 
-\clearpage
+%\clearpage
 
 \end{document}
 

@@ -120,10 +120,8 @@ class Radar(QWidget):
             # Sinon on le dessine
             else:
                 # On vérifie si le point est sur le faisceau
-                lim_detect = GCR.joueur.position + direction * GCR.joueur.detection_radius
-                diff = lim_detect - GCR.joueur.position
-                print(diff)
-                if Vecteur.est_entre(GCR.joueur.position, lim_detect, e.position, epsilon=10):
+                lim_detect = GCR.joueur.position * (1 / 8) + direction * GCR.joueur.detection_radius
+                if Vecteur.est_entre(GCR.joueur.position * (1 / 8), lim_detect, e.position * (1 / 8), epsilon=10):
                     # On l'ajoute aux points à dessiner
                     self.points_to_draw.append([e, GCR.joueur.position, self.temps_affichage])
 

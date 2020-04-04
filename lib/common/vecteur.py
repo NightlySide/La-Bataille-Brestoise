@@ -68,6 +68,20 @@ class Vecteur:
             return Vecteur(self.x * autre, self.y * autre)
         return Vecteur(self.x * autre.x, self.y * autre.y)
 
+    def __div__(self, autre):
+        """
+        Surcharge de l'opérateur pour être compatible avec les
+        opérations vectorielles.
+
+        Args:
+            autre (Object): autre vecteur ou constante
+        """
+        # Si autre est une constante
+        if isinstance(autre, int) or isinstance(autre, float):
+            # On multiplie juste
+            return Vecteur(self.x / autre, self.y / autre)
+        return Vecteur(self.x / autre.x, self.y / autre.y)
+
     def __repr__(self):
         """
         Représentation du vecteur à fin de débug.
@@ -97,6 +111,11 @@ class Vecteur:
             b (Vecteur): point d'arrivée
             epsilon (float): précision
         """
+        # On verifie si le point est à la bonne distance
+        ab = b - a
+        ac = c - a
+        if ab.distance() < ac.distance():
+            return False
         # On calcule le produit vectoriel pour savoir si les points
         # sont alignés
         produit_vect = (c.y - a.y) * (b.x - a.x) - (c.x - a.x) * (b.y - a.y)

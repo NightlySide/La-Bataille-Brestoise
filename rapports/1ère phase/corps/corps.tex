@@ -82,25 +82,46 @@ Pour cette première phase, nous nous sommes concentré sur la structure du jeu. P
 
 \subsection{Description des principales classes/méthodes}
 % décrire uniquement les mécanismes fondamentaux
-\paragraph{classes de jeu}
+\paragraph{classes de jeu\\}
+
+
 
 En premier lieu, il convient de décrire les classes directement liés au fonctionnement du jeu. 
 La classe "Entité" est la base d'une joueur, qu'il soit réel ou contrôlé par la machine. Elle va notamment avoir des attributs de points de vie, de position dans la map ou encore d'arme actuellement sélectionné par le joueur.
 Une entité peut être "joueur" ou "pnj". Une entité interagit avec les autres entités par le biais du client de jeu, les entité "pnj" sont elles contrôlés par le serveur. Une entité à un instant t contrôle un bâtiment et sélectionne une arme disponible sur ce bâtiment. La classe "Batiment" contient toutes les statistiques et données sur un bâtiment, cela peut être son niveau, les points de vie maximaux, ou encore la portée de détection. La classe "Armes" quand à elle définie les données des différentes armes disponibles. 
 
-\paragraph{classe de l'IHM}
+\paragraph{classe de l'IHM\\}
+
 
 Dans l'IHM, nous avons intégré plusieurs éléments qui nécessite leur propre classe. 
-La classe "Radar" est une classe hérité de Qwidget. Elle gère 
+La classe "Radar" est une classe hérité de Qwidget. Elle gère le radar de détection des autres entités ennemies. \\La règle du jeu veut que si un ennemi se trouve dans notre portée de détection et que cette ennemi a une dissimulation (implémentée plus tard) supérieur à la distance qui nous sépare d'elle, cette ennemi sera affiché par un point rouge sur le radar. \\Le radar balaye l'espace à 90°/s. On garde les traces d'un ennemie détecté en rouge puis en gris lorsqu'elles s'apprêtent à disparaitre du radar. 
 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{../imgs/radar}
+	\caption{Aperçu du Radar}
+	\label{fig:radar}
+\end{figure}
+
+
+La classe "Chatbox" comme son nom l'indique renvoi à la chat box en bas à droite du canevas de jeu. Elle est héritée de Qtextbrowser. Cette classe existe car on doit pouvoir écrire sur le chat pendant que le jeu tourne, il est donc nécessaire de créer un autre thread, sur lequel tourne la chatbox, et dans lequel Qt va piocher les informations lorsque nécessaire.\\ Elle contient une liste de lignes qui est mise à jour avec les messages des autres joueurs. Un signal Qt permet d'envoyer un message en appuyant sur la touche Entrée. 
+
+\paragraph{classe du client/serveur}
 
 \clearpage
 \section{Conclusion}
+
 \subsection{Différents tests effectués}
 
 \subsection{Limitations}
 
-\subsection{Apports personnels par rapport au sujet initial}
+Nous avons rencontré quelques limitations durant ce projet.\\En premier lieu, l'usage d'une mode multijoueur implique une utilisation extensive de la bande passante, ce qui nécessite d'optimiser les requêtes afin de ne pas surcharger un réseau. \\Ensuite le fait que Pickle ne gère pas directement QT, hors nos messages sont encodés en pickel et envoyé sur le réseau. Il à donc fallut passer par des classes annexes comme "ChatBox" afin de contourner cette limitation. \\Nous avons pu contourner ces limitations et les seuls réels limitations de notre projet sont plus de l'ordre de la performance que du fonctionnement. 
+
 
 \subsection{Perspectives d'amélioration}
+
+On pourrait améliorer la dynamique des bâtiments, en leur donnant des caractéristiques d'inertie ou encore de rayon de giration, ce qui aurait été plus réaliste (on ne manoeuvre pas un porte-avions comme un BIN). 
+\\On pourrait encore implémenter un concept de dégât critique, avec des équipements importants du bâtiment qui pourrait être mis temporairement hors d'usage après un coup bien placé (armement, radar, propulsion). 
+
 

@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{rapport}[2014/10/08]
 
-\LoadClass[pdftex,12pt,a4paper,twoside]{article}
+\LoadClass[pdftex,12pt,a4paper]{article}
 \RequirePackage{etex}
 \RequirePackage[a4paper,vdivide={*,22cm,4cm}]{geometry}
 
@@ -18,7 +18,7 @@
 \graphicspath{{pdfs/}{pngs/}{imgs/}}
 \DeclareGraphicsExtensions{.pdf,.png,.mps}
 
-% Alélioration de la gestion des couleurs du pdf
+% Alï¿½lioration de la gestion des couleurs du pdf
 %\pdfpageattr{/Group << /S /Transparency /I true /CS /DeviceRGB>>}
 
 \makeatletter
@@ -88,21 +88,21 @@
 
 
 \theoremstyle{plain}
-\newtheorem{theo}{Théorème}
-\newtheorem{theoreme}{Théorème}
+\newtheorem{theo}{Thï¿½orï¿½me}
+\newtheorem{theoreme}{Thï¿½orï¿½me}
 \newtheorem{lemme}{Lemme}
 \newtheorem{corollaire}{Corollaire}
 \newtheorem*{iremarque}{Remarque}
 \newtheorem*{iremarques}{Remarques}
 \theoremstyle{definition}
-\newtheorem{defi}{Définition}
+\newtheorem{defi}{Dï¿½finition}
 \theoremstyle{remark}
 \newtheorem{exemple}{Exemple}
 \newtheorem{exemples}{Exemples}
 \newtheorem*{remarque}{Remarque}
 \newtheorem*{remarques}{Remarques}
-\newtheorem{prop}{Propriété}
-\newtheorem*{prop*}{Propriétés}
+\newtheorem{prop}{Propriï¿½tï¿½}
+\newtheorem*{prop*}{Propriï¿½tï¿½s}
 
 
 

@@ -78,7 +78,7 @@ class EcranJeu(QMainWindow):
         self._timer = QTimer()
         # la fonction partial permet d'envoyer des arguments dans la fonction connect
         self._timer.timeout.connect(functools.partial(self.update, update_delta / 1000))
-        self._timer.start(update_delta)
+        self._timer.start(int(update_delta))
 
     def keyPressEvent(self, e):
         """

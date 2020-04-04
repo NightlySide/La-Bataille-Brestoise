@@ -59,8 +59,8 @@ class EcranConnexion(QMainWindow):
         # On créer un widget vidéo et on place notre vidéo en lecture
         self.mediaPlayer = QMediaPlayer(None, QMediaPlayer.VideoSurface)
         self.videoWidget = QVideoWidget(self.logo)
-        self.logo.setFixedSize(800, 9/16 * 800)
-        self.videoWidget.setFixedSize(800, 9/16 * 800)
+        self.logo.setFixedSize(800, int(9/16 * 800))
+        self.videoWidget.setFixedSize(800, int(9/16 * 800))
         app_root = os.path.abspath(os.path.dirname(sys.argv[0]))
         movie_path = os.path.join(app_root, "assets", "background_video.mp4")
         self.mediaPlayer.setMedia(QMediaContent(QUrl.fromLocalFile(movie_path)))

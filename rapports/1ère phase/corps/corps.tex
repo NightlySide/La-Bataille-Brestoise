@@ -8,10 +8,12 @@ Nous sommes donc parti sur un jeu de type bataille navale, en temps réel et mult
 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../imgs/logo}
+	\includegraphics[width=0.5\linewidth]{../imgs/logo}
 	\caption{Logo du projet d'informatique}
 	\label{fig:logo}
 \end{figure}
+
+Pour travailler en collaboratif sur le code, nous avons utilisé un repository sur github, le code est accessible au lien suivant :\\ \url{https://github.com/NightlySide/La-Bataille-Brestoise}.
 
 \subsection{Les différentes pistes envisagées}
 
@@ -69,6 +71,8 @@ Enfin l'utilisateur trouvera  un bouton "Serveur local" pour entrer manuellement
 	\label{fig:serveur_local}
 \end{figure}
 
+\clearpage
+
 Une fois connecté au serveur, l'utilisateur est face à l'écran de jeu (cf. \ref{fig:ecran_jeu}) qui comporte une surface de jeu, que nous appellerons \emph{canvas}, sur laquelle sera dessinée la carte, les entités et les joueurs. On y retrouve un radar permettant de détecter les entités aux alentours (attention pas entièrement fonctionnel pour l'instant), et une chatbox pour communiquer avec les autres joueurs présent sur le serveur.
 
 \begin{figure}[H]
@@ -81,19 +85,23 @@ Une fois connecté au serveur, l'utilisateur est face à l'écran de jeu (cf. \ref{
 Pour cette première phase, nous nous sommes concentré sur la structure du jeu. Par conséquent les contrôles joueur sont limités. Pour se déplacer l'utilisateur pourra utiliser les flèches du clavier dès que le focus est sur le canvas (un click souris sur le canvas suffit à récupérer le focus).
 
 \subsection{Description des principales classes/méthodes}
+
+Pour une meilleure lisibilité, vous pouvez retrouver les diagrammes de classes en annexe (cf. \ref{fig:annexe_diagramme_complet})
+
 % décrire uniquement les mécanismes fondamentaux
-\paragraph{classes de jeu\\}
+\subsubsection{Classes de jeu}
 
+En premier lieu, il convient de décrire les classes directement liés au fonctionnement du jeu.  (cf .\ref{fig:annexe_diagramme_client_jeu})
 
-
-En premier lieu, il convient de décrire les classes directement liés au fonctionnement du jeu. 
 La classe "Entité" est la base d'une joueur, qu'il soit réel ou contrôlé par la machine. Elle va notamment avoir des attributs de points de vie, de position dans la map ou encore d'arme actuellement sélectionné par le joueur.
-Une entité peut être "joueur" ou "pnj". Une entité interagit avec les autres entités par le biais du client de jeu, les entité "pnj" sont elles contrôlés par le serveur. Une entité à un instant t contrôle un bâtiment et sélectionne une arme disponible sur ce bâtiment. La classe "Batiment" contient toutes les statistiques et données sur un bâtiment, cela peut être son niveau, les points de vie maximaux, ou encore la portée de détection. La classe "Armes" quand à elle définie les données des différentes armes disponibles. 
 
-\paragraph{classe de l'IHM\\}
+Une entité peut être "joueur" ou "pnj". Une entité interagit avec les autres entités par le biais du client de jeu, les entité "pnj" sont elles contrôlés par le serveur. Une entité à un instant t contrôle un bâtiment et sélectionne une arme disponible sur ce bâtiment. La classe "Batiment" contient toutes les statistiques et données sur un bâtiment, cela peut être son niveau, les points de vie maximaux, ou encore la portée de détection. La classe "Armes" quand à elle définie les données des différentes armes disponibles.  (cf. \ref{fig:annexe_diagramme_mecanismes})
+
+\subsubsection{Classe de l'IHM}
 
 
 Dans l'IHM, nous avons intégré plusieurs éléments qui nécessite leur propre classe. 
+
 La classe "Radar" est une classe hérité de Qwidget. Elle gère le radar de détection des autres entités ennemies. \\La règle du jeu veut que si un ennemi se trouve dans notre portée de détection et que cette ennemi a une dissimulation (implémentée plus tard) supérieur à la distance qui nous sépare d'elle, cette ennemi sera affiché par un point rouge sur le radar. \\Le radar balaye l'espace à 90°/s. On garde les traces d'un ennemie détecté en rouge puis en gris lorsqu'elles s'apprêtent à disparaitre du radar. 
 
 
@@ -105,23 +113,47 @@ La classe "Radar" est une classe hérité de Qwidget. Elle gère le radar de détect
 \end{figure}
 
 
-La classe "Chatbox" comme son nom l'indique renvoi à la chat box en bas à droite du canevas de jeu. Elle est héritée de Qtextbrowser. Cette classe existe car on doit pouvoir écrire sur le chat pendant que le jeu tourne, il est donc nécessaire de créer un autre thread, sur lequel tourne la chatbox, et dans lequel Qt va piocher les informations lorsque nécessaire.\\ Elle contient une liste de lignes qui est mise à jour avec les messages des autres joueurs. Un signal Qt permet d'envoyer un message en appuyant sur la touche Entrée. 
+La classe "Chatbox" comme son nom l'indique renvoi à la chat box en bas à droite du canevas de jeu. Elle est héritée de QTextBrowser. Cette classe existe car on doit pouvoir écrire sur le chat pendant que le jeu tourne, il est donc nécessaire de créer un autre thread, sur lequel tourne la chatbox, et dans lequel Qt va piocher les informations lorsque nécessaire.\\ Elle contient une liste de lignes qui est mise à jour avec les messages des autres joueurs. Un signal Qt permet d'envoyer un message en appuyant sur la touche Entrée. 
 
-\paragraph{classe du client/serveur}
+\subsubsection{Classe du client/serveur }
 
-\clearpage
+Pour gérer la connexion asynchrone entre le client et le serveur il est nécessaire d'avoir deux classes supplémentaires gérant ces diffrents aspects. La classe 'TCPClientProtocol' (cf. \ref{fig:annexe_diagramme_client_jeu}) hérite du protocole de la bilbiothèque \emph{asyncio} et qui fonctionne en évènementiel. La classe 'TCPServer' du côté serveur (cf. \ref{fig:annexe_diagramme_serveur}), possède un fonctionnement similaire. On retrouve ainsi dans les deux classes une fonction pour prendre en charge l'ouverture du tunnel entre le client et le serveur, une fonction pour prendre en charge la déconnexion et enfin deux fonctions pour l'envoi et la réception de données.
+
 \section{Conclusion}
 
 \subsection{Différents tests effectués}
 
+Pour les tests unitaires, le script \emph{test\_suite.py} permet d'effectuer les tests provenant des classes de \emph{unittest} présentes dans le dossier 'tests'. Ces classes de test vont tester les éléments de l'IHM ainsi que certaines mécaniques du jeu.
+
+Pour la connexion client/serveur, nous avons tout d'abord essayé la bibliothèque \emph{sockets} afin de créer la connexion entre le client et le serveur. Cependant cette dernière ne gère que difficilement les connexions multiples du côté du serveur. Il est vrai que l'on aurait pu utiliser comme avec python 2.7 le module \emph{selectors}, cependant cette méthode, comme \emph{asyncore} que nous avons aussi essayé, semble disparaître avec les versions après 3.6 au profit de \emph{asyncio},.
+
+Pour suivre l'évolution des tests et à fins de débug, nous avons implémenté un \emph{Logger} dans notre projet. Il va gérer l'affichage sur le terminal de commande en fonction de la sévérité du message envoyé par le programme, il peut de plus, enregistrer ces logs dans un fichier \emph{.log}.
+
 \subsection{Limitations}
 
-Nous avons rencontré quelques limitations durant ce projet.\\En premier lieu, l'usage d'une mode multijoueur implique une utilisation extensive de la bande passante, ce qui nécessite d'optimiser les requêtes afin de ne pas surcharger un réseau. \\Ensuite le fait que Pickle ne gère pas directement QT, hors nos messages sont encodés en pickel et envoyé sur le réseau. Il à donc fallut passer par des classes annexes comme "ChatBox" afin de contourner cette limitation. \\Nous avons pu contourner ces limitations et les seuls réels limitations de notre projet sont plus de l'ordre de la performance que du fonctionnement. 
+Nous avons rencontré quelques limitations durant ce projet.
+
+En premier lieu, l'usage d'une mode multijoueur implique une utilisation extensive de la bande passante, ce qui nécessite d'optimiser les requêtes afin de ne pas surcharger un réseau.
+
+Ensuite le fait que Pickle ne gère pas directement QT, en raison du fait qu'il ne gère pas les objets codés en C. Hors, nos messages sont sérialisés à l'aide de \emph{pickle} et envoyés sur le réseau. Il faut donc se restreindre à de l'envoi d'objets de 'bases' reconnus par pickle lors de la communication client/serveur.
+
+Une dernière limitation est le fait que la bibliothèque \emph{pyQt}, n'accepte pas que l'on interragisse avec ses objets à partir d'un thread différent. La solution fut de passer par des classes annexes comme "ChatBox" afin de contourner cette limitation, en ayant d'un côté le thread TCP populant le contenu de la ChatBox, et de l'autre pyQt qui récupère ces informations pour l'afficher sur l'IHM (comme expliqué précédemment et cf. \ref{fig:chatbox})
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/chatbox}
+	\caption{Principe de la classe intermédiaire entre deux Threads}
+	\label{fig:chatbox}
+\end{figure}
+
+Nous avons pu contourner ces limitations et les seuls réels limitations de notre projet sont actuellement plus de l'ordre de la performance que du fonctionnement. 
 
 
 \subsection{Perspectives d'amélioration}
 
 On pourrait améliorer la dynamique des bâtiments, en leur donnant des caractéristiques d'inertie ou encore de rayon de giration, ce qui aurait été plus réaliste (on ne manoeuvre pas un porte-avions comme un BIN). 
-\\On pourrait encore implémenter un concept de dégât critique, avec des équipements importants du bâtiment qui pourrait être mis temporairement hors d'usage après un coup bien placé (armement, radar, propulsion). 
+\\On pourrait encore implémenter un concept de dégât critique, avec des équipements importants du bâtiment qui pourrait être mis temporairement hors d'usage après un coup bien placé (armement, radar, propulsion).  \\ Pour améliorer le temps de calcul on pourra par exemple réfléchir à un moyen de passer en calcul vectoriel si possible.
+
+Enfin on pourra implémenter des sauvegarde de score ou tout simplement des sauvegarde de paramètres utilisateurs dans des fichiers internes au projet, probablement en JSON ou en YAML.
 
 

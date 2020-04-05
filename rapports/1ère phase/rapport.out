@@ -7,8 +7,11 @@
 \BOOKMARK [3][-]{subsubsection.2.1.1}{2.1.1 Le serveur}{subsection.2.1}% 7
 \BOOKMARK [3][-]{subsubsection.2.1.2}{2.1.2 Le client}{subsection.2.1}% 8
 \BOOKMARK [2][-]{subsection.2.2}{2.2 Description des principales classes/m\351thodes}{section.2}% 9
-\BOOKMARK [1][-]{section.3}{3 Conclusion}{}% 10
-\BOOKMARK [2][-]{subsection.3.1}{3.1 Diff\351rents tests effectu\351s}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.2}{3.2 Limitations}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.3}{3.3 Perspectives d'am\351lioration}{section.3}% 13
-\BOOKMARK [1][-]{appendix.A}{A Diagrammes de classe}{}% 14
+\BOOKMARK [3][-]{subsubsection.2.2.1}{2.2.1 Classes de jeu}{subsection.2.2}% 10
+\BOOKMARK [3][-]{subsubsection.2.2.2}{2.2.2 Classe de l'IHM}{subsection.2.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.2.3}{2.2.3 Classe du client/serveur }{subsection.2.2}% 12
+\BOOKMARK [1][-]{section.3}{3 Conclusion}{}% 13
+\BOOKMARK [2][-]{subsection.3.1}{3.1 Diff\351rents tests effectu\351s}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.2}{3.2 Limitations}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.3}{3.3 Perspectives d'am\351lioration}{section.3}% 16
+\BOOKMARK [1][-]{appendix.A}{A Diagrammes de classe}{}% 17

@@ -28,7 +28,7 @@
   \pagenumbering{roman}}
 
 \newcommand\mainmatter{%
-    \cleardoublepage
+   % \cleardoublepage
  % \@mainmattertrue
   \pagenumbering{arabic}}
 

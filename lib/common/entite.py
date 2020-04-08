@@ -1,6 +1,7 @@
 from PyQt5.QtCore import QRect
 from PyQt5.QtGui import QImage
-
+from batiment import Batiment
+from arme import Arme
 from lib.common.vecteur import Vecteur
 
 
@@ -13,6 +14,11 @@ class Entite:
         vitesse (int): vitesse de déplacement de l'unité
         image (QImage): image de référence de l'entité
         position (Vecteur): position du joueur
+        direction (Vecteur): direction vers lequel se dirige le joueur
+        current_ship(batiment) : batiment actuellement manoeuvré par le joueur
+        current_weapon(arme) : arme actuellement équipé par le joueur
+        current_target(entite) : entité actuellement visée par le joueur
+
     """
 
     def __init__(self):
@@ -21,6 +27,11 @@ class Entite:
         self.image = None
         self.position = Vecteur(200, 200)
         self.direction = Vecteur()
+#TODO        self.current_player = id_joueur()  tcpclient.identifiant
+        self.current_ship = batiment()
+        self.current_weapon = arme()
+        self.current_target = None
+
 
     def set_image(self, img_path):
         """
@@ -52,3 +63,6 @@ class Entite:
     def update(self, delta):
         self.position += self.direction * self.vitesse
         self.direction = Vecteur()
+
+    def ciblage(self, entite):
+        self.current_target = entite()

@@ -60,5 +60,6 @@ class Arme():
         t0 = time.perf_counter()
         t=t0
         if t > t0 + self.tps_mise_en_oeuvre :
+            print("équippement de l'arme : ", self.nom_arme)
 
 

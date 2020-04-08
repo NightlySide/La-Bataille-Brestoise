@@ -9,6 +9,11 @@
             "name": "Distant",
             "ip": "ieta-docs.ddns.net",
             "port": 25566
+        },
+        {
+            "name": "Test",
+            "ip": "192.168.0.26",
+            "port": 25566
         }
     ]
 }

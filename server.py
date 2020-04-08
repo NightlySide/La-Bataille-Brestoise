@@ -29,14 +29,16 @@ if __name__ == "__main__":
     IP = config["ip"]
     GSR.log = Logger(Logger.DEBUG)
     GSR.log.save_to_file("serveur.log")
-    GSR.log.log(Logger.INFORMATION, "Lancement du serveur ...")
+    GSR.log.log(Logger.INFORMATION, f"Lancement du serveur sur {IP}:{PORT} ...")
     loop = asyncio.get_event_loop()
     GSR.setEventLoop(loop)
+    server = loop.run_until_complete(TCPServer.create(IP, PORT))
     try:
         motd(PORT)
-        loop.run_until_complete(TCPServer.create(IP, PORT))
+        loop.run_forever()
     except KeyboardInterrupt:
         # Le serveur ferme donc on arrête le thread
+        server.close()
         GSR.game_loop.stop()
         loop.close()
         GSR.log.log(Logger.INFORMATION, "Fermeture du serveur")

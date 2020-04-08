@@ -1,7 +1,8 @@
 from PyQt5.QtCore import QRect
 from PyQt5.QtGui import QImage
-from batiment import Batiment
-from arme import Arme
+
+from lib.common.armes.arme import Arme
+from lib.common.batiments.batiment import Batiment
 from lib.common.vecteur import Vecteur
 
 
@@ -28,8 +29,8 @@ class Entite:
         self.position = Vecteur(200, 200)
         self.direction = Vecteur()
 #TODO        self.current_player = id_joueur()  tcpclient.identifiant
-        self.current_ship = batiment()
-        self.current_weapon = arme()
+        self.current_ship = Batiment()
+        self.current_weapon = Arme()
         self.current_target = None
 
 

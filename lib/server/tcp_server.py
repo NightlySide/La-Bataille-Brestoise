@@ -48,9 +48,8 @@ class TCPServer(asyncio.Protocol):
         GSR.game_loop = GameLoop()
 
         # On fait tourner le serveur
-        async with server:
-            GSR.log.log(Logger.INFORMATION, "Serveur lancé")
-            await server.serve_forever()
+        GSR.log.log(Logger.INFORMATION, "Serveur lancé")
+        return server
 
     def connection_made(self, transport):
         """

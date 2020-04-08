@@ -302,3 +302,62 @@
 [11:44:59][INFO] Biche énervé a rejoint la partie
 [11:44:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': '035ee43e-b7b6-4674-b739-6df0cda32b8e'}
 [11:45:15][INFO] Connexion fermée avec ('127.0.0.1', 33666)
+[11:50:59][INFO] Fermeture du serveur
+[12:06:07][INFO] Lancement du serveur ...
+[12:06:07][INFO] Initialisation du serveur
+[13:18:26][INFO] Lancement du serveur ...
+[13:18:26][INFO] Initialisation du serveur
+[13:21:27][INFO] Lancement du serveur ...
+[13:21:27][INFO] Initialisation du serveur
+[13:21:27][INFO] Initialisation terminée
+[13:22:38][INFO] Lancement du serveur ...
+[13:22:38][INFO] Initialisation du serveur
+[13:22:38][INFO] Initialisation terminée
+[13:22:38][INFO] Serveur lancé
+[13:23:32][INFO] Lancement du serveur ...
+[13:23:32][INFO] Initialisation du serveur
+[13:23:32][INFO] Initialisation terminée
+[13:23:32][INFO] Serveur lancé
+[13:24:43][INFO] Lancement du serveur ...
+[13:24:43][INFO] Initialisation du serveur
+[13:24:43][INFO] Initialisation terminée
+[13:24:43][INFO] Serveur lancé
+[13:30:05][INFO] Lancement du serveur ...
+[13:30:05][INFO] Initialisation du serveur
+[13:30:05][INFO] Initialisation terminée
+[13:30:05][INFO] Serveur lancé
+[13:30:36][INFO] Lancement du serveur ...
+[13:30:36][INFO] Initialisation du serveur
+[13:30:36][INFO] Initialisation terminée
+[13:30:36][INFO] Serveur lancé
+[13:30:47][INFO] Lancement du serveur ...
+[13:30:47][INFO] Initialisation du serveur
+[13:30:47][INFO] Initialisation terminée
+[13:30:47][INFO] Serveur lancé
+[13:32:00][INFO] Lancement du serveur ...
+[13:32:00][INFO] Initialisation du serveur
+[13:32:00][INFO] Initialisation terminée
+[13:32:00][INFO] Serveur lancé
+[13:32:55][INFO] Lancement du serveur ...
+[13:32:55][INFO] Initialisation du serveur
+[13:32:55][INFO] Initialisation terminée
+[13:32:55][INFO] Serveur lancé
+[13:33:58][INFO] Lancement du serveur ...
+[13:33:58][INFO] Initialisation du serveur
+[13:33:58][INFO] Initialisation terminée
+[13:33:58][INFO] Serveur lancé
+[13:37:03][INFO] Lancement du serveur sur 0.0.0.0:25566 ...
+[13:37:03][INFO] Initialisation du serveur
+[13:37:03][INFO] Initialisation terminée
+[13:37:03][INFO] Serveur lancé
+[13:37:15][INFO] Fermeture du serveur
+[13:37:16][INFO] Lancement du serveur sur 127.0.0.1:25566 ...
+[13:37:16][INFO] Initialisation du serveur
+[13:37:16][INFO] Initialisation terminée
+[13:37:16][INFO] Serveur lancé
+[13:37:24][INFO] Connexion ouverte sur ('127.0.0.1', 34384)
+[13:37:24][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Antilope habillé'}
+[13:37:24][INFO] Antilope habillé a rejoint la partie
+[13:37:24][DEBUG] --> Envoi : {'action': 'request_id', 'id': '21231a0f-6c6e-4dd8-bcf6-622f9df8fcc5'}
+[13:37:49][INFO] Connexion fermée avec ('127.0.0.1', 34384)
+[13:37:56][INFO] Fermeture du serveur

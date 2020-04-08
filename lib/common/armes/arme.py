@@ -1,22 +1,21 @@
 import time
 
-from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtCore import Qt, QRect, QTimer
 from random import randint
 
 class Arme():
 
-    def __init__(self,refresh_rate=1):
-
+    def __init__(self,refresh_rate=1, img_path=""):
         self.nom_arme= ""
         self.DPS = 0
         self.degats_instantannee = 0
         self.tps_mise_en_oeuvre = 0
         self.tps_vol = 0
         self.portee = 0
-        self.image = QImage(img_path)
+        self.image = img_path
         self.refresh_rate = 1/50
 
-    def degats(self, entiteEnnemie, Degat):
+    def degats(self, entiteEnnemie, degat):
         """
         est appelé par la fonction "dammage", permet d'infliger des dégats pendant un incrément de temps.
                         Args:
@@ -24,9 +23,9 @@ class Arme():
                             entiteEnnemie: la cible qui va recevoir les dégats, objet entité
                             Degat: dégats infligés sur un incrément de temps
         """
-        entiteEnnemie.Vie =- Degat
+        entiteEnnemie.Vie =- degat
 
-    def dammage(self, entiteEnnemie, refresh_rate = self.refresh_rate)
+    def damage(self, entiteEnnemie, refresh_rate):
         """
         permet d'infliger des dégats à une cible "EntiteEnnemie". Les dégats sont infligés différemment en fonction du type de l'arme
         arme à dégats continus: inflige les dégats en continu selon un temps de refresh refresh_rate. 
@@ -46,7 +45,7 @@ class Arme():
             update_delta = refresh_rate * 1000
             self._timer.start(update_delta)
 #TODO:          while mouse == clicked :
-                self._timer.timeout.connect(self.degats(entiteEnnemie, self.DPS//refresh_rate))
+            self._timer.timeout.connect(self.degats(entiteEnnemie, self.DPS//refresh_rate))
 
     def equiper(self):
         """
@@ -61,5 +60,3 @@ class Arme():
         t=t0
         if t > t0 + self.tps_mise_en_oeuvre :
             print("équippement de l'arme : ", self.nom_arme)
-
-

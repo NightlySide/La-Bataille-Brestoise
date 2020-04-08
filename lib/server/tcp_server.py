@@ -70,6 +70,7 @@ class TCPServer(asyncio.Protocol):
         self.client = Client(peername, transport)
         # On l'ajoute finalement à la liste des clients connectés au serveur
         GSR.clients.append(self.client)
+        print(GSR.clients)
 
     def data_received(self, data):
         """
@@ -116,10 +117,12 @@ class TCPServer(asyncio.Protocol):
                 # On transmet le message aux autres clients
                 for client in GSR.clients:
                     if client.peername != self.peername:
+                        GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(client.peername, reponse))
                         client.transport.write(pickle.dumps(message))
             else:
                 reponse["msg"] = "[+] Commande non reconnue !"
-            GSR.log.log(Logger.DEBUG, "--> Envoi : {!r}".format(reponse))
+            GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(self.peername, reponse))
+            # On retourne une réponse au client
             self.transport.write(pickle.dumps(reponse))
         else:
             GSR.log.log(Logger.AVERTISSEMENT, "[-] Format reçu inconnu : {!r}".format(message))

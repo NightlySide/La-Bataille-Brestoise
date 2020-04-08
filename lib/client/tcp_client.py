@@ -106,6 +106,7 @@ class TCPClientProtocol(asyncio.Protocol):
                 GCR.id = self.id = message["id"]
             elif message["action"] == "chat":
                 # On met à jour la chatbox
+                GCR.log.log(Logger.DEBUG, "<-- Reçu : {!r}".format(message))
                 GCR.chatbox.add_line(f"({message['user']}): {message['msg']}")
             elif message["action"] == "update_entities":
                 GCR.entities = message["data"]

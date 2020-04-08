@@ -361,3 +361,184 @@
 [13:37:24][DEBUG] --> Envoi : {'action': 'request_id', 'id': '21231a0f-6c6e-4dd8-bcf6-622f9df8fcc5'}
 [13:37:49][INFO] Connexion fermée avec ('127.0.0.1', 34384)
 [13:37:56][INFO] Fermeture du serveur
+[13:45:43][INFO] Lancement du serveur sur 127.0.0.1:25566 ...
+[13:45:43][INFO] Initialisation du serveur
+[13:45:43][INFO] Initialisation terminée
+[13:45:43][INFO] Serveur lancé
+[13:45:53][INFO] Fermeture du serveur
+[13:51:01][INFO] Lancement du serveur sur 127.0.0.1:25566 ...
+[13:51:01][INFO] Initialisation du serveur
+[13:51:01][INFO] Initialisation terminée
+[13:51:01][INFO] Serveur lancé
+[13:51:59][INFO] Connexion ouverte sur ('127.0.0.1', 34722)
+[13:51:59][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Urubu offensé'}
+[13:51:59][INFO] Urubu offensé a rejoint la partie
+[13:51:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'a0db76e6-8153-457c-81cc-644ed7e7313a'}
+[13:52:25][DEBUG] <-- Données reçues : {'action': 'chat', 'user': 'a0db76e6-8153-457c-81cc-644ed7e7313a', 'msg': 'Fonctionnelle'}
+[13:52:25][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Urubu offensé', 'msg': 'Fonctionnelle'}
+[13:52:36][INFO] Connexion ouverte sur ('127.0.0.1', 34728)
+[13:52:36][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Python sombre'}
+[13:52:36][INFO] Python sombre a rejoint la partie
+[13:52:36][DEBUG] --> Envoi : {'action': 'request_id', 'id': '2c7fd638-633f-4217-80a7-d3756ccbbc97'}
+[13:52:41][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '2c7fd638-633f-4217-80a7-d3756ccbbc97', 'msg': 'Bonjour'}
+[13:52:41][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Python sombre', 'msg': 'Bonjour'}
+[13:52:49][INFO] Connexion fermée avec ('127.0.0.1', 34728)
+[13:52:50][INFO] Connexion fermée avec ('127.0.0.1', 34722)
+[13:54:54][INFO] Lancement du serveur sur 127.0.0.1:25566 ...
+[13:54:54][INFO] Initialisation du serveur
+[13:54:54][INFO] Initialisation terminée
+[13:54:54][INFO] Serveur lancé
+[13:54:59][INFO] Connexion ouverte sur ('127.0.0.1', 34770)
+[13:54:59][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Grenouille propre'}
+[13:54:59][INFO] Grenouille propre a rejoint la partie
+[13:54:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': '4a079290-2a56-45dd-976a-12263b98019d'}
+[13:55:17][INFO] Connexion ouverte sur ('127.0.0.1', 34772)
+[13:55:17][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Alpaga offensé'}
+[13:55:17][INFO] Alpaga offensé a rejoint la partie
+[13:55:17][DEBUG] --> Envoi : {'action': 'request_id', 'id': '41db34a7-173f-4f8e-8da2-c98aa3237791'}
+[13:55:32][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '41db34a7-173f-4f8e-8da2-c98aa3237791', 'msg': 'test'}
+[13:55:32][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Alpaga offensé', 'msg': 'test'}
+[13:55:35][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4a079290-2a56-45dd-976a-12263b98019d', 'msg': 'test'}
+[13:55:35][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Grenouille propre', 'msg': 'test'}
+[13:55:58][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4a079290-2a56-45dd-976a-12263b98019d', 'msg': 'test'}
+[13:55:58][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Grenouille propre', 'msg': 'test'}
+[13:56:02][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4a079290-2a56-45dd-976a-12263b98019d', 'msg': 'qsdqsd'}
+[13:56:02][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Grenouille propre', 'msg': 'qsdqsd'}
+[13:56:08][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '41db34a7-173f-4f8e-8da2-c98aa3237791', 'msg': 'sqdsdq'}
+[13:56:08][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Alpaga offensé', 'msg': 'sqdsdq'}
+[13:56:19][INFO] Connexion fermée avec ('127.0.0.1', 34770)
+[13:56:21][INFO] Connexion fermée avec ('127.0.0.1', 34772)
+[13:57:30][INFO] Connexion ouverte sur ('127.0.0.1', 34786)
+[13:57:30][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Aigle maigre'}
+[13:57:30][INFO] Aigle maigre a rejoint la partie
+[13:57:30][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b946a4ea-32fd-43ac-ad53-62fd60d6e370'}
+[13:57:39][INFO] Connexion fermée avec ('127.0.0.1', 34786)
+[13:57:59][INFO] Connexion ouverte sur ('127.0.0.1', 34788)
+[13:57:59][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Tortue nerveux'}
+[13:57:59][INFO] Tortue nerveux a rejoint la partie
+[13:57:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': '2338bcc8-fdfe-4fd8-bf6c-479312ffab42'}
+[13:58:04][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '2338bcc8-fdfe-4fd8-bf6c-479312ffab42', 'msg': 'hello'}
+[13:58:04][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue nerveux', 'msg': 'hello'}
+[13:58:13][INFO] Connexion ouverte sur ('127.0.0.1', 34790)
+[13:58:13][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Aigle carré'}
+[13:58:13][INFO] Aigle carré a rejoint la partie
+[13:58:13][DEBUG] --> Envoi : {'action': 'request_id', 'id': '06eec2f1-fc6e-4323-bedf-2f4bb43b28ba'}
+[13:58:18][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '06eec2f1-fc6e-4323-bedf-2f4bb43b28ba', 'msg': 'aigle'}
+[13:58:18][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Aigle carré', 'msg': 'aigle'}
+[13:58:23][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '2338bcc8-fdfe-4fd8-bf6c-479312ffab42', 'msg': 'omg?'}
+[13:58:23][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue nerveux', 'msg': 'omg?'}
+[13:58:34][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '06eec2f1-fc6e-4323-bedf-2f4bb43b28ba', 'msg': 'test'}
+[13:58:34][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Aigle carré', 'msg': 'test'}
+[13:58:47][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '06eec2f1-fc6e-4323-bedf-2f4bb43b28ba', 'msg': 'je comprends plus'}
+[13:58:47][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Aigle carré', 'msg': 'je comprends plus'}
+[13:58:55][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '06eec2f1-fc6e-4323-bedf-2f4bb43b28ba', 'msg': 'pourquoi un simple test passe pas'}
+[13:58:55][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Aigle carré', 'msg': 'pourquoi un simple test passe pas'}
+[13:59:02][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '06eec2f1-fc6e-4323-bedf-2f4bb43b28ba', 'msg': 'pourquoi un sue dseu'}
+[13:59:02][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Aigle carré', 'msg': 'pourquoi un sue dseu'}
+[14:01:01][INFO] Fermeture du serveur
+[14:01:08][INFO] Lancement du serveur sur 127.0.0.1:25566 ...
+[14:01:08][INFO] Initialisation du serveur
+[14:01:08][INFO] Initialisation terminée
+[14:01:08][INFO] Serveur lancé
+[14:01:20][INFO] Connexion ouverte sur ('127.0.0.1', 34806)
+[14:01:20][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Bison beau'}
+[14:01:20][INFO] Bison beau a rejoint la partie
+[14:01:20][DEBUG] --> Envoi : {'action': 'request_id', 'id': '3dd4aa94-af1c-4185-aaec-773b0a1a6eba'}
+[14:01:25][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '3dd4aa94-af1c-4185-aaec-773b0a1a6eba', 'msg': 'bjr'}
+[14:01:25][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Bison beau', 'msg': 'bjr'}
+[14:04:54][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '3dd4aa94-af1c-4185-aaec-773b0a1a6eba', 'msg': 'qdsf'}
+[14:04:54][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Bison beau', 'msg': 'qdsf'}
+[14:04:56][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '3dd4aa94-af1c-4185-aaec-773b0a1a6eba', 'msg': 'vxcvx'}
+[14:04:56][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Bison beau', 'msg': 'vxcvx'}
+[14:04:57][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '3dd4aa94-af1c-4185-aaec-773b0a1a6eba', 'msg': 'xvxc'}
+[14:04:57][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Bison beau', 'msg': 'xvxc'}
+[14:04:59][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '3dd4aa94-af1c-4185-aaec-773b0a1a6eba', 'msg': 'sdfez'}
+[14:04:59][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Bison beau', 'msg': 'sdfez'}
+[14:05:23][INFO] Connexion fermée avec ('127.0.0.1', 34806)
+[14:05:26][INFO] Fermeture du serveur
+[14:05:28][INFO] Lancement du serveur sur 127.0.0.1:25566 ...
+[14:05:28][INFO] Initialisation du serveur
+[14:05:28][INFO] Initialisation terminée
+[14:05:28][INFO] Serveur lancé
+[14:05:33][INFO] Connexion ouverte sur ('127.0.0.1', 34820)
+[14:05:33][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Baleine réfléchi'}
+[14:05:33][INFO] Baleine réfléchi a rejoint la partie
+[14:05:33][DEBUG] --> Envoi : {'action': 'request_id', 'id': '9ab4e192-f182-4f21-a60a-0b28774c8f69'}
+[14:05:35][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '9ab4e192-f182-4f21-a60a-0b28774c8f69', 'msg': 'qdqs'}
+[14:05:35][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Baleine réfléchi', 'msg': 'qdqs'}
+[14:05:37][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '9ab4e192-f182-4f21-a60a-0b28774c8f69', 'msg': 'wxcwc'}
+[14:05:37][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Baleine réfléchi', 'msg': 'wxcwc'}
+[14:05:49][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '9ab4e192-f182-4f21-a60a-0b28774c8f69', 'msg': 'qsd'}
+[14:05:49][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Baleine réfléchi', 'msg': 'qsd'}
+[14:07:02][INFO] Fermeture du serveur
+[14:07:18][INFO] Lancement du serveur sur :25566 ...
+[14:07:18][INFO] Initialisation du serveur
+[14:07:18][INFO] Initialisation terminée
+[14:07:18][INFO] Serveur lancé
+[14:07:24][INFO] Connexion ouverte sur ('127.0.0.1', 34826)
+[14:07:24][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Biche timide'}
+[14:07:24][INFO] Biche timide a rejoint la partie
+[14:07:24][DEBUG] --> Envoi : {'action': 'request_id', 'id': '89c56f91-8c4a-44c2-8837-f784b5565288'}
+[14:07:25][INFO] Connexion fermée avec ('127.0.0.1', 34826)
+[14:07:32][INFO] Connexion ouverte sur ('192.168.0.26', 47918)
+[14:07:32][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Tortue ravissant'}
+[14:07:32][INFO] Tortue ravissant a rejoint la partie
+[14:07:32][DEBUG] --> Envoi : {'action': 'request_id', 'id': '4fe5698a-9ecb-4ead-83a4-480188e64e98'}
+[14:07:36][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4fe5698a-9ecb-4ead-83a4-480188e64e98', 'msg': 'test'}
+[14:07:36][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue ravissant', 'msg': 'test'}
+[14:07:38][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4fe5698a-9ecb-4ead-83a4-480188e64e98', 'msg': 'nonjsqd'}
+[14:07:38][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue ravissant', 'msg': 'nonjsqd'}
+[14:07:46][INFO] Connexion ouverte sur ('127.0.0.1', 34830)
+[14:07:46][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Tortue beau'}
+[14:07:46][INFO] Tortue beau a rejoint la partie
+[14:07:46][DEBUG] --> Envoi : {'action': 'request_id', 'id': '7bc0bbb8-c4b7-466a-a389-9bf05c6ec5a7'}
+[14:07:51][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '7bc0bbb8-c4b7-466a-a389-9bf05c6ec5a7', 'msg': 'Salut'}
+[14:07:51][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue beau', 'msg': 'Salut'}
+[14:07:53][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4fe5698a-9ecb-4ead-83a4-480188e64e98', 'msg': 'Ca va'}
+[14:07:53][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue ravissant', 'msg': 'Ca va'}
+[14:07:56][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4fe5698a-9ecb-4ead-83a4-480188e64e98', 'msg': 'oui'}
+[14:07:56][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue ravissant', 'msg': 'oui'}
+[14:07:59][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '4fe5698a-9ecb-4ead-83a4-480188e64e98', 'msg': 'je comprends pas'}
+[14:07:59][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue ravissant', 'msg': 'je comprends pas'}
+[14:08:03][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '7bc0bbb8-c4b7-466a-a389-9bf05c6ec5a7', 'msg': 'Moi non plus'}
+[14:08:03][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue beau', 'msg': 'Moi non plus'}
+[14:08:07][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '7bc0bbb8-c4b7-466a-a389-9bf05c6ec5a7', 'msg': 'Bah merde ...'}
+[14:08:07][DEBUG] --> Envoi : {'action': 'chat', 'user': 'Tortue beau', 'msg': 'Bah merde ...'}
+[14:08:32][INFO] Connexion fermée avec ('192.168.0.26', 47918)
+[14:08:34][INFO] Connexion fermée avec ('127.0.0.1', 34830)
+[14:09:21][INFO] Fermeture du serveur
+[14:09:22][INFO] Lancement du serveur sur :25566 ...
+[14:09:22][INFO] Initialisation du serveur
+[14:09:22][INFO] Initialisation terminée
+[14:09:22][INFO] Serveur lancé
+[14:09:28][INFO] Connexion ouverte sur ('127.0.0.1', 34832)
+[14:09:28][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Aigle gentil'}
+[14:09:28][INFO] Aigle gentil a rejoint la partie
+[14:09:28][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'request_id', 'id': '867f6771-706a-488c-bb12-4ab48c885db5'}
+[14:09:40][INFO] Connexion ouverte sur ('127.0.0.1', 34834)
+[14:09:40][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Araignée propre'}
+[14:09:40][INFO] Araignée propre a rejoint la partie
+[14:09:40][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'request_id', 'id': 'b53f3437-7501-4879-94be-e8d7d2a8e9a0'}
+[14:09:46][DEBUG] <-- Données reçues : {'action': 'chat', 'user': 'b53f3437-7501-4879-94be-e8d7d2a8e9a0', 'msg': 'bonjour'}
+[14:09:46][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Araignée propre', 'msg': 'bonjour'}
+[14:09:46][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'chat', 'user': 'Araignée propre', 'msg': 'bonjour'}
+[14:10:09][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '867f6771-706a-488c-bb12-4ab48c885db5', 'msg': 'wtf'}
+[14:10:09][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': 'wtf'}
+[14:10:09][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': 'wtf'}
+[14:10:16][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '867f6771-706a-488c-bb12-4ab48c885db5', 'msg': "pourquoi j'ai pas recu"}
+[14:10:16][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': "pourquoi j'ai pas recu"}
+[14:10:16][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': "pourquoi j'ai pas recu"}
+[14:10:20][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '867f6771-706a-488c-bb12-4ab48c885db5', 'msg': 'ç'}
+[14:10:20][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': 'ç'}
+[14:10:20][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': 'ç'}
+[14:10:23][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '867f6771-706a-488c-bb12-4ab48c885db5', 'msg': "'"}
+[14:10:23][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': "'"}
+[14:10:23][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': "'"}
+[14:10:26][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '867f6771-706a-488c-bb12-4ab48c885db5', 'msg': "zeae'zaze"}
+[14:10:26][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': "zeae'zaze"}
+[14:10:26][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': "zeae'zaze"}
+[14:10:34][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '867f6771-706a-488c-bb12-4ab48c885db5', 'msg': 'Nope .. aucune raison'}
+[14:10:34][DEBUG] --> Envoi à ('127.0.0.1', 34834) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': 'Nope .. aucune raison'}
+[14:10:34][DEBUG] --> Envoi à ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': 'Nope .. aucune raison'}
+[14:11:11][INFO] Connexion fermée avec ('127.0.0.1', 34834)
+[14:11:12][INFO] Connexion fermée avec ('127.0.0.1', 34832)

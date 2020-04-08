@@ -33,6 +33,13 @@ class TestVecteur(unittest.TestCase):
         self.assertIsInstance(a.distance(), float)
         self.assertEqual(a.distance(), np.sqrt(2))
 
+    def test_entre(self):
+        a = Vecteur(0, 0)
+        b = Vecteur(10, 0)
+        c = Vecteur(5, 0)
+
+        self.assertTrue(c.est_entre(a, b))
+
 
 if __name__ == '__main__':
     unittest.main()

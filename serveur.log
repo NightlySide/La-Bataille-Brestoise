@@ -28,3 +28,277 @@
 [14:56:34][INFO] Buse réfléchi a rejoint la partie
 [14:56:34][DEBUG] --> Envoi : {'action': 'request_id', 'id': '53ce19bc-063f-419f-acca-5d813975107f'}
 [14:57:05][INFO] Connexion fermée avec ('127.0.0.1', 56878)
+[09:26:15][INFO] Lancement du serveur ...
+[09:26:15][INFO] Initialisation du serveur
+[09:26:15][INFO] Initialisation terminée
+[09:26:15][INFO] Serveur lancé
+[09:26:27][INFO] Connexion ouverte sur ('127.0.0.1', 59454)
+[09:26:27][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Araignée adorable'}
+[09:26:27][INFO] Araignée adorable a rejoint la partie
+[09:26:27][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'be83499d-1368-45d9-9de9-65841781483d'}
+[09:28:05][INFO] Connexion fermée avec ('127.0.0.1', 59454)
+[09:41:01][INFO] Fermeture du serveur
+[09:52:53][INFO] Lancement du serveur ...
+[09:52:53][INFO] Initialisation du serveur
+[09:52:53][INFO] Initialisation terminée
+[09:52:53][INFO] Serveur lancé
+[09:52:59][INFO] Connexion ouverte sur ('127.0.0.1', 60220)
+[09:52:59][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Gorille adorable'}
+[09:52:59][INFO] Gorille adorable a rejoint la partie
+[09:52:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': '420462b1-cca8-467b-b95f-bbaab2aa6e74'}
+[09:53:22][INFO] Connexion fermée avec ('127.0.0.1', 60220)
+[09:53:46][INFO] Connexion ouverte sur ('127.0.0.1', 60226)
+[09:53:46][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Python réfléchi'}
+[09:53:46][INFO] Python réfléchi a rejoint la partie
+[09:53:46][DEBUG] --> Envoi : {'action': 'request_id', 'id': '6c15a5d3-03c5-4085-9799-f14986cbfa23'}
+[09:55:23][INFO] Connexion fermée avec ('127.0.0.1', 60226)
+[09:56:59][INFO] Connexion ouverte sur ('127.0.0.1', 60268)
+[09:56:59][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Requin timide'}
+[09:56:59][INFO] Requin timide a rejoint la partie
+[09:56:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': '5ef297a1-fc59-42c6-9fbe-d84383c5d212'}
+[09:57:02][INFO] Connexion fermée avec ('127.0.0.1', 60268)
+[09:57:05][INFO] Fermeture du serveur
+[09:57:08][INFO] Lancement du serveur ...
+[09:57:08][INFO] Initialisation du serveur
+[09:57:09][INFO] Initialisation terminée
+[09:57:09][INFO] Serveur lancé
+[09:57:13][INFO] Connexion ouverte sur ('127.0.0.1', 60270)
+[09:57:13][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Boa énervé'}
+[09:57:13][INFO] Boa énervé a rejoint la partie
+[09:57:13][DEBUG] --> Envoi : {'action': 'request_id', 'id': '2b65ddee-2985-4345-a66f-975bb0533455'}
+[09:57:39][INFO] Connexion fermée avec ('127.0.0.1', 60270)
+[09:59:57][INFO] Connexion ouverte sur ('127.0.0.1', 60456)
+[09:59:57][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Bison droit'}
+[09:59:57][INFO] Bison droit a rejoint la partie
+[09:59:57][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'ec5b2ddc-67eb-469f-8fac-860f098b2ccd'}
+[10:00:01][INFO] Connexion fermée avec ('127.0.0.1', 60456)
+[10:00:17][INFO] Connexion ouverte sur ('127.0.0.1', 60460)
+[10:00:17][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Anaconda séduisant'}
+[10:00:17][INFO] Anaconda séduisant a rejoint la partie
+[10:00:17][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'bf5f70b1-2502-435d-bb33-ea4a1a889404'}
+[10:00:44][INFO] Connexion fermée avec ('127.0.0.1', 60460)
+[10:02:35][INFO] Connexion ouverte sur ('127.0.0.1', 60560)
+[10:02:35][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Belette énervé'}
+[10:02:35][INFO] Belette énervé a rejoint la partie
+[10:02:35][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'de9c5cc4-34d3-4eeb-9a1c-34f6eafc06a2'}
+[10:02:42][INFO] Connexion fermée avec ('127.0.0.1', 60560)
+[10:03:01][INFO] Connexion ouverte sur ('127.0.0.1', 60564)
+[10:03:01][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Girafe timide'}
+[10:03:01][INFO] Girafe timide a rejoint la partie
+[10:03:01][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'c26bd1a1-6789-4c14-ba5c-b2c1b862327d'}
+[10:03:03][INFO] Connexion fermée avec ('127.0.0.1', 60564)
+[10:03:07][INFO] Connexion ouverte sur ('127.0.0.1', 60566)
+[10:03:07][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Boa sombre'}
+[10:03:07][INFO] Boa sombre a rejoint la partie
+[10:03:07][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'bf098663-6752-4ed4-9ba4-32c8429f3e0b'}
+[10:03:26][INFO] Connexion fermée avec ('127.0.0.1', 60566)
+[10:04:24][INFO] Connexion ouverte sur ('127.0.0.1', 60586)
+[10:04:24][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Alpaga gentil'}
+[10:04:24][INFO] Alpaga gentil a rejoint la partie
+[10:04:24][DEBUG] --> Envoi : {'action': 'request_id', 'id': '2a29562f-4b85-4e3d-8663-677ffc719733'}
+[10:04:41][INFO] Connexion fermée avec ('127.0.0.1', 60586)
+[10:04:50][INFO] Connexion ouverte sur ('127.0.0.1', 60598)
+[10:04:50][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Alligator désillusionné'}
+[10:04:50][INFO] Alligator désillusionné a rejoint la partie
+[10:04:50][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b280c487-3381-4f1e-9074-301fbc0a012d'}
+[10:05:10][INFO] Connexion fermée avec ('127.0.0.1', 60598)
+[10:05:53][INFO] Connexion ouverte sur ('127.0.0.1', 60610)
+[10:05:53][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Chat inquiet'}
+[10:05:53][INFO] Chat inquiet a rejoint la partie
+[10:05:53][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'dd1ce319-5b4a-4633-81f2-fd286e04d110'}
+[10:06:01][INFO] Connexion fermée avec ('127.0.0.1', 60610)
+[10:06:17][INFO] Connexion ouverte sur ('127.0.0.1', 60612)
+[10:06:17][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Boa dynamique'}
+[10:06:17][INFO] Boa dynamique a rejoint la partie
+[10:06:17][DEBUG] --> Envoi : {'action': 'request_id', 'id': '5b86b1e0-753c-408c-b32f-89c62b99ba15'}
+[10:06:27][INFO] Connexion fermée avec ('127.0.0.1', 60612)
+[10:09:18][INFO] Connexion ouverte sur ('127.0.0.1', 60700)
+[10:09:18][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Araignée élevé'}
+[10:09:18][INFO] Araignée élevé a rejoint la partie
+[10:09:18][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'd51b89da-2a0a-4632-8156-dca221816647'}
+[10:09:25][INFO] Connexion fermée avec ('127.0.0.1', 60700)
+[10:10:41][INFO] Connexion ouverte sur ('127.0.0.1', 60748)
+[10:10:41][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Krill gai'}
+[10:10:41][INFO] Krill gai a rejoint la partie
+[10:10:41][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'f4cd70f0-da2d-4c8a-80e0-546fe006f1b1'}
+[10:10:59][INFO] Connexion fermée avec ('127.0.0.1', 60748)
+[10:11:56][INFO] Connexion ouverte sur ('127.0.0.1', 60754)
+[10:11:56][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Python snob'}
+[10:11:56][INFO] Python snob a rejoint la partie
+[10:11:56][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'f8856c9c-9bad-43c7-a502-cb305b8104ac'}
+[10:12:13][INFO] Connexion fermée avec ('127.0.0.1', 60754)
+[10:12:21][INFO] Connexion ouverte sur ('127.0.0.1', 60756)
+[10:12:21][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Boa gai'}
+[10:12:21][INFO] Boa gai a rejoint la partie
+[10:12:21][DEBUG] --> Envoi : {'action': 'request_id', 'id': '1900297e-7e77-43db-8032-47cf01708e18'}
+[10:12:51][INFO] Connexion fermée avec ('127.0.0.1', 60756)
+[10:14:04][INFO] Connexion ouverte sur ('127.0.0.1', 60764)
+[10:14:04][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Alpaga beau'}
+[10:14:04][INFO] Alpaga beau a rejoint la partie
+[10:14:04][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'c3c13012-e1da-4bea-b0b8-9c2bf9843c7e'}
+[10:14:19][INFO] Connexion fermée avec ('127.0.0.1', 60764)
+[10:14:42][INFO] Connexion ouverte sur ('127.0.0.1', 60772)
+[10:14:42][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Bison accueillant'}
+[10:14:42][INFO] Bison accueillant a rejoint la partie
+[10:14:42][DEBUG] --> Envoi : {'action': 'request_id', 'id': '22f4f4d7-471c-4e38-afe0-2aa2d1207b56'}
+[10:14:51][INFO] Connexion fermée avec ('127.0.0.1', 60772)
+[10:15:02][INFO] Connexion ouverte sur ('127.0.0.1', 60776)
+[10:15:02][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Loup attrayant'}
+[10:15:02][INFO] Loup attrayant a rejoint la partie
+[10:15:02][DEBUG] --> Envoi : {'action': 'request_id', 'id': '1dfef1d4-e8c2-4ffb-81fa-36dfdfb03052'}
+[10:15:10][INFO] Connexion fermée avec ('127.0.0.1', 60776)
+[10:15:24][INFO] Fermeture du serveur
+[10:15:27][INFO] Lancement du serveur ...
+[10:15:27][INFO] Initialisation du serveur
+[10:15:27][INFO] Initialisation terminée
+[10:15:27][INFO] Serveur lancé
+[10:15:33][INFO] Connexion ouverte sur ('127.0.0.1', 60778)
+[10:15:33][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Lion magnifique'}
+[10:15:33][INFO] Lion magnifique a rejoint la partie
+[10:15:33][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'd9d6b323-1567-4be7-8f43-c9994c663193'}
+[10:16:08][INFO] Connexion fermée avec ('127.0.0.1', 60778)
+[10:36:37][INFO] Connexion ouverte sur ('127.0.0.1', 32772)
+[10:36:37][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Hamster maigre'}
+[10:36:37][INFO] Hamster maigre a rejoint la partie
+[10:36:37][DEBUG] --> Envoi : {'action': 'request_id', 'id': '83b092d2-5314-46fd-86b2-6fb28cc30210'}
+[10:36:41][INFO] Connexion fermée avec ('127.0.0.1', 32772)
+[10:37:14][INFO] Connexion ouverte sur ('127.0.0.1', 32776)
+[10:37:14][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Lynx dynamique'}
+[10:37:14][INFO] Lynx dynamique a rejoint la partie
+[10:37:14][DEBUG] --> Envoi : {'action': 'request_id', 'id': '10f9d354-19d9-4da1-a37b-8480727a2c10'}
+[10:37:17][INFO] Connexion fermée avec ('127.0.0.1', 32776)
+[10:38:03][INFO] Connexion ouverte sur ('127.0.0.1', 32780)
+[10:38:03][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Poisson grand'}
+[10:38:03][INFO] Poisson grand a rejoint la partie
+[10:38:03][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'b2c135d3-4741-48ab-b93a-a905f51bae13'}
+[10:38:10][INFO] Connexion fermée avec ('127.0.0.1', 32780)
+[10:38:27][INFO] Connexion ouverte sur ('127.0.0.1', 32782)
+[10:38:27][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Tortue attrayant'}
+[10:38:27][INFO] Tortue attrayant a rejoint la partie
+[10:38:27][DEBUG] --> Envoi : {'action': 'request_id', 'id': '60d83efa-fe1c-45e8-824e-da924a6fab0f'}
+[10:38:31][INFO] Connexion fermée avec ('127.0.0.1', 32782)
+[10:44:51][INFO] Connexion ouverte sur ('127.0.0.1', 32868)
+[10:44:51][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Bison parfait'}
+[10:44:51][INFO] Bison parfait a rejoint la partie
+[10:44:51][DEBUG] --> Envoi : {'action': 'request_id', 'id': '25d8978e-239b-4207-b164-b4ec74b63de8'}
+[10:45:18][INFO] Connexion fermée avec ('127.0.0.1', 32868)
+[10:47:04][INFO] Connexion ouverte sur ('127.0.0.1', 32878)
+[10:47:04][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Anguille énervé'}
+[10:47:04][INFO] Anguille énervé a rejoint la partie
+[10:47:04][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'ddf2b1f0-afba-409c-a2f5-b2cbd08d336f'}
+[10:49:13][INFO] Connexion fermée avec ('127.0.0.1', 32878)
+[10:49:20][INFO] Connexion ouverte sur ('127.0.0.1', 32926)
+[10:49:20][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Gorille svelte'}
+[10:49:20][INFO] Gorille svelte a rejoint la partie
+[10:49:20][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'c4eb4ecf-e40f-457d-90c8-946e93b10022'}
+[10:50:48][INFO] Connexion fermée avec ('127.0.0.1', 32926)
+[10:51:25][INFO] Connexion ouverte sur ('127.0.0.1', 32948)
+[10:51:25][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Loup snob'}
+[10:51:25][INFO] Loup snob a rejoint la partie
+[10:51:25][DEBUG] --> Envoi : {'action': 'request_id', 'id': '2e5e4d36-fa88-4ae4-a475-5d612080a2bc'}
+[10:52:12][INFO] Connexion fermée avec ('127.0.0.1', 32948)
+[10:54:12][INFO] Connexion ouverte sur ('127.0.0.1', 32958)
+[10:54:12][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Biche hirsute'}
+[10:54:12][INFO] Biche hirsute a rejoint la partie
+[10:54:12][DEBUG] --> Envoi : {'action': 'request_id', 'id': '4081076c-8940-49c7-a23f-6a8af8f76c54'}
+[10:54:40][INFO] Connexion fermée avec ('127.0.0.1', 32958)
+[10:55:00][INFO] Connexion ouverte sur ('127.0.0.1', 32964)
+[10:55:00][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Biche beau'}
+[10:55:00][INFO] Biche beau a rejoint la partie
+[10:55:00][DEBUG] --> Envoi : {'action': 'request_id', 'id': '9edd3af2-347b-4298-8f5c-4d55bbff86af'}
+[10:55:10][INFO] Connexion fermée avec ('127.0.0.1', 32964)
+[10:55:36][INFO] Connexion ouverte sur ('127.0.0.1', 32968)
+[10:55:36][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Hamster réfléchi'}
+[10:55:36][INFO] Hamster réfléchi a rejoint la partie
+[10:55:36][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'f01d2a34-79c5-46a1-a40f-f52d86db0c53'}
+[10:56:02][INFO] Connexion fermée avec ('127.0.0.1', 32968)
+[10:57:25][INFO] Connexion ouverte sur ('127.0.0.1', 33008)
+[10:57:25][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Triton adorable'}
+[10:57:25][INFO] Triton adorable a rejoint la partie
+[10:57:25][DEBUG] --> Envoi : {'action': 'request_id', 'id': '886b175b-cfb1-4f30-a7c0-9a2d2114ef56'}
+[10:58:55][INFO] Connexion fermée avec ('127.0.0.1', 33008)
+[11:00:23][INFO] Fermeture du serveur
+[11:00:34][INFO] Lancement du serveur ...
+[11:00:34][INFO] Initialisation du serveur
+[11:00:34][INFO] Initialisation terminée
+[11:00:34][INFO] Serveur lancé
+[11:00:40][INFO] Connexion ouverte sur ('127.0.0.1', 33070)
+[11:00:40][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Araignée attrayant'}
+[11:00:40][INFO] Araignée attrayant a rejoint la partie
+[11:00:40][DEBUG] --> Envoi : {'action': 'request_id', 'id': '1b2be9f1-e7ca-437e-8bc5-17f4caaf1ed4'}
+[11:01:15][INFO] Connexion fermée avec ('127.0.0.1', 33070)
+[11:01:39][INFO] Connexion ouverte sur ('127.0.0.1', 33076)
+[11:01:39][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Hamster habillé'}
+[11:01:39][INFO] Hamster habillé a rejoint la partie
+[11:01:39][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'c4a386a1-734b-432d-9a3b-6da93f935c13'}
+[11:01:41][INFO] Connexion fermée avec ('127.0.0.1', 33076)
+[11:02:52][INFO] Connexion ouverte sur ('127.0.0.1', 33082)
+[11:02:52][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Guêpe sauvage'}
+[11:02:52][INFO] Guêpe sauvage a rejoint la partie
+[11:02:52][DEBUG] --> Envoi : {'action': 'request_id', 'id': '3d5f4ac7-b0ea-4acd-b4d5-fede1d1a92f9'}
+[11:03:06][INFO] Connexion fermée avec ('127.0.0.1', 33082)
+[11:04:00][INFO] Connexion ouverte sur ('127.0.0.1', 33088)
+[11:04:00][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Krill offensé'}
+[11:04:00][INFO] Krill offensé a rejoint la partie
+[11:04:00][DEBUG] --> Envoi : {'action': 'request_id', 'id': '104949c3-f56f-4a6a-b567-9f1b07318e78'}
+[11:04:15][INFO] Connexion fermée avec ('127.0.0.1', 33088)
+[11:05:08][INFO] Connexion ouverte sur ('127.0.0.1', 33128)
+[11:05:08][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Biche splendide'}
+[11:05:08][INFO] Biche splendide a rejoint la partie
+[11:05:08][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'afa12202-d209-42bd-b6d5-06846eb18ce5'}
+[11:05:44][INFO] Connexion fermée avec ('127.0.0.1', 33128)
+[11:05:48][INFO] Connexion ouverte sur ('127.0.0.1', 33132)
+[11:05:48][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Salamandre costaud'}
+[11:05:48][INFO] Salamandre costaud a rejoint la partie
+[11:05:48][DEBUG] --> Envoi : {'action': 'request_id', 'id': '9315f419-025c-4fe2-88f3-833ac031af86'}
+[11:06:27][INFO] Connexion fermée avec ('127.0.0.1', 33132)
+[11:09:45][INFO] Fermeture du serveur
+[11:09:50][INFO] Lancement du serveur ...
+[11:09:50][INFO] Initialisation du serveur
+[11:09:50][INFO] Initialisation terminée
+[11:09:50][INFO] Serveur lancé
+[11:09:57][INFO] Connexion ouverte sur ('127.0.0.1', 33198)
+[11:09:57][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Anaconda alourdi'}
+[11:09:57][INFO] Anaconda alourdi a rejoint la partie
+[11:09:57][DEBUG] --> Envoi : {'action': 'request_id', 'id': '0eb5cf94-2c62-4382-a5b6-a53eec911a8d'}
+[11:10:32][INFO] Connexion fermée avec ('127.0.0.1', 33198)
+[11:18:01][INFO] Fermeture du serveur
+[11:18:15][INFO] Lancement du serveur ...
+[11:18:15][INFO] Initialisation du serveur
+[11:18:15][INFO] Initialisation terminée
+[11:18:15][INFO] Serveur lancé
+[11:18:17][INFO] Fermeture du serveur
+[11:19:24][INFO] Lancement du serveur ...
+[11:19:24][INFO] Initialisation du serveur
+[11:19:24][INFO] Initialisation terminée
+[11:19:24][INFO] Serveur lancé
+[11:19:42][INFO] Fermeture du serveur
+[11:19:43][INFO] Lancement du serveur ...
+[11:19:44][INFO] Initialisation du serveur
+[11:19:44][INFO] Initialisation terminée
+[11:19:44][INFO] Serveur lancé
+[11:19:52][INFO] Fermeture du serveur
+[11:21:06][INFO] Lancement du serveur ...
+[11:21:06][INFO] Initialisation du serveur
+[11:21:07][INFO] Initialisation terminée
+[11:21:07][INFO] Serveur lancé
+[11:21:18][INFO] Connexion ouverte sur ('127.0.0.1', 33368)
+[11:21:18][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Buse droit'}
+[11:21:18][INFO] Buse droit a rejoint la partie
+[11:21:18][DEBUG] --> Envoi : {'action': 'request_id', 'id': '0accb339-ee4a-4587-a983-caf31274888d'}
+[11:21:28][INFO] Connexion fermée avec ('127.0.0.1', 33368)
+[11:21:51][INFO] Connexion ouverte sur ('192.168.0.26', 57210)
+[11:21:51][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Alpaga droit'}
+[11:21:51][INFO] Alpaga droit a rejoint la partie
+[11:21:51][DEBUG] --> Envoi : {'action': 'request_id', 'id': 'dba3363c-c303-4f47-83ed-cf141e066e08'}
+[11:21:57][INFO] Connexion fermée avec ('192.168.0.26', 57210)
+[11:39:40][INFO] Connexion ouverte sur ('127.0.0.1', 33564)
+[11:39:40][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Aigle dynamique'}
+[11:39:40][INFO] Aigle dynamique a rejoint la partie
+[11:39:40][DEBUG] --> Envoi : {'action': 'request_id', 'id': '1f943afe-ac32-4ad8-af70-e23a7cd24570'}
+[11:39:40][INFO] Connexion fermée avec ('127.0.0.1', 33564)
+[11:44:59][INFO] Connexion ouverte sur ('127.0.0.1', 33666)
+[11:44:59][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Biche énervé'}
+[11:44:59][INFO] Biche énervé a rejoint la partie
+[11:44:59][DEBUG] --> Envoi : {'action': 'request_id', 'id': '035ee43e-b7b6-4674-b739-6df0cda32b8e'}
+[11:45:15][INFO] Connexion fermée avec ('127.0.0.1', 33666)

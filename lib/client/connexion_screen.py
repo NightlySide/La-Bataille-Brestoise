@@ -12,6 +12,7 @@ from threading import Thread
 
 import os, sys
 
+from lib.common.json_loader import JsonLoader
 from lib.common.logger import Logger
 
 
@@ -45,13 +46,13 @@ class EcranConnexion(QMainWindow):
         # On cherche les éléments
         self.logo = self.findChild(QLabel, 'logo')
         self.btn_connect = self.findChild(QPushButton, 'btn_connect')
-        self.btn_local = self.findChild(QPushButton, 'btn_local')
+        self.btn_add_server = self.findChild(QPushButton, 'btn_add_server')
         self.server_list = self.findChild(QListWidget, 'server_list')
         self.input_username = self.findChild(QLineEdit, 'input_username')
 
         # On connecte les boutons aux méthodes
         self.btn_connect.clicked.connect(self.connect_from_list)
-        self.btn_local.clicked.connect(self.connect_local)
+        self.btn_add_server.clicked.connect(self.add_server)
         self.server_list.itemDoubleClicked.connect(self.connect_from_list)
 
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")
@@ -68,9 +69,18 @@ class EcranConnexion(QMainWindow):
         self.mediaPlayer.play()
 
         # On paramètre la liste des serveurs
-        for k in range(len(GCR.serveurs)):
-            nom, ip, port = GCR.serveurs[k]
-            self.server_list.addItem(QListWidgetItem(f"{nom} | {ip} | {port}"))
+        liste_serveurs = JsonLoader("known_servers.json")["server_list"]
+        if len(liste_serveurs) == 0:
+            self.add_server()
+        else:
+            self.refresh_server_list()
+
+    def refresh_server_list(self):
+        self.server_list.clear()
+        # On paramètre la liste des serveurs
+        liste_serveurs = JsonLoader("known_servers.json")["server_list"]
+        for server in liste_serveurs:
+            self.server_list.addItem(QListWidgetItem(f"{server['name']} | {server['ip']} | {server['port']}"))
         self.server_list.setCurrentRow(0)
 
     def connect_from_list(self):
@@ -82,14 +92,21 @@ class EcranConnexion(QMainWindow):
         # On se connecte
         self.connect(nom, ip, port)
 
-    def connect_local(self):
+    def add_server(self):
         """
         Appelée lorsque l'utilisateur clique sur le bouton 'Connexion locale'
         Ouvre la boite de dialogue correspondante
         """
-        nom, ip, port = LocalServerDialog.get_local_server_addr()
-        # On se connecte
-        self.connect(nom, ip, port)
+        reponse = LocalServerDialog.get_local_server_addr()
+        # On a cliqué sur cancel
+        if reponse is None:
+            return
+        else:
+            nom, ip, port = reponse
+            liste_serveurs = JsonLoader("known_servers.json")
+            liste_serveurs["server_list"].append({"name": nom, "ip": ip, "port": int(port)})
+            liste_serveurs.write()
+            self.refresh_server_list()
 
     def keyPressEvent(self, event):
         """
@@ -185,5 +202,7 @@ class LocalServerDialog(QDialog):
             tuple: le nom, l'ip et le port du serveur entré manuellement
         """
         dialog = LocalServerDialog(parent)
-        dialog.exec_()
-        return dialog.nom.text(), dialog.ip.text(), dialog.port.text()
+        if dialog.exec_():
+            return dialog.nom.text(), dialog.ip.text(), dialog.port.text()
+        else:
+            return None

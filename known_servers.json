@@ -1,0 +1,14 @@
+{
+    "server_list": [
+        {
+            "name": "En local",
+            "ip": "127.0.0.1",
+            "port": 25566
+        },
+        {
+            "name": "Distant",
+            "ip": "ieta-docs.ddns.net",
+            "port": 25566
+        }
+    ]
+}

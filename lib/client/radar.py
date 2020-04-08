@@ -7,10 +7,11 @@ from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtWidgets import QWidget
 
 from lib.client.global_client_registry import GCR
+from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
 
 
-class Radar(QWidget):
+class Radar:
     """
     Radar du joueur, permet de détecter les entités aux alentours
     et de les afficher de façon compréhensible à l'écran.
@@ -30,8 +31,7 @@ class Radar(QWidget):
         temps_affichage (float): temps en secondes d'affichage d'un point
             au radar.
     """
-    def __init__(self, radius, speed=5, parent=None, refresh_rate=1/30):
-        super().__init__(parent)
+    def __init__(self, radius, speed=5, refresh_rate=1/30):
         self.radius = radius
         self.angle = 0
         self.speed = speed
@@ -44,8 +44,6 @@ class Radar(QWidget):
         self.to_remove = []
         self.temps_affichage = 300 / self.speed
 
-        self.setFixedSize(400, 300)
-
     def update(self):
         """
         Fonction appelée pour rafraîchir le radar. C'est cette fonction
@@ -55,7 +53,6 @@ class Radar(QWidget):
         """
         if time.perf_counter() - self.time_counter > self.refresh_rate:
             self.time_counter = time.perf_counter()
-            super().update()
             self.enemies = GCR.entities
             # On met à jour l'angle en fonction de la vitesse
             self.angle += self.refresh_rate * self.speed
@@ -72,7 +69,7 @@ class Radar(QWidget):
             for element in self.to_remove:
                 self.points_to_draw.remove(element)
 
-    def paintEvent(self, event):
+    def render(self, qp, parent):
         """
         Fonction dérivée de Qt, qui est appelée à chaque fois qu'on rafraîchit l'écran.
         On va venir alors peindre sur le radar.
@@ -80,10 +77,9 @@ class Radar(QWidget):
         Args:
             event (QPaintEvent): évènement du type peinture de l'écran
         """
-        qp = QPainter(self)
         # On récupère le centre du radar
-        y0 = self.height() // 2
-        x0 = self.width() // 2
+        y0 = parent.height() // 2
+        x0 = parent.width() // 2
         # On calcule l'extrémité du faisceau
         x = np.cos(self.angle * np.pi / 180) * self.radius + x0
         y = np.sin(self.angle * np.pi / 180) * self.radius + y0
@@ -120,8 +116,8 @@ class Radar(QWidget):
             # Sinon on le dessine
             else:
                 # On vérifie si le point est sur le faisceau
-                lim_detect = GCR.joueur.position * (1 / 8) + direction * GCR.joueur.detection_radius
-                if Vecteur.est_entre(GCR.joueur.position * (1 / 8), lim_detect, e.position * (1 / 8), epsilon=10):
+                lim_detect = direction * GCR.joueur.detection_radius * 8
+                if e.position.est_entre(GCR.joueur.position, GCR.joueur.position+lim_detect, epsilon=100):
                     # On l'ajoute aux points à dessiner
                     self.points_to_draw.append([e, GCR.joueur.position, self.temps_affichage])
 
@@ -142,3 +138,14 @@ class Radar(QWidget):
             y = (ent.position.y - player_pos.y) * 8 / GCR.joueur.detection_radius + y0
             qp.drawPoint(x, y)
             qp.setPen(original_pen)
+
+
+class RadarWidget(QWidget):
+
+    def __init__(self, radar, parent=None):
+        super().__init__(parent)
+        self.radar = radar
+        self.setFixedSize(400, 300)
+
+    def paintEvent(self, pevent):
+        self.radar.render(QPainter(self), self)

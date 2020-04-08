@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import pyqtSignal, Qt, QTimer
 from PyQt5 import uic
@@ -5,7 +6,7 @@ from PyQt5 import uic
 from lib.client.global_client_registry import GCR
 from lib.client.chatbox import ChatBox
 from lib.client.canvas_jeu import CanvasJeu
-from lib.client.radar import Radar
+from lib.client.radar import Radar, RadarWidget
 from lib.common.joueur import Joueur
 from lib.common.logger import Logger
 import functools
@@ -45,7 +46,7 @@ class EcranJeu(QMainWindow):
 
         # On cherche les éléments de l'écran
         self._game_scr_widget = self.findChild(QWidget, 'game_canvas')
-        self._minimap = self.findChild(QLabel, 'minimap')
+        self._radar_holder = self.findChild(QLabel, 'minimap')
         self._chatbox_widget = self.findChild(QWidget, 'chatbox_anchor')
         self.input_chatbox = self.findChild(QLineEdit, 'input_chat')
         self.btn_send_chatbox = self.findChild(QPushButton, 'btn_sendchat')
@@ -56,11 +57,13 @@ class EcranJeu(QMainWindow):
 
         # Paramétrage de la minimap
         # minimap_background = QPixmap("assets/images/rade_brest.png")
-        self.radar = Radar(125, 90, self._minimap)
+        self.radar = Radar(125, 90)
+        self.radar_widget = RadarWidget(self.radar, self._radar_holder)
 
         # Création du jeu
         self.game_canvas = CanvasJeu(self._game_scr_widget)
         self.game_canvas.setMouseTracking(True)
+        self.game_canvas.setFocus()
 
         # Création de la chatbox
         self.chatbox = ChatBox(self._chatbox_widget)

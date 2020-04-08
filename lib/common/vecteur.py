@@ -1,5 +1,8 @@
 import numpy as np
 
+from lib.client.global_client_registry import GCR
+from lib.common.logger import Logger
+
 
 class Vecteur:
     """
@@ -99,33 +102,61 @@ class Vecteur:
         """
         return v1.x * v2.y - v1.y * v2.x
 
-    @staticmethod
-    def est_entre(a, b, c, epsilon=1):
+    def est_entre(self, a, b, epsilon=1):
         """
-        Va vérifier si un point c désigné par un Vecteur se situe
+        Va vérifier si le point désigné par un Vecteur se situe
         entre les points a et b, avec une précision de epsilon.
 
         Args:
             a (Vecteur): point de départ
-            c (Vecteur): point à tester
             b (Vecteur): point d'arrivée
             epsilon (float): précision
         """
         # On verifie si le point est à la bonne distance
-        ab = b - a
-        ac = c - a
+        """ab = b - a
+        ac = self - a
         if ab.distance() < ac.distance():
+            print("Pas bonne distance")
             return False
         # On calcule le produit vectoriel pour savoir si les points
         # sont alignés
-        produit_vect = (c.y - a.y) * (b.x - a.x) - (c.x - a.x) * (b.y - a.y)
+        produit_vect = (self.y - a.y) * (b.x - a.x) - (self.x - a.x) * (b.y - a.y)
         if abs(produit_vect) > epsilon:
+            print("Pas sur la droite")
             return False
         # On calcule le dot product pour savoir si les vecteurs AB et AC sont dans la
         # même direction
-        dot_prod = (c.x - a.x) * (b.x - a.x) + (c.y - a.y)*(b.y - a.y)
+        dot_prod = (self.x - a.x) * (b.x - a.x) + (self.y - a.y)*(b.y - a.y)
         if dot_prod < 0:
+            print("Pas dans le bon sens")
             return False
 
         # Dans ce cas C est bien entre A et B
+        return True"""
+
+        # On calcule le produit vectoriel pour savoir si les points sont sur la meme droite
+        prod_vectoriel = (self.y - a.y) * (b.x - a.x) - (self.x - a.x) * (b.y - a.y)
+        # on le compare à un epsilon pour les valeurs flottantes
+        if abs(prod_vectoriel) > epsilon:
+            return False
+
+        # on cherche à savoir si les points sont dans le meme sens
+        produit_scalaire = (self.x - a.x) * (b.x - a.x) + (self.y - a.y) * (b.y - a.y)
+        if produit_scalaire < 0:
+            return False
+
+        # On vérifie enfin si le point respecte la longueur
+        longeur_carre = (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y)
+        if produit_scalaire > longeur_carre:
+            return False
+
+        # le point est bien sur le segment [a,b]
         return True
+
+
+if __name__ == "__main__":
+    a = Vecteur(0, 0)
+    b = Vecteur(10, 0)
+    c = Vecteur(5, 0)
+
+    print(c.est_entre(a, b))

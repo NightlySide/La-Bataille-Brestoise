@@ -14,7 +14,7 @@ class Arme():
         self.portee = 0
         self.image = img_path
         self.refresh_rate = 1/50
-
+#TODO : faut'il la rendre @privateproperty ?
     def degats(self, entiteEnnemie, degat):
         """
         est appelé par la fonction "dammage", permet d'infliger des dégats pendant un incrément de temps.
@@ -32,6 +32,7 @@ class Arme():
         Args:
             entiteEnnemie: la cible qui va recevoir les dégats, objet entité
             refresh_rate: segmentation des dégats continus en petits dégats instantannés sur une petite portion de temps
+        les dégats sont consultables sur la tableau d'équillibrage.
         """
         self._timer = QTimer()
         if self.DPS == 0 :
@@ -51,6 +52,7 @@ class Arme():
         """
         permet à un joueur d'équiper une arme. Elle sert à attendre un délai de mise en oeuvre d'une arme avant de pouvoir tirer.
         plus l'arme est importante et plus son temps d'équipement est grand. une arme de conception plus récente aura un temps d'équipement plus court.
+        Les valeurs précises sont trouvables dans le tableau d'équillibrage.
 
         Args:
             self: objet arme

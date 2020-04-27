@@ -542,3 +542,23 @@
 [14:10:34][DEBUG] --> Envoi Ã  ('127.0.0.1', 34832) : {'action': 'chat', 'user': 'Aigle gentil', 'msg': 'Nope .. aucune raison'}
 [14:11:11][INFO] Connexion fermÃ©e avec ('127.0.0.1', 34834)
 [14:11:12][INFO] Connexion fermÃ©e avec ('127.0.0.1', 34832)
+[08:57:48][INFO] Lancement du serveur sur :25566 ...
+[08:57:48][INFO] Initialisation du serveur
+[08:57:48][INFO] Initialisation terminée
+[08:57:48][INFO] Serveur lancé
+[08:58:08][INFO] Connexion ouverte sur ('127.0.0.1', 57510)
+[08:58:08][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'Alligator carré'}
+[08:58:08][INFO] Alligator carré a rejoint la partie
+[08:58:08][DEBUG] --> Envoi à ('127.0.0.1', 57510) : {'action': 'request_id', 'id': '342d2f50-2318-4b32-afb7-fd266ed807f3'}
+[08:58:35][INFO] Connexion fermée avec ('127.0.0.1', 57510)
+[09:01:25][INFO] Lancement du serveur sur :25566 ...
+[09:01:25][INFO] Initialisation du serveur
+[09:01:25][INFO] Initialisation terminée
+[09:01:25][INFO] Serveur lancé
+[09:02:44][INFO] Connexion ouverte sur ('127.0.0.1', 57547)
+[09:02:44][DEBUG] <-- Données reçues : {'action': 'request_id', 'username': 'sytrics'}
+[09:02:44][INFO] sytrics a rejoint la partie
+[09:02:44][DEBUG] --> Envoi à ('127.0.0.1', 57547) : {'action': 'request_id', 'id': '722d962d-17d4-4a9e-898d-a30f8fa0227c'}
+[09:02:49][DEBUG] <-- Données reçues : {'action': 'chat', 'user': '722d962d-17d4-4a9e-898d-a30f8fa0227c', 'msg': 'test'}
+[09:02:49][DEBUG] --> Envoi à ('127.0.0.1', 57547) : {'action': 'chat', 'user': 'sytrics', 'msg': 'test'}
+[09:09:29][INFO] Connexion fermée avec ('127.0.0.1', 57547)

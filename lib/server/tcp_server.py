@@ -101,6 +101,10 @@ class TCPServer(asyncio.Protocol):
                 for client in GSR.clients:
                     if client.peername != self.peername:
                         client.transport.write(pickle.dumps({"action": "chat", "user": "Server", "msg": msg}))
+            # si c'est une requete d'entités
+            elif message["action"] == "request_entities":
+                reponse["data"] = GSR.entities
+                GSR.log.log(Logger.DEBUG, "--> Envoi des entités à {}".format(self.peername))
             # Si c'est un ping
             elif message["action"] == "ping":
                 reponse["msg"] = "pong"

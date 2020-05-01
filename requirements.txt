@@ -1,0 +1,6 @@
+pyqt5
+sockets
+asyncio
+pillow
+matplotlib
+numpy

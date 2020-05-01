@@ -32,13 +32,16 @@ class GameLoop:
             GSR.entities.append(e)
 
     def update(self):
+        GSR.entities_to_update = []
         for e in GSR.entities:
             if random.random() < 0.005:
-                e.direction = Vecteur(random.randrange(-1, 2), random.randrange(-1, 2))
+                vecteurs = [Vecteur(-1, 0), Vecteur(1, 0), Vecteur(0, -1), Vecteur(0, 1), Vecteur(0, 0)]
+                e.direction = random.choice(vecteurs)
+                GSR.entities_to_update.append(e)
             e.update(self.update_delta)
 
         if GSR.server is not None:
-            GSR.server.send_all("update_entities", {"data": GSR.entities})
+            GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})
 
     def stop(self):
         self._timer.cancel()

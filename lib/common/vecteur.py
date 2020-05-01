@@ -102,6 +102,11 @@ class Vecteur:
         """
         return v1.x * v2.y - v1.y * v2.x
 
+    def equal(self, autre):
+        if self.x == autre.x and self.y == autre.y:
+            return True
+        return False
+
     def est_entre(self, a, b, epsilon=1):
         """
         Va vérifier si le point désigné par un Vecteur se situe

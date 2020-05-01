@@ -2,6 +2,7 @@ from lib.client.global_client_registry import GCR
 import pickle
 import asyncio
 
+from lib.common.entite import Entite
 from lib.common.logger import Logger
 
 
@@ -109,6 +110,16 @@ class TCPClientProtocol(asyncio.Protocol):
                 GCR.log.log(Logger.DEBUG, "<-- Reçu : {!r}".format(message))
                 GCR.chatbox.add_line(f"({message['user']}): {message['msg']}")
             elif message["action"] == "update_entities":
+                entities_to_update = message["data"]
+                for e_update in entities_to_update:
+                    # Si l'entité qu'on essaie de mettre à jour est déjà enregistrée par le client
+                    e = Entite.findById(e_update.id, GCR.entities)
+                    if e is not None:
+                        # On la retire
+                        GCR.entities.remove(e)
+                    # Puis on ajoute l'entité mise à jour
+                    GCR.entities.append(e_update)
+            elif message["action"] == "request_entities":
                 GCR.entities = message["data"]
             else:
                 # Sinon on ne connait pas (encore) la demande

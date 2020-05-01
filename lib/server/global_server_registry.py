@@ -23,6 +23,7 @@ class GSR:
     carte = None
     entities = []
     server = None
+    entities_to_update = []
 
     @classmethod
     def getEventLoop(cls):

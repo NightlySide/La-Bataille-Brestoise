@@ -64,8 +64,10 @@ class CanvasJeu(QLabel):
         elif e.key() == Qt.Key_Down:
             GCR.log.log(Logger.DEBUG, "Flèche bas")
             dir.y += 1
-        # On indique à l'entité joueur quelle est la direction à prendre
-        GCR.joueur.direction = dir
+        # Si la direction a changé
+        if not dir.equal(Vecteur(0.0, 0.0)):
+            # On indique à l'entité joueur quelle est la direction à prendre
+            GCR.joueur.direction = dir
 
     def paintEvent(self, e):
         """
@@ -80,12 +82,14 @@ class CanvasJeu(QLabel):
         # On dessine la carte
         self.carte.render(qp, (self.width(), self.height()))
         # On vient dessiner le joueur par dessus la carte
-        qp.drawImage(QRect(self.width() // 2 - 25, self.height() // 2 - 25, 50, 50), QImage(GCR.joueur.image))
+        #qp.drawImage(QRect(self.width() // 2 - 25, self.height() // 2 - 25, 50, 50), QImage(GCR.joueur.image))
+        GCR.joueur.render(qp, self.width() // 2 - 25, self.height() // 2 - 25, 50, 50)
         for entity in GCR.entities:
             if self.carte.can_player_see(entity, (self.width(), self.height())):
                 dx = (entity.position.x - GCR.joueur.position.x) * self.carte.cell_size[0] + (self.width() // 2 - 16//2)
                 dy = (entity.position.y - GCR.joueur.position.y) * self.carte.cell_size[1] + (self.height() // 2 - 16//2)
-                qp.drawImage(QRect(dx, dy, 16, 16), QImage(entity.image))
+                #qp.drawImage(QRect(dx, dy, 16, 16), QImage(entity.image))
+                entity.render(qp, dx, dy, 16, 16)
 
     def mouseMoveEvent(self, e):
         """

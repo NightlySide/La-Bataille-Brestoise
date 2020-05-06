@@ -79,6 +79,9 @@ class Entite:
             qp.drawPixmap(QPoint(x, y), img_rot_scal)
             # qp.drawImage(QRect(self.position.x, self.position.y, 25, 25), QImage(self.image))
 
+    def __str__(self):
+        return f"Entité ({self.id}) : position ({self.position.x}, {self.position.y}), vie : {self.vie}"
+
     def update(self, delta):
         self.position += self.direction * self.vitesse
         # On retient la dernière direction prise par le bateau

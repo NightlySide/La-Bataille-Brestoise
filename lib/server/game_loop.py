@@ -37,10 +37,7 @@ class GameLoop:
     def update(self):
         GSR.entities_to_update = []
         for e in GSR.entities:
-            if random.random() < 0.005:
-                vecteurs = [Vecteur(-1, 0), Vecteur(1, 0), Vecteur(0, -1), Vecteur(0, 1), Vecteur(0, 0)]
-                e.direction = random.choice(vecteurs)
-                GSR.entities_to_update.append(e)
+            e.update(self.update_delta)
             e.update(self.update_delta)
 
         if GSR.server is not None:

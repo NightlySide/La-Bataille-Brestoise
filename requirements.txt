@@ -4,3 +4,4 @@ asyncio
 pillow
 matplotlib
 numpy
+colorama

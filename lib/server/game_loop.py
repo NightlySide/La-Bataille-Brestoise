@@ -1,9 +1,8 @@
 import random
 import threading
-import time
 
 from lib.common.carte import Carte
-from lib.common.entite import Entite
+from lib.common.ia import IA
 from lib.common.image_vers_tableau import img_vers_array
 from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
@@ -12,7 +11,7 @@ from lib.server.global_server_registry import GSR
 
 class GameLoop:
 
-    def __init__(self, update_delta=1/60):
+    def __init__(self, update_delta=1/30):
         GSR.log.log(Logger.INFORMATION, "Initialisation du serveur")
         self.update_delta = update_delta
         self.setup()
@@ -26,9 +25,13 @@ class GameLoop:
         GSR.carte = Carte(rade_data.shape, (8, 8), rade_data)
 
         for k in range(100):
-            e = Entite()
+            e = IA()
             e.set_image("assets/images/plaisance.png")
-            e.position = Vecteur(random.randint(0, GSR.carte.shape[0]), random.randint(0, GSR.carte.shape[1]))
+            x = y = -1
+            while GSR.carte.is_colliding(x, y):
+                x = random.randint(0, GSR.carte.shape[0])
+                y = random.randint(0, GSR.carte.shape[1])
+            e.position = Vecteur(x, y)
             GSR.entities.append(e)
 
     def update(self):

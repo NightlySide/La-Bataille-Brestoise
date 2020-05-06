@@ -1,5 +1,5 @@
 import datetime
-
+from colorama import Fore
 
 def get_time():
     """
@@ -51,15 +51,15 @@ class Logger:
             level (int): niveau de priorité du message
         """
         if level == self.CRITIQUE:
-            return "[CRIT]"
+            return Fore.RESET + "[" + Fore.RED + "CRIT" + Fore.RESET + "]"
         elif level == self.ERREUR:
-            return "[ERR]"
+            return Fore.RESET + "[" + Fore.RED + "ERR" + Fore.RESET + "]"
         elif level == self.AVERTISSEMENT:
-            return "[AVERT]"
+            return Fore.RESET + "[" + Fore.YELLOW + "AVERT" + Fore.RESET + "]"
         elif level == self.INFORMATION:
-            return "[INFO]"
+            return Fore.RESET + "[" + Fore.BLUE + "INFO" + Fore.RESET + "]"
         elif level == self.DEBUG:
-            return "[DEBUG]"
+            return Fore.RESET + "[" + Fore.MAGENTA + "DEBUG" + Fore.RESET + "]"
         else:
             return ""
 
@@ -77,7 +77,7 @@ class Logger:
         # Si le niveau du message dépasse le seuil on l'affiche
         if niveau >= self.seuil:
             # On récupère l'heure du message
-            date = "[{}:{}:{}]".format(*get_time())
+            date = Fore.RESET + "[" + Fore.GREEN + "{}:{}:{}".format(*get_time()) + Fore.RESET + "]"
             # On affiche le log
             print(f"{date}{self.level_name(niveau)} {message}")
 

@@ -6,6 +6,7 @@ from lib.common.logger import Logger
 from threading import Thread, Event
 import asyncio
 import socket
+import colorama
 
 
 def motd(port, max_players):
@@ -26,6 +27,7 @@ def motd(port, max_players):
 
 
 if __name__ == "__main__":
+    colorama.init()
     config = JsonLoader("server_config.json")
     PORT = config["port"]
     IP = config["ip"]

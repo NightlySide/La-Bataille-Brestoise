@@ -35,6 +35,7 @@ class CanvasJeu(QLabel):
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
         self.carte = None
+        self.last_key = None
 
     def set_map(self, carte):
         self.carte = carte
@@ -47,25 +48,34 @@ class CanvasJeu(QLabel):
         Args:
             e (QKeyEvent): évènement de type touche de clavier
         """
-        # On crée un vecteur qui donnera la direction voulue par le joueur
-        dir = Vecteur()
+
         # Si on appuie sur Echap on veut fermer la fenètre de jeu
         if e.key() == Qt.Key_Escape:
             self.parent().parent().parent().close()
-        elif e.key() == Qt.Key_Left:
-            GCR.log.log(Logger.DEBUG, "Flèche gauche")
-            dir.x -= 1
-        elif e.key() == Qt.Key_Right:
-            GCR.log.log(Logger.DEBUG, "Flèche droite")
-            dir.x += 1
-        elif e.key() == Qt.Key_Up:
-            GCR.log.log(Logger.DEBUG, "Flèche haut")
-            dir.y -= 1
-        elif e.key() == Qt.Key_Down:
-            GCR.log.log(Logger.DEBUG, "Flèche bas")
-            dir.y += 1
-        # Si la direction a changé
-        if not dir.equal(Vecteur(0.0, 0.0)):
+        elif e.key() in [Qt.Key_Up, Qt.Key_Down, Qt.Key_Left, Qt.Key_Right]:
+            # On crée un vecteur qui donnera la direction voulue par le joueur
+            dir = Vecteur()
+            if e.key() == Qt.Key_Left:
+                GCR.log.log(Logger.DEBUG, "Flèche gauche")
+                dir.x -= 1
+            elif e.key() == Qt.Key_Right:
+                GCR.log.log(Logger.DEBUG, "Flèche droite")
+                dir.x += 1
+            elif e.key() == Qt.Key_Up:
+                GCR.log.log(Logger.DEBUG, "Flèche haut")
+                dir.y -= 1
+            elif e.key() == Qt.Key_Down:
+                GCR.log.log(Logger.DEBUG, "Flèche bas")
+                dir.y += 1
+
+            # Si c'est une touche de déplacement on regarde si c'est pour arrêter le bateau
+            if e.key() == self.last_key:
+                self.last_key = None
+                dir = Vecteur()
+            # Sinon on enregistre juste la touche
+            else:
+                self.last_key = e.key()
+
             # On indique à l'entité joueur quelle est la direction à prendre
             GCR.joueur.direction = dir
 

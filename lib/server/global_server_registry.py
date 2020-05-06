@@ -1,5 +1,4 @@
 from lib.common.logger import Logger
-import lib.server.game_loop
 
 
 class GSR:
@@ -24,6 +23,7 @@ class GSR:
     entities = []
     server = None
     entities_to_update = []
+    running = True
 
     @classmethod
     def getEventLoop(cls):

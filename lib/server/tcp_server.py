@@ -23,14 +23,15 @@ class TCPServer(asyncio.Protocol):
         peername (list): couple IPv4, port
         client (Client): référence au client connecté
     """
-    def __init__(self):
+    def __init__(self, max_players):
         self.transport = None
         self.peername = None
         self.client = None
+        self.max_players = max_players
         GSR.server = self
 
     @classmethod
-    async def create(cls, host, port):
+    async def create(cls, host, port, max_players):
         """
         Fonction usine qui instancie le serveur et utilise
         cette classe comme protocole.
@@ -41,7 +42,7 @@ class TCPServer(asyncio.Protocol):
         """
         # On crée le serveur en asynchrone
         server = await GSR.getEventLoop().create_server(
-            lambda: TCPServer(),
+            lambda: TCPServer(max_players),
             host, port)
 
         # On crée le thread de la boucle du jeu et on le démarre

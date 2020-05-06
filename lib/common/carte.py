@@ -60,6 +60,11 @@ class Carte(np.ndarray):
             return self[x, y]
         return None
 
+    def is_colliding(self, x, y):
+        # Si la case n'est pas définie ou bien est un mur
+        # C'est qu'on est en collision
+        return self.get_tile(x, y) in [None, 0]
+
     def render(self, qp, window_size):
         """
 
@@ -84,7 +89,7 @@ class Carte(np.ndarray):
                     qp.setPen(Qt.black)
                     qp.setBrush(Qt.black)
                 # Si la tuile est un mur
-                elif tile == 1:
+                elif tile == 0:
                     qp.setPen(Qt.black)
                     qp.setBrush(Qt.darkBlue)
                 # Si la tuile est vide

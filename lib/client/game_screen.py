@@ -7,6 +7,8 @@ from lib.client.global_client_registry import GCR
 from lib.client.chatbox import ChatBox
 from lib.client.canvas_jeu import CanvasJeu
 from lib.client.radar import Radar, RadarWidget
+from lib.common.carte import Carte
+from lib.common.image_vers_tableau import img_vers_array
 from lib.common.joueur import Joueur
 from lib.common.logger import Logger
 import functools
@@ -73,6 +75,12 @@ class EcranJeu(QMainWindow):
 
         # Création du joueur
         GCR.joueur = Joueur(Vecteur(700, 300))
+
+        # Création de la map
+        rade_data = img_vers_array("assets/carte_rade_brest.jpg")
+        carte = Carte(rade_data.shape, (8, 8), rade_data)
+        self.game_canvas.set_map(carte)
+        GCR.joueur.set_map(carte)
 
         # On donne un titre à la fenêtre
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")

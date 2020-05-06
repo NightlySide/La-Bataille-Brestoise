@@ -34,10 +34,10 @@ class CanvasJeu(QLabel):
         # Variables nécessaires pour un rafraîchissement constant de l'image
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
+        self.carte = None
 
-        # On vient charger la carte
-        rade_data = img_vers_array("assets/carte_rade_brest.jpg")
-        self.carte = Carte(rade_data.shape, (8, 8), rade_data)
+    def set_map(self, carte):
+        self.carte = carte
 
     def keyPressEvent(self, e):
         """

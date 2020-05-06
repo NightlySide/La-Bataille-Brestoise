@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QRect, QPoint
 from PyQt5.QtGui import QImage, QPixmap, QTransform
 from uuid import uuid4
-
+from random import randint
 from lib.common.armes.arme import Arme
 from lib.common.batiments.batiment import Batiment
 from lib.common.vecteur import Vecteur
@@ -22,7 +22,8 @@ class Entite:
         current_target(entite) : entité actuellement visée par le joueur
 
     """
-
+    exp_treashold = [1000,5000,10000,40000] #pallier d'experience pour passer un niveau
+    exp_win = 100000
     def __init__(self):
         self.vie = 20
         self.vitesse = 1
@@ -30,11 +31,11 @@ class Entite:
         self.position = Vecteur(200, 200)
         self.direction = Vecteur()
         self.image_direction = self.direction
-#TODO        self.current_player = id_joueur()  tcpclient.identifiant
         self.current_ship = Batiment()
         self.current_weapon = Arme()
         self.current_target = None
         self.id = uuid4()
+        self.exp = 0
 
     def set_image(self, img_path):
         """
@@ -94,3 +95,66 @@ class Entite:
             if e.id == e_id:
                 return e
         return None
+
+    def spawnShip(self, shipname):
+        """
+        permet de générer un nouveau batiment au joueur, si il meurt ou si il monte de niveau
+        Args:
+            shipname: chaine de caractère identifiant le navire à générer
+
+        Returns:
+
+        """
+        self.current_ship = shipname
+        self.current_weapon = self.current_ship.armes[0]
+        self.vie = self.current_ship.hitpoints
+        if self.vitesse >= self.current_ship.vmax :
+            self.vitesse=self.current_ship_vmax
+
+
+    def level_up(self):
+        """
+        fonction testant la montée de niveau à chaque tour. le joueur passe au niveau superieur
+        si l'experience  est supérieure à des paliers de niveau (définis dans exp_treashold).
+        le test est exécuté dans le gameloop.
+        Returns:
+            nothing
+
+        """
+        for i in range(0,4) :
+            if self.exp > Entite.exp_treashold[i] and self.current_ship.tier == i+1 :
+                #le joueur passe au niveau superieur
+                tier = self.current_ship.tier
+                taille = len(Batiment.Tierlist[tier])
+                self.spawnShip(Batiment.Tierlist[tier][randint(0, taille - 1)])
+#TODO : a implementer dans le gameloop
+
+    def isDead(self):
+        """
+        test si le joueur à encore assez de points de vie. si les points de vie sont à 0,
+        le joueur respawn dans un navire du tier inferieur, l'exp est reset au treashold du tier inferieur
+        Returns:
+
+        """
+        #TODO : afficher un pop up Qwidget signifiant la mort au joueur
+        if self.vie == 0 :
+            if self.tier < 3 :
+                self.spawnShip(Batiment.Tierlist[1][randint(0, 1)])
+                self.exp = 0
+            else :
+                tier = self.current_ship.tier
+                taille = len(Batiment.Tierlist[tier-1])
+                self.spawnShip(Batiment.Tierlist[tier-1][randint(0, taille - 1)])
+                self.exp = Entite.exp_treashold[self.current_ship.tier-2]
+    def isWinning(self):
+        """
+        fonction testant si le joueur à gagné ou non, en comparant l'exp à la valeur exp_win
+        Returns:
+        nothing
+
+        """
+        if self.exp >= Entite.exp_win :
+            return True
+        else :
+            return False
+#TODO : à implementer dans le gameloop

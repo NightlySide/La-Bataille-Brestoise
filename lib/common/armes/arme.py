@@ -11,6 +11,6 @@ class Arme():
         self.DPS = 0
         self.tps_mise_en_oeuvre = 0
         self.portee = 0
-        self.image = QImage("assets\images\armes\C5O.png")
+        self.image = "assets\images\armes\C5O.png"
 
 

@@ -10,7 +10,7 @@ class C50(Arme):
         self.DPS = 1000
         self.tps_mise_en_oeuvre = 1
         self.portee = 1
-        self.image = QImage("assets\images\armes\C5O.png")
+        self.image = "assets\images\armes\C5O.png"
 
 
 

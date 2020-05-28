@@ -9,4 +9,4 @@ class MM40(Arme):
         self.DPS = 5000
         self.tps_mise_en_oeuvre = 8
         self.portee = 15
-        self.image = QImage("assets\images\armes\exocet.png")
+        self.image = "assets\images\armes\exocet.png"

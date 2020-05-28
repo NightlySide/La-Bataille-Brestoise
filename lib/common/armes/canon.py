@@ -9,5 +9,5 @@ class Canon(Arme):
         self.DPS = 4000
         self.tps_mise_en_oeuvre = 5
         self.portee = 8
-        self.image = QImage("assets\images\armes\100mm.png")
+        self.image = "assets\images\armes\100mm.png"
 

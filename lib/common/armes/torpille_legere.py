@@ -9,4 +9,4 @@ class TorpilleLegere(Arme):
         self.DPS = 5000
         self.tps_mise_en_oeuvre = 8
         self.portee = 20
-        self.image = QImage("assets\images\armes\torpille légère.png")
+        self.image = "assets\images\armes\torpille légère.png"

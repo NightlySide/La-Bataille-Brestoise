@@ -9,4 +9,4 @@ class CanonSuperRapido(Arme):
         self.DPS = 4250
         self.tps_mise_en_oeuvre = 4
         self.portee = 5
-        self.image = QImage("assets\images\armes\76mm.png")
+        self.image = "assets\images\armes\76mm.png"

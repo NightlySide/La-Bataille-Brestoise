@@ -9,4 +9,4 @@ class Mistral(Arme):
         self.DPS = 4500
         self.tps_mise_en_oeuvre = 5
         self.portee = 5
-        self.image = QImage("assets\images\armes\mistral.png")
+        self.image = "assets\images\armes\mistral.png"

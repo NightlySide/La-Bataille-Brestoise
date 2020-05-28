@@ -9,4 +9,4 @@ class Rafale(Arme):
         self.DPS = 7000
         self.tps_mise_en_oeuvre = 10
         self.portee = 30
-        self.image = QImage("assets\images\armes\rafale.png")
+        self.image = "assets\images\armes\rafale.png"

@@ -79,8 +79,7 @@ class EcranJeu(QMainWindow):
         # Création de la map
         rade_data = img_vers_array("assets/carte_rade_brest.jpg")
         carte = Carte(rade_data.shape, (8, 8), rade_data)
-        self.game_canvas.set_map(carte)
-        GCR.joueur.set_map(carte)
+        GCR.current_map = carte
 
         # On donne un titre à la fenêtre
         self.setWindowTitle("La Bataille Brestoise - Alexandre F. & Guillaume L.")

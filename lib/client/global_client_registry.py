@@ -36,6 +36,7 @@ class GCR:
                "Jaguar", "Krill", "Lion", "Requin", "Renne", "Salamandre", "Grenouille", "Python", "Loup", "Lynx",
                "Chat", "Taupe", "Tortue", "Urubu", "Triton"]
     entities = []
+    current_map = None
 
     @classmethod
     def getTcpClient(cls):

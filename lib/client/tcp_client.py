@@ -121,6 +121,9 @@ class TCPClientProtocol(asyncio.Protocol):
                     GCR.entities.append(e_update)
             elif message["action"] == "request_entities":
                 GCR.entities = message["data"]
+            elif message["action"] == "update_player":
+                if not message["result"]:
+                    GCR.log.log(Logger.ERREUR, "Le serveur ne trouve pas ce client dans la liste des clients connectés")
             else:
                 # Sinon on ne connait pas (encore) la demande
                 GCR.log.log(Logger.AVERTISSEMENT, "Réponse serveur non reconnue : {!r}".format(message))

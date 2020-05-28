@@ -124,6 +124,16 @@ class TCPServer(asyncio.Protocol):
                     if client.peername != self.peername:
                         GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(client.peername, reponse))
                         client.transport.write(pickle.dumps(message))
+            elif message["action"] == "update_player":
+                user_id = message["user"]
+                joueur = message["data"]
+                client = Client.find_client_by_uuid(GSR.clients, user_id)
+                if client is not None:
+                    client.update_from_data(joueur)
+                    GSR.log.log(Logger.DEBUG, client.position)
+                    reponse["result"] = True
+                else:
+                    reponse["result"] = False
             else:
                 reponse["msg"] = "[+] Commande non reconnue !"
             GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(self.peername, reponse))

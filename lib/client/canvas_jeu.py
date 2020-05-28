@@ -8,7 +8,6 @@ from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
 from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
-from lib.common.image_vers_tableau import img_vers_array
 
 
 class CanvasJeu(QLabel):
@@ -34,11 +33,7 @@ class CanvasJeu(QLabel):
         # Variables nécessaires pour un rafraîchissement constant de l'image
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
-        self.carte = None
         self.last_key = None
-
-    def set_map(self, carte):
-        self.carte = carte
 
     def keyPressEvent(self, e):
         """
@@ -90,14 +85,14 @@ class CanvasJeu(QLabel):
         qp = QPainter(self)
 
         # On dessine la carte
-        self.carte.render(qp, (self.width(), self.height()))
+        GCR.current_map.render(qp, (self.width(), self.height()))
         # On vient dessiner le joueur par dessus la carte
         #qp.drawImage(QRect(self.width() // 2 - 25, self.height() // 2 - 25, 50, 50), QImage(GCR.joueur.image))
         GCR.joueur.render(qp, self.width() // 2 - 25, self.height() // 2 - 25, 50, 50)
         for entity in GCR.entities:
-            if self.carte.can_player_see(entity, (self.width(), self.height())):
-                dx = (entity.position.x - GCR.joueur.position.x) * self.carte.cell_size[0] + (self.width() // 2 - 16//2)
-                dy = (entity.position.y - GCR.joueur.position.y) * self.carte.cell_size[1] + (self.height() // 2 - 16//2)
+            if GCR.current_map.can_player_see(entity, (self.width(), self.height())):
+                dx = (entity.position.x - GCR.joueur.position.x) * GCR.current_map.cell_size[0] + (self.width() // 2 - 16//2)
+                dy = (entity.position.y - GCR.joueur.position.y) * GCR.current_map.cell_size[1] + (self.height() // 2 - 16//2)
                 #qp.drawImage(QRect(dx, dy, 16, 16), QImage(entity.image))
                 entity.render(qp, dx, dy, 16, 16)
 
@@ -112,7 +107,8 @@ class CanvasJeu(QLabel):
         # On récupère la position de la souris sur l'écran
         x = e.x()
         y = e.y()
-        text = "x: {0},  y: {1}".format(x, y)
+        wx, wy = mouseToWorldPosition(x, y)
+        text = "Mouse x: {},  y: {} | World position x: {}, y: {}".format(x, y, wx, wy)
         self.parent().parent().parent().setWindowTitle(text)
 
     def mousePressEvent(self, e):
@@ -123,7 +119,8 @@ class CanvasJeu(QLabel):
         Args:
             e (QMouseEvent): évènement du type souris
         """
-        GCR.log.log(Logger.DEBUG, f"Souris à la pos : ({e.x()}, {e.y()})")
+        x, y = mouseToWorldPosition(e.x(), e.y())
+        GCR.log.log(Logger.DEBUG, f"Souris à la pos : ({x}, {y})")
         # On met le focus sur le canvas pour récupérer les autres évènements ici
         self.setFocus()
 
@@ -134,6 +131,17 @@ class CanvasJeu(QLabel):
         taux de rafraîchissement de la surface constant.
         Cette fonction est une surcharge des fonctions implémentées par Qt.
         """
-        if time.perf_counter() - self.time_counter < self.refresh_rate:
+        if self.time_counter - time.perf_counter() < self.refresh_rate:
             self.time_counter = time.perf_counter()
             super().update()
+            GCR.getTcpClient().send({
+                        "action": "update_player",
+                        "user": GCR.getTcpClient().id,
+                        "data": GCR.joueur})
+
+
+def mouseToWorldPosition(mouseX, mouseY):
+    x0, y0 = GCR.joueur.position.x, GCR.joueur.position.y
+    dx = (mouseX - 800 // 2) // 8
+    dy = (mouseY - 600 // 2) // 8
+    return int(x0 + dx), int(y0 + dy)

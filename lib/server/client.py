@@ -1,3 +1,6 @@
+from lib.common.vecteur import Vecteur
+
+
 class Client:
     """
     Référence du coté serveur au joueur.
@@ -16,6 +19,12 @@ class Client:
         self.transport = transport
         self.username = None
         self.uuid = None
+        self.position = Vecteur()
+        self.vie = 0
+
+    def update_from_data(self, joueur):
+        self.position = joueur.position
+        self.vie = joueur.vie
 
     @staticmethod
     def find_client_by_peername(clients, peername):

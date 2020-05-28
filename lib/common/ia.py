@@ -1,4 +1,4 @@
-from random import random
+import random
 
 from lib.common.entite import Entite
 from lib.common.vecteur import Vecteur
@@ -17,6 +17,9 @@ class IA(Entite):
         # On ajoute les états au FSM
         self.brain.ajouter_etat("idle", Gambader())
         self.brain.ajouter_etat("follow", SuivreJoueur())
+
+        # On programme un premier état pour le cerveau
+        self.brain.prochain_etat = "idle"
 
     def update(self, delta):
         self.brain.update()

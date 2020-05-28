@@ -1,3 +1,4 @@
+from lib.common.joueur import Joueur
 from lib.common.vecteur import Vecteur
 
 
@@ -19,12 +20,10 @@ class Client:
         self.transport = transport
         self.username = None
         self.uuid = None
-        self.position = Vecteur()
-        self.vie = 0
+        self.joueur = Joueur(Vecteur())
 
     def update_from_data(self, joueur):
-        self.position = joueur.position
-        self.vie = joueur.vie
+        self.joueur = joueur
 
     @staticmethod
     def find_client_by_peername(clients, peername):

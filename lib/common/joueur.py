@@ -11,6 +11,7 @@ class Joueur(Entite):
         self.position = position
         self.detection_radius = 10 # en cases
         self.set_image("assets/images/batiments/fremm.png")
+        self.size = (50, 50)
 
     def update(self, delta):
         if GCR.current_map is not None:

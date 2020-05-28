@@ -3,6 +3,7 @@ import pickle
 import asyncio
 
 from lib.common.entite import Entite
+from lib.common.joueur import Joueur
 from lib.common.logger import Logger
 
 
@@ -109,9 +110,13 @@ class TCPClientProtocol(asyncio.Protocol):
                 # On met à jour la chatbox
                 GCR.log.log(Logger.DEBUG, "<-- Reçu : {!r}".format(message))
                 GCR.chatbox.add_line(f"({message['user']}): {message['msg']}")
-            elif message["action"] == "update_entities":
+            elif message["action"] in ["update_entities", "request_entities"]:
                 entities_to_update = message["data"]
                 for e_update in entities_to_update:
+                    # Si l'entité reçue est soi meme (joueur)
+                    # Alors on le saute
+                    if e_update.id == GCR.joueur.id:
+                        continue
                     # Si l'entité qu'on essaie de mettre à jour est déjà enregistrée par le client
                     e = Entite.findById(e_update.id, GCR.entities)
                     if e is not None:
@@ -119,11 +124,11 @@ class TCPClientProtocol(asyncio.Protocol):
                         GCR.entities.remove(e)
                     # Puis on ajoute l'entité mise à jour
                     GCR.entities.append(e_update)
-            elif message["action"] == "request_entities":
-                GCR.entities = message["data"]
-            elif message["action"] == "update_player":
+            #elif message["action"] == "request_entities":
+            #    GCR.entities = message["data"]
+            elif "result" in message:
                 if not message["result"]:
-                    GCR.log.log(Logger.ERREUR, "Le serveur ne trouve pas ce client dans la liste des clients connectés")
+                    GCR.log.log(Logger.ERREUR, f"Le serveur n'a pas accepté la requête suivante {message['action']}")
             else:
                 # Sinon on ne connait pas (encore) la demande
                 GCR.log.log(Logger.AVERTISSEMENT, "Réponse serveur non reconnue : {!r}".format(message))

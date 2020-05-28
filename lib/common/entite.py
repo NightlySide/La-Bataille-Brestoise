@@ -24,6 +24,7 @@ class Entite:
     """
     exp_treashold = [1000,5000,10000,40000] #pallier d'experience pour passer un niveau
     exp_win = 100000
+
     def __init__(self):
         self.vie = 20
         self.vitesse = 1
@@ -36,6 +37,7 @@ class Entite:
         self.current_target = None
         self.id = uuid4()
         self.exp = 0
+        self.size = (16, 16)
 
     def set_image(self, img_path):
         """
@@ -52,7 +54,7 @@ class Entite:
         """
         return self.vie > 0
 
-    def render(self, qp, x, y, sx, sy):
+    def render(self, qp, x, y):
         """
         Fait le rendu de l'entité sur l'écran à l'aide du painter de
         ce dernier.
@@ -75,8 +77,8 @@ class Entite:
             #xoffset = (img_rotated.width() - img.width()) / 2
             #yoffset = (img_rotated.height() - img.height()) / 2
             #img_rotated = img_rotated.copy(xoffset, yoffset, img.width(), img.height())
-            img_rot_scal = img_rotated.scaled(sx, sy)
-            qp.drawPixmap(QPoint(x, y), img_rot_scal)
+            img_rot_scal = img_rotated.scaled(*self.size)
+            qp.drawPixmap(QPoint(x - self.size[0] // 2, y - self.size[1] // 2), img_rot_scal)
             # qp.drawImage(QRect(self.position.x, self.position.y, 25, 25), QImage(self.image))
 
     def __str__(self):

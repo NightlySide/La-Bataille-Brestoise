@@ -71,7 +71,7 @@ class TCPServer(asyncio.Protocol):
         self.client = Client(peername, transport)
         # On l'ajoute finalement à la liste des clients connectés au serveur
         GSR.clients.append(self.client)
-        print(GSR.clients)
+        GSR.log.log(Logger.DEBUG, f"Il y a {len(GSR.clients)} joueurs connectés !")
 
     def data_received(self, data):
         """
@@ -84,7 +84,7 @@ class TCPServer(asyncio.Protocol):
         """
         # On récupère le message encodé
         message = pickle.loads(data)
-        GSR.log.log(Logger.DEBUG, "<-- Données reçues : {!r}".format(message))
+        #GSR.log.log(Logger.DEBUG, "<-- Données reçues : {!r}".format(message))
 
         # Si le message est dans un format que l'on connait
         if isinstance(message, dict):
@@ -130,13 +130,13 @@ class TCPServer(asyncio.Protocol):
                 client = Client.find_client_by_uuid(GSR.clients, user_id)
                 if client is not None:
                     client.update_from_data(joueur)
-                    GSR.log.log(Logger.DEBUG, client.position)
+                    #GSR.log.log(Logger.DEBUG, client.position)
                     reponse["result"] = True
                 else:
                     reponse["result"] = False
             else:
                 reponse["msg"] = "[+] Commande non reconnue !"
-            GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(self.peername, reponse))
+            #GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(self.peername, reponse))
             # On retourne une réponse au client
             self.transport.write(pickle.dumps(reponse))
         else:

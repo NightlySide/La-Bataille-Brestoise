@@ -39,12 +39,18 @@ class GameLoop:
 
     def update(self):
         GSR.entities_to_update = []
+
+        # On ajoute les entités crées par le serveur
         for e in GSR.entities:
             e.update(self.update_delta)
             if isinstance(e, IA):
                 #GSR.log.log(Logger.DEBUG, e.brain.nom_etat_courant)
                 pass
             GSR.entities_to_update.append(e)
+
+        # On ajoute les joueurs
+        for client in GSR.clients:
+            GSR.entities_to_update.append(client.joueur)
 
         if GSR.server is not None:
             GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})

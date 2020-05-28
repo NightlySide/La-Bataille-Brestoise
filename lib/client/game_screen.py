@@ -74,7 +74,7 @@ class EcranJeu(QMainWindow):
         GCR.chatbox = self.chatbox
 
         # Création du joueur
-        GCR.joueur = Joueur(Vecteur(700, 300))
+        GCR.joueur = Joueur(position=Vecteur(700, 300))
 
         # Création de la map
         rade_data = img_vers_array("assets/carte_rade_brest.jpg")
@@ -120,6 +120,7 @@ class EcranJeu(QMainWindow):
             GCR.loop = None
             # On fait rejoindre le thread tcp sur le thread courant (qt)
             GCR.tcp_thread.join()
+        self._timer.stop()
         self.closed.emit()
         # Pour éviter que l'évènement ne fasse écho
         event.accept()

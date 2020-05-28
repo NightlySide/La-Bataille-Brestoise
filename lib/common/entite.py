@@ -1,7 +1,9 @@
-from PyQt5.QtCore import QRect, QPoint, QTimer
-from PyQt5.QtGui import QImage, QPixmap, QTransform
+from PyQt5.QtCore import QRect, QPoint, Qt
+from PyQt5.QtGui import QImage, QPixmap, QTransform, QPainter, QColor, QBrush, QPen
 from uuid import uuid4
 from random import randint
+
+from lib.client.global_client_registry import GCR
 from lib.common.armes.arme import Arme
 from lib.common.batiments.batiment import Batiment
 from lib.common.vecteur import Vecteur
@@ -81,7 +83,32 @@ class Entite:
             #img_rotated = img_rotated.copy(xoffset, yoffset, img.width(), img.height())
             img_rot_scal = img_rotated.scaled(*self.size)
             qp.drawPixmap(QPoint(x - self.size[0] // 2, y - self.size[1] // 2), img_rot_scal)
+            self.draw_life_bar(qp, x, y)
+
             # qp.drawImage(QRect(self.position.x, self.position.y, 25, 25), QImage(self.image))
+
+    def draw_life_bar(self, qp:QPainter, x, y):
+        bar_size = (40, 4)
+
+        # On dessine le carré rouge
+        pen = QPen(Qt.black)
+        qp.setPen(pen)
+        qp.setBrush(QColor(125, 125, 125))
+        qp.drawRect(x - bar_size[0] // 2, y - self.size[1] // 2 - 10, *bar_size)
+
+        # On dessine le carré vert
+        life_col = QColor(0, 255, 0)
+        enemy_col = QColor(255, 0, 0)
+        pen = None
+        if self.id == GCR.joueur.id:
+            qp.setBrush(life_col)
+            pen = QPen(life_col)
+        else:
+            qp.setBrush(enemy_col)
+            pen = QPen(enemy_col)
+        qp.setPen(pen)
+        life_size = bar_size[0] * self.vie / self.current_ship.hitpoints
+        qp.drawRect(1 + x - bar_size[0] // 2, 1 + y - self.size[1] // 2 - 10, life_size - 2, bar_size[1] - 2)
 
     def __str__(self):
         return f"Entité ({self.id}) : position ({self.position.x}, {self.position.y}), vie : {self.vie}"
@@ -115,8 +142,8 @@ class Entite:
         self.current_ship = shipname
         self.current_weapon = self.current_ship.armes[0]
         self.vie = self.current_ship.hitpoints
-        if self.vitesse >= self.current_ship.vmax :
-            self.vitesse=self.current_ship_vmax
+        if self.vitesse >= self.current_ship.vmax:
+            self.vitesse = self.current_ship.vmax
 
 
     def level_up(self):

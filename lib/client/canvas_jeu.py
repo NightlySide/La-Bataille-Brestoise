@@ -1,9 +1,11 @@
 import time
 
+from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtGui import QPainter, QImage
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt, QRect
 
+from lib.client.Widgets import Bar
 from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
 from lib.common.logger import Logger
@@ -34,6 +36,8 @@ class CanvasJeu(QLabel):
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
         self.last_key = None
+
+        self.life_bar = Bar(self, QRect(10, 10, 200, 40), "Vie : ", 0, 100, 100)
 
     def keyPressEvent(self, e):
         """
@@ -138,6 +142,8 @@ class CanvasJeu(QLabel):
                         "action": "update_player",
                         "user": GCR.getTcpClient().id,
                         "data": GCR.joueur})
+
+            self.life_bar.setValue(0, GCR.joueur.current_ship.hitpoints, GCR.joueur.vie)
 
 
 def mouseToWorldPosition(mouseX, mouseY):

@@ -9,6 +9,3 @@ class Batiment:
         self.tier = 1 #tier du navire de 1 à 5
         self.status = True #etat du navire ( vie /mort)
 
-    def takeDamage(self, entiteEnnemie):
-        pass
-    #TODO : si la vie actuelle - degats < 0 => vie =0 ( pas de pv négatif)

@@ -1,11 +1,11 @@
-from PyQt5.QtCore import QRect, QPoint
+from PyQt5.QtCore import QRect, QPoint, QTimer
 from PyQt5.QtGui import QImage, QPixmap, QTransform
 from uuid import uuid4
 from random import randint
 from lib.common.armes.arme import Arme
 from lib.common.batiments.batiment import Batiment
 from lib.common.vecteur import Vecteur
-
+import time
 
 class Entite:
     """
@@ -24,7 +24,12 @@ class Entite:
     """
     exp_treashold = [1000,5000,10000,40000] #pallier d'experience pour passer un niveau
     exp_win = 100000
+<<<<<<< Updated upstream
 
+=======
+    taux_exp_gain = 0.5
+    exp_boost = 1000
+>>>>>>> Stashed changes
     def __init__(self):
         self.vie = 20
         self.vitesse = 1
@@ -163,3 +168,41 @@ class Entite:
         else :
             return False
 #TODO : à implementer dans le gameloop
+
+
+    def takeDamage(self, entiteEnnemie, refresh_rate):
+        """
+        fonction implementant les dégats infligés à une entite. Elle test si le joueur à encore
+        assez de PV, sinon elle provoque le Respawn. l'EXP gagné par le joueur ennemie est proportionnel au dégats infligés.
+        le joueur obtient un boost d'XP proportionnel à son tier en cas de frag ( IE il tue un ennemi).
+        Args:
+            entiteEnnemie: entite ennemie qui inflige les dégats
+
+        Returns:
+            nothing
+        """
+        degats = entiteEnnemie.current_weapon.DPS // refresh_rate
+        if self.vie - degats < 0 :
+            entiteEnnemie.exp += ( Entite.taux_exp_gain * degats ) + Entite.exp_boost * entiteEnnemie.current_ship.tier
+            self.vie = 0
+            self.isDead()
+        else :
+            self.vie = self.vie - degats
+            entiteEnnemie.exp += Entite.taux_exp_gain * degats
+
+
+
+    def equiper(self):
+        """
+        permet à un joueur d'équiper une arme. Elle sert à attendre un délai de mise en oeuvre d'une arme avant de pouvoir tirer.
+        plus l'arme est importante et plus son temps d'équipement est grand. une arme de conception plus récente aura un temps d'équipement plus court.
+        Les valeurs précises sont trouvables dans le tableau d'équillibrage.
+
+        Args:
+            self: objet arme
+
+        """
+        t0 = time.perf_counter()
+        t=t0
+        if t > t0 + self.tps_mise_en_oeuvre :
+            print("équippement de l'arme : ", self.nom_arme)

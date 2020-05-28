@@ -24,12 +24,9 @@ class Entite:
     """
     exp_treashold = [1000,5000,10000,40000] #pallier d'experience pour passer un niveau
     exp_win = 100000
-<<<<<<< Updated upstream
-
-=======
     taux_exp_gain = 0.5
     exp_boost = 1000
->>>>>>> Stashed changes
+
     def __init__(self):
         self.vie = 20
         self.vitesse = 1
@@ -206,3 +203,4 @@ class Entite:
         t=t0
         if t > t0 + self.tps_mise_en_oeuvre :
             print("équippement de l'arme : ", self.nom_arme)
+        #TODO roue d'equipmment des armes ( pie menu )

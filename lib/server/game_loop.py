@@ -10,6 +10,14 @@ from lib.common.vecteur import Vecteur
 from lib.server.global_server_registry import GSR
 from lib.client.global_client_registry import GCR
 
+class GameState:
+    """
+    classe définisant  l'état du jeu
+    """
+    NOTSTARTED = 0
+    STARTED = 1
+    FINISHED = 2
+
 
 class GameLoop:
     """
@@ -53,37 +61,35 @@ class GameLoop:
         """
         GSR.entities_to_update = []
         #escarmouche
-
+        if GSR.gamestate == GameLoop.STARTED :
         # On ajoute les entités crées par le serveur
-        for e in GSR.entities:
-            e.update(self.update_delta)
+            for e in GSR.entities:
+                e.update(self.update_delta)
 
-            if e.isWinning() == True :
-                GCR.chatbox.add_line(f"[+] {e.id} à gagné la partie")
+                if e.isWinning() == True :
+                    GCR.chatbox.add_line(f"[+] {e.id} à gagné la partie")
+                    GSR.gamestate = GameState.FINISHED
+                e.isDead()
 
-            """problème : comment définir le début et la fin du jeu ?  (mettre un compteur 
-             d'une minute au premier joueur réel et donner la possibilité à ce joueur de 
-             forcer le début de la partie avec un message dans le chat) """
-            
+                if isinstance(e, IA):
+                    #GSR.log.log(Logger.DEBUG, e.brain.nom_etat_courant)
+                    pass
+                GSR.entities_to_update.append(e)
 
-            e.isDead()
-            if isinstance(e, IA):
-                #GSR.log.log(Logger.DEBUG, e.brain.nom_etat_courant)
-                pass
-            GSR.entities_to_update.append(e)
-
-        # On ajoute les joueurs
-        for client in GSR.clients:
-            e = client.joueur
-            if e.isWinning() == True :
-                GCR.chatbox.add_line(f"[+] {e.id} à gagné la partie")
-            e.isDead()
-            GSR.entities_to_update.append(client.joueur)
-        if GSR.server is not None:
-            GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})
+            # On ajoute les joueurs
+            for client in GSR.clients:
+                e = client.joueur
+                if e.isWinning() == True :
+                    GCR.chatbox.add_line(f"[+] {client.username} à gagné la partie")
+                    GSR.gamestate = GameState.FINISHED
+                e.isDead()
+                GSR.entities_to_update.append(client.joueur)
+            if GSR.server is not None:
+                GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})
 
     def stop(self):
         """
         Permet d'arrêter les cycles de boucle.
         """
         self._timer.cancel()
+

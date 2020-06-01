@@ -270,6 +270,7 @@ class Entite:
             refresh_rate (float): fréquence de rafraichissement du jeu
         """
         # On souhaite avoir des dps constants sur le temps
+        
         degats = entite_ennemie.current_weapon.DPS // refresh_rate
         if self.vie - degats < 0:
             entite_ennemie.exp += (Entite.taux_exp_gain * degats) + Entite.exp_boost * entite_ennemie.current_ship.tier

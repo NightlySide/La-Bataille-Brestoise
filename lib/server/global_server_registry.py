@@ -26,6 +26,7 @@ class GSR:
     server = None
     entities_to_update = []
     running = True
+    gamestate = 0
 
     @classmethod
     def getEventLoop(cls) -> BaseEventLoop:

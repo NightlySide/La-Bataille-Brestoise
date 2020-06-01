@@ -40,6 +40,7 @@ class GCR:
                "Chat", "Taupe", "Tortue", "Urubu", "Triton"]
     entities = []
     current_map = None
+    gamestate = 0
 
     @classmethod
     def getTcpClient(cls):

@@ -1,3 +1,5 @@
+from asyncio import BaseEventLoop
+
 from lib.common.logger import Logger
 
 
@@ -26,7 +28,7 @@ class GSR:
     running = True
 
     @classmethod
-    def getEventLoop(cls):
+    def getEventLoop(cls) -> BaseEventLoop:
         """
         Retourne la référence au thread tcp si il existe
         """
@@ -35,7 +37,7 @@ class GSR:
         return cls.loop
 
     @classmethod
-    def setEventLoop(cls, loop):
+    def setEventLoop(cls, loop: BaseEventLoop) -> None:
         """
         Définit la référence au thread tcp
 

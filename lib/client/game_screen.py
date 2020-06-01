@@ -1,6 +1,6 @@
-from PyQt5.QtGui import QPainter
+from PyQt5.QtGui import QPainter, QKeyEvent, QCloseEvent
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import pyqtSignal, Qt, QTimer
+from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QObject
 from PyQt5 import uic
 
 from lib.client.global_client_registry import GCR
@@ -42,7 +42,7 @@ class EcranJeu(QMainWindow):
     # Signal de fermeture (par défaut il n'existe pas)
     closed = pyqtSignal()
 
-    def __init__(self, parent=None, update_delta=1/60*1000):
+    def __init__(self, parent: QObject = None, update_delta: float = 1/60 * 1000):
         super().__init__(parent)
         uic.loadUi('assets/ecran_jeu.ui', self)
 
@@ -90,24 +90,24 @@ class EcranJeu(QMainWindow):
         self._timer.timeout.connect(functools.partial(self.update, update_delta / 1000))
         self._timer.start(int(update_delta))
 
-    def keyPressEvent(self, e):
+    def keyPressEvent(self, e: QKeyEvent) -> None:
         """
         Fonction héritée de Qt qui permet de prendre en charge les évènements du type
         touche clavier.
 
         Args:
-            e (QKeyEvent): évènement de type touche de clavier
+            e (PyQt5.QtGui.QKeyEvent): évènement de type touche de clavier
         """
         if e.key() == Qt.Key_Escape:
             self.close()
 
-    def closeEvent(self, event):
+    def closeEvent(self, event: QCloseEvent) -> None:
         """
         Fonction héritée de Qt, appelée lorsque le signal de fermeture de la
         fenêtre est emit. On ferme le thread TCP puis le thread Qt et enfin
         on émet le signal qui indique que la fermeture s'est bien déroulée.
         Args:
-            event (QCloseEvent): évènement du type fermeture de fenêtre
+            event (PyQt5.QtGui.QCloseEvent): évènement du type fermeture de fenêtre
         """
 
         GCR.log.log(Logger.INFORMATION, "Fermeture de la fenêtre de jeu")
@@ -125,7 +125,7 @@ class EcranJeu(QMainWindow):
         # Pour éviter que l'évènement ne fasse écho
         event.accept()
 
-    def send_chat(self):
+    def send_chat(self) -> None:
         """
         Permet d'envoyer le contenu de l'entrée chat au serveur pour
         le transmettre dans la chatbox.
@@ -142,7 +142,7 @@ class EcranJeu(QMainWindow):
                 "user": GCR.getTcpClient().id,
                 "msg": message})
 
-    def update(self, delta):
+    def update(self, delta: float) -> None:
         """
         Fonction appelée pour rafraîchir l'écran de jeu et tous ses
         composants (chatbox, joueur, canvas de jeu, radar)

@@ -1,9 +1,9 @@
 import time
 
 from PyQt5 import QtGui, QtWidgets
-from PyQt5.QtGui import QPainter, QImage
+from PyQt5.QtGui import QPainter, QImage, QKeyEvent, QPaintEvent, QMouseEvent
 from PyQt5.QtWidgets import QLabel
-from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtCore import Qt, QRect, QObject
 
 from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
@@ -23,11 +23,12 @@ class CanvasJeu(QLabel):
             un framerate constant
 
     Attributes:
-        carte (Carte): les données de la carte de jeu, les tuiles sur lesquelles
-            on peut naviguer ou non.
+        time_counter (float): compteur permettant de relever le temps entre deux itérations
+        refresh_rate (float): fréquence de rafraichissement de l'affichage
+        last_key (PyQt5.QtCore.Qt.Key): dernière touche pressée, utile pour s'arrêter
     """
 
-    def __init__(self, parent=None, refresh_rate=1/30):
+    def __init__(self, parent: QObject = None, refresh_rate: float = 1/30):
         super().__init__(parent)
         # On fixe la taille du canvas pour plus de simplicité
         self.setFixedSize(800, 600)
@@ -36,13 +37,13 @@ class CanvasJeu(QLabel):
         self.refresh_rate = refresh_rate
         self.last_key = None
 
-    def keyPressEvent(self, e):
+    def keyPressEvent(self, e: QKeyEvent) -> None:
         """
         Fonction héritée de Qt qui permet de prendre en charge les évènements du type
         touche clavier.
 
         Args:
-            e (QKeyEvent): évènement de type touche de clavier
+            e (PyQt5.QtGui.QKeyEvent): évènement de type touche de clavier
         """
 
         # Si on appuie sur Echap on veut fermer la fenètre de jeu
@@ -75,38 +76,36 @@ class CanvasJeu(QLabel):
             # On indique à l'entité joueur quelle est la direction à prendre
             GCR.joueur.direction = dir
 
-    def paintEvent(self, e):
+    def paintEvent(self, e: QPaintEvent) -> None:
         """
         Fonction dérivée de Qt, qui est appelée à chaque fois qu'on rafraîchit l'écran.
         On va venir alors peindre sur le canvas.
 
         Args:
-            e (QPaintEvent): évènement du type peinture de l'écran
+            e (PyQt5.QtGui.QPaintEvent): évènement du type peinture de l'écran
         """
         qp = QPainter(self)
 
         # On dessine la carte
         GCR.current_map.render(qp, (self.width(), self.height()))
         # On vient dessiner le joueur par dessus la carte
-        #qp.drawImage(QRect(self.width() // 2 - 25, self.height() // 2 - 25, 50, 50), QImage(GCR.joueur.image))
         GCR.joueur.render(qp, self.width() // 2, self.height() // 2)
         for entity in GCR.entities:
             if GCR.current_map.can_player_see(entity, (self.width(), self.height())):
                 dx = (entity.position.x - GCR.joueur.position.x) * GCR.current_map.cell_size[0] + self.width() // 2
                 dy = (entity.position.y - GCR.joueur.position.y) * GCR.current_map.cell_size[1] + self.height() // 2
-                #qp.drawImage(QRect(dx, dy, 16, 16), QImage(entity.image))
                 entity.render(qp, dx, dy)
                 # Si l'entité est la cible du joueur
                 if GCR.joueur.current_target == entity.id:
                     entity.draw_target(qp, dx, dy)
 
-    def mouseMoveEvent(self, e):
+    def mouseMoveEvent(self, e: QMouseEvent) -> None:
         """
         Fonction dérivée de Qt, qui est appelée à chaque fois que la souris
         est bougée sur le canvas
 
         Args:
-            e (QMouseEvent): évènement du type déplacement de souris
+            e (PyQt5.QtGui.QMouseEvent): évènement du type déplacement de souris
         """
         # On récupère la position de la souris sur l'écran
         x = e.x()
@@ -115,13 +114,13 @@ class CanvasJeu(QLabel):
         text = "Mouse x: {},  y: {} | World position x: {}, y: {}".format(x, y, wx, wy)
         self.parent().parent().parent().setWindowTitle(text)
 
-    def mousePressEvent(self, e):
+    def mousePressEvent(self, e: QMouseEvent) -> None:
         """
         Fonction dérivée de Qt, qui est appelée à chaque fois qu'un
         bouton de la souris est pressé
 
         Args:
-            e (QMouseEvent): évènement du type souris
+            e (PyQt5.QtGui.QMouseEvent): évènement du type souris
         """
         x, y = mouseToWorldPosition(e.x(), e.y())
         GCR.log.log(Logger.DEBUG, f"Click à la pos : ({x}, {y})")
@@ -132,21 +131,23 @@ class CanvasJeu(QLabel):
             if e != GCR.joueur:
                 diff = Vecteur(x, y) - e.position
                 distance = diff.distance()
-                GCR.log.log(Logger.DEBUG, f"Distance : {distance}")
+                # Si le click est proche d'une cible
                 if distance < max(e.size[0], e.size[1]) // (8*2) * 1.5:
                     GCR.joueur.ciblage(e)
-                    GCR.log.log(Logger.DEBUG, f"Nouvelle cible : {e.id}")
+                    GCR.log.log(Logger.DEBUG, f"Nouvelle cible : {e}")
                     break
+        # Sinon le click est trop loin d'une cible, on déselectionne
         else:
             GCR.joueur.ciblage(None)
 
-    def update(self):
+    def update(self) -> None:
         """
         Fonction appelée pour rafraîchir le canvas. C'est cette fonction
         qui va venir limiter le nombre d'appels de manière à avoir un
         taux de rafraîchissement de la surface constant.
         Cette fonction est une surcharge des fonctions implémentées par Qt.
         """
+        # Si on peut rafraichir l'écran
         if self.time_counter - time.perf_counter() < self.refresh_rate:
             self.time_counter = time.perf_counter()
             super().update()
@@ -156,8 +157,22 @@ class CanvasJeu(QLabel):
                         "data": GCR.joueur})
 
 
-def mouseToWorldPosition(mouseX, mouseY):
+def mouseToWorldPosition(mouse_x: int, mouse_y: int) -> (int, int):
+    """
+    Fonction outil permettant de transformer la position de la souris à l'écran
+    en position dans le monde du jeu.
+
+    Args:
+        mouse_x (int): position en X de la souris sur l'écran
+        mouse_y (int): position en Y de la souris sur l'écran
+
+    Returns:
+        world_pos (int, int): tuple contenant la position de la souris dans le monde
+
+    """
+    # On récupère la position du joueur
     x0, y0 = GCR.joueur.position.x, GCR.joueur.position.y
-    dx = (mouseX - 800 // 2) // 8
-    dy = (mouseY - 600 // 2) // 8
+    dx = (mouse_x - 800 // 2) // 8
+    dy = (mouse_y - 600 // 2) // 8
+    # On retourne la position dans le monde
     return int(x0 + dx), int(y0 + dy)

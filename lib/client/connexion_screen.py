@@ -2,7 +2,7 @@ from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-from PyQt5.QtCore import Qt, QUrl
+from PyQt5.QtCore import Qt, QUrl, QObject
 from PyQt5 import uic
 import asyncio
 from lib.client.tcp_client import TCPClientProtocol
@@ -38,7 +38,7 @@ class EcranConnexion(QMainWindow):
         input_username (QLineEdit): pseudo du joueur, devient 'Anonyme'
             si la case est laissée vide
     """
-    def __init__(self,  parent=None):
+    def __init__(self,  parent: QObject = None):
         super().__init__(parent)
         self.game = None
         uic.loadUi('assets/ecran_connexion.ui', self)
@@ -75,7 +75,10 @@ class EcranConnexion(QMainWindow):
         else:
             self.refresh_server_list()
 
-    def refresh_server_list(self):
+    def refresh_server_list(self) -> None:
+        """
+        Recupère la liste des serveurs enregistrés et l'enregistre dans la liste
+        """
         self.server_list.clear()
         # On paramètre la liste des serveurs
         liste_serveurs = JsonLoader("known_servers.json")["server_list"]
@@ -83,7 +86,7 @@ class EcranConnexion(QMainWindow):
             self.server_list.addItem(QListWidgetItem(f"{server['name']} | {server['ip']} | {server['port']}"))
         self.server_list.setCurrentRow(0)
 
-    def connect_from_list(self):
+    def connect_from_list(self) -> None:
         """
         Appelée lorsque l'utilisateur clique sur le bouton 'Connecter'
         Se connecter à partir d'un serveur enregistré
@@ -92,7 +95,7 @@ class EcranConnexion(QMainWindow):
         # On se connecte
         self.connect(nom, ip, port)
 
-    def add_server(self):
+    def add_server(self) -> None:
         """
         Appelée lorsque l'utilisateur clique sur le bouton 'Connexion locale'
         Ouvre la boite de dialogue correspondante
@@ -108,7 +111,7 @@ class EcranConnexion(QMainWindow):
             liste_serveurs.write()
             self.refresh_server_list()
 
-    def keyPressEvent(self, event):
+    def keyPressEvent(self, event: QKeyEvent) -> None:
         """
         Fonction héritée de Qt qui permet de prendre en charge les évènements du type
         touche clavier.
@@ -119,7 +122,7 @@ class EcranConnexion(QMainWindow):
         if event.key() == Qt.Key_Escape:
             self.close()
 
-    def connect(self, nom, ip, port):
+    def connect(self, nom: str, ip: str, port: int) -> None:
         """
         Appelée finalement pour se connecter au serveur et ouvrir
         la fenêtre de jeu.
@@ -150,7 +153,7 @@ class EcranConnexion(QMainWindow):
         except KeyboardInterrupt:
             GCR.log.log(Logger.INFORMATION, "Fin du programme client")
 
-    def open_game(self):
+    def open_game(self) -> None:
         """
         Ouvre la fenêtre de jeu et cache la fenêtre de
         connexion jusqu'à ce que la fenêtre de jeu soit
@@ -180,7 +183,7 @@ class LocalServerDialog(QDialog):
         ip (str): l'adresse IP (IPv4) du serveur
         port (int): le port du serveur
     """
-    def __init__(self, parent=None):
+    def __init__(self, parent: QObject = None):
         super(LocalServerDialog, self).__init__(parent)
         uic.loadUi('assets/dialog_local_server.ui', self)
 
@@ -189,7 +192,7 @@ class LocalServerDialog(QDialog):
         self.port = self.findChild(QLineEdit, "input_port")
 
     @staticmethod
-    def get_local_server_addr(parent=None) -> tuple:
+    def get_local_server_addr(parent=None) -> (str, str, str) or None:
         """
         Fonction statique qui permet d'ouvrir la boite de dialogue
         et de retourner les information de connexion serveur

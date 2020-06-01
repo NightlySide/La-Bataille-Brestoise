@@ -1,9 +1,19 @@
 import threading
+from builtins import function
 
 
 class RepeatingTimer:
+    """
+    Un timer basé sur du threading qui se répète à l'infini.
+    Utile pour définir les boucles de jeu.
 
-    def __init__(self, temps, fonction):
+    Attributes:
+        temps (float): le temps entre deux répétitions
+        fonction (builtins.function): la fonction à appeler
+        thread (threading.Timer): le timer lié à la classe
+    """
+
+    def __init__(self, temps: float, fonction: function):
         self.temps = temps
         self.fonction = fonction
         self.thread = threading.Timer(self.temps, self.handle_function)

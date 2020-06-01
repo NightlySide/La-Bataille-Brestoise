@@ -11,8 +11,14 @@ from lib.server.global_server_registry import GSR
 
 
 class GameLoop:
+    """
+    Boucle principale de fonctionnement du jeu
 
-    def __init__(self, update_delta=0.2):
+    Attributes:
+        _timer (RepeatingTimer): timer qui se répète pour relancer la boucle
+    """
+
+    def __init__(self, update_delta: float = 0.2):
         GSR.log.log(Logger.INFORMATION, "Initialisation du serveur")
         self.update_delta = update_delta
         self.setup()
@@ -21,7 +27,10 @@ class GameLoop:
         self._timer.start()
         GSR.log.log(Logger.INFORMATION, "Initialisation terminée")
 
-    def setup(self):
+    def setup(self) -> None:
+        """
+        Appelée une seule fois, permet de mettre en place le jeu.
+        """
         rade_data = img_vers_array("assets/carte_rade_brest.jpg")
         GSR.carte = Carte(rade_data.shape, (8, 8), rade_data)
 
@@ -37,7 +46,10 @@ class GameLoop:
             e.position = Vecteur(x, y)
             GSR.entities.append(e)
 
-    def update(self):
+    def update(self) -> None:
+        """
+        Est appelée à intervales réguliers. Analogue à la fonction loop en arduino.
+        """
         GSR.entities_to_update = []
 
         # On ajoute les entités crées par le serveur
@@ -56,4 +68,7 @@ class GameLoop:
             GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})
 
     def stop(self):
+        """
+        Permet d'arrêter les cycles de boucle.
+        """
         self._timer.cancel()

@@ -1,4 +1,9 @@
+import asyncio
 import random
+from asyncio import BaseEventLoop
+
+from lib.client.tcp_client import TCPClientProtocol
+
 
 class GCR:
     """
@@ -39,7 +44,7 @@ class GCR:
     current_map = None
 
     @classmethod
-    def getTcpClient(cls):
+    def getTcpClient(cls) -> TCPClientProtocol:
         """
         Retourne la référence au client tcp
         """
@@ -48,14 +53,14 @@ class GCR:
         return cls.tcp_client
 
     @classmethod
-    def setTcpClient(cls, client):
+    def setTcpClient(cls, client: TCPClientProtocol) -> None:
         """
         Définit la référence au client tcp
         """
         cls.tcp_client = client
 
     @classmethod
-    def getEventLoop(cls):
+    def getEventLoop(cls) -> BaseEventLoop:
         """
         Retourne la référence au thread tcp si il existe
         """
@@ -64,7 +69,7 @@ class GCR:
         return cls.loop
 
     @classmethod
-    def setEventLoop(cls, loop):
+    def setEventLoop(cls, loop: BaseEventLoop) -> None:
         """
         Définit la référence au thread tcp
 
@@ -74,7 +79,7 @@ class GCR:
         cls.loop = loop
 
     @classmethod
-    def getId(cls):
+    def getId(cls) -> str or None:
         """
         Retourne l'identifiant unique du client si il existe
         """
@@ -84,7 +89,7 @@ class GCR:
         return cls.id
 
     @classmethod
-    def getRandomName(cls):
+    def getRandomName(cls) -> str:
         """
         Retourne un nom d'utilisateur généré aléatoirement.
         """

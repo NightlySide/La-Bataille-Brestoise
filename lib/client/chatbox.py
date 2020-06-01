@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QTextBrowser
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QObject
+
 
 class ChatBox(QTextBrowser):
     """
@@ -15,7 +16,7 @@ class ChatBox(QTextBrowser):
         lines (list): les lignes de la chatbox
         need_update (bool): indique si la chatbox doit être mise à jour
     """
-    def __init__(self, parent, size=50):
+    def __init__(self, parent: QObject, size: int = 50):
         super().__init__(parent)
         self.max_size = size
         self.lines = []
@@ -27,7 +28,7 @@ class ChatBox(QTextBrowser):
         self.setMinimumSize(400, 250)
         self.setFocusPolicy(Qt.NoFocus)
 
-    def add_line(self, line):
+    def add_line(self, line: str) -> None:
         """
         Ajoute la ligne 'line' aux lignes de la chatbox
         pour le prochain update.
@@ -40,7 +41,7 @@ class ChatBox(QTextBrowser):
         self.lines.append(line)
         self.need_update = True
 
-    def add_lines(self, lines):
+    def add_lines(self, lines: list) -> None:
         """
         Ajoute la liste de lignes aux lignes de la chatbox
         pour le prochain update.
@@ -49,18 +50,21 @@ class ChatBox(QTextBrowser):
             lines (list): liste des lignes à ajouter
         """
         for l in lines:
-            self.addLine(l)
+            self.add_line(l)
 
-    def update(self):
+    def update(self) -> None:
         """
         Met à jour la chatbox. Fonction appelée par le Thread
         contenant PyQt5.
         La mise à jour ne s'effectue que si elle est nécessaire.
         """
+        # Si on doit mettre à jour la chatbox
         if self.need_update:
             self.need_update = False
             res = ""
+            # Pour chaque lignes dans la liste
             for l in self.lines:
                 res += l + "\n"
             self.setText(res[:-1])
+            # On scroll tout en bas
             self.verticalScrollBar().setValue(self.verticalScrollBar().maximum())

@@ -1,3 +1,5 @@
+from asyncio import Transport
+
 from lib.client.global_client_registry import GCR
 import pickle
 import asyncio
@@ -25,14 +27,14 @@ class TCPClientProtocol(asyncio.Protocol):
         nom (str): le nom du serveur qui sera affiché
         username (str): le nom d'utilisateur du joueur
     """
-    def __init__(self, nom, username):
+    def __init__(self, nom: str, username: str):
         self.transport = None
         self.id = None
         self.nom = nom
         self.username = username
 
     @classmethod
-    async def create(cls, nom, host, port, username):
+    async def create(cls, nom: str, host: str, port: int, username: str) -> None:
         """
         Fonction usine qui instancie la connexion et utilise
         cette classe comme protocole.
@@ -47,7 +49,7 @@ class TCPClientProtocol(asyncio.Protocol):
             lambda: TCPClientProtocol(nom, username),
             host, port)
 
-    def connection_made(self, transport):
+    def connection_made(self, transport: Transport) -> None:
         """
         Appelée lorsque l'évènement 'connexion réalisée' se produit.
         On définit alors ce tunnel comme étant celui que le client
@@ -63,41 +65,41 @@ class TCPClientProtocol(asyncio.Protocol):
         # On demande au serveur de nous attribuer un identifiant
         self.request_client_id()
 
-    def send(self, data):
+    def send(self, data: object) -> None:
         """
         Permet de transmettre les données 'data' au serveur
         en TCP en encodant les données à l'aide de pickle.
 
         Args:
-            data (any): données à transmettre
+            data (object): données à transmettre
         """
         if self.transport is None:
             GCR.log.log(Logger.ERREUR, "Le client n'est pas connecté à un serveur")
             return
         self.transport.write(pickle.dumps(data))
 
-    def request_client_id(self):
+    def request_client_id(self) -> None:
         """
         Fait la demande au serveur d'un identifiant unique
         """
         GCR.log.log(Logger.INFORMATION, "Demande d'un id client")
         self.send({"action": "request_id", "username": self.username})
 
-    def ping(self):
+    def ping(self) -> None:
         """
         Envoi un ping au serveur. Ce dernier répondra 'pong'
         si le message est bien reçu.
         """
         self.send({"action": "ping"})
 
-    def data_received(self, data):
+    def data_received(self, data: bytes) -> None:
         """
         Appelée lorsque l'évènement 'données reçues' se produit.
         Permet la reception en asynchrone de données du serveur
         et d'agir en fonction de la nature de la réponse.
 
         Args:
-            data (any): données reçues encodées à l'aide de pickle
+            data (bytes): données reçues encodées à l'aide de pickle
         """
         # On décode la réponse
         message = pickle.loads(data)
@@ -124,7 +126,6 @@ class TCPClientProtocol(asyncio.Protocol):
                         GCR.entities.remove(e)
                     # Puis on ajoute l'entité mise à jour
                     GCR.entities.append(e_update)
-            #elif message["action"] == "request_entities":
             #    GCR.entities = message["data"]
             elif "result" in message:
                 if not message["result"]:
@@ -136,7 +137,7 @@ class TCPClientProtocol(asyncio.Protocol):
             # On a reçu un autre type de données
             GCR.log.log(Logger.AVERTISSEMENT, "Format reçu inconnu : {!r}".format(message))
 
-    def connection_lost(self, exc):
+    def connection_lost(self, exc: Exception) -> None:
         """
         Appelée lorsque l'évènement 'connexion perdue' se réalise.
         Ferme la connexion du côté client.

@@ -8,6 +8,7 @@ from lib.common.logger import Logger
 from lib.common.repeating_timer import RepeatingTimer
 from lib.common.vecteur import Vecteur
 from lib.server.global_server_registry import GSR
+from lib.client.global_client_registry import GCR
 
 
 class GameLoop:
@@ -56,6 +57,16 @@ class GameLoop:
         # On ajoute les entités crées par le serveur
         for e in GSR.entities:
             e.update(self.update_delta)
+
+            if e.isWinning() == True :
+                GCR.chatbox.add_line(f"[+] {e.id} à gagné la partie")
+
+            """problème : comment définir le début et la fin du jeu ?  (mettre un compteur 
+             d'une minute au premier joueur réel et donner la possibilité à ce joueur de 
+             forcer le début de la partie avec un message dans le chat) """
+            
+
+            e.isDead()
             if isinstance(e, IA):
                 #GSR.log.log(Logger.DEBUG, e.brain.nom_etat_courant)
                 pass
@@ -63,8 +74,11 @@ class GameLoop:
 
         # On ajoute les joueurs
         for client in GSR.clients:
+            e = client.joueur
+            if e.isWinning() == True :
+                GCR.chatbox.add_line(f"[+] {e.id} à gagné la partie")
+            e.isDead()
             GSR.entities_to_update.append(client.joueur)
-
         if GSR.server is not None:
             GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})
 

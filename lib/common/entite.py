@@ -47,7 +47,7 @@ class Entite:
         self.direction = Vecteur()
         self.image_direction = self.direction
         self.current_ship = Batiment()
-        self.current_weapon = Arme()
+        self.current_weapon = Arme(self)
         self.current_target = None
         self.id = uuid4()
         self.exp = 0
@@ -167,6 +167,7 @@ class Entite:
         Args:
             delta (float): temps mis entre l'itération précédente et l'itération actuelle
         """
+        self.current_weapon.update()
         self.position += self.direction * self.vitesse
         # On retient la dernière direction prise par le bateau
         if not self.direction.equal(Vecteur(0.0, 0.0)):
@@ -290,8 +291,6 @@ class Entite:
             arme (Arme): l'arme à équiper
 
         """
-        t0 = time.perf_counter()
-        t = t0
-        if t > t0 + arme.tps_mise_en_oeuvre:
-            GCR.log.log(Logger.INFORMATION, "Équipement de l'arme : ", arme.nom_arme)
+        self.current_weapon = arme
+        self.current_weapon.first_equip()
         # TODO roue d'equipmment des armes ( pie menu )

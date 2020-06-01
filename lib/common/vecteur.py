@@ -66,7 +66,7 @@ class Vecteur:
         new_y = self.y - autre.y
         return Vecteur(new_x, new_y)
 
-    def __mul__(self, autre: "Vecteur") -> "Vecteur":
+    def __mul__(self, autre: "Vecteur" or int) -> "Vecteur":
         """
         Surcharge de l'opérateur pour être compatible avec les
         opérations vectorielles.

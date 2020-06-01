@@ -28,7 +28,6 @@ class TCPServer(asyncio.Protocol):
         self.peername = None
         self.client = None
         self.max_players = max_players
-        GSR.server = self
 
     @classmethod
     async def create(cls, host, port, max_players):
@@ -67,6 +66,8 @@ class TCPServer(asyncio.Protocol):
         # On l'enregistre
         self.transport = transport
         self.peername = peername
+        self.transport.set_write_buffer_limits(high=self.transport.get_write_buffer_limits()[1], low=8)
+        GSR.log.log(Logger.INFORMATION, "Write buffer limits : "+str(self.transport.get_write_buffer_limits()))
         # On crée le client en conséquence
         self.client = Client(peername, transport)
         # On l'ajoute finalement à la liste des clients connectés au serveur
@@ -145,8 +146,8 @@ class TCPServer(asyncio.Protocol):
                     GSR.log.log(Logger.INFORMATION, "Démarrage de la partie")
                     GSR.gamestate = GameState.STARTED
                     self.send_all("set_gamestate", {"gamestate": GameState.STARTED})
-                    #self.send_all("chat", {"user": "Server", "msg": f"{username} à lancé la partie"})
-                    #self.send_all("chat", {"user": "Server", "msg": f"Début de partie"})
+                    self.send_all("chat", {"user": "Server", "msg": f"{username} à lancé la partie"})
+                    self.send_all("chat", {"user": "Server", "msg": f"Début de partie"})
             else:
                 reponse["msg"] = "[+] Commande non reconnue !"
             #GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(self.peername, reponse))
@@ -160,7 +161,8 @@ class TCPServer(asyncio.Protocol):
         message = {"action": action}
         for key in data:
             message[key] = data[key]
-        #GSR.log.log(Logger.DEBUG, f"Envoi à tous de : {message}")
+        if action == "chat":
+            GSR.log.log(Logger.DEBUG, f"[CHAT] Envoi à tous de : {message}")
         for client in GSR.clients:
             client.transport.write(pickle.dumps(message))
 

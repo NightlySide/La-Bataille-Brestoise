@@ -2,8 +2,6 @@ import asyncio
 import random
 from asyncio import BaseEventLoop
 
-from lib.client.tcp_client import TCPClientProtocol
-
 
 class GCR:
     """
@@ -44,7 +42,7 @@ class GCR:
     current_map = None
 
     @classmethod
-    def getTcpClient(cls) -> TCPClientProtocol:
+    def getTcpClient(cls):
         """
         Retourne la référence au client tcp
         """
@@ -53,7 +51,7 @@ class GCR:
         return cls.tcp_client
 
     @classmethod
-    def setTcpClient(cls, client: TCPClientProtocol) -> None:
+    def setTcpClient(cls, client) -> None:
         """
         Définit la référence au client tcp
         """

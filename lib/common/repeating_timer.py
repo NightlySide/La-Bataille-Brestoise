@@ -1,5 +1,4 @@
 import threading
-from builtins import function
 
 
 class RepeatingTimer:
@@ -13,7 +12,7 @@ class RepeatingTimer:
         thread (threading.Timer): le timer lié à la classe
     """
 
-    def __init__(self, temps: float, fonction: function):
+    def __init__(self, temps: float, fonction):
         self.temps = temps
         self.fonction = fonction
         self.thread = threading.Timer(self.temps, self.handle_function)

@@ -156,7 +156,8 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#A"><strong>A</strong></a>
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
  | <a href="#B"><strong>B</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
@@ -178,14 +179,24 @@
  | <a href="#V"><strong>V</strong></a>
  
 </div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="serveur.html#lib.server.game_loop.GameLoop._timer">_timer (attribut lib.server.game_loop.GameLoop)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.chatbox.ChatBox.add_line">add_line() (méthode lib.client.chatbox.ChatBox)</a>
 </li>
+      <li><a href="client.html#lib.client.chatbox.ChatBox.add_lines">add_lines() (méthode lib.client.chatbox.ChatBox)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="client.html#lib.client.chatbox.ChatBox.add_lines">add_lines() (méthode lib.client.chatbox.ChatBox)</a>
+      <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.add_server">add_server() (méthode lib.client.connexion_screen.EcranConnexion)</a>
 </li>
       <li><a href="client.html#lib.client.radar.Radar.angle">angle (attribut lib.client.radar.Radar)</a>
 </li>
@@ -211,8 +222,6 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.canvas_jeu.CanvasJeu">CanvasJeu (classe dans lib.client.canvas_jeu)</a>
 </li>
-      <li><a href="client.html#lib.client.canvas_jeu.CanvasJeu.carte">carte (attribut lib.client.canvas_jeu.CanvasJeu)</a>
-</li>
       <li><a href="mecanismes.html#lib.common.carte.Carte">Carte (classe dans lib.common.carte)</a>
 </li>
       <li><a href="client.html#lib.client.game_screen.EcranJeu.chatbox">chatbox (attribut lib.client.game_screen.EcranJeu)</a>
@@ -223,6 +232,8 @@
       </ul></li>
       <li><a href="client.html#lib.client.chatbox.ChatBox">ChatBox (classe dans lib.client.chatbox)</a>
 </li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.ciblage">ciblage() (méthode lib.common.entite.Entite)</a>
+</li>
       <li><a href="serveur.html#lib.server.tcp_server.TCPServer.client">client (attribut lib.server.tcp_server.TCPServer)</a>
 </li>
       <li><a href="serveur.html#lib.server.client.Client">Client (classe dans lib.server.client)</a>
@@ -231,15 +242,13 @@
 </li>
       <li><a href="client.html#lib.client.game_screen.EcranJeu.closed">closed (attribut lib.client.game_screen.EcranJeu)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.game_screen.EcranJeu.closeEvent">closeEvent() (méthode lib.client.game_screen.EcranJeu)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.connect">connect() (méthode lib.client.connexion_screen.EcranConnexion)</a>
 </li>
       <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.connect_from_list">connect_from_list() (méthode lib.client.connexion_screen.EcranConnexion)</a>
-</li>
-      <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.connect_local">connect_local() (méthode lib.client.connexion_screen.EcranConnexion)</a>
 </li>
       <li><a href="client.html#lib.client.tcp_client.TCPClientProtocol.connection_lost">connection_lost() (méthode lib.client.tcp_client.TCPClientProtocol)</a>
 
@@ -259,6 +268,12 @@
         <li><a href="serveur.html#lib.server.tcp_server.TCPServer.create">(méthode de la classe lib.server.tcp_server.TCPServer)</a>
 </li>
       </ul></li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.current_ship">current_ship (attribut lib.common.entite.Entite)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.current_target">current_target (attribut lib.common.entite.Entite)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.current_weapon">current_weapon (attribut lib.common.entite.Entite)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -271,9 +286,17 @@
         <li><a href="serveur.html#lib.server.tcp_server.TCPServer.data_received">(méthode lib.server.tcp_server.TCPServer)</a>
 </li>
       </ul></li>
+      <li><a href="mecanismes.html#lib.common.joueur.Joueur.detection_radius">detection_radius (attribut lib.common.joueur.Joueur)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.direction">direction (attribut lib.common.entite.Entite)</a>
+</li>
       <li><a href="mecanismes.html#lib.common.vecteur.Vecteur.distance">distance() (méthode lib.common.vecteur.Vecteur)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.draw_life_bar">draw_life_bar() (méthode lib.common.entite.Entite)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.draw_target">draw_target() (méthode lib.common.entite.Entite)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -285,11 +308,17 @@
 </li>
       <li><a href="client.html#lib.client.game_screen.EcranJeu">EcranJeu (classe dans lib.client.game_screen)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mecanismes.html#lib.common.entite.Entite">Entite (classe dans lib.common.entite)</a>
 </li>
-      <li><a href="mecanismes.html#lib.common.vecteur.Vecteur.est_entre">est_entre() (méthode statique lib.common.vecteur.Vecteur)</a>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mecanismes.html#lib.common.vecteur.Vecteur.equal">equal() (méthode lib.common.vecteur.Vecteur)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.equiper">equiper() (méthode lib.common.entite.Entite)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.vecteur.Vecteur.est_entre">est_entre() (méthode lib.common.vecteur.Vecteur)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.exp">exp (attribut lib.common.entite.Entite)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -298,6 +327,14 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="mecanismes.html#lib.common.logger.Logger.file_path">file_path (attribut lib.common.logger.Logger)</a>
+</li>
+      <li><a href="serveur.html#lib.server.client.Client.find_client_by_peername">find_client_by_peername() (méthode statique lib.server.client.Client)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="serveur.html#lib.server.client.Client.find_client_by_uuid">find_client_by_uuid() (méthode statique lib.server.client.Client)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.findById">findById() (méthode statique lib.common.entite.Entite)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -342,18 +379,26 @@
       <ul>
         <li><a href="client.html#lib.client.tcp_client.TCPClientProtocol.id">(attribut lib.client.tcp_client.TCPClientProtocol)</a>
 </li>
+        <li><a href="mecanismes.html#lib.common.entite.Entite.id">(attribut lib.common.entite.Entite)</a>
+</li>
         <li><a href="serveur.html#lib.server.tcp_server.TCPServer.id">(attribut lib.server.tcp_server.TCPServer)</a>
 </li>
       </ul></li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.image">image (attribut lib.common.entite.Entite)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mecanismes.html#lib.common.entite.Entite.image">image (attribut lib.common.entite.Entite)</a>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.image_direction">image_direction (attribut lib.common.entite.Entite)</a>
 </li>
       <li><a href="client.html#lib.client.game_screen.EcranJeu.input_chatbox">input_chatbox (attribut lib.client.game_screen.EcranJeu)</a>
 </li>
       <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.input_username">input_username (attribut lib.client.connexion_screen.EcranConnexion)</a>
 </li>
       <li><a href="mecanismes.html#lib.common.entite.Entite.is_alive">is_alive() (méthode lib.common.entite.Entite)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.isDead">isDead() (méthode lib.common.entite.Entite)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.isWinning">isWinning() (méthode lib.common.entite.Entite)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -383,16 +428,20 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="client.html#lib.client.canvas_jeu.CanvasJeu.last_key">last_key (attribut lib.client.canvas_jeu.CanvasJeu)</a>
+</li>
       <li><a href="mecanismes.html#lib.common.logger.Logger.level_name">level_name() (méthode lib.common.logger.Logger)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.level_up">level_up() (méthode lib.common.entite.Entite)</a>
 </li>
       <li><a href="client.html#lib.client.chatbox.ChatBox.lines">lines (attribut lib.client.chatbox.ChatBox)</a>
 </li>
       <li><a href="serveur.html#lib.server.global_server_registry.GSR.log">log (attribut lib.server.global_server_registry.GSR)</a>
 </li>
-      <li><a href="mecanismes.html#lib.common.logger.Logger.log">log() (méthode lib.common.logger.Logger)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mecanismes.html#lib.common.logger.Logger.log">log() (méthode lib.common.logger.Logger)</a>
+</li>
       <li><a href="mecanismes.html#lib.common.logger.Logger">Logger (classe dans lib.common.logger)</a>
 </li>
       <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.logo">logo (attribut lib.client.connexion_screen.EcranConnexion)</a>
@@ -446,17 +495,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.canvas_jeu.CanvasJeu.paintEvent">paintEvent() (méthode lib.client.canvas_jeu.CanvasJeu)</a>
-
-      <ul>
-        <li><a href="client.html#lib.client.radar.Radar.paintEvent">(méthode lib.client.radar.Radar)</a>
 </li>
-      </ul></li>
       <li><a href="serveur.html#lib.server.tcp_server.TCPServer.peername">peername (attribut lib.server.tcp_server.TCPServer)</a>
+</li>
+      <li><a href="client.html#lib.client.tcp_client.TCPClientProtocol.ping">ping() (méthode lib.client.tcp_client.TCPClientProtocol)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="client.html#lib.client.tcp_client.TCPClientProtocol.ping">ping() (méthode lib.client.tcp_client.TCPClientProtocol)</a>
-</li>
       <li><a href="client.html#lib.client.radar.Radar.points_to_draw">points_to_draw (attribut lib.client.radar.Radar)</a>
 </li>
       <li><a href="mecanismes.html#lib.common.entite.Entite.position">position (attribut lib.common.entite.Entite)</a>
@@ -473,11 +518,17 @@
 </li>
       <li><a href="client.html#lib.client.radar.Radar">Radar (classe dans lib.client.radar)</a>
 </li>
+      <li><a href="client.html#lib.client.canvas_jeu.CanvasJeu.refresh_rate">refresh_rate (attribut lib.client.canvas_jeu.CanvasJeu)</a>
+</li>
+      <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.refresh_server_list">refresh_server_list() (méthode lib.client.connexion_screen.EcranConnexion)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="mecanismes.html#lib.common.carte.Carte.render">render() (méthode lib.common.carte.Carte)</a>
+      <li><a href="client.html#lib.client.radar.Radar.render">render() (méthode lib.client.radar.Radar)</a>
 
       <ul>
+        <li><a href="mecanismes.html#lib.common.carte.Carte.render">(méthode lib.common.carte.Carte)</a>
+</li>
         <li><a href="mecanismes.html#lib.common.entite.Entite.render">(méthode lib.common.entite.Entite)</a>
 </li>
       </ul></li>
@@ -497,12 +548,12 @@
 </li>
       <li><a href="client.html#lib.client.connexion_screen.EcranConnexion.server_list">server_list (attribut lib.client.connexion_screen.EcranConnexion)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.global_client_registry.GCR.serveurs">serveurs (attribut lib.client.global_client_registry.GCR)</a>
 </li>
       <li><a href="mecanismes.html#lib.common.entite.Entite.set_image">set_image() (méthode lib.common.entite.Entite)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.global_client_registry.GCR.setEventLoop">setEventLoop() (méthode de la classe lib.client.global_client_registry.GCR)</a>
 
       <ul>
@@ -511,12 +562,22 @@
       </ul></li>
       <li><a href="client.html#lib.client.global_client_registry.GCR.setTcpClient">setTcpClient() (méthode de la classe lib.client.global_client_registry.GCR)</a>
 </li>
+      <li><a href="serveur.html#lib.server.game_loop.GameLoop.setup">setup() (méthode lib.server.game_loop.GameLoop)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.size">size (attribut lib.common.entite.Entite)</a>
+</li>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.spawnShip">spawnShip() (méthode lib.common.entite.Entite)</a>
+</li>
+      <li><a href="serveur.html#lib.server.game_loop.GameLoop.stop">stop() (méthode lib.server.game_loop.GameLoop)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="mecanismes.html#lib.common.entite.Entite.takeDamage">takeDamage() (méthode lib.common.entite.Entite)</a>
+</li>
       <li><a href="client.html#lib.client.global_client_registry.GCR.tcp_client">tcp_client (attribut lib.client.global_client_registry.GCR)</a>
 </li>
       <li><a href="client.html#lib.client.tcp_client.TCPClientProtocol">TCPClientProtocol (classe dans lib.client.tcp_client)</a>
@@ -526,6 +587,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="client.html#lib.client.radar.Radar.temps_affichage">temps_affichage (attribut lib.client.radar.Radar)</a>
+</li>
+      <li><a href="client.html#lib.client.canvas_jeu.CanvasJeu.time_counter">time_counter (attribut lib.client.canvas_jeu.CanvasJeu)</a>
 </li>
       <li><a href="client.html#lib.client.radar.Radar.to_remove">to_remove (attribut lib.client.radar.Radar)</a>
 </li>
@@ -549,6 +612,12 @@
         <li><a href="client.html#lib.client.game_screen.EcranJeu.update">(méthode lib.client.game_screen.EcranJeu)</a>
 </li>
         <li><a href="client.html#lib.client.radar.Radar.update">(méthode lib.client.radar.Radar)</a>
+</li>
+        <li><a href="mecanismes.html#lib.common.entite.Entite.update">(méthode lib.common.entite.Entite)</a>
+</li>
+        <li><a href="mecanismes.html#lib.common.joueur.Joueur.update">(méthode lib.common.joueur.Joueur)</a>
+</li>
+        <li><a href="serveur.html#lib.server.game_loop.GameLoop.update">(méthode lib.server.game_loop.GameLoop)</a>
 </li>
       </ul></li>
   </ul></td>

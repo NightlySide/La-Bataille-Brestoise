@@ -168,9 +168,9 @@
 <h1>Client<a class="headerlink" href="#client" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="section" id="canvas-jeu">
 <h2>Canvas Jeu<a class="headerlink" href="#canvas-jeu" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.client.canvas_jeu.CanvasJeu">
-<em class="property">class </em><code class="sig-prename descclassname">lib.client.canvas_jeu.</code><code class="sig-name descname">CanvasJeu</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em>, <em class="sig-param">refresh_rate=0.03333333333333333</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.canvas_jeu.</code><code class="sig-name descname">CanvasJeu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">PyQt5.QtCore.QObject</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.03333333333333333</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Canvas sur lequel on va venir dessiner toute la partie jeu, cela inclut la carte
 le joueur et les autres entités</p>
 <dl class="field-list simple">
@@ -183,69 +183,90 @@ un framerate constant</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
-<dt id="lib.client.canvas_jeu.CanvasJeu.carte">
-<code class="sig-name descname">carte</code><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.carte" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>les données de la carte de jeu, les tuiles sur lesquelles
-on peut naviguer ou non.</p>
+<dl class="py attribute">
+<dt id="lib.client.canvas_jeu.CanvasJeu.time_counter">
+<code class="sig-name descname">time_counter</code><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.time_counter" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>compteur permettant de relever le temps entre deux itérations</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="mecanismes.html#lib.common.carte.Carte" title="lib.common.carte.Carte">Carte</a></p>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py attribute">
+<dt id="lib.client.canvas_jeu.CanvasJeu.refresh_rate">
+<code class="sig-name descname">refresh_rate</code><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.refresh_rate" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>fréquence de rafraichissement de l’affichage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.client.canvas_jeu.CanvasJeu.last_key">
+<code class="sig-name descname">last_key</code><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.last_key" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>dernière touche pressée, utile pour s’arrêter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>PyQt5.QtCore.Qt.Key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="lib.client.canvas_jeu.CanvasJeu.keyPressEvent">
-<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QKeyEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction héritée de Qt qui permet de prendre en charge les évènements du type
 touche clavier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>e</strong> (<em>QKeyEvent</em>) – évènement de type touche de clavier</p>
+<dd class="field-odd"><p><strong>e</strong> (<em>PyQt5.QtGui.QKeyEvent</em>) – évènement de type touche de clavier</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.canvas_jeu.CanvasJeu.mouseMoveEvent">
-<code class="sig-name descname">mouseMoveEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.mouseMoveEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">mouseMoveEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QMouseEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.mouseMoveEvent" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois que la souris
 est bougée sur le canvas</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>e</strong> (<em>QMouseEvent</em>) – évènement du type déplacement de souris</p>
+<dd class="field-odd"><p><strong>e</strong> (<em>PyQt5.QtGui.QMouseEvent</em>) – évènement du type déplacement de souris</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.canvas_jeu.CanvasJeu.mousePressEvent">
-<code class="sig-name descname">mousePressEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.mousePressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">mousePressEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QMouseEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.mousePressEvent" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois qu’un
 bouton de la souris est pressé</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>e</strong> (<em>QMouseEvent</em>) – évènement du type souris</p>
+<dd class="field-odd"><p><strong>e</strong> (<em>PyQt5.QtGui.QMouseEvent</em>) – évènement du type souris</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.canvas_jeu.CanvasJeu.paintEvent">
-<code class="sig-name descname">paintEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.paintEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">paintEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QPaintEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.paintEvent" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois qu’on rafraîchit l’écran.
 On va venir alors peindre sur le canvas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>e</strong> (<em>QPaintEvent</em>) – évènement du type peinture de l’écran</p>
+<dd class="field-odd"><p><strong>e</strong> (<em>PyQt5.QtGui.QPaintEvent</em>) – évènement du type peinture de l’écran</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.canvas_jeu.CanvasJeu.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.update" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.canvas_jeu.CanvasJeu.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction appelée pour rafraîchir le canvas. C’est cette fonction
 qui va venir limiter le nombre d’appels de manière à avoir un
 taux de rafraîchissement de la surface constant.
@@ -257,9 +278,9 @@ Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
 </div>
 <div class="section" id="chatbox">
 <h2>ChatBox<a class="headerlink" href="#chatbox" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.client.chatbox.ChatBox">
-<em class="property">class </em><code class="sig-prename descclassname">lib.client.chatbox.</code><code class="sig-name descname">ChatBox</code><span class="sig-paren">(</span><em class="sig-param">parent</em>, <em class="sig-param">size=50</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.chatbox.</code><code class="sig-name descname">ChatBox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">PyQt5.QtCore.QObject</span></em>, <em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">50</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Contrôle la chatbox du jeu. Classe nécessaire pour pouvoir
 utiliser PyQt5 dans un thread différent.</p>
 <dl class="field-list simple">
@@ -270,7 +291,7 @@ utiliser PyQt5 dans un thread différent.</p>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.chatbox.ChatBox.max_size">
 <code class="sig-name descname">max_size</code><a class="headerlink" href="#lib.client.chatbox.ChatBox.max_size" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>le nombre maximal de lignes dans la chatbox</p>
@@ -281,7 +302,7 @@ utiliser PyQt5 dans un thread différent.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.chatbox.ChatBox.lines">
 <code class="sig-name descname">lines</code><a class="headerlink" href="#lib.client.chatbox.ChatBox.lines" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>les lignes de la chatbox</p>
@@ -292,7 +313,7 @@ utiliser PyQt5 dans un thread différent.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.chatbox.ChatBox.need_update">
 <code class="sig-name descname">need_update</code><a class="headerlink" href="#lib.client.chatbox.ChatBox.need_update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>indique si la chatbox doit être mise à jour</p>
@@ -303,9 +324,9 @@ utiliser PyQt5 dans un thread différent.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.chatbox.ChatBox.add_line">
-<code class="sig-name descname">add_line</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox.add_line" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">add_line</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">line</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.chatbox.ChatBox.add_line" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Ajoute la ligne “line” aux lignes de la chatbox
 pour le prochain update.</p>
 <dl class="field-list simple">
@@ -315,9 +336,9 @@ pour le prochain update.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.chatbox.ChatBox.add_lines">
-<code class="sig-name descname">add_lines</code><span class="sig-paren">(</span><em class="sig-param">lines</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox.add_lines" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">add_lines</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lines</span><span class="p">:</span> <span class="n">list</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.chatbox.ChatBox.add_lines" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Ajoute la liste de lignes aux lignes de la chatbox
 pour le prochain update.</p>
 <dl class="field-list simple">
@@ -327,9 +348,9 @@ pour le prochain update.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.chatbox.ChatBox.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.chatbox.ChatBox.update" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.chatbox.ChatBox.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Met à jour la chatbox. Fonction appelée par le Thread
 contenant PyQt5.
 La mise à jour ne s’effectue que si elle est nécessaire.</p>
@@ -340,9 +361,9 @@ La mise à jour ne s’effectue que si elle est nécessaire.</p>
 </div>
 <div class="section" id="ecran-de-connexion">
 <h2>Ecran de Connexion<a class="headerlink" href="#ecran-de-connexion" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.client.connexion_screen.EcranConnexion">
-<em class="property">class </em><code class="sig-prename descclassname">lib.client.connexion_screen.</code><code class="sig-name descname">EcranConnexion</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.connexion_screen.</code><code class="sig-name descname">EcranConnexion</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">PyQt5.QtCore.QObject</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fenêtre de connexion au serveur de jeu. Permet à l’utilisateur
 de choisir un pseudo pour sa partie, de sélectionner un serveur
 disponible ou d’en ajouter un.</p>
@@ -352,7 +373,7 @@ disponible ou d’en ajouter un.</p>
 la fenêtre.</p>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.connexion_screen.EcranConnexion.game">
 <code class="sig-name descname">game</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.game" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>la fenêtre de jeu qui s’ouvrira
@@ -364,7 +385,7 @@ une fois connecté.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.connexion_screen.EcranConnexion.logo">
 <code class="sig-name descname">logo</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.logo" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>référence au logo affiché sur l’écran</p>
@@ -375,7 +396,7 @@ une fois connecté.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.connexion_screen.EcranConnexion.btn_connect">
 <code class="sig-name descname">btn_connect</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.btn_connect" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>bouton de connexion au serveur
@@ -387,7 +408,7 @@ sélectionné dans la liste</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.connexion_screen.EcranConnexion.btn_local">
 <code class="sig-name descname">btn_local</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.btn_local" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>bouton pour entrer manuellement
@@ -399,7 +420,7 @@ les informations de connexion au serveur</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.connexion_screen.EcranConnexion.server_list">
 <code class="sig-name descname">server_list</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.server_list" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>liste des serveurs enregistrés</p>
@@ -410,7 +431,7 @@ les informations de connexion au serveur</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.connexion_screen.EcranConnexion.input_username">
 <code class="sig-name descname">input_username</code><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.input_username" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>pseudo du joueur, devient “Anonyme”
@@ -422,9 +443,16 @@ si la case est laissée vide</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
+<dt id="lib.client.connexion_screen.EcranConnexion.add_server">
+<code class="sig-name descname">add_server</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.add_server" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée lorsque l’utilisateur clique sur le bouton “Connexion locale”
+Ouvre la boite de dialogue correspondante</p>
+</dd></dl>
+
+<dl class="py method">
 <dt id="lib.client.connexion_screen.EcranConnexion.connect">
-<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param">nom</em>, <em class="sig-param">ip</em>, <em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nom</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">ip</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée finalement pour se connecter au serveur et ouvrir
 la fenêtre de jeu.</p>
 <dl class="field-list simple">
@@ -438,23 +466,16 @@ la fenêtre de jeu.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.connexion_screen.EcranConnexion.connect_from_list">
-<code class="sig-name descname">connect_from_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect_from_list" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">connect_from_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect_from_list" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée lorsque l’utilisateur clique sur le bouton “Connecter”
 Se connecter à partir d’un serveur enregistré</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="lib.client.connexion_screen.EcranConnexion.connect_local">
-<code class="sig-name descname">connect_local</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.connect_local" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Appelée lorsque l’utilisateur clique sur le bouton “Connexion locale”
-Ouvre la boite de dialogue correspondante</p>
-</dd></dl>
-
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.connexion_screen.EcranConnexion.keyPressEvent">
-<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QKeyEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction héritée de Qt qui permet de prendre en charge les évènements du type
 touche clavier.</p>
 <dl class="field-list simple">
@@ -464,12 +485,18 @@ touche clavier.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.connexion_screen.EcranConnexion.open_game">
-<code class="sig-name descname">open_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.open_game" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">open_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.open_game" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Ouvre la fenêtre de jeu et cache la fenêtre de
 connexion jusqu’à ce que la fenêtre de jeu soit
 fermée.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.client.connexion_screen.EcranConnexion.refresh_server_list">
+<code class="sig-name descname">refresh_server_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.connexion_screen.EcranConnexion.refresh_server_list" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Recupère la liste des serveurs enregistrés et l’enregistre dans la liste</p>
 </dd></dl>
 
 </dd></dl>
@@ -477,9 +504,9 @@ fermée.</p>
 </div>
 <div class="section" id="ecran-de-jeu">
 <h2>Ecran de Jeu<a class="headerlink" href="#ecran-de-jeu" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.client.game_screen.EcranJeu">
-<em class="property">class </em><code class="sig-prename descclassname">lib.client.game_screen.</code><code class="sig-name descname">EcranJeu</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em>, <em class="sig-param">update_delta=16.666666666666668</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.game_screen.</code><code class="sig-name descname">EcranJeu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n">PyQt5.QtCore.QObject</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">update_delta</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">16.666666666666668</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fenetre Qt qui contient tout ce qui touche à l’écran de jeu.
 Cela comporte la chatbox, le canvas de jeu, les informations sur la vie du joueur,
 et son radar.</p>
@@ -493,7 +520,7 @@ pour afficher un framerate constant. Fixé par défaut à 60fps.</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.game_screen.EcranJeu.closed">
 <code class="sig-name descname">closed</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.closed" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>signal émit par la fenêtre pour signaler quelle s’est
@@ -505,7 +532,7 @@ fermée correctement.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.game_screen.EcranJeu.game_canvas">
 <code class="sig-name descname">game_canvas</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.game_canvas" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>canvas du jeu sur lequel on retrouve la carte
@@ -517,7 +544,7 @@ et le joueur</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.game_screen.EcranJeu.radar">
 <code class="sig-name descname">radar</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.radar" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>radar de détection du joueur</p>
@@ -528,7 +555,7 @@ et le joueur</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.game_screen.EcranJeu.chatbox">
 <code class="sig-name descname">chatbox</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.chatbox" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>boite de chat entre les joueurs d’un même serveur</p>
@@ -539,7 +566,7 @@ et le joueur</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.game_screen.EcranJeu.input_chatbox">
 <code class="sig-name descname">input_chatbox</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.input_chatbox" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>boite de texte pour envoyer un message sur le chat</p>
@@ -550,7 +577,7 @@ et le joueur</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.game_screen.EcranJeu.btn_send_chatbox">
 <code class="sig-name descname">btn_send_chatbox</code><a class="headerlink" href="#lib.client.game_screen.EcranJeu.btn_send_chatbox" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>bouton pour envoyer un message sur le chat</p>
@@ -561,38 +588,38 @@ et le joueur</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.game_screen.EcranJeu.closeEvent">
-<code class="sig-name descname">closeEvent</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.closeEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">closeEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QCloseEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.game_screen.EcranJeu.closeEvent" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction héritée de Qt, appelée lorsque le signal de fermeture de la
 fenêtre est emit. On ferme le thread TCP puis le thread Qt et enfin
 on émet le signal qui indique que la fermeture s’est bien déroulée.
 :param event: évènement du type fermeture de fenêtre
-:type event: QCloseEvent</p>
+:type event: PyQt5.QtGui.QCloseEvent</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.game_screen.EcranJeu.keyPressEvent">
-<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param">e</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">keyPressEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QKeyEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.game_screen.EcranJeu.keyPressEvent" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction héritée de Qt qui permet de prendre en charge les évènements du type
 touche clavier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>e</strong> (<em>QKeyEvent</em>) – évènement de type touche de clavier</p>
+<dd class="field-odd"><p><strong>e</strong> (<em>PyQt5.QtGui.QKeyEvent</em>) – évènement de type touche de clavier</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.game_screen.EcranJeu.send_chat">
-<code class="sig-name descname">send_chat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.send_chat" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">send_chat</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.game_screen.EcranJeu.send_chat" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Permet d’envoyer le contenu de l’entrée chat au serveur pour
 le transmettre dans la chatbox.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.game_screen.EcranJeu.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">delta</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.game_screen.EcranJeu.update" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.game_screen.EcranJeu.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction appelée pour rafraîchir l’écran de jeu et tous ses
 composants (chatbox, joueur, canvas de jeu, radar)
 Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
@@ -603,14 +630,14 @@ Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
 </div>
 <div class="section" id="global-client-registry">
 <h2>Global Client Registry<a class="headerlink" href="#global-client-registry" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.client.global_client_registry.GCR">
 <em class="property">class </em><code class="sig-prename descclassname">lib.client.global_client_registry.</code><code class="sig-name descname">GCR</code><a class="headerlink" href="#lib.client.global_client_registry.GCR" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Registre global de variables globales.
 Dans toutes structures de jeu, les variables globales sont
 nécessaire. Cette classe agit comme un registre qui permet
 de contenir ces variables</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.global_client_registry.GCR.tcp_client">
 <code class="sig-name descname">tcp_client</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.tcp_client" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>tunnel tcp vers le serveur</p>
@@ -621,7 +648,7 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.global_client_registry.GCR.loop">
 <code class="sig-name descname">loop</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.loop" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>boucle des évènements</p>
@@ -632,7 +659,7 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.global_client_registry.GCR.chatbox">
 <code class="sig-name descname">chatbox</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.chatbox" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>chatbox du jeu</p>
@@ -643,7 +670,7 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.global_client_registry.GCR.id">
 <code class="sig-name descname">id</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.id" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>identifiant unique du client (uuid)</p>
@@ -654,7 +681,7 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.global_client_registry.GCR.serveurs">
 <code class="sig-name descname">serveurs</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.serveurs" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>liste des serveurs enregistrés</p>
@@ -665,33 +692,33 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.global_client_registry.GCR.getEventLoop">
-<em class="property">classmethod </em><code class="sig-name descname">getEventLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">getEventLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; asyncio.base_events.BaseEventLoop<a class="headerlink" href="#lib.client.global_client_registry.GCR.getEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne la référence au thread tcp si il existe</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.global_client_registry.GCR.getId">
-<em class="property">classmethod </em><code class="sig-name descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getId" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#lib.client.global_client_registry.GCR.getId" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne l’identifiant unique du client si il existe</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.global_client_registry.GCR.getRandomName">
-<em class="property">classmethod </em><code class="sig-name descname">getRandomName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getRandomName" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">getRandomName</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#lib.client.global_client_registry.GCR.getRandomName" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne un nom d’utilisateur généré aléatoirement.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.global_client_registry.GCR.getTcpClient">
 <em class="property">classmethod </em><code class="sig-name descname">getTcpClient</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.getTcpClient" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne la référence au client tcp</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.global_client_registry.GCR.setEventLoop">
-<em class="property">classmethod </em><code class="sig-name descname">setEventLoop</code><span class="sig-paren">(</span><em class="sig-param">loop</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.setEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">setEventLoop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loop</span><span class="p">:</span> <span class="n">asyncio.base_events.BaseEventLoop</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.global_client_registry.GCR.setEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Définit la référence au thread tcp</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -700,9 +727,9 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.global_client_registry.GCR.setTcpClient">
-<em class="property">classmethod </em><code class="sig-name descname">setTcpClient</code><span class="sig-paren">(</span><em class="sig-param">client</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.global_client_registry.GCR.setTcpClient" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">setTcpClient</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.global_client_registry.GCR.setTcpClient" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Définit la référence au client tcp</p>
 </dd></dl>
 
@@ -711,9 +738,9 @@ de contenir ces variables</p>
 </div>
 <div class="section" id="radar">
 <h2>Radar<a class="headerlink" href="#radar" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.client.radar.Radar">
-<em class="property">class </em><code class="sig-prename descclassname">lib.client.radar.</code><code class="sig-name descname">Radar</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">speed=5</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">refresh_rate=0.03333333333333333</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.radar.</code><code class="sig-name descname">Radar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radius</span></em>, <em class="sig-param"><span class="n">speed</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="o">=</span><span class="default_value">0.03333333333333333</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Radar du joueur, permet de détecter les entités aux alentours
 et de les afficher de façon compréhensible à l’écran.</p>
 <dl class="field-list simple">
@@ -728,7 +755,7 @@ un framerate constant</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.radar.Radar.angle">
 <code class="sig-name descname">angle</code><a class="headerlink" href="#lib.client.radar.Radar.angle" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>angle entre la position de départ et celle du faisceau</p>
@@ -739,7 +766,7 @@ un framerate constant</p></li>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.radar.Radar.points_to_draw">
 <code class="sig-name descname">points_to_draw</code><a class="headerlink" href="#lib.client.radar.Radar.points_to_draw" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>points à dessiner sur le radar</p>
@@ -750,7 +777,7 @@ un framerate constant</p></li>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.radar.Radar.to_remove">
 <code class="sig-name descname">to_remove</code><a class="headerlink" href="#lib.client.radar.Radar.to_remove" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>points à retirer de la liste des points à dessiner</p>
@@ -761,7 +788,7 @@ un framerate constant</p></li>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.radar.Radar.temps_affichage">
 <code class="sig-name descname">temps_affichage</code><a class="headerlink" href="#lib.client.radar.Radar.temps_affichage" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>temps en secondes d’affichage d’un point
@@ -773,9 +800,9 @@ au radar.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="lib.client.radar.Radar.paintEvent">
-<code class="sig-name descname">paintEvent</code><span class="sig-paren">(</span><em class="sig-param">event</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar.paintEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dl class="py method">
+<dt id="lib.client.radar.Radar.render">
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span></em>, <em class="sig-param"><span class="n">parent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar.render" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction dérivée de Qt, qui est appelée à chaque fois qu’on rafraîchit l’écran.
 On va venir alors peindre sur le radar.</p>
 <dl class="field-list simple">
@@ -785,7 +812,7 @@ On va venir alors peindre sur le radar.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.radar.Radar.update">
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.Radar.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction appelée pour rafraîchir le radar. C’est cette fonction
@@ -799,9 +826,9 @@ Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
 </div>
 <div class="section" id="client-tcp">
 <h2>Client TCP<a class="headerlink" href="#client-tcp" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.client.tcp_client.TCPClientProtocol">
-<em class="property">class </em><code class="sig-prename descclassname">lib.client.tcp_client.</code><code class="sig-name descname">TCPClientProtocol</code><span class="sig-paren">(</span><em class="sig-param">nom</em>, <em class="sig-param">username</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.tcp_client.</code><code class="sig-name descname">TCPClientProtocol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nom</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">username</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Classe protocole permettant de créer un tunnel TCP bidirectionnel
 entre le serveur et le client.
 A cause des spécificités de la bibliothèque asyncio, on est
@@ -815,7 +842,7 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.tcp_client.TCPClientProtocol.transport">
 <code class="sig-name descname">transport</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.transport" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>le buffer d’écriture sur le tunnel TCP</p>
@@ -826,7 +853,7 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.tcp_client.TCPClientProtocol.id">
 <code class="sig-name descname">id</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.id" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>identifiant unique du client (uuid) fourni par le serveur</p>
@@ -837,7 +864,7 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.tcp_client.TCPClientProtocol.nom">
 <code class="sig-name descname">nom</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.nom" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>le nom du serveur qui sera affiché</p>
@@ -848,7 +875,7 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.client.tcp_client.TCPClientProtocol.username">
 <code class="sig-name descname">username</code><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.username" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>le nom d’utilisateur du joueur</p>
@@ -859,9 +886,9 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.tcp_client.TCPClientProtocol.connection_lost">
-<code class="sig-name descname">connection_lost</code><span class="sig-paren">(</span><em class="sig-param">exc</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.connection_lost" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">connection_lost</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exc</span><span class="p">:</span> <span class="n">Exception</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.connection_lost" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée lorsque l’évènement “connexion perdue” se réalise.
 Ferme la connexion du côté client.</p>
 <dl class="field-list simple">
@@ -872,9 +899,9 @@ si erreur il y a</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.tcp_client.TCPClientProtocol.connection_made">
-<code class="sig-name descname">connection_made</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.connection_made" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">connection_made</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transport</span><span class="p">:</span> <span class="n">asyncio.transports.Transport</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.connection_made" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée lorsque l’évènement “connexion réalisée” se produit.
 On définit alors ce tunnel comme étant celui que le client
 devra utiliser.</p>
@@ -885,9 +912,9 @@ devra utiliser.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.tcp_client.TCPClientProtocol.create">
-<em class="property">async classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">nom</em>, <em class="sig-param">host</em>, <em class="sig-param">port</em>, <em class="sig-param">username</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.create" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">async classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nom</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">host</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">port</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">username</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.create" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction usine qui instancie la connexion et utilise
 cette classe comme protocole.</p>
 <dl class="field-list simple">
@@ -902,40 +929,40 @@ cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.tcp_client.TCPClientProtocol.data_received">
-<code class="sig-name descname">data_received</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.data_received" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">data_received</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">bytes</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.data_received" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée lorsque l’évènement “données reçues” se produit.
 Permet la reception en asynchrone de données du serveur
 et d’agir en fonction de la nature de la réponse.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>any</em>) – données reçues encodées à l’aide de pickle</p>
+<dd class="field-odd"><p><strong>data</strong> (<em>bytes</em>) – données reçues encodées à l’aide de pickle</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.tcp_client.TCPClientProtocol.ping">
-<code class="sig-name descname">ping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.ping" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">ping</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.ping" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Envoi un ping au serveur. Ce dernier répondra “pong”
 si le message est bien reçu.</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.tcp_client.TCPClientProtocol.request_client_id">
-<code class="sig-name descname">request_client_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.request_client_id" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">request_client_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.request_client_id" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fait la demande au serveur d’un identifiant unique</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.client.tcp_client.TCPClientProtocol.send">
-<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.send" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">object</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.tcp_client.TCPClientProtocol.send" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Permet de transmettre les données “data” au serveur
 en TCP en encodant les données à l’aide de pickle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>any</em>) – données à transmettre</p>
+<dd class="field-odd"><p><strong>data</strong> (<em>object</em>) – données à transmettre</p>
 </dd>
 </dl>
 </dd></dl>

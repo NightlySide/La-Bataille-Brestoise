@@ -5,3 +5,5 @@ pillow
 matplotlib
 numpy
 colorama
+sphinx
+sphinx_rtd_theme

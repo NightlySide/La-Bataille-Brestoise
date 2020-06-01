@@ -166,11 +166,11 @@
 <h1>Mecanismes de Jeu<a class="headerlink" href="#mecanismes-de-jeu" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="section" id="entite">
 <h2>Entite<a class="headerlink" href="#entite" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.common.entite.Entite">
 <em class="property">class </em><code class="sig-prename descclassname">lib.common.entite.</code><code class="sig-name descname">Entite</code><a class="headerlink" href="#lib.common.entite.Entite" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Definition d’une entité du jeu.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.common.entite.Entite.vie">
 <code class="sig-name descname">vie</code><a class="headerlink" href="#lib.common.entite.Entite.vie" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>vie de l’entité</p>
@@ -181,7 +181,7 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.common.entite.Entite.vitesse">
 <code class="sig-name descname">vitesse</code><a class="headerlink" href="#lib.common.entite.Entite.vitesse" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>vitesse de déplacement de l’unité</p>
@@ -192,18 +192,18 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.common.entite.Entite.image">
 <code class="sig-name descname">image</code><a class="headerlink" href="#lib.common.entite.Entite.image" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>image de référence de l’entité</p>
+<dd><p>chemin vers l’image de référence de l’entité</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>QImage</p>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.common.entite.Entite.position">
 <code class="sig-name descname">position</code><a class="headerlink" href="#lib.common.entite.Entite.position" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>position du joueur</p>
@@ -214,31 +214,276 @@
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="lib.common.entite.Entite.is_alive">
-<code class="sig-name descname">is_alive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.entite.Entite.is_alive" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Vérifie si l’entité est encore en vie.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="lib.common.entite.Entite.render">
-<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param">qp</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.entite.Entite.render" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fait le rendu de l’entité sur l’écran à l’aide du painter de
-ce dernier.</p>
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.direction">
+<code class="sig-name descname">direction</code><a class="headerlink" href="#lib.common.entite.Entite.direction" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>direction vers lequel se dirige le joueur</p>
 <dl class="field-list simple">
-<dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>qp</strong> (<em>QPainter</em>) – painter de la surface sur laquelle dessiner</p>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">Vecteur</a></p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.image_direction">
+<code class="sig-name descname">image_direction</code><a class="headerlink" href="#lib.common.entite.Entite.image_direction" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>direction vers laquelle l’image doit être tournée</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">Vecteur</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.current_ship">
+<code class="sig-name descname">current_ship</code><a class="headerlink" href="#lib.common.entite.Entite.current_ship" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>batiment actuellement manoeuvré par l’entité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>batiment</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.current_weapon">
+<code class="sig-name descname">current_weapon</code><a class="headerlink" href="#lib.common.entite.Entite.current_weapon" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>arme actuellement équipé par l’entité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>arme</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.current_target">
+<code class="sig-name descname">current_target</code><a class="headerlink" href="#lib.common.entite.Entite.current_target" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>entité actuellement visée par l’entité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>entite</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.id">
+<code class="sig-name descname">id</code><a class="headerlink" href="#lib.common.entite.Entite.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>identifiant unique attribué à l’entité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.exp">
+<code class="sig-name descname">exp</code><a class="headerlink" href="#lib.common.entite.Entite.exp" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>expérience actuelle de l’entité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.entite.Entite.size">
+<code class="sig-name descname">size</code><a class="headerlink" href="#lib.common.entite.Entite.size" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>taille de l’image de l’entité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.ciblage">
+<code class="sig-name descname">ciblage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entite</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite">lib.common.entite.Entite</a></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.ciblage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de définir une cible pour l’attaque notamment.
+La référence à la cibles est l’identifiant unique.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>entite</strong> (<a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite"><em>Entite</em></a>) – l’entité à cibler, doit posséder un uuid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.draw_life_bar">
+<code class="sig-name descname">draw_life_bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QPainter</span></em>, <em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.draw_life_bar" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fait le rendu de la barre de vie de l’entité à l’aide du painter de l’écran</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qp</strong> (<em>QPainter</em>) – painter de la surface sur laquelle dessiner</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – position X du milieu de l’entité par rapport au joueur</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – position Y du milieu de l’entité par rapport au joueur</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.draw_target">
+<code class="sig-name descname">draw_target</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QPainter</span></em>, <em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">tar_width</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.draw_target" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fait le rendu du contour lors du ciblage de l’entité à l’aide du painter
+de l’écran.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qp</strong> (<em>QPainter</em>) – painter de la surface sur laquelle dessiner</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – position X du milieu de l’entité par rapport au joueur</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – position Y du milieu de l’entité par rapport au joueur</p></li>
+<li><p><strong>tar_width</strong> (<em>int</em>) – épaisseur du trait lors du dessin de la cible</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.equiper">
+<code class="sig-name descname">equiper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arme</span><span class="p">:</span> <span class="n">lib.common.armes.arme.Arme</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.entite.Entite.equiper" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet à un joueur d’équiper une arme. Elle sert à attendre un délai de mise en oeuvre d’une arme avant de
+pouvoir tirer.
+Plus l’arme est importante et plus son temps d’équipement est grand. Une arme de conception plus récente
+aura un temps d’équipement plus court.
+Les valeurs précises sont disponibles dans le tableau d’équillibrage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>arme</strong> (<em>Arme</em>) – l’arme à équiper</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.findById">
+<em class="property">static </em><code class="sig-name descname">findById</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e_id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">entities</span><span class="p">:</span> <span class="n">list</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite">lib.common.entite.Entite</a><a class="headerlink" href="#lib.common.entite.Entite.findById" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Methode outil pour trouver une entité à partir de son
+identifiant dans une liste donnée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>e_id</strong> (<em>str</em>) – identifiant de l’entité à trouver</p></li>
+<li><p><strong>entities</strong> (<em>list</em>) – liste des entités dans laquelle chercher</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.isDead">
+<code class="sig-name descname">isDead</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.isDead" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Test si le joueur à encore assez de points de vie. si les points de vie sont à 0,
+le joueur respawn dans un navire du tier inferieur, l’exp est reset au treshold du tier inferieur</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.isWinning">
+<code class="sig-name descname">isWinning</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lib.common.entite.Entite.isWinning" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction testant si le joueur à gagné ou non, en comparant l’exp à la valeur exp_win</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>le joueur à gagné ou non</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>isWinning (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.is_alive">
+<code class="sig-name descname">is_alive</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lib.common.entite.Entite.is_alive" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Vérifie si l’entité est encore en vie.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>si l’entité est encore en vie</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>is_alive (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.level_up">
+<code class="sig-name descname">level_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.level_up" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction testant la montée de niveau à chaque tour. Le joueur passe au niveau superieur
+si l’experience est supérieure à un des paliers de niveau (définis dans exp_treshold).
+le test est exécuté dans le gameloop.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.render">
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QPainter</span></em>, <em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.render" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fait le rendu de l’entité sur l’écran à l’aide du painter de
+ce dernier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qp</strong> (<em>QPainter</em>) – painter de la surface sur laquelle dessiner</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – position X du milieu de l’entité par rapport au joueur</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – position Y du milieu de l’entité par rapport au joueur</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="lib.common.entite.Entite.set_image">
-<code class="sig-name descname">set_image</code><span class="sig-paren">(</span><em class="sig-param">img_path</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.entite.Entite.set_image" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">set_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">img_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.set_image" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Affecte une image à l’entité.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p><strong>img_path</strong> (<em>str</em>) – chemin d’accès relatif à l’image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.spawnShip">
+<code class="sig-name descname">spawnShip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ship</span><span class="p">:</span> <span class="n">lib.common.batiments.batiment.Batiment</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.spawnShip" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de générer un nouveau batiment au joueur par exemple
+quand il meurt ou bien si il monte de niveau</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>ship</strong> (<em>Batiment</em>) – bâtiment à générer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.takeDamage">
+<code class="sig-name descname">takeDamage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entite_ennemie</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite">lib.common.entite.Entite</a></span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.takeDamage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction implementant les dégats infligés à une entite. Elle test si le joueur à encore
+assez de PV, sinon elle provoque le Respawn. l’EXP gagné par le joueur ennemi est proportionnel au dégats infligés.
+le joueur obtient un boost d’XP proportionnel à son tier en cas de frag ( IE il tue un ennemi).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entite_ennemie</strong> (<a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite"><em>Entite</em></a>) – entite ennemie qui inflige les dégats</p></li>
+<li><p><strong>refresh_rate</strong> (<em>float</em>) – fréquence de rafraichissement du jeu</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.entite.Entite.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour les éléments essentiels au fonctionnement de l’entité comme sa position
+ou bien sa direction.
+Le déplacement sera à implémenter du coté client (joueur) ou serveur (entite).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>delta</strong> (<em>float</em>) – temps mis entre l’itération précédente et l’itération actuelle</p>
 </dd>
 </dl>
 </dd></dl>
@@ -248,17 +493,41 @@ ce dernier.</p>
 </div>
 <div class="section" id="joueur">
 <h2>Joueur<a class="headerlink" href="#joueur" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.common.joueur.Joueur">
-<em class="property">class </em><code class="sig-prename descclassname">lib.common.joueur.</code><code class="sig-name descname">Joueur</code><span class="sig-paren">(</span><em class="sig-param">position</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.joueur.Joueur" title="Lien permanent vers cette définition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.joueur.</code><code class="sig-name descname">Joueur</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.joueur.Joueur" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Définition d’un joueur</p>
+<dl class="py attribute">
+<dt id="lib.common.joueur.Joueur.detection_radius">
+<code class="sig-name descname">detection_radius</code><a class="headerlink" href="#lib.common.joueur.Joueur.detection_radius" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>distance de détection en cases</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.joueur.Joueur.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.joueur.Joueur.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour les éléments essentiels au fonctionnement de l’entité comme sa position
+ou bien sa direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>delta</strong> (<em>float</em>) – temps mis entre l’itération précédente et l’itération actuelle</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="section" id="vecteur">
 <h2>Vecteur<a class="headerlink" href="#vecteur" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.common.vecteur.Vecteur">
-<em class="property">class </em><code class="sig-prename descclassname">lib.common.vecteur.</code><code class="sig-name descname">Vecteur</code><span class="sig-paren">(</span><em class="sig-param">x=0.0</em>, <em class="sig-param">y=0.0</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.vecteur.Vecteur" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.vecteur.</code><code class="sig-name descname">Vecteur</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.vecteur.Vecteur" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Représentation d’un vecteur à 2 dimensions.
 Utile pour tout ce qui est calcul vectoriel nécessaire dans
 ce projet.</p>
@@ -270,39 +539,77 @@ ce projet.</p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.vecteur.Vecteur.distance">
-<code class="sig-name descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.vecteur.Vecteur.distance" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">distance</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#lib.common.vecteur.Vecteur.distance" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne la distance eulerienne du vecteur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>la longueur eulérienne du vecteur</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>distance (float)</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
+<dt id="lib.common.vecteur.Vecteur.equal">
+<code class="sig-name descname">equal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">autre</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a></span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lib.common.vecteur.Vecteur.equal" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de vérifier si deux vecteurs sont égaux en comparant leurs attributs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>autre</strong> (<a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur"><em>Vecteur</em></a>) – vecteur à comparer</p>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>est-ce que les deux vecteurs sont égaux en attributs?</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>equal (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="lib.common.vecteur.Vecteur.est_entre">
-<em class="property">static </em><code class="sig-name descname">est_entre</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em>, <em class="sig-param">c</em>, <em class="sig-param">epsilon=1</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.vecteur.Vecteur.est_entre" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Va vérifier si un point c désigné par un Vecteur se situe
+<code class="sig-name descname">est_entre</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a></span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a></span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lib.common.vecteur.Vecteur.est_entre" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Va vérifier si le point désigné par un Vecteur se situe
 entre les points a et b, avec une précision de epsilon.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> (<a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur"><em>Vecteur</em></a>) – point de départ</p></li>
-<li><p><strong>c</strong> (<a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur"><em>Vecteur</em></a>) – point à tester</p></li>
 <li><p><strong>b</strong> (<a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur"><em>Vecteur</em></a>) – point d’arrivée</p></li>
 <li><p><strong>epsilon</strong> (<em>float</em>) – précision</p></li>
 </ul>
 </dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>est ce que le vecteur est entre a et b?</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>est_entre (bool)</p>
+</dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.vecteur.Vecteur.normaliser">
-<code class="sig-name descname">normaliser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.vecteur.Vecteur.normaliser" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">normaliser</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a><a class="headerlink" href="#lib.common.vecteur.Vecteur.normaliser" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne un vecteur normalisé, ie. de norme 1
 Très utilisé pour récupérer une direction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>vecteur normalisé en longueur</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>v_norm (<a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">Vecteur</a>)</p>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.vecteur.Vecteur.produit_vectoriel">
-<em class="property">static </em><code class="sig-name descname">produit_vectoriel</code><span class="sig-paren">(</span><em class="sig-param">v1</em>, <em class="sig-param">v2</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.vecteur.Vecteur.produit_vectoriel" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">produit_vectoriel</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">v1</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a></span></em>, <em class="sig-param"><span class="n">v2</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a></span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#lib.common.vecteur.Vecteur.produit_vectoriel" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Effectue le produit vectoriel de base entre deux vecteurs</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -310,6 +617,12 @@ Très utilisé pour récupérer une direction</p>
 <li><p><strong>v1</strong> (<a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur"><em>Vecteur</em></a>) – premier vecteur</p></li>
 <li><p><strong>v2</strong> (<a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur"><em>Vecteur</em></a>) – second vecteur</p></li>
 </ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>le produit vectoriel des deux vecteurs</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>produit_vectoriel (float)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -319,9 +632,9 @@ Très utilisé pour récupérer une direction</p>
 </div>
 <div class="section" id="logger">
 <h2>Logger<a class="headerlink" href="#logger" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.common.logger.Logger">
-<em class="property">class </em><code class="sig-prename descclassname">lib.common.logger.</code><code class="sig-name descname">Logger</code><span class="sig-paren">(</span><em class="sig-param">seuil=0</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.logger.</code><code class="sig-name descname">Logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seuil</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Classe qui permet de logger les évènements avec des niveaux de
 priorité allant du debug à l’erreur critique.</p>
 <dl class="field-list simple">
@@ -329,7 +642,7 @@ priorité allant du debug à l’erreur critique.</p>
 <dd class="field-odd"><p><strong>seuil</strong> (<em>int</em>) – seuil de déclenchement de l’affichage des logs</p>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.common.logger.Logger.file_path">
 <code class="sig-name descname">file_path</code><a class="headerlink" href="#lib.common.logger.Logger.file_path" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>chemin d’enregistrement des logs</p>
@@ -340,9 +653,9 @@ priorité allant du debug à l’erreur critique.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.logger.Logger.level_name">
-<code class="sig-name descname">level_name</code><span class="sig-paren">(</span><em class="sig-param">level</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger.level_name" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">level_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger.level_name" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne une chaine de caractère correspondant au niveau de priorité
 du log. Fonction purement esthétique.</p>
 <dl class="field-list simple">
@@ -352,9 +665,9 @@ du log. Fonction purement esthétique.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.logger.Logger.log">
-<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param">niveau</em>, <em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger.log" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">niveau</span></em>, <em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger.log" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Affiche le log dans la console, ou l’enregistre dans le fichier
 en fonction de son niveau de priorité.
 Le log est un message formaté pour pouvoir remontrer les erreurs ou
@@ -369,9 +682,9 @@ bugs plus facilement et de pouvoir les cacher en production.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.logger.Logger.save_to_file">
-<code class="sig-name descname">save_to_file</code><span class="sig-paren">(</span><em class="sig-param">file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger.save_to_file" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">save_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.logger.Logger.save_to_file" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Permet de déclencher l’enregistrement des logs dans un fichier
 spécifié dans file_path</p>
 <dl class="field-list simple">
@@ -386,9 +699,9 @@ spécifié dans file_path</p>
 </div>
 <div class="section" id="carte">
 <h2>Carte<a class="headerlink" href="#carte" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.common.carte.Carte">
-<em class="property">class </em><code class="sig-prename descclassname">lib.common.carte.</code><code class="sig-name descname">Carte</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">cell_size</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.carte.</code><code class="sig-name descname">Carte</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span></em>, <em class="sig-param"><span class="n">cell_size</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Classe représentant la carte et ses données.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -399,9 +712,9 @@ spécifié dans file_path</p>
 </ul>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.carte.Carte.get_tile">
-<code class="sig-name descname">get_tile</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte.get_tile" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">get_tile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte.get_tile" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne la tuile aux coordonnées x, y.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -413,9 +726,9 @@ spécifié dans file_path</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.common.carte.Carte.render">
-<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param">qp</em>, <em class="sig-param">window_size</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte.render" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span></em>, <em class="sig-param"><span class="n">window_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte.render" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">

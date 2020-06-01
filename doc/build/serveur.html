@@ -165,9 +165,9 @@
 <h1>Serveur<a class="headerlink" href="#serveur" title="Lien permanent vers ce titre">¶</a></h1>
 <div class="section" id="client">
 <h2>Client<a class="headerlink" href="#client" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.server.client.Client">
-<em class="property">class </em><code class="sig-prename descclassname">lib.server.client.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param">peername</em>, <em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.client.Client" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.server.client.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">peername</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">transport</span><span class="p">:</span> <span class="n">asyncio.transports.Transport</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.client.Client" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Référence du coté serveur au joueur.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -177,7 +177,7 @@
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.client.Client.username">
 <code class="sig-name descname">username</code><a class="headerlink" href="#lib.server.client.Client.username" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>pseudonyme du client</p>
@@ -188,7 +188,7 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.client.Client.uuid">
 <code class="sig-name descname">uuid</code><a class="headerlink" href="#lib.server.client.Client.uuid" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>identifiant unique du client</p>
@@ -199,27 +199,97 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="lib.server.client.Client.find_client_by_peername">
+<em class="property">static </em><code class="sig-name descname">find_client_by_peername</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">clients</span><span class="p">:</span> <span class="n">list</span></em>, <em class="sig-param"><span class="n">peername</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lib.server.client.Client" title="lib.server.client.Client">lib.server.client.Client</a><a class="headerlink" href="#lib.server.client.Client.find_client_by_peername" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de trouver un client à partir du son nom de pair</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clients</strong> (<em>list</em>) – liste des clients dans laquelle chercher</p></li>
+<li><p><strong>peername</strong> (<em>str</em>) – nom de pair à trouver dans la liste</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>le client si il est trouvé</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>client (<a class="reference internal" href="#lib.server.client.Client" title="lib.server.client.Client">Client</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.server.client.Client.find_client_by_uuid">
+<em class="property">static </em><code class="sig-name descname">find_client_by_uuid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">clients</span><span class="p">:</span> <span class="n">list</span></em>, <em class="sig-param"><span class="n">uuid</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lib.server.client.Client" title="lib.server.client.Client">lib.server.client.Client</a><a class="headerlink" href="#lib.server.client.Client.find_client_by_uuid" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de trouver un client à partir du son identifiant unique</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clients</strong> (<em>list</em>) – liste des clients dans laquelle chercher</p></li>
+<li><p><strong>uuid</strong> (<em>str</em>) – identifiant unique à trouver dans la liste</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>le client si il est trouvé</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>client (<a class="reference internal" href="#lib.server.client.Client" title="lib.server.client.Client">Client</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
 <div class="section" id="boucle-de-jeu">
 <h2>Boucle de jeu<a class="headerlink" href="#boucle-de-jeu" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.server.game_loop.GameLoop">
-<em class="property">class </em><code class="sig-prename descclassname">lib.server.game_loop.</code><code class="sig-name descname">GameLoop</code><span class="sig-paren">(</span><em class="sig-param">update_delta=0.016666666666666666</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.game_loop.GameLoop" title="Lien permanent vers cette définition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="sig-prename descclassname">lib.server.game_loop.</code><code class="sig-name descname">GameLoop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">update_delta</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.game_loop.GameLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Boucle principale de fonctionnement du jeu</p>
+<dl class="py attribute">
+<dt id="lib.server.game_loop.GameLoop._timer">
+<code class="sig-name descname">_timer</code><a class="headerlink" href="#lib.server.game_loop.GameLoop._timer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>timer qui se répète pour relancer la boucle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>RepeatingTimer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.server.game_loop.GameLoop.setup">
+<code class="sig-name descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.game_loop.GameLoop.setup" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Appelée une seule fois, permet de mettre en place le jeu.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.server.game_loop.GameLoop.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.game_loop.GameLoop.stop" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet d’arrêter les cycles de boucle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.server.game_loop.GameLoop.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.game_loop.GameLoop.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Est appelée à intervales réguliers. Analogue à la fonction loop en arduino.</p>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="section" id="global-server-registry">
 <h2>Global Server Registry<a class="headerlink" href="#global-server-registry" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.server.global_server_registry.GSR">
 <em class="property">class </em><code class="sig-prename descclassname">lib.server.global_server_registry.</code><code class="sig-name descname">GSR</code><a class="headerlink" href="#lib.server.global_server_registry.GSR" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Registre global de variables globales.
 Dans toutes structures de jeu, les variables globales sont
 nécessaire. Cette classe agit comme un registre qui permet
 de contenir ces variables</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.global_server_registry.GSR.clients">
 <code class="sig-name descname">clients</code><a class="headerlink" href="#lib.server.global_server_registry.GSR.clients" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>liste des clients tcp connectés au serveur</p>
@@ -230,7 +300,7 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.global_server_registry.GSR.loop">
 <code class="sig-name descname">loop</code><a class="headerlink" href="#lib.server.global_server_registry.GSR.loop" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>boucle des évènements</p>
@@ -241,7 +311,7 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.global_server_registry.GSR.log">
 <code class="sig-name descname">log</code><a class="headerlink" href="#lib.server.global_server_registry.GSR.log" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>logger des évènements</p>
@@ -252,15 +322,15 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.server.global_server_registry.GSR.getEventLoop">
-<em class="property">classmethod </em><code class="sig-name descname">getEventLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.global_server_registry.GSR.getEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">getEventLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; asyncio.base_events.BaseEventLoop<a class="headerlink" href="#lib.server.global_server_registry.GSR.getEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne la référence au thread tcp si il existe</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.server.global_server_registry.GSR.setEventLoop">
-<em class="property">classmethod </em><code class="sig-name descname">setEventLoop</code><span class="sig-paren">(</span><em class="sig-param">loop</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.global_server_registry.GSR.setEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">setEventLoop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">loop</span><span class="p">:</span> <span class="n">asyncio.base_events.BaseEventLoop</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.global_server_registry.GSR.setEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Définit la référence au thread tcp</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -274,15 +344,15 @@ de contenir ces variables</p>
 </div>
 <div class="section" id="serveur-tcp">
 <h2>Serveur TCP<a class="headerlink" href="#serveur-tcp" title="Lien permanent vers ce titre">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="lib.server.tcp_server.TCPServer">
-<em class="property">class </em><code class="sig-prename descclassname">lib.server.tcp_server.</code><code class="sig-name descname">TCPServer</code><a class="headerlink" href="#lib.server.tcp_server.TCPServer" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.server.tcp_server.</code><code class="sig-name descname">TCPServer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">max_players</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Classe protocole permettant de créer un serveur TCP qui
 accueille les clients.
 A cause des spécificités de la bibliothèque asyncio, on est
 obligé de passer par ce qu’on appelle une fonction “usine” qui
 va instancier la connexion en utilisant cette classe comme protocole.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.tcp_server.TCPServer.transport">
 <code class="sig-name descname">transport</code><a class="headerlink" href="#lib.server.tcp_server.TCPServer.transport" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>le buffer d’écriture sur le tunnel TCP</p>
@@ -293,7 +363,7 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.tcp_server.TCPServer.id">
 <code class="sig-name descname">id</code><a class="headerlink" href="#lib.server.tcp_server.TCPServer.id" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>identifiant unique du client (uuid) fourni par le serveur</p>
@@ -304,7 +374,7 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.tcp_server.TCPServer.peername">
 <code class="sig-name descname">peername</code><a class="headerlink" href="#lib.server.tcp_server.TCPServer.peername" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>couple IPv4, port</p>
@@ -315,7 +385,7 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="lib.server.tcp_server.TCPServer.client">
 <code class="sig-name descname">client</code><a class="headerlink" href="#lib.server.tcp_server.TCPServer.client" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>référence au client connecté</p>
@@ -326,9 +396,9 @@ va instancier la connexion en utilisant cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.server.tcp_server.TCPServer.connection_lost">
-<code class="sig-name descname">connection_lost</code><span class="sig-paren">(</span><em class="sig-param">exc</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.tcp_server.TCPServer.connection_lost" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">connection_lost</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">exc</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.tcp_server.TCPServer.connection_lost" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée lorsque l’évènement “connexion perdue” se réalise.
 Ferme la connexion du côté serveur.</p>
 <dl class="field-list simple">
@@ -339,9 +409,9 @@ si erreur il y a</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.server.tcp_server.TCPServer.connection_made">
-<code class="sig-name descname">connection_made</code><span class="sig-paren">(</span><em class="sig-param">transport</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.connection_made" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">connection_made</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">transport</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.connection_made" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée lorsque l’évènement “connexion réalisée” se produit.
 On définit alors ce tunnel comme étant celui que le serveur
 devra utiliser.</p>
@@ -352,9 +422,9 @@ devra utiliser.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.server.tcp_server.TCPServer.create">
-<em class="property">async classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">host</em>, <em class="sig-param">port</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.create" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">async classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span></em>, <em class="sig-param"><span class="n">port</span></em>, <em class="sig-param"><span class="n">max_players</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.create" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction usine qui instancie le serveur et utilise
 cette classe comme protocole.</p>
 <dl class="field-list simple">
@@ -367,9 +437,9 @@ cette classe comme protocole.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt id="lib.server.tcp_server.TCPServer.data_received">
-<code class="sig-name descname">data_received</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.data_received" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">data_received</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.data_received" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Appelée lorsque l’évènement “données reçues” se produit.
 Permet la reception en asynchrone de données des clients
 et d’agir en fonction de la nature de la requête.</p>

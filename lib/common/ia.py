@@ -23,6 +23,14 @@ class IA(Entite):
 
     def update(self, delta):
         self.brain.update()
+        self.isDead()
+        self.level_up()
+        self.current_weapon.update()
+        self.takeDamage(self.current_target, 1 / 30)
+        # On retient la dernière direction prise par le bateau
+        if not self.direction.equal(Vecteur(0.0, 0.0)):
+            self.image_direction = self.direction
+        # self.direction = Vecteur()
 
     def __str__(self):
         return f"I.A. ({self.id}) : position ({self.position.x}, {self.position.y}), vie : {self.vie}\n" \

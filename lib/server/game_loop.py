@@ -12,7 +12,7 @@ from lib.client.global_client_registry import GCR
 
 class GameState:
     """
-    classe définisant  l'état du jeu
+    classe définissant  l'état du jeu
     """
     NOTSTARTED = 0
     STARTED = 1
@@ -61,6 +61,7 @@ class GameLoop:
         """
         GSR.entities_to_update = []
         #escarmouche
+
         if GSR.gamestate == GameState.STARTED:
         # On ajoute les entités crées par le serveur
             for e in GSR.entities:
@@ -69,7 +70,6 @@ class GameLoop:
                 if e.isWinning() == True :
                     GCR.chatbox.add_line(f"[+] {e.id} à gagné la partie")
                     GSR.gamestate = GameState.FINISHED
-                e.isDead()
 
                 if isinstance(e, IA):
                     #GSR.log.log(Logger.DEBUG, e.brain.nom_etat_courant)
@@ -82,7 +82,7 @@ class GameLoop:
                 if e.isWinning() == True :
                     GCR.chatbox.add_line(f"[+] {client.username} à gagné la partie")
                     GSR.gamestate = GameState.FINISHED
-                e.isDead()
+
                 GSR.entities_to_update.append(client.joueur)
             if GSR.server is not None:
                 GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})

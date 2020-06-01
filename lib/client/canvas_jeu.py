@@ -49,6 +49,10 @@ class CanvasJeu(QLabel):
         # Si on appuie sur Echap on veut fermer la fenètre de jeu
         if e.key() == Qt.Key_Escape:
             self.parent().parent().parent().close()
+        # si c'est la touche espace on autorise ou non le tir
+        elif e.key() == Qt.Key_Space:
+            GCR.joueur.firing = not GCR.joueur.firing
+            GCR.log.log(Logger.DEBUG, "Space")
         elif e.key() in [Qt.Key_Up, Qt.Key_Down, Qt.Key_Left, Qt.Key_Right]:
             # On crée un vecteur qui donnera la direction voulue par le joueur
             dir = Vecteur()

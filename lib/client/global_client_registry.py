@@ -42,6 +42,7 @@ class GCR:
     current_map = None
     gamestate = 0
 
+
     @classmethod
     def getTcpClient(cls):
         """

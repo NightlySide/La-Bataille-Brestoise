@@ -12,6 +12,8 @@ from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
 import time
 
+from lib.server.global_server_registry import GSR
+
 
 class Entite:
     """
@@ -52,6 +54,7 @@ class Entite:
         self.id = uuid4()
         self.exp = 0
         self.size = (16, 16)
+        self.firing = False
 
     def set_image(self, img_path: str) -> None:
         """
@@ -167,7 +170,10 @@ class Entite:
         Args:
             delta (float): temps mis entre l'itération précédente et l'itération actuelle
         """
+        self.isDead()
+        self.level_up()
         self.current_weapon.update()
+        self.takeDamage(self.current_target, 1 / 30)
         self.position += self.direction * self.vitesse
         # On retient la dernière direction prise par le bateau
         if not self.direction.equal(Vecteur(0.0, 0.0)):
@@ -234,7 +240,7 @@ class Entite:
         Test si le joueur à encore assez de points de vie. si les points de vie sont à 0,
         le joueur respawn dans un navire du tier inferieur, l'exp est reset au treshold du tier inferieur
         """
-        # TODO : afficher un pop up Qwidget signifiant la mort au joueur
+
         if self.vie <= 0:
             if self.current_ship.tier < 3:
                 self.spawnShip(Batiment.Tierlist[1][randint(0, 1)])
@@ -259,9 +265,9 @@ class Entite:
 
     # TODO : à implementer dans le gameloop
 
-    def takeDamage(self, entite_ennemie: "Entite", refresh_rate: float) -> None:
+    def takeDamage(self, target_id: str, refresh_rate: float) -> None:
         """
-        Fonction implementant les dégats infligés à une entite. Elle test si le joueur à encore
+        Fonction implementant les dégats infligés à une entite si la touche espace à été pressé. Elle test si le joueur à encore
         assez de PV, sinon elle provoque le Respawn. l'EXP gagné par le joueur ennemi est proportionnel au dégats infligés.
         le joueur obtient un boost d'XP proportionnel à son tier en cas de frag ( IE il tue un ennemi).
 
@@ -269,16 +275,25 @@ class Entite:
             entite_ennemie (Entite): entite ennemie qui inflige les dégats
             refresh_rate (float): fréquence de rafraichissement du jeu
         """
+        if GCR.entities is not None :
         # On souhaite avoir des dps constants sur le temps
-        
-        degats = entite_ennemie.current_weapon.DPS // refresh_rate
-        if self.vie - degats < 0:
-            entite_ennemie.exp += (Entite.taux_exp_gain * degats) + Entite.exp_boost * entite_ennemie.current_ship.tier
-            self.vie = 0
-        else:
-            self.vie = self.vie - degats
-            entite_ennemie.exp += Entite.taux_exp_gain * degats
-        self.isDead()
+            entite_ennemie = self.findById(target_id, GCR.entities)
+        else :
+            entite_ennemie = self.findById(target_id, GSR.entities)
+        if entite_ennemie == None :
+            return
+        if self.firing :
+            degats = self.current_weapon.DPS // refresh_rate
+            GCR.chatbox.add_line(f"EXTERMINATE")
+            if entite_ennemie.vie - degats < 0:
+                self.exp += (Entite.taux_exp_gain * degats) + Entite.exp_boost * self.current_ship.tier
+                GCR.chatbox.add_line(f"piou piou t'es mort")
+                entite_ennemie.vie = 0
+            else:
+                entite_ennemie.vie = entite_ennemie.vie - degats
+                GCR.chatbox.add_line(f"pan pan")
+                self.exp += Entite.taux_exp_gain * degats
+
 
     def equiper(self, arme: Arme):
         """

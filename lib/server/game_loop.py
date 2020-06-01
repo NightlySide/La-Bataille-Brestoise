@@ -61,7 +61,7 @@ class GameLoop:
         """
         GSR.entities_to_update = []
         #escarmouche
-        if GSR.gamestate == GameLoop.STARTED :
+        if GSR.gamestate == GameState.STARTED:
         # On ajoute les entités crées par le serveur
             for e in GSR.entities:
                 e.update(self.update_delta)

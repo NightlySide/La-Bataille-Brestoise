@@ -126,6 +126,9 @@ class TCPClientProtocol(asyncio.Protocol):
                         GCR.entities.remove(e)
                     # Puis on ajoute l'entité mise à jour
                     GCR.entities.append(e_update)
+            elif message["action"] == "set_gamestate":
+                GCR.log.log(Logger.DEBUG, "Changement de status de partie")
+                GCR.gamestate = message["gamestate"]
             #    GCR.entities = message["data"]
             elif "result" in message:
                 if not message["result"]:

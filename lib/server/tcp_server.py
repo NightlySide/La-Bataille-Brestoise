@@ -4,7 +4,7 @@ import threading
 import uuid
 
 from lib.common.logger import Logger
-from lib.server.game_loop import GameLoop
+from lib.server.game_loop import GameLoop, GameState
 from lib.server.global_server_registry import GSR
 from lib.server.client import Client
 
@@ -123,7 +123,7 @@ class TCPServer(asyncio.Protocol):
                 for client in GSR.clients:
                     if client.peername != self.peername:
                         GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(client.peername, reponse))
-                        client.transport.write(pickle.dumps(message))
+                        client.transport.write(pickle.dumps(reponse))
             elif message["action"] == "update_player":
                 user_id = message["user"]
                 joueur = message["data"]
@@ -134,6 +134,19 @@ class TCPServer(asyncio.Protocol):
                     reponse["result"] = True
                 else:
                     reponse["result"] = False
+            elif message["action"] == "start_game":
+                username = Client.find_client_by_uuid(GSR.clients, message["user"]).username
+                # Si la partie est déjà démarrée ou terminée c'est une erreur
+                if GSR.gamestate != GameState.NOTSTARTED:
+                    GSR.log.log(Logger.ERREUR, f"Le joueur {username}({message['user']}) essaie de lancer une partie "
+                                               f"déjà lancée ou bien terminée.")
+                # Sinon on lance la partie
+                else:
+                    GSR.log.log(Logger.INFORMATION, "Démarrage de la partie")
+                    GSR.gamestate = GameState.STARTED
+                    self.send_all("set_gamestate", {"gamestate": GameState.STARTED})
+                    #self.send_all("chat", {"user": "Server", "msg": f"{username} à lancé la partie"})
+                    #self.send_all("chat", {"user": "Server", "msg": f"Début de partie"})
             else:
                 reponse["msg"] = "[+] Commande non reconnue !"
             #GSR.log.log(Logger.DEBUG, "--> Envoi à {} : {!r}".format(self.peername, reponse))
@@ -142,10 +155,12 @@ class TCPServer(asyncio.Protocol):
         else:
             GSR.log.log(Logger.AVERTISSEMENT, "[-] Format reçu inconnu : {!r}".format(message))
 
-    def send_all(self, action, data):
+    @staticmethod
+    def send_all(action, data):
         message = {"action": action}
         for key in data:
             message[key] = data[key]
+        #GSR.log.log(Logger.DEBUG, f"Envoi à tous de : {message}")
         for client in GSR.clients:
             client.transport.write(pickle.dumps(message))
 

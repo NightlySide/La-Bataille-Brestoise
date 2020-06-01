@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QObject
 from PyQt5 import uic
 
+from lib.client.command_handler import CommandHandler
 from lib.client.global_client_registry import GCR
 from lib.client.chatbox import ChatBox
 from lib.client.canvas_jeu import CanvasJeu
@@ -136,11 +137,16 @@ class EcranJeu(QMainWindow):
         if message != "":
             # On vide la boite de dialogue
             self.input_chatbox.setText("")
-            # On transmet le message au serveur
-            GCR.getTcpClient().send({
-                "action": "chat",
-                "user": GCR.getTcpClient().id,
-                "msg": message})
+            # Si le message est une commande
+            if message[0] == "/":
+                CommandHandler.handle(message[1:])
+            # Sinon c'est juste un message
+            else:
+                # On transmet le message au serveur
+                GCR.getTcpClient().send({
+                    "action": "chat",
+                    "user": GCR.getTcpClient().id,
+                    "msg": message})
 
     def update(self, delta: float) -> None:
         """

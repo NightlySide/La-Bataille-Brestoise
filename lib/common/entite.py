@@ -6,6 +6,7 @@ from random import randint
 from lib.client.global_client_registry import GCR
 from lib.common.armes.arme import Arme
 from lib.common.batiments.batiment import Batiment
+from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
 import time
 
@@ -85,8 +86,6 @@ class Entite:
             qp.drawPixmap(QPoint(x - self.size[0] // 2, y - self.size[1] // 2), img_rot_scal)
             self.draw_life_bar(qp, x, y)
 
-            # qp.drawImage(QRect(self.position.x, self.position.y, 25, 25), QImage(self.image))
-
     def draw_life_bar(self, qp:QPainter, x, y):
         bar_size = (40, 4)
 
@@ -110,6 +109,15 @@ class Entite:
         life_size = bar_size[0] * self.vie / self.current_ship.hitpoints
         qp.drawRect(1 + x - bar_size[0] // 2, 1 + y - self.size[1] // 2 - 10, life_size - 2, bar_size[1] - 2)
 
+    def draw_target(self, qp:QPainter, x, y):
+        tar_length = 10
+        tar_width = 2
+        pen = QPen(Qt.red)
+        pen.setWidth(tar_width)
+        qp.setBrush(QColor(255, 255, 255, 0))
+        qp.setPen(pen)
+        qp.drawRect(x - self.size[0] // 2, y - self.size[1] // 2, *self.size)
+
     def __str__(self):
         return f"Entité ({self.id}) : position ({self.position.x}, {self.position.y}), vie : {self.vie}"
 
@@ -121,7 +129,10 @@ class Entite:
         #self.direction = Vecteur()
 
     def ciblage(self, entite):
-        self.current_target = entite()
+        if entite is None:
+            self.current_target = None
+        else:
+            self.current_target = entite.id
 
     @staticmethod
     def findById(e_id, entities):
@@ -144,7 +155,6 @@ class Entite:
         self.vie = self.current_ship.hitpoints
         if self.vitesse >= self.current_ship.vmax:
             self.vitesse = self.current_ship.vmax
-
 
     def level_up(self):
         """
@@ -180,6 +190,7 @@ class Entite:
                 taille = len(Batiment.Tierlist[tier-1])
                 self.spawnShip(Batiment.Tierlist[tier-1][randint(0, taille - 1)])
                 self.exp = Entite.exp_treashold[self.current_ship.tier-2]
+
     def isWinning(self):
         """
         fonction testant si le joueur à gagné ou non, en comparant l'exp à la valeur exp_win
@@ -192,7 +203,6 @@ class Entite:
         else :
             return False
 #TODO : à implementer dans le gameloop
-
 
     def takeDamage(self, entiteEnnemie, refresh_rate):
         """
@@ -213,8 +223,6 @@ class Entite:
         else :
             self.vie = self.vie - degats
             entiteEnnemie.exp += Entite.taux_exp_gain * degats
-
-
 
     def equiper(self):
         """

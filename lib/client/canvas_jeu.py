@@ -5,7 +5,6 @@ from PyQt5.QtGui import QPainter, QImage
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt, QRect
 
-from lib.client.Widgets import Bar
 from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
 from lib.common.logger import Logger
@@ -36,8 +35,6 @@ class CanvasJeu(QLabel):
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
         self.last_key = None
-
-        self.life_bar = Bar(self, QRect(10, 10, 200, 40), "Vie : ", 0, 100, 100)
 
     def keyPressEvent(self, e):
         """
@@ -99,6 +96,9 @@ class CanvasJeu(QLabel):
                 dy = (entity.position.y - GCR.joueur.position.y) * GCR.current_map.cell_size[1] + self.height() // 2
                 #qp.drawImage(QRect(dx, dy, 16, 16), QImage(entity.image))
                 entity.render(qp, dx, dy)
+                # Si l'entité est la cible du joueur
+                if GCR.joueur.current_target == entity.id:
+                    entity.draw_target(qp, dx, dy)
 
     def mouseMoveEvent(self, e):
         """
@@ -124,9 +124,21 @@ class CanvasJeu(QLabel):
             e (QMouseEvent): évènement du type souris
         """
         x, y = mouseToWorldPosition(e.x(), e.y())
-        GCR.log.log(Logger.DEBUG, f"Souris à la pos : ({x}, {y})")
+        GCR.log.log(Logger.DEBUG, f"Click à la pos : ({x}, {y})")
         # On met le focus sur le canvas pour récupérer les autres évènements ici
         self.setFocus()
+        for e in GCR.entities:
+            # Si l'entité n'est pas le joueur on peut cibler
+            if e != GCR.joueur:
+                diff = Vecteur(x, y) - e.position
+                distance = diff.distance()
+                GCR.log.log(Logger.DEBUG, f"Distance : {distance}")
+                if distance < max(e.size[0], e.size[1]) // (8*2) * 1.5:
+                    GCR.joueur.ciblage(e)
+                    GCR.log.log(Logger.DEBUG, f"Nouvelle cible : {e.id}")
+                    break
+        else:
+            GCR.joueur.ciblage(None)
 
     def update(self):
         """
@@ -142,8 +154,6 @@ class CanvasJeu(QLabel):
                         "action": "update_player",
                         "user": GCR.getTcpClient().id,
                         "data": GCR.joueur})
-
-            self.life_bar.setValue(0, GCR.joueur.current_ship.hitpoints, GCR.joueur.vie)
 
 
 def mouseToWorldPosition(mouseX, mouseY):

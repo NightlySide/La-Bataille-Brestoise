@@ -28,7 +28,6 @@ class Arme:
     def fire(self):
         if self.can_fire:
             pass
-
     def update(self):
         if not self.can_fire:
             if time.perf_counter() - self._tps_equip_timer > self.tps_mise_en_oeuvre:

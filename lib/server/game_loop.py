@@ -51,6 +51,7 @@ class GameLoop:
         Est appelée à intervales réguliers. Analogue à la fonction loop en arduino.
         """
         GSR.entities_to_update = []
+        #escarmouche
 
         # On ajoute les entités crées par le serveur
         for e in GSR.entities:

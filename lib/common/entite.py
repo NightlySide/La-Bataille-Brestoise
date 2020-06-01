@@ -291,6 +291,8 @@ class Entite:
             arme (Arme): l'arme à équiper
 
         """
+
         self.current_weapon = arme
         self.current_weapon.first_equip()
         # TODO roue d'equipmment des armes ( pie menu )
+

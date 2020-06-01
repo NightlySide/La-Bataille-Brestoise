@@ -66,7 +66,7 @@ class TCPServer(asyncio.Protocol):
         # On l'enregistre
         self.transport = transport
         self.peername = peername
-        self.transport.set_write_buffer_limits(high=self.transport.get_write_buffer_limits()[1], low=8)
+        self.transport.set_write_buffer_limits(high=self.transport.get_write_buffer_limits()[1], low=0)
         GSR.log.log(Logger.INFORMATION, "Write buffer limits : "+str(self.transport.get_write_buffer_limits()))
         # On crée le client en conséquence
         self.client = Client(peername, transport)

@@ -36,16 +36,16 @@ class Entite:
         size (list): taille de l'image de l'entité
     """
     # palier d'experience pour passer au niveau suivant
-    exp_treshold = [1000, 5000, 10000, 40000]
+    exp_treshold = [1000, 3000, 8000, 24000]
     # expérience nécessaire pour gagner
-    exp_win = 100000
+    exp_win = 50000
     # Modificateur d'expérience gagnée
-    taux_exp_gain = 0.01
+    taux_exp_gain = 0.1
     exp_boost = 100
     #liste des batiments par tier
     Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA],[ PA, SNLE]]
     def __init__(self):
-        self.vitesse = 1
+
         self.image = None
         self.position = Vecteur(200, 200)
         self.direction = Vecteur()
@@ -53,6 +53,7 @@ class Entite:
         self.current_ship = random.choice(Entite.Tierlist[0])()
         self.vie = self.current_ship.hitpoints
         self.current_weapon = self.current_ship.armes[0](self)
+        self.vitesse = self.current_ship.vmax
         self.current_target = None
         self.id = uuid4()
         self.exp = 0
@@ -305,19 +306,22 @@ class Entite:
                 if entite_ennemie == None :
                     return
                 degats = self.current_weapon.DPS * refresh_rate
+                exp = 0
                 if entite_ennemie.vie - degats < 0:
-                    for client in GSR.clients:
-                        if client.joueur.id == self.id:
-                            exp = (Entite.taux_exp_gain * degats) + Entite.exp_boost * self.current_ship.tier**2
-                            client.transport.write(pickle.dumps({"action" : "gain_exp",
-                                                                 "exp": exp}))
-                            break
-                    else:
-                        GSR.log.log(Logger.ERREUR, f"Joueur {self.id} non trouvé !")
+                    exp += Entite.exp_boost * self.current_ship.tier ** 2
                     entite_ennemie.vie = 0
                 else:
                     entite_ennemie.vie = entite_ennemie.vie - degats
-                    self.exp += Entite.taux_exp_gain * degats
+                for client in GSR.clients:
+                    if client.joueur.id == self.id:
+                        exp += (Entite.taux_exp_gain * degats)
+                        client.transport.write(pickle.dumps({"action": "gain_exp",
+                                                             "exp": exp}))
+                        break
+                else:
+                    GSR.log.log(Logger.ERREUR, f"Joueur {self.id} non trouvé !")
+
+
 
 
     def equiper(self, arme: Arme):

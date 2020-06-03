@@ -1,10 +1,10 @@
 import time
-
+from lib.common.armes import C50, Canon, CanonAutomatique,CanonSuperRapido,Rafale,Mistral,TorpilleLegere,TorpilleLourde, MM40
 from PyQt5 import QtGui, QtWidgets
 from PyQt5.QtGui import QPainter, QImage, QKeyEvent, QPaintEvent, QMouseEvent
 from PyQt5.QtWidgets import QLabel
-from PyQt5.QtCore import Qt, QRect, QObject
-
+from PyQt5.QtCore import *
+from PyQt5.QtMultimedia import *
 from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
 from lib.common.logger import Logger
@@ -52,6 +52,22 @@ class CanvasJeu(QLabel):
         # si c'est la touche espace on autorise ou non le tir
         elif e.key() == Qt.Key_Space:
             GCR.joueur.firing = not GCR.joueur.firing
+            if GCR.joueur.firing :
+                playlist = QMediaPlaylist()
+                if GCR.joueur.current_weapon in (CanonAutomatique,C50) :
+                    url = QUrl.fromLocalFile("assets\sfx\canonauto.mp3")
+                elif GCR.joueur.current_weapon in (Canon,CanonSuperRapido) :
+                    url = QUrl.fromLocalFile("assets\sfx\large_gun.mp3")
+                elif GCR.joueur.current_weapon in (Mistral, MM40,Rafale) :
+                    url = QUrl.fromLocalFile("assets\sfx\missile.mp3")
+                else :
+                    url = QUrl.fromLocalFile("assets\sfx\sousmarin.mp3")
+                playlist.addMedia(QMediaContent(url))
+                playlist.setPlaybackMode(QMediaPlaylist.Loop)
+                player = QMediaPlayer()
+                player.setPlaylist(playlist)
+                player.play()
+
             GCR.log.log(Logger.DEBUG, "Space")
         elif e.key() in [Qt.Key_Up, Qt.Key_Down, Qt.Key_Left, Qt.Key_Right]:
             # On crée un vecteur qui donnera la direction voulue par le joueur

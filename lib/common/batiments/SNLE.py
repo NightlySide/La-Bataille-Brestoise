@@ -9,7 +9,7 @@ class SNLE(batiment.Batiment):
         self.hitpoints = 30000  # hitpoints int[0:99999]
         self.vmax = 1.2 # vitesse max du batiment
         self.portee_detection = 18 # float [0:99]
-        self.armes = [MM40, TorpilleLegere, TorpilleLourde]  # tableau des armes equipé [str], l'arme d'indice 0 est équipé d'office
+        self.armes = [TorpilleLourde, MM40, TorpilleLegere]  # tableau des armes equipé [str], l'arme d'indice 0 est équipé d'office
         self.tier = 5  # tier du navire de 1 à 5
         self.status = True  # etat du navire ( vie /mort)
         self.imgpath = "assets/images/batiments/sousmarin.png"

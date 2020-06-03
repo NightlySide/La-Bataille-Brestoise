@@ -9,7 +9,7 @@ class FREMM(batiment.Batiment):
         self.hitpoints = 30000  # hitpoints int[0:99999]
         self.vmax = 1.3  # vitesse max du batiment
         self.portee_detection = 30 # float [0:99]
-        self.armes = [C50, CanonSuperRapido, CanonAutomatique,
+        self.armes = [CanonSuperRapido,C50, CanonAutomatique,
                       Mistral,MM40, TorpilleLegere]  # tableau des armes equipé [str], l'arme d'indice 0 est équipé d'office
         self.tier = 4  # tier du navire de 1 à 5
         self.status = True  # etat du navire ( vie /mort)

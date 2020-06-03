@@ -40,7 +40,7 @@ class Entite:
     exp_win = 100000
     # Modificateur d'expérience gagnée
     taux_exp_gain = 0.01
-    exp_boost = 100
+    exp_boost = 1000
     #liste des batiments par tier
     Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA],[ PA, SNLE]]
     def __init__(self):
@@ -247,10 +247,10 @@ class Entite:
         for i in range(0, 4):
             if self.exp > Entite.exp_treshold[i] and self.current_ship.tier == i + 1:
                 # le joueur passe au niveau superieur
-                tier = self.current_ship.tier
+                tier = self.current_ship.tier + 1
                 self.spawnShip(random.choice(Entite.Tierlist[tier]))
 
-    # TODO : a implementer dans le gameloop
+
 
     def isDead(self) -> None:
         """
@@ -300,9 +300,9 @@ class Entite:
         if entite_ennemie == None :
             return
         if self.firing :
-            degats = self.current_weapon.DPS // refresh_rate
+            degats = self.current_weapon.DPS * refresh_rate
             if entite_ennemie.vie - degats < 0:
-                self.exp += (Entite.taux_exp_gain * degats) + Entite.exp_boost * self.current_ship.tier
+                self.exp += (Entite.taux_exp_gain * degats) + Entite.exp_boost * self.current_ship.tier**2
                 entite_ennemie.vie = 0
             else:
                 entite_ennemie.vie = entite_ennemie.vie - degats
@@ -324,5 +324,5 @@ class Entite:
 
         self.current_weapon = arme
         self.current_weapon.first_equip()
-        # TODO roue d'equipmment des armes ( pie menu )
+        # TODO roue d'equipmment des armes ( piechart )
 

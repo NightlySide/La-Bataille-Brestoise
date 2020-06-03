@@ -60,7 +60,7 @@ class CanvasJeu(QLabel):
                     url = QUrl.fromLocalFile("assets\sfx\large_gun.mp3")
                 elif GCR.joueur.current_weapon in (Mistral, MM40,Rafale) :
                     url = QUrl.fromLocalFile("assets\sfx\missile.mp3")
-                else :
+                elif GCR.joueur.current_weapon in (TorpilleLourde, TorpilleLegere) :
                     url = QUrl.fromLocalFile("assets\sfx\sousmarin.mp3")
                 playlist.addMedia(QMediaContent(url))
                 playlist.setPlaybackMode(QMediaPlaylist.Loop)

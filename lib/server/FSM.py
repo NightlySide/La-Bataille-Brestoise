@@ -7,9 +7,9 @@ from lib.server.global_server_registry import GSR
 
 class Etat(metaclass=ABCMeta):
 
-    def __init__(self):
+    def __init__(self, parent):
+        self.parent = parent
         self.en_vie = True
-        self.parent = None
 
     @abstractmethod
     def update(self):
@@ -79,6 +79,7 @@ class FSM:
             # Si l'état courant est terminé on passe au suivant
             if not self.etat_courant.en_vie:
                 self.etat_courant = self.prochain_etat
+                self.etat_courant.en_vie = True
                 self.nom_etat_courant = self._nom_prochain_etat
                 self.prochain_etat = None
                 self._nom_prochain_etat = None
@@ -86,6 +87,7 @@ class FSM:
         # Sinon si un autre état est prévu
         elif self.prochain_etat is not None:
             self.etat_courant = self.prochain_etat
+            self.etat_courant.en_vie = True
             self.nom_etat_courant = self._nom_prochain_etat
             self.prochain_etat = None
             self._nom_prochain_etat = None

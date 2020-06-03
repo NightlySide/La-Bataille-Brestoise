@@ -34,7 +34,9 @@ class Vecteur:
             v_norm (Vecteur): vecteur normalisé en longueur
         """
         longueur = self.distance()
-        return Vecteur(self.x/longueur, self.y/longueur)
+        if longueur != 0:
+            return Vecteur(self.x/longueur, self.y/longueur)
+        return Vecteur()
 
     def __add__(self, autre: "Vecteur") -> "Vecteur":
         """

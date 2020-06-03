@@ -33,7 +33,7 @@ class CommandHandler:
         elif cmd == "playerlist":
             print(f"Il y a {len(GSR.clients)} joueurs connectés :")
             for c in GSR.clients:
-                print("- " + c.username)
+                print(f"-  {c.username} ({c.joueur.id})")
         elif cmd == "stop":
             print("Arrêt du serveur ...")
             GSR.running = False

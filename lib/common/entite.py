@@ -39,9 +39,10 @@ class Entite:
     # expérience nécessaire pour gagner
     exp_win = 100000
     # Modificateur d'expérience gagnée
-    taux_exp_gain = 0.5
-    exp_boost = 1000
-    Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA, PA, SNLE]]
+    taux_exp_gain = 0.01
+    exp_boost = 100
+    #liste des batiments par tier
+    Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA],[ PA, SNLE]]
     def __init__(self):
         self.vitesse = 1
         self.image = None
@@ -291,8 +292,8 @@ class Entite:
             entite_ennemie (Entite): entite ennemie qui inflige les dégats
             refresh_rate (float): fréquence de rafraichissement du jeu
         """
+        #
         if GCR.entities is not None :
-        # On souhaite avoir des dps constants sur le temps
             entite_ennemie = self.findById(target_id, GCR.entities)
         else :
             entite_ennemie = self.findById(target_id, GSR.entities)

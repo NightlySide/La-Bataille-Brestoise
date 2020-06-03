@@ -7,7 +7,7 @@ class C50(Arme):
     def __init__(self,parent):
         super().__init__(parent)
         self.nom_arme = "mitrailleuse calibre 50 "
-        self.DPS = 1000
+        self.DPS = 100
         self.tps_mise_en_oeuvre = 1
         self.portee = 1
         self.image = "assets\images\armes\C5O.png"

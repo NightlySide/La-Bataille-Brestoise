@@ -1,0 +1,121 @@
+%
+% page de garde de support de cours/rapport
+% il est possible de renseigner les champs suivants :
+% \title, \author, \date, \promo, \doctype, \etablissement
+% le logo (logo_ensieta_vectoriel) doit etre present
+%
+
+\def\option@titlepage{\relax} 
+\gdef\@lenumero{}
+
+% pour inclure le logo il faut graphicx ou au pire graphics
+\IfFileExists{graphicx.sty}{%
+  \RequirePackage{graphicx}}{%
+  \IfFileExists{graphics.sty}{%
+    \RequirePackage{graphics}}{%
+    % si aucun des paquetages n'existe, definir includegraphics
+    \newcommand{\includegraphics}[1]{##1}
+  }
+}
+
+\RequirePackage{tikz}
+\definecolor{mongris1}{RGB}{112,116,119}
+\definecolor{monbleu}{RGB}{0,105,147}
+\definecolor{monbleu2}{RGB}{0,173,238}
+\definecolor{monvert}{RGB}{193,215,47}
+%\definecolor{monviolet}{RGB}{164,123,179}
+%\definecolor{monorange}{RGB}{240,143,36}
+\definecolor{mongris2}{RGB}{187,191,194}
+
+% texte centre sur la partie droite de la page
+\newcommand{\centre}[1]{
+  \hbox{
+    \begin{minipage}[c]{10cm}
+    \begin{center} #1 
+    \end{center} 
+    \end{minipage}
+  }
+
+}
+
+% quelques macros permettant d'initialiser les variables
+\newcommand{\promo}[1]
+{
+\def\@nopromo{#1}
+}
+\newcommand{\doctype}[1]
+{
+\def\@typedocument{#1}
+}
+\newcommand{\etablissement}[1]
+{
+\def\@etablissement{#1}
+}
+\newcommand{\imgGarde}[1]
+{
+\def\@imgGarde{#1}
+}
+\newcommand{\logoEcole}[1]
+{
+\def\@logoEcole{#1}
+}
+
+% valeurs par defaut des variables
+\def\@nopromo{}
+\def\@typedocument{}
+\def\@etablissement{}
+\def\@imgGarde{}
+\def\@logoEcole{}
+
+% redefinition de la page de garde
+\def\maketitle{
+  \begin{titlepage}
+    % definition d'une boite contenant le logo
+    \vbox to\vsize{
+      \begin{center}%
+        \vskip-1cm
+        \hbox{
+        \vbox{\begin{tikzpicture}
+          \filldraw[monvert] (0cm,0cm) -- (0cm,4.2cm) -- (4.2cm,4.2cm) -- (4.2cm,0cm) -- cycle;
+          \filldraw[mongris1] (0cm,4.5cm) -- (0cm,6.5cm) arc(180:90:2.2cm) --
+          (4.2cm,8.7cm) -- (4.2cm,4.5cm) -- cycle;  
+          \draw[monbleu,thick] (4.2cm,9cm) -- (2.2cm,9cm) arc(270:180:2.2cm) --
+          (0cm,11.2cm) -- (0cm,13.2cm) -- (4.2cm,13.2cm) -- cycle; 
+          \filldraw[monbleu] (4.5cm,0cm) -- (4.5cm,4.2cm) -- (8.7cm,4.2cm)
+          -- (8.7cm,0cm) -- cycle;  
+          \node[white] at (6.6cm,2.1cm) {\vbox {\center{\large\begin{minipage}{4cm}
+                  \center{\bf\@typedocument\vskip3mm \@nopromo} \vskip3mm \@date\end{minipage}}}};
+          %\filldraw[monorange] (4.5cm,4.5cm) -- (4.5cm,8.7cm) --
+          %(8.7cm,8.7cm) -- (8.7cm,4.5cm) -- cycle; 
+          \draw (6.6cm,6.6cm) node {\@logoEcole};
+          \draw (4.5cm,9cm) -- (4.5cm,13.2cm) --
+          (6.5cm,13.2cm) arc(90:0:2.2cm) -- (8.7cm,11cm) -- (8.7cm,9cm) --
+          cycle;  
+          \draw (9cm,0cm) -- (9cm,4.2cm) -- (13.2cm,4.2cm) -- (13.2cm,2.2cm)
+          arc(0:-90:2.2cm) -- (11cm,0cm) -- cycle; 
+          \filldraw[monbleu2] (9cm,4.5cm) -- (9cm,8.7cm) -- (13.2cm,8.7cm) --
+          (13.2cm,4.5cm) -- cycle;
+          \node at (11.2cm,6.6cm) {\vbox {\center{\small\begin{minipage}{4cm}
+                  \@etablissement \end{minipage}}}};
+          %\draw (0,0) -- (0,3) arc(180:90:2) -- (5,5);
+        \end{tikzpicture}
+      }
+    }
+  \end{center}
+    \vskip1em
+        \begin{center}%
+          {\Huge\bf \@title \par}%
+        \end{center}%
+    \vskip1em
+        \begin{center}%
+          \@imgGarde
+        \end{center}%
+        \vskip 1em
+        \begin{center}%
+          {\large\lineskip .75em \bf \@author \par}
+        \end{center}%
+        \vfill
+  }
+  \end{titlepage}
+}
+

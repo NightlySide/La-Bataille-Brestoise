@@ -461,8 +461,8 @@ quand il meurt ou bien si il monte de niveau</p>
 
 <dl class="py method">
 <dt id="lib.common.entite.Entite.takeDamage">
-<code class="sig-name descname">takeDamage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entite_ennemie</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite">lib.common.entite.Entite</a></span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.takeDamage" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fonction implementant les dégats infligés à une entite. Elle test si le joueur à encore
+<code class="sig-name descname">takeDamage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.takeDamage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction implementant les dégats infligés à une entite si la touche espace à été pressé. Elle test si le joueur à encore
 assez de PV, sinon elle provoque le Respawn. l’EXP gagné par le joueur ennemi est proportionnel au dégats infligés.
 le joueur obtient un boost d’XP proportionnel à son tier en cas de frag ( IE il tue un ennemi).</p>
 <dl class="field-list simple">
@@ -506,6 +506,13 @@ Le déplacement sera à implémenter du coté client (joueur) ou serveur (entite
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.joueur.Joueur.isDead">
+<code class="sig-name descname">isDead</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.joueur.Joueur.isDead" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Test si le joueur à encore assez de points de vie. si les points de vie sont à 0,
+le joueur respawn dans un navire du tier inferieur, l’exp est reset au treshold du tier inferieur</p>
 </dd></dl>
 
 <dl class="py method">

@@ -7,6 +7,7 @@ from lib.common.image_vers_tableau import img_vers_array
 from lib.common.logger import Logger
 from lib.common.repeating_timer import RepeatingTimer
 from lib.common.vecteur import Vecteur
+from lib.server.client import Client
 from lib.server.global_server_registry import GSR
 from lib.client.global_client_registry import GCR
 
@@ -68,7 +69,7 @@ class GameLoop:
                 e.update(self.update_delta)
 
                 if e.isWinning() == True :
-                    GCR.chatbox.add_line(f"[+] {e.id} à gagné la partie")
+                    GSR.server.send_all("chat", {"user": "Serveur", "msg": f"{e.id} à gagné la partie"})
                     GSR.gamestate = GameState.FINISHED
 
                 if isinstance(e, IA):
@@ -80,7 +81,7 @@ class GameLoop:
             for client in GSR.clients:
                 e = client.joueur
                 if e.isWinning() == True :
-                    GCR.chatbox.add_line(f"[+] {client.username} à gagné la partie")
+                    GSR.server.send_all("chat", {"user": "Serveur", "msg": f"{client.username} à gagné la partie"})
                     GSR.gamestate = GameState.FINISHED
 
                 GSR.entities_to_update.append(client.joueur)

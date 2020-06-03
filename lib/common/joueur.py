@@ -38,6 +38,11 @@ class Joueur(Entite):
         Args:
             delta (float): temps mis entre l'itération précédente et l'itération actuelle
         """
+        self.isDead()
+        self.level_up()
+        self.current_weapon.update()
+        self.takeDamage(self.current_target, 1 / 30)
+        self.position += self.direction * self.vitesse
         if GCR.current_map is not None:
             new_position = (self.position + self.direction * self.vitesse)
             # Si il n'y a pas de collision avec la map
@@ -54,14 +59,6 @@ class Joueur(Entite):
         Test si le joueur à encore assez de points de vie. si les points de vie sont à 0,
         le joueur respawn dans un navire du tier inferieur, l'exp est reset au treshold du tier inferieur
         """
-        if GCR.chatbox is not None:
+        if self.vie <= 0 and GCR.chatbox is not None:
             GCR.chatbox.add_line(f"Vous êtes mort, respawn au tier inferieur")
-        if self.vie <= 0:
-            if self.current_ship.tier < 3:
-                self.spawnShip(Batiment.Tierlist[1][randint(0, 1)])
-                self.exp = 0
-            else:
-                tier = self.current_ship.tier
-                taille = len(Batiment.Tierlist[tier - 1])
-                self.spawnShip(Batiment.Tierlist[tier - 1][randint(0, taille - 1)])
-                self.exp = Entite.exp_treshold[self.current_ship.tier - 2]
+        super().isDead()

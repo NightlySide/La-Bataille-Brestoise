@@ -259,7 +259,7 @@ class Entite:
 
         if self.vie <= 0:
             if self.current_ship.tier < 3:
-                self.spawnShip(Batiment.Tierlist[1][randint(0, 1)])
+                self.spawnShip(Batiment.Tierlist[0][randint(0, 1)])
                 self.exp = 0
             else:
                 tier = self.current_ship.tier
@@ -300,14 +300,11 @@ class Entite:
             return
         if self.firing :
             degats = self.current_weapon.DPS // refresh_rate
-            GCR.chatbox.add_line(f"EXTERMINATE")
             if entite_ennemie.vie - degats < 0:
                 self.exp += (Entite.taux_exp_gain * degats) + Entite.exp_boost * self.current_ship.tier
-                GCR.chatbox.add_line(f"piou piou t'es mort")
                 entite_ennemie.vie = 0
             else:
                 entite_ennemie.vie = entite_ennemie.vie - degats
-                GCR.chatbox.add_line(f"pan pan")
                 self.exp += Entite.taux_exp_gain * degats
 
 

@@ -53,7 +53,7 @@ class Entite:
         self.current_weapon = self.current_ship.armes[0](self)
         self.current_target = None
         self.id = uuid4()
-        self.exp = 2000
+        self.exp = 0
         self.size = (16, 16)
         self.firing = False
 

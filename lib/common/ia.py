@@ -77,6 +77,12 @@ class SuivreJoueur(Etat):
             if client.joueur.id == self.parent.target:
                 target = client.joueur
                 break
+        if target is None:
+            self.parent.target = None
+            self.parent.brain.prochain_etat = "idle"
+            self.en_vie = False
+            return
+
         diff = target.position - self.parent.position
         if diff.distance() > 20:
             self.parent.target = None

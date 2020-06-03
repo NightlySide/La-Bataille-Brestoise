@@ -136,6 +136,18 @@ class TCPServer(asyncio.Protocol):
                     reponse["result"] = True
                 else:
                     reponse["result"] = False
+            elif message["action"] == "damage":
+                attacker = None
+                for client in GSR.clients:
+                    if client.joueur.id == message["attacker"]:
+                        attacker = client.joueur
+                        break
+                if attacker is not None:
+                    attacker.takeDamage(message["target"], 1/30)
+                    reponse["result"] = True
+                else:
+                    GSR.log.log(Logger.ERREUR, f"Joueur attaquant non trouvé : {message['attacker']}")
+                    reponse["result"] = False
             elif message["action"] == "start_game":
                 username = Client.find_client_by_uuid(GSR.clients, message["user"]).username
                 # Si la partie est déjà démarrée ou terminée c'est une erreur

@@ -129,6 +129,8 @@ class TCPClientProtocol(asyncio.Protocol):
             elif message["action"] == "set_gamestate":
                 GCR.log.log(Logger.DEBUG, "Changement de status de partie")
                 GCR.gamestate = message["gamestate"]
+            elif message["action"] == "gain_exp":
+                GCR.joueur.exp += message["exp"]
             #    GCR.entities = message["data"]
             elif "result" in message:
                 if not message["result"]:

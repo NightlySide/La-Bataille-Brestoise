@@ -5,7 +5,8 @@ from lib.server.game_loop import GameState
 class CommandHandler:
 
     COMMANDS = {"help" : "Afficher la liste des commandes",
-                "start": "Démarre la partie (besoin d'être le GameMaster)"}
+                "start": "Démarre la partie (besoin d'être le GameMaster)",
+                "exp" :  "Retourne la quantité de points d'xp du joueur"}
 
     @staticmethod
     def handle(message: str) -> None:
@@ -28,3 +29,5 @@ class CommandHandler:
                     GCR.chatbox.add_line("[+] Demande de démarrage de partie envoyée au serveur.")
                     GCR.tcp_client.send({"action": "start_game",
                                          "user": GCR.tcp_client.id})
+            elif cmd == "exp":
+                GCR.chatbox.add_line(f"[ ] Vous avez : {GCR.joueur.exp} points d'XP")

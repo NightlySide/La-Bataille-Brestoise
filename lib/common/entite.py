@@ -1,3 +1,4 @@
+import pickle
 import random
 
 from PyQt5.QtCore import QRect, QPoint, Qt
@@ -40,7 +41,7 @@ class Entite:
     exp_win = 100000
     # Modificateur d'expérience gagnée
     taux_exp_gain = 0.01
-    exp_boost = 1000
+    exp_boost = 100
     #liste des batiments par tier
     Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA],[ PA, SNLE]]
     def __init__(self):
@@ -234,6 +235,7 @@ class Entite:
             ship (Batiment): bâtiment à générer
         """
         self.current_ship = ship()
+        self.set_image(self.current_ship.imgpath)
         self.current_weapon = self.current_ship.armes[0](self)
         self.vie = self.current_ship.hitpoints
         self.vitesse = self.current_ship.vmax
@@ -247,10 +249,10 @@ class Entite:
         for i in range(0, 4):
             if self.exp > Entite.exp_treshold[i] and self.current_ship.tier == i + 1:
                 # le joueur passe au niveau superieur
-                tier = self.current_ship.tier + 1
+                tier = self.current_ship.tier
                 self.spawnShip(random.choice(Entite.Tierlist[tier]))
 
-
+    # TODO : a implementer dans le gameloop
 
     def isDead(self) -> None:
         """
@@ -260,7 +262,7 @@ class Entite:
 
         if self.vie <= 0:
             if self.current_ship.tier < 3:
-                self.spawnShip(Batiment.Tierlist[0][randint(0, 1)])
+                self.spawnShip(Entite.Tierlist[0][randint(0, 1)])
                 self.exp = 0
             else:
                 tier = self.current_ship.tier
@@ -292,21 +294,30 @@ class Entite:
             entite_ennemie (Entite): entite ennemie qui inflige les dégats
             refresh_rate (float): fréquence de rafraichissement du jeu
         """
-        #
-        if GCR.entities is not None :
-            entite_ennemie = self.findById(target_id, GCR.entities)
-        else :
-            entite_ennemie = self.findById(target_id, GSR.entities)
-        if entite_ennemie == None :
-            return
-        if self.firing :
-            degats = self.current_weapon.DPS * refresh_rate
-            if entite_ennemie.vie - degats < 0:
-                self.exp += (Entite.taux_exp_gain * degats) + Entite.exp_boost * self.current_ship.tier**2
-                entite_ennemie.vie = 0
-            else:
-                entite_ennemie.vie = entite_ennemie.vie - degats
-                self.exp += Entite.taux_exp_gain * degats
+        if self.firing:
+            # Géré niveau client
+            if GCR.entities:
+                #entite_ennemie = self.findById(target_id, GCR.entities)
+                GCR.tcp_client.send({"action": "damage", "attacker": self.id, "target": target_id})
+            # On est bien côté serveur
+            else :
+                entite_ennemie = self.findById(target_id, GSR.entities)
+                if entite_ennemie == None :
+                    return
+                degats = self.current_weapon.DPS * refresh_rate
+                if entite_ennemie.vie - degats < 0:
+                    for client in GSR.clients:
+                        if client.joueur.id == self.id:
+                            exp = (Entite.taux_exp_gain * degats) + Entite.exp_boost * self.current_ship.tier**2
+                            client.transport.write(pickle.dumps({"action" : "gain_exp",
+                                                                 "exp": exp}))
+                            break
+                    else:
+                        GSR.log.log(Logger.ERREUR, f"Joueur {self.id} non trouvé !")
+                    entite_ennemie.vie = 0
+                else:
+                    entite_ennemie.vie = entite_ennemie.vie - degats
+                    self.exp += Entite.taux_exp_gain * degats
 
 
     def equiper(self, arme: Arme):
@@ -324,5 +335,5 @@ class Entite:
 
         self.current_weapon = arme
         self.current_weapon.first_equip()
-        # TODO roue d'equipmment des armes ( piechart )
+        # TODO roue d'equipmment des armes ( pie menu )
 

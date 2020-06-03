@@ -27,7 +27,7 @@ class Joueur(Entite):
         super().__init__()
         self.position = position
         self.detection_radius = 10 # en cases
-        self.set_image("assets/images/batiments/fremm.png")
+        self.set_image(self.current_ship.imgpath)
         self.size = (50, 50)
 
     def update(self, delta: float) -> None:

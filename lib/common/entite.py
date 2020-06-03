@@ -7,7 +7,8 @@ from random import randint
 
 from lib.client.global_client_registry import GCR
 from lib.common.armes.arme import Arme
-from lib.common.batiments.batiment import Batiment
+from lib.common.batiments import PA, AVISO, CMT, BE, BIN, BH, FS, F70, FREMM, FDA, SNA, SNLE
+from lib.common.batiments import Batiment
 from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
 import time
@@ -40,19 +41,19 @@ class Entite:
     # Modificateur d'expérience gagnée
     taux_exp_gain = 0.5
     exp_boost = 1000
-
+    Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA, PA, SNLE]]
     def __init__(self):
-        self.vie = 20
         self.vitesse = 1
         self.image = None
         self.position = Vecteur(200, 200)
         self.direction = Vecteur()
         self.image_direction = self.direction
-        self.current_ship = Batiment()
-        self.current_weapon = Arme(self)
+        self.current_ship = random.choice(Entite.Tierlist[0])()
+        self.vie = self.current_ship.hitpoints
+        self.current_weapon = self.current_ship.armes[0](self)
         self.current_target = None
         self.id = uuid4()
-        self.exp = 0
+        self.exp = 2000
         self.size = (16, 16)
         self.firing = False
 
@@ -231,8 +232,8 @@ class Entite:
         Args:
             ship (Batiment): bâtiment à générer
         """
-        self.current_ship = ship
-        self.current_weapon = self.current_ship.armes[0]
+        self.current_ship = ship()
+        self.current_weapon = self.current_ship.armes[0](self)
         self.vie = self.current_ship.hitpoints
         self.vitesse = self.current_ship.vmax
 
@@ -246,7 +247,7 @@ class Entite:
             if self.exp > Entite.exp_treshold[i] and self.current_ship.tier == i + 1:
                 # le joueur passe au niveau superieur
                 tier = self.current_ship.tier
-                self.spawnShip(random.choice(Batiment.Tierlist[tier]))
+                self.spawnShip(random.choice(Entite.Tierlist[tier]))
 
     # TODO : a implementer dans le gameloop
 
@@ -262,8 +263,8 @@ class Entite:
                 self.exp = 0
             else:
                 tier = self.current_ship.tier
-                taille = len(Batiment.Tierlist[tier - 1])
-                self.spawnShip(Batiment.Tierlist[tier - 1][randint(0, taille - 1)])
+                taille = len(Entite.Tierlist[tier - 1])
+                self.spawnShip(Entite.Tierlist[tier - 1][randint(0, taille - 1)])
                 self.exp = Entite.exp_treshold[self.current_ship.tier - 2]
 
     def isWinning(self) -> bool:

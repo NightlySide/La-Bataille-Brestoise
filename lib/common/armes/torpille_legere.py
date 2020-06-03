@@ -3,8 +3,8 @@ from PyQt5.QtGui import QImage
 
 class TorpilleLegere(Arme):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
         self.nom_arme = "torpille légère "
         self.DPS = 5000
         self.tps_mise_en_oeuvre = 8

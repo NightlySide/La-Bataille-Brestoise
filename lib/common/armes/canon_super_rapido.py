@@ -3,8 +3,8 @@ from PyQt5.QtGui import QImage
 
 class CanonSuperRapido(Arme):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
         self.nom_arme = "canon de 76 mm super rapido"
         self.DPS = 4250
         self.tps_mise_en_oeuvre = 4

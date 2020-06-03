@@ -10,7 +10,7 @@ from lib.client.global_client_registry import GCR
 
 class Arme:
 
-    def __init__(self, parent, refresh_rate=1):
+    def __init__(self, parent,  refresh_rate=1):
         self.parent = parent
         self.nom_arme= ""
         self.DPS = 0

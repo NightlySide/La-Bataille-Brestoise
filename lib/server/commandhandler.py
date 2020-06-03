@@ -1,3 +1,6 @@
+from lib.common.entite import Entite
+from lib.common.ia import IA
+from lib.common.vecteur import Vecteur
 from lib.server.global_server_registry import GSR
 
 
@@ -7,7 +10,7 @@ class CommandHandler:
     Les commandes disponibles sont stockées dans COMMANDS et l'entrée utilisateur
     est traité dans handle_input.
     """
-    COMMANDS = ["help", "playerlist", "stop", "entities", "getentity"]
+    COMMANDS = ["help", "playerlist", "stop", "entities", "getentity", "spawn"]
 
     def __init__(self):
         pass
@@ -38,5 +41,19 @@ class CommandHandler:
             print("Nombre d'entitées existantes : {}".format(len(GSR.entities)))
         elif cmd == "getentity" and len(args) == 1:
             print("{} : {}".format(args[0], GSR.entities[int(args[0])]))
+        elif cmd == "spawn" and len(args) == 3:
+            t, x, y = args
+            e = None
+            if t == "entite":
+                e = Entite()
+            elif t == "ia":
+                e = IA()
+            else:
+                print(f"Type d'entité non reconnu : {t}")
+                return
+            e.position = Vecteur(int(x), int(y))
+            e.set_image("assets/images/plaisance.png")
+            GSR.entities.append(e)
+            print(f"Apparition de {e}")
         else:
             print("Commande non reconnue ... Tapez 'help' pour la liste des commandes")

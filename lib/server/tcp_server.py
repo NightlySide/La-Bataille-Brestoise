@@ -28,6 +28,7 @@ class TCPServer(asyncio.Protocol):
         self.peername = None
         self.client = None
         self.max_players = max_players
+        GSR.server = self
 
     @classmethod
     async def create(cls, host, port, max_players):

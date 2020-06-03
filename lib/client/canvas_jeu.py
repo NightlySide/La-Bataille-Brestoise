@@ -102,6 +102,8 @@ class CanvasJeu(QLabel):
                 # Si l'entité est la cible du joueur
                 if GCR.joueur.current_target == entity.id:
                     entity.draw_target(qp, dx, dy)
+            else:
+                print(f"HORS CHAMP : {entity}")
 
     def mouseMoveEvent(self, e: QMouseEvent) -> None:
         """

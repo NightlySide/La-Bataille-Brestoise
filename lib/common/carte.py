@@ -102,7 +102,8 @@ class Carte(np.ndarray):
                             self.cell_size[0],
                             self.cell_size[1])
 
-    def can_player_see(self, entity, window_size):
+    @staticmethod
+    def can_player_see(entity, window_size):
         center = (window_size[0] // 2, window_size[1] // 2)
         xp, yp = GCR.joueur.position.x, GCR.joueur.position.y
         xe, ye = entity.position.x, entity.position.y

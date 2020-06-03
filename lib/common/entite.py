@@ -113,12 +113,16 @@ class Entite:
             y (float): position Y du milieu de l'entité par rapport au joueur
         """
         bar_size = (40, 4)
+        text_size = 12
 
         # On dessine le carré rouge
         pen = QPen(Qt.black)
         qp.setPen(pen)
         qp.setBrush(QColor(125, 125, 125))
-        qp.drawRect(x - bar_size[0] // 2, y - self.size[1] // 2 - 10, *bar_size)
+        qp.drawRect(x - bar_size[0] // 2 + text_size - 2,
+                    y - self.size[1] // 2 - 10,
+                    bar_size[0] - text_size,
+                    bar_size[1])
 
         # On dessine le carré vert
         life_col = QColor(0, 255, 0)
@@ -131,8 +135,19 @@ class Entite:
             qp.setBrush(enemy_col)
             pen = QPen(enemy_col)
         qp.setPen(pen)
-        life_size = bar_size[0] * self.vie / self.current_ship.hitpoints
-        qp.drawRect(1 + x - bar_size[0] // 2, 1 + y - self.size[1] // 2 - 10, life_size - 2, bar_size[1] - 2)
+        life_size = (bar_size[0] - text_size) * self.vie / self.current_ship.hitpoints
+        qp.drawRect(1 + x - bar_size[0] // 2 + text_size - 2,
+                    1 + y - self.size[1] // 2 - 10,
+                    life_size - 2,
+                    bar_size[1] - 2)
+
+        # On dessine le tier du bâtiment
+        tier = self.current_ship.tier
+        qp.setPen(QPen(Qt.white))
+        qp.drawText(QRect(x - bar_size[0] // 2,
+                          y - self.size[1] // 2 - 10 - text_size // 2,
+                          text_size,
+                          text_size), 0, str(tier))
 
     def draw_target(self, qp: QPainter, x: float, y: float, tar_width: int = 2) -> None:
         """

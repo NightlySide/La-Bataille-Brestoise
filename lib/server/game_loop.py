@@ -84,8 +84,8 @@ class GameLoop:
                     GSR.gamestate = GameState.FINISHED
 
                 GSR.entities_to_update.append(client.joueur)
-            if GSR.server is not None:
-                GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})
+
+            GSR.server.send_all("update_entities", {"data": GSR.entities_to_update})
 
     def stop(self):
         """

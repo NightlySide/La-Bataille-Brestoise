@@ -35,12 +35,13 @@ class Entite:
         exp (float): expérience actuelle de l'entité
         size (list): taille de l'image de l'entité
     """
-    # palier d'experience pour passer au niveau suivant
+    # paliers d'experience pour passer au niveau suivant
     exp_treshold = [1000, 3000, 8000, 24000]
     # expérience nécessaire pour gagner
     exp_win = 50000
     # Modificateur d'expérience gagnée
     taux_exp_gain = 0.1
+    #bonus d'exp pour un kill
     exp_boost = 100
     #liste des batiments par tier
     Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA], [PA, SNLE]]
@@ -64,7 +65,7 @@ class Entite:
 
     def set_image(self, img_path: str) -> None:
         """
-        Affecte une image à l'entité.
+        Affecte une image à l'entité à partir d'un path (valable pour batiment ou arme par exemple)
 
         Args:
             img_path (str): chemin d'accès relatif à l'image
@@ -157,7 +158,7 @@ class Entite:
 
     def draw_target(self, qp: QPainter, x: float, y: float, tar_width: int = 2) -> None:
         """
-        Fait le rendu du contour lors du ciblage de l'entité à l'aide du painter
+        Fait le rendu du contour (carré rouge) lors du ciblage de l'entité à l'aide du painter
         de l'écran.
 
         Args:
@@ -178,7 +179,7 @@ class Entite:
 
     def __str__(self) -> str:
         """
-        Retourne la représentation de l'entité
+        Retourne la représentation en chaine de caractères de l'entité
         """
         return f"Entité ({self.id}) : position ({self.position.x}, {self.position.y}), vie : {self.vie}"
 
@@ -186,7 +187,7 @@ class Entite:
         """
         Met à jour les éléments essentiels au fonctionnement de l'entité comme sa position
         ou bien sa direction.
-        Le déplacement sera à implémenter du coté client (joueur) ou serveur (entite).
+        Le déplacement est implémenté du coté client (joueur) ou serveur (entite).
 
         Args:
             delta (float): temps mis entre l'itération précédente et l'itération actuelle
@@ -204,7 +205,7 @@ class Entite:
     def ciblage(self, entite: "Entite") -> None:
         """
         Permet de définir une cible pour l'attaque notamment.
-        La référence à la cibles est l'identifiant unique.
+        La référence à la cible est l'identifiant unique.
 
         Args:
             entite (Entite): l'entité à cibler, doit posséder un uuid
@@ -218,7 +219,7 @@ class Entite:
     def findById(e_id: str, entities: list) -> "Entite":
         """
         Methode outil pour trouver une entité à partir de son
-        identifiant dans une liste donnée.
+        identifiant dans une liste donnée. (permet de retrouver une cible notamment pour TakeDamage)
 
         Args:
             e_id (str): identifiant de l'entité à trouver
@@ -335,7 +336,7 @@ class Entite:
         pouvoir tirer.
         Plus l'arme est importante et plus son temps d'équipement est grand. Une arme de conception plus récente
         aura un temps d'équipement plus court.
-        Les valeurs précises sont disponibles dans le tableau d'équillibrage.
+        Les valeurs précises sont disponibles dans le tableau d'équillibrage. (elle n'est pas implémenté à l'heure actuelle car le widget n'est pas codé)
 
         Args:
             arme (Arme): l'arme à équiper
@@ -344,5 +345,5 @@ class Entite:
 
         self.current_weapon = arme
         self.current_weapon.first_equip()
-        # TODO roue d'equipmment des armes ( pie menu )
+        # TODO roue d'equipmment des armes ( piechart)
 

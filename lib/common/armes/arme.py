@@ -7,6 +7,22 @@ from lib.client.global_client_registry import GCR
 
 
 class Arme:
+    """
+    La classe Arme définit une unité d'armement d'un batiment. Un batiment peut posseder plusieurs types d'armement.
+
+
+    Attributes:
+        parent(batiment) : parent d'une arme
+        nom_arme(str) : le nom de l'arme affiché dans le chat suite à son equipement sur un batiment
+        DPS(int) : Dégats par seconde infligés par l'arme
+        tps_mise_en_oeuvre(int) : temps en seconde d'équipement d'une arme par un joueur
+        portee(int) : portee de tir d'une arme
+        image(str) : Path vers le fichier image correspondant à l'arme (pour le QtPieChart)
+        _tps_equip_timer(int) : timer du temps d'equipement
+        can_fire(bool) : autorisation de tir d'une arme (lié au compteur du temps d'equipement )
+
+    """
+
 
     def __init__(self, parent,  refresh_rate=1):
         self.parent = parent

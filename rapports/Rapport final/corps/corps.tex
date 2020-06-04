@@ -2,6 +2,8 @@
 \section{Description générale du problème}
 \subsection{Introduction}
 
+% une introduction (présentation générale des objectifs du projet)
+
 Pour ce projet d'informatique, nous avons décidé de prendre un sujet autre que ceux proposés par nos enseignants.  Ayant fait tous les deux une année zéro dans la marine nationale, un sujet proche de ce que l'on avait vécut semblait la solution évidente.
 
 Nous sommes donc parti sur un jeu de type bataille navale, en temps réel et multijoueurs que nous avons nommé :
@@ -17,9 +19,13 @@ Pour travailler en collaboratif sur le code, nous avons utilisé un repository su
 
 \subsection{Les différentes pistes envisagées}
 
+% une discussion sur les différentes pistes envisagées
+
 Pour le choix de l'interface Homme-Machine (IHM) le choix s'est rapidement porté sur \textbf{PyQt5} pour sa polyvalence et sa programmation évènementielle. Concernant la connexion entre le serveur et les clients,  nous sommes tout d'abord partis sur la bibliothèque \textbf{sockets} qui permet de créer un tunnel simple entre deux clients. Nous avons finalement choisi \textbf{asyncio}, implémentée depuis python3, qui permet de gérer en asynchrone toutes les requêtes nécessaires au projet, et ce avec plusieurs clients en simultané.
 
 \subsection{Différentes hypothèses réductrices choisies}
+
+% une description des différentes hypothèses réductrices choisies
 
 Pour réduire la taille du projet et surtout le rendre réalisable, nous avons choisi d'établir quelques réductions pour cette première partie : 
 \begin{itemize}
@@ -32,6 +38,9 @@ Pour réduire la taille du projet et surtout le rendre réalisable, nous avons cho
 
 \clearpage
 \section{Application proprement dite}
+
+% une présentation générale du programme (un schéma vaut mieux que de longs discours)
+
 \subsection{Présentation générale du programme}
 Le programme est scindé en deux partie : le client et le serveur avec chacun son script pour le lancer. Le script \emph{test$\_$suite.py} permet de lancer tous les tests unitaires contenus dans le dossier \emph{tests}.
 
@@ -120,6 +129,50 @@ La classe "Chatbox" comme son nom l'indique renvoi à la chat box en bas à droite
 Pour gérer la connexion asynchrone entre le client et le serveur il est nécessaire d'avoir deux classes supplémentaires gérant ces diffrents aspects. La classe 'TCPClientProtocol' (cf. \ref{fig:annexe_diagramme_client_jeu}) hérite du protocole de la bilbiothèque \emph{asyncio} et qui fonctionne en évènementiel. La classe 'TCPServer' du côté serveur (cf. \ref{fig:annexe_diagramme_serveur}), possède un fonctionnement similaire. On retrouve ainsi dans les deux classes une fonction pour prendre en charge l'ouverture du tunnel entre le client et le serveur, une fonction pour prendre en charge la déconnexion et enfin deux fonctions pour l'envoi et la réception de données.
 
 \section{Conclusion}
+
+% une table qui recense les 7 figures imposées dans le projet avec le lien vers le code implantant la figure
+% les différents tests effectués
+% les limitations
+% les éventuels apports personnels par rapport au sujet initial
+% les perspectives et améliorations
+
+\subsection{Figures imposées}
+
+Pour ce projet, 3 figures étaient imposées. On alors pu choisir parmi les figures restantes pour en respecter au minimum 7. Voici les figures imposées ainsi que l'endroit de leur implémentation dans ce projet : 
+
+\textbf{Factorisation du code} : Le projet est relativement conséquent. Garder l'intégralité du code dans un unique fichier est impossible car trop difficile à maintenir. Ce projet est alors divisé en 3 grandes parties dans le dossier \textit{lib}: \textit{client} (TCP et IHM), \textit{serveur} (TCP et mécaniques de jeu) et \textit{common} (Commun au client et au serveur).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{../imgs/structure_fichiers}
+	\caption{Structure des fichiers du projet.}
+	\label{fig:radar}
+\end{figure}
+
+\textbf{Documentation et commentaires du code} : On a décidé de commenter le code à l'aide des docstrings et en suivant la nomenclature Google (\url{https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html}) qui nous correspondait le mieux en termes de lisibilité et de place prise. La documentation est à la fois présente en local (compilé avec Sphinx) dans le dossier \emph{/doc/build} ou bien en ligne sur ReadTheDocs à l'adresse suivante : \url{https://la-bataille-brestoise.readthedocs.io/fr/latest/}.
+
+\textbf{Tests unitaires} : les tests unitaire sont utiles pour vérifier tout au long de la conception du projet que le code de \og base \fg est toujours opérationnel. Pour se faire nous avons utilisé la bibliothèque \emph{unittest}. Pour lancer la batterie de tests unitaires (comportant des tests sur les entités, sur l'IHM et sur la classe personnalisée vecteur), il suffit de lancer le fichier \emph{test\_suite.py}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{../imgs/test_unitaire}
+	\caption{Exemple de lancement du fichier \emph{test\_suite.py}.}
+	\label{fig:radar}
+\end{figure}
+
+\textbf{Création d'un type objet (classe)} : afin de rendre le code exploitable et surtout de pouvoir le maintenir, nous avons crée des classes représentant divers objets. Que ce soit les entités ou bien leurs classes héritées, que ce soit les classe contenant l'IHM, ce projet utilise bien la Programmation Orientée Objet.
+
+\textbf{Héritage au moins entre deux types créés} : Nous implémentons cette figure avec notamment les classes \emph{Batiment} (lib.common.batiments.batiment) et \emph{Armes} (lib.common.armes.arme) qui sont les classes de base des navires et des armes du jeu. Grâce à ces classes on peut spécifier les différents types de navires et d'armes de notre jeu en conservant un nombre faible de fonctions grâce au polymorphisme.
+
+\textbf{Héritage depuis un type intégré (hors en IHM)} : La carte du jeu (lib.common.carte), chargée à partir d'une image en noir et blanc, est directement héritée d'un array numpy afin de pouvoir profiter des fonctions avancées de slicing pour optimiser l'exécution du programme.
+
+\textbf{Structure de données dynamique (autre que celles intégrées à Python)} : La carte réponds à cette figure, car il s'agit d'une structure de données qui varie en fonction de son utilisation dans client ou serveur.
+
+\textbf{Lecture/ écriture de fichiers} : dans ce projet, on charge des images, on charge du son et de la musique dans le canvas\_jeu (lib.client.canvas\_jeu) mais aussi on charge les paramètres du serveur stocké dans un fichier de type JSON (Javascript Object) \emph{serveur\_config.json} et les serveurs connus sont enregistrés sont de même dans le fichier \emph{known\_servers.json}. Ces deux derniers fichiers sont chargés à l'aide de la classe JsonLoader (lib.common.json\_loader).
+
+
+Au total ce sont près de 8 figures que nous respectons dans ce projet informatique.
+\textit{NB: Devant le nombre conséquent de classes et de portions de code implémentant les figures imposées, nous avons fait le choix de ne pas expliciter de façon exhaustive ces dernières. Nous avons cependant cités quelques exemples.}
 
 \subsection{Différents tests effectués}
 

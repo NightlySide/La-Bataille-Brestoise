@@ -17,5 +17,5 @@ class FS(batiment.Batiment):
                       Mistral,MM40]  # tableau des armes equipé [str], l'arme d'indice 0 est équipé d'office
         self.tier = 3  # tier du navire de 1 à 5
         self.status = True  # etat du navire ( vie /mort)
-        self.imgpath = os.path.join(os.getcwd(), "assets", "images", "batiments", "patrolboat.png")
+        self.imgpath = os.path.join("assets", "images", "batiments", "patrolboat.png")
         self.size = (40, 40)

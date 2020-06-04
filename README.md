@@ -32,12 +32,12 @@ Vous pourrez alors lancer le client ou bien essayer les commandes serveur en tap
 ![Console serveur](documentation/console_serveur.png)
 
 Les commandes serveur :
-* `help` : permet d'afficher la liste des commandes
-* `playerlist` : affiche le nombre de joueurs ainsi que la liste des joueurs connectés
-* `stop` : arrête **proprement** le serveur
-* `entities` : affiche la liste des entités présentes sur le serveur
-* `getentity <#entité>` : affiche les informations sur l'entité numéro #entité
-* `spawn <type> <x> <y>` : fait apparaitre une entité du type "type" à la position x y.
+- `help` : permet d'afficher la liste des commandes
+- `playerlist` : affiche le nombre de joueurs ainsi que la liste des joueurs connectés
+- `stop` : arrête **proprement** le serveur
+- `entities` : affiche la liste des entités présentes sur le serveur
+- `getentity <#entité>` : affiche les informations sur l'entité numéro #entité
+- `spawn <type> <x> <y>` : fait apparaitre une entité du type "type" à la position x y.
 
 ## Lancer le client
 Une fois le serveur lancé vous pouvez lancer le client en exécutant le script client :  
@@ -54,17 +54,17 @@ Ces serveurs seront enregistrés dans le fichier `known_servers.json`.
 
 ### Comment jouer
 
-* Flèches du clavier : changer la direction du joueur
-* Clique souris sur entité : cible l'entité (pour l'attaquer)
-* Barre espace : démarre/arrête l'attaque sur la cible
+- Flèches du clavier : changer la direction du joueur
+- Clique souris sur entité : cible l'entité (pour l'attaquer)
+- Barre espace : démarre/arrête l'attaque sur la cible
 
 Pour écrire des messages aux autres joueurs, il faut cliquer dans la barre correspondante puis pour l'envoyer en appuyant sur envoyer.
 Attention, pour intéragir avec son bâtiment il faut cliquer sur la carte. 
 Les commandes joueur :
-* `/help` : afficher l'aide des commandes
-* `/start` : démarrer la partie
-* `/exp` : afficher l'expérience du joueur
-* `/vie` : afficher la vie du joueur
+- `/help` : afficher l'aide des commandes
+- `/start` : démarrer la partie
+- `/exp` : afficher l'expérience du joueur
+- `/vie` : afficher la vie du joueur
 
 ## Accéder à la documentation
 La documentation du projet peut se trouver à deux endroits :

@@ -12,7 +12,8 @@ class CommandHandler:
 
     COMMANDS = {"help" : "Afficher la liste des commandes",
                 "start": "Démarre la partie (besoin d'être le GameMaster)",
-                "exp" :  "Retourne la quantité de points d'xp du joueur"}
+                "exp" :  "Retourne la quantité de points d'xp du joueur",
+                "vie": "affiche la vie et le maximum"}
 
     @staticmethod
     def handle(message: str) -> None:
@@ -47,3 +48,6 @@ class CommandHandler:
             # On retourne la quantité d'expérience du joueur
             elif cmd == "exp":
                 GCR.chatbox.add_line(f"[ ] Vous avez : {GCR.joueur.exp} points d'XP")
+            # On retourne la vie du joueur
+            elif cmd == "vie":
+                GCR.chatbox.add_line(f"[ ] Vous avez : {GCR.joueur.vie}/{GCR.joueur.current_ship.hitpoints} PV")

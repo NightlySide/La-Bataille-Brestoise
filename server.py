@@ -41,7 +41,7 @@ if __name__ == "__main__":
     GSR.log.log(Logger.INFORMATION, f"Lancement du serveur sur {IP}:{PORT} ...")
     loop = asyncio.get_event_loop()
     GSR.setEventLoop(loop)
-    server = loop.run_until_complete(TCPServer.create(IP, PORT, MAX_PLAYERS))
+    server = loop.run_until_complete(TCPServer.create(IP, PORT, MAX_PLAYERS, config["nombre_entites"]))
     motd(PORT, MAX_PLAYERS)
     cmd_h = CommandHandler()
     t = Thread(target=loop.run_forever)

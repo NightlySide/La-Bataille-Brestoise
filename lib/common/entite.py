@@ -307,17 +307,17 @@ class Entite:
         le joueur obtient un boost d'XP proportionnel à son tier en cas de frag ( IE il tue un ennemi).
 
         Args:
-            entite_ennemie (Entite): entite ennemie qui inflige les dégats
+            target_id (str): entite ennemie qui subit les dégats
             refresh_rate (float): fréquence de rafraichissement du jeu
         """
         if self.firing:
             # Géré niveau client
-            if GCR.entities:
+            if GCR.joueur is not None:
                 #entite_ennemie = self.findById(target_id, GCR.entities)
                 GCR.tcp_client.send({"action": "damage", "attacker": self.id, "target": target_id})
             # On est bien côté serveur
             else :
-                entite_ennemie = self.findById(target_id, GSR.entities)
+                entite_ennemie = self.findById(target_id, GSR.entities + [client.joueur for client in GSR.clients])
                 if entite_ennemie == None :
                     return
                 degats = self.current_weapon.DPS * refresh_rate
@@ -327,17 +327,7 @@ class Entite:
                     entite_ennemie.vie = 0
                 else:
                     entite_ennemie.vie = entite_ennemie.vie - degats
-                for client in GSR.clients:
-                    if client.joueur.id == self.id:
-                        exp += (Entite.taux_exp_gain * degats)
-                        client.transport.write(pickle.dumps({"action": "gain_exp",
-                                                             "exp": exp}))
-                        break
-                else:
-                    GSR.log.log(Logger.ERREUR, f"Joueur {self.id} non trouvé !")
-
-
-
+                self.exp += (Entite.taux_exp_gain * degats)
 
     def equiper(self, arme: Arme):
         """

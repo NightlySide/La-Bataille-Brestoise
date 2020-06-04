@@ -28,11 +28,13 @@ class GameLoop:
 
     Attributes:
         _timer (RepeatingTimer): timer qui se répète pour relancer la boucle
+        max_entities (int): nombre d'entites controlées par le serveur
     """
 
-    def __init__(self, update_delta: float = 0.2):
+    def __init__(self, nombre_entites: int, update_delta: float = 0.2):
         GSR.log.log(Logger.INFORMATION, "Initialisation du serveur")
         self.update_delta = update_delta
+        self.max_entities = nombre_entites
         self.setup()
 
         self._timer = RepeatingTimer(update_delta, self.update)
@@ -47,7 +49,7 @@ class GameLoop:
         GSR.carte = Carte(rade_data.shape, (8, 8), rade_data)
 
         proportion = [0] * 5 + [1] * 4 + [2] * 3 + [3] * 2 + [4] * 1
-        for k in range(100):
+        for k in range(self.max_entities):
             e = IA()
             x = y = -1
             while GSR.carte.is_colliding(x, y):

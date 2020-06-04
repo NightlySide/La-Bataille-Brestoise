@@ -64,6 +64,7 @@ Les commandes joueur :
 * `/help` : afficher l'aide des commandes
 * `/start` : démarrer la partie
 * `/exp` : afficher l'expérience du joueur
+* `/vie` : afficher la vie du joueur
 
 ## Accéder à la documentation
 La documentation du projet peut se trouver à deux endroits :

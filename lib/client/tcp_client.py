@@ -133,6 +133,8 @@ class TCPClientProtocol(asyncio.Protocol):
             elif message["action"] == "gain_exp":
                 GCR.joueur.exp += message["exp"]
             #    GCR.entities = message["data"]
+            elif message["action"] == "set_vie":
+                GCR.joueur.vie = message["vie"]
             elif "result" in message:
                 if not message["result"]:
                     GCR.log.log(Logger.ERREUR, f"Le serveur n'a pas accepté la requête suivante {message['action']}")

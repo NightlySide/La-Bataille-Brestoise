@@ -32,7 +32,7 @@ class TCPServer(asyncio.Protocol):
         GSR.server = self
 
     @classmethod
-    async def create(cls, host, port, max_players):
+    async def create(cls, host, port, max_players, nombre_entites):
         """
         Fonction usine qui instancie le serveur et utilise
         cette classe comme protocole.
@@ -47,7 +47,7 @@ class TCPServer(asyncio.Protocol):
             host, port)
 
         # On crée le thread de la boucle du jeu et on le démarre
-        GSR.game_loop = GameLoop()
+        GSR.game_loop = GameLoop(nombre_entites)
 
         # On fait tourner le serveur
         GSR.log.log(Logger.INFORMATION, "Serveur lancé")

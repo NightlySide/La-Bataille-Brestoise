@@ -41,7 +41,7 @@ class EcranConnexion(QMainWindow):
     def __init__(self,  parent: QObject = None):
         super().__init__(parent)
         self.game = None
-        uic.loadUi('assets/ecran_connexion.ui', self)
+        uic.loadUi(os.path.join(os.getcwd(), "assets", "ecran_connexion.ui"), self)
 
         # On cherche les éléments
         self.logo = self.findChild(QLabel, 'logo')

@@ -22,6 +22,6 @@ class TestUi(unittest.TestCase):
 
         self.assertIsInstance(ui.logo, QLabel)
         self.assertIsInstance(ui.btn_connect, QPushButton)
-        self.assertIsInstance(ui.btn_local, QPushButton)
+        self.assertIsInstance(ui.btn_add_server, QPushButton)
         self.assertIsInstance(ui.server_list, QListWidget)
         self.assertIsInstance(ui.input_username, QLineEdit)

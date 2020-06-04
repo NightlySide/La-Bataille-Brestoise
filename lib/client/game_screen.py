@@ -1,3 +1,5 @@
+import os
+
 from PyQt5.QtGui import QPainter, QKeyEvent, QCloseEvent
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QObject
@@ -45,7 +47,7 @@ class EcranJeu(QMainWindow):
 
     def __init__(self, parent: QObject = None, update_delta: float = 1/60 * 1000):
         super().__init__(parent)
-        uic.loadUi('assets/ecran_jeu.ui', self)
+        uic.loadUi(os.path.join(os.getcwd(), "assets", "ecran_jeu.ui"), self)
 
         # On cherche les éléments de l'écran
         self._game_scr_widget = self.findChild(QWidget, 'game_canvas')

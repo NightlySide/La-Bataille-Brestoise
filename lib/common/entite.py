@@ -43,7 +43,7 @@ class Entite:
     taux_exp_gain = 0.1
     exp_boost = 100
     #liste des batiments par tier
-    Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA],[ PA, SNLE]]
+    Tierlist = [[BE, BIN], [AVISO, CMT, BH], [FS, F70], [FREMM, FDA, SNA], [PA, SNLE]]
     def __init__(self):
 
         self.image = None

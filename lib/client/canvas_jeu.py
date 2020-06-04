@@ -1,13 +1,15 @@
 import os
+import random
 import time
 from lib.common.armes import C50, Canon, CanonAutomatique,CanonSuperRapido,Rafale,Mistral,TorpilleLegere,TorpilleLourde, MM40
 from PyQt5 import QtGui, QtWidgets
-from PyQt5.QtGui import QPainter, QImage, QKeyEvent, QPaintEvent, QMouseEvent
+from PyQt5.QtGui import QPainter, QImage, QKeyEvent, QPaintEvent, QMouseEvent, QPen
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import *
 from PyQt5.QtMultimedia import *
 from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
+from lib.common.entite import Entite
 from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
 
@@ -125,8 +127,6 @@ class CanvasJeu(QLabel):
 
         # On dessine la carte
         GCR.current_map.render(qp, (self.width(), self.height()))
-        # On vient dessiner le joueur par dessus la carte
-        GCR.joueur.render(qp, self.width() // 2, self.height() // 2)
         for entity in GCR.entities:
             # Si l'entité peut être affichée
             if GCR.current_map.can_player_see(entity, (self.width(), self.height())):
@@ -136,11 +136,31 @@ class CanvasJeu(QLabel):
                 # Si l'entité est la cible du joueur
                 if GCR.joueur.current_target == entity.id:
                     entity.draw_target(qp, dx, dy)
+                # Si l'entité est en train de tirer
+                if entity.firing and entity.current_target is not None and random.randrange(0, 10) < 7:
+                    pen = QPen(Qt.black)
+                    pen.setStyle(Qt.DashLine)
+                    qp.setPen(pen)
+                    target = Entite.findById(entity.current_target, GCR.entities + [GCR.joueur])
+                    tdx = (target.position.x - GCR.joueur.position.x) * GCR.current_map.cell_size[0] + self.width() // 2
+                    tdy = (target.position.y - GCR.joueur.position.y) * GCR.current_map.cell_size[1] + self.height() // 2
+                    qp.drawLine(dx, dy, tdx, tdy)
             else:
                 # Si l'entité est hors champ alors elle n'est plus ciblée
                 if GCR.joueur.current_target == entity.id:
                     GCR.joueur.current_target = None
                     GCR.joueur.firing = False
+        if GCR.joueur.firing and GCR.joueur.current_target is not None and random.randrange(0, 10) < 7:
+            pen = QPen(Qt.black)
+            pen.setStyle(Qt.DashLine)
+            qp.setPen(pen)
+            target = Entite.findById(GCR.joueur.current_target, GCR.entities + [GCR.joueur])
+            dx = (target.position.x - GCR.joueur.position.x) * GCR.current_map.cell_size[0] + self.width() // 2
+            dy = (target.position.y - GCR.joueur.position.y) * GCR.current_map.cell_size[1] + self.height() // 2
+            qp.drawLine(self.width() // 2, self.height() // 2, dx, dy)
+
+        # On vient dessiner le joueur par dessus la carte
+        GCR.joueur.render(qp, self.width() // 2, self.height() // 2)
 
     def mouseMoveEvent(self, e: QMouseEvent) -> None:
         """

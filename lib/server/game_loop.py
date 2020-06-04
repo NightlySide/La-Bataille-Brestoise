@@ -2,6 +2,7 @@ import random
 import threading
 
 from lib.common.carte import Carte
+from lib.common.entite import Entite
 from lib.common.ia import IA
 from lib.common.image_vers_tableau import img_vers_array
 from lib.common.logger import Logger
@@ -44,15 +45,17 @@ class GameLoop:
         rade_data = img_vers_array("assets/carte_rade_brest.jpg")
         GSR.carte = Carte(rade_data.shape, (8, 8), rade_data)
 
+        proportion = [0] * 5 + [1] * 4 + [2] * 3 + [3] * 2 + [4] * 1
         for k in range(100):
             e = IA()
             x = y = -1
             while GSR.carte.is_colliding(x, y):
                 x = random.randint(0, GSR.carte.shape[0])
                 y = random.randint(0, GSR.carte.shape[1])
-            #x = 700
-            #y = 300
             e.position = Vecteur(x, y)
+            # On donne un tier aléatoire à l'entité
+            tier = random.choice(proportion)
+            e.exp = 0 if tier == 0 else Entite.exp_treshold[tier - 1]
             GSR.entities.append(e)
 
     def update(self) -> None:

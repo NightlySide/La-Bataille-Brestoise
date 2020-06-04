@@ -4,9 +4,9 @@
 
 % une introduction (présentation générale des objectifs du projet)
 
-Pour ce projet d'informatique, nous avons décidé de prendre un sujet autre que ceux proposés par nos enseignants.  Ayant fait tous les deux une année zéro dans la marine nationale, un sujet proche de ce que l'on avait vécut semblait la solution évidente.
+Pour ce projet d'informatique, nous avons décidé de prendre un sujet autre que ceux proposés par nos enseignants.  Ayant fait tous les deux une année zéro dans la marine nationale, un sujet proche de ce que l'on avait vécut semblait une solution évidente.
 
-Nous sommes donc parti sur un jeu de type bataille navale, en temps réel et multijoueurs que nous avons nommé :
+Nous sommes donc parti sur un jeu de type bataille navale, en temps réel et jouable en multijoueurs que nous avons nommé :
 
 \begin{figure}[!h]
 	\centering
@@ -19,7 +19,7 @@ Pour travailler en collaboratif sur le code, nous avons utilisé un repository su
 
 \subsection{Principe de fonctionnement du jeu}
 
-Le jeu se base sur le fonctionnement du célèbre jeu \emph{Agar.io}. Le joueur commence la partie avec le navire de plus bas niveau (un bâtiment-école de niveau 1). Le joueur va devoir trouver puis tirer sur les ennemis afin d'engranger de l'expérience en endommageant des navires ennemie ou en les coulant (il obtient un bonus proportionnel au niveau(tier) du navire coulé).\\	Après un certain palier d'expérience il monte de niveau, afin de manoeuvrer un navire de plus en plus performant. les niveaux vont de 1 à 5. Après 50000 exp le joueur est déclaré vainqueur. Le joueur possède un nombre de points de vie, et il peut mourir si ce nombre tombe à 0. Dans ce cas, le joueur revis dans un bâtiment du niveau inférieur, et son exp est réinitialisé au palier inférieur. Le joueur peut notamment consulter son expérience actuelle via une commande dans une chatbox.\\
+Le jeu se base sur le fonctionnement du célèbre jeu \emph{Agar.io}. Le joueur commence la partie avec le navire de plus bas niveau (un bâtiment-école de niveau 1). Le joueur va devoir trouver puis tirer sur les ennemis afin d'engranger de l'expérience en endommageant des navires ennemis ou en les coulant (il obtient un bonus proportionnel au niveau(tier) du navire coulé).\\	Après un certain palier d'expérience il monte de niveau, afin de manoeuvrer un navire de plus en plus performant. les niveaux vont de 1 à 5. Après 50000 exp le joueur est déclaré vainqueur. Le joueur possède un nombre de points de vie, et il peut mourir si ce nombre tombe à 0. Dans ce cas, le joueur revis dans un bâtiment du niveau inférieur, et son exp est réinitialisé au palier inférieur. Le joueur peut notamment consulter son expérience actuelle via une commande dans une chatbox.\\
 
 Le jeu permet donc plusieurs stratégies de victoire : s'attaquer à des ennemis plus faible mais mettre du temps à gagner de l'experience, ou viser des ennemis plus imposants sous le risque de mourir. Les commandes sont détaillés dans le fichier \emph{readme}. 
    
@@ -194,7 +194,7 @@ Un des ajouts principaux consiste en l'implémentation d'une IA, dont les comport
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\linewidth]{../imgs/FSM}
-	\caption{Diagramme de comportement de l'IA (il se peut que certaines fonctionnalités ne soit pas encore implémentés).}
+	\caption{Diagramme de comportement de l'IA (FSM)}
 	\label{fig:FSM}
 \end{figure}
 

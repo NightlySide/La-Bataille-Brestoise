@@ -75,6 +75,7 @@ class EcranJeu(QMainWindow):
         # Création de la chatbox
         self.chatbox = ChatBox(self._chatbox_widget)
         self.chatbox.add_line("[+] Vous avez rejoint la partie")
+        self.chatbox.add_line("[+] Pensez à faire /start pour lancer le jeu !")
         self.chatbox.update()
         GCR.chatbox = self.chatbox
 

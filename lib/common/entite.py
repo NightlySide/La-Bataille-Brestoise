@@ -1,10 +1,11 @@
+# Auteur : Guillaume LEINEN
+
 import pickle
 import random
 
 from PyQt5.QtCore import QRect, QPoint, Qt
-from PyQt5.QtGui import QImage, QPixmap, QTransform, QPainter, QColor, QBrush, QPen
+from PyQt5.QtGui import QPixmap, QTransform, QPainter, QColor, QPen
 from uuid import uuid4
-from random import randint
 
 from lib.client.global_client_registry import GCR
 from lib.common.armes.arme import Arme
@@ -12,7 +13,6 @@ from lib.common.batiments import PA, AVISO, CMT, BE, BIN, BH, FS, F70, FREMM, FD
 from lib.common.batiments import Batiment
 from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
-import time
 
 from lib.server.global_server_registry import GSR
 

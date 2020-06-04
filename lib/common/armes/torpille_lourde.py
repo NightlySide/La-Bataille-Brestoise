@@ -1,3 +1,5 @@
+# Auteur : Guillaume LEINEN
+
 from lib.common.armes.arme import Arme
 from PyQt5.QtGui import QImage
 

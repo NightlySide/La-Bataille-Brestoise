@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 import unittest
 
 from tests.vecteur import TestVecteur

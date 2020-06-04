@@ -1,8 +1,6 @@
-import time
+# Auteur : Guillaume LEINEN
 
-from PyQt5.QtCore import Qt, QRect
-from PyQt5.QtGui import QImage
-from random import randint
+import time
 
 import lib
 from lib.client.global_client_registry import GCR

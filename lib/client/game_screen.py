@@ -1,6 +1,8 @@
+# Auteur : Alexandre FROEHLICH
+
 import os
 
-from PyQt5.QtGui import QPainter, QKeyEvent, QCloseEvent
+from PyQt5.QtGui import QKeyEvent, QCloseEvent
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QObject
 from PyQt5 import uic

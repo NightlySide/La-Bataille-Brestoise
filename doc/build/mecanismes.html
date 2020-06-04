@@ -86,11 +86,16 @@
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="serveur.html">Serveur</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Mecanismes de Jeu</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#batiments">Bâtiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#armes">Armes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#entite">Entite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#joueur">Joueur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intelligence-artificielle">Intelligence Artificielle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vecteur">Vecteur</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#logger">Logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#carte">Carte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-loader">JSON Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repeating-timer">Repeating Timer</a></li>
 </ul>
 </li>
 </ul>
@@ -164,6 +169,22 @@
             
   <div class="section" id="mecanismes-de-jeu">
 <h1>Mecanismes de Jeu<a class="headerlink" href="#mecanismes-de-jeu" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="batiments">
+<h2>Bâtiments<a class="headerlink" href="#batiments" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.common.batiments.batiment.Batiment">
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.batiments.batiment.</code><code class="sig-name descname">Batiment</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="armes">
+<h2>Armes<a class="headerlink" href="#armes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.common.armes.arme.Arme">
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.armes.arme.</code><code class="sig-name descname">Arme</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.armes.arme.Arme" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="entite">
 <h2>Entite<a class="headerlink" href="#entite" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py class">
@@ -349,7 +370,7 @@ de l’écran.</p>
 
 <dl class="py method">
 <dt id="lib.common.entite.Entite.equiper">
-<code class="sig-name descname">equiper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arme</span><span class="p">:</span> <span class="n">lib.common.armes.arme.Arme</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.entite.Entite.equiper" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">equiper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arme</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.armes.arme.Arme" title="lib.common.armes.arme.Arme">lib.common.armes.arme.Arme</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.entite.Entite.equiper" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Permet à un joueur d’équiper une arme. Elle sert à attendre un délai de mise en oeuvre d’une arme avant de
 pouvoir tirer.
 Plus l’arme est importante et plus son temps d’équipement est grand. Une arme de conception plus récente
@@ -357,7 +378,7 @@ aura un temps d’équipement plus court.
 Les valeurs précises sont disponibles dans le tableau d’équillibrage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>arme</strong> (<em>Arme</em>) – l’arme à équiper</p>
+<dd class="field-odd"><p><strong>arme</strong> (<a class="reference internal" href="#lib.common.armes.arme.Arme" title="lib.common.armes.arme.Arme"><em>Arme</em></a>) – l’arme à équiper</p>
 </dd>
 </dl>
 </dd></dl>
@@ -449,12 +470,12 @@ ce dernier.</p>
 
 <dl class="py method">
 <dt id="lib.common.entite.Entite.spawnShip">
-<code class="sig-name descname">spawnShip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ship</span><span class="p">:</span> <span class="n">lib.common.batiments.batiment.Batiment</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.spawnShip" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">spawnShip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ship</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.batiments.batiment.Batiment" title="lib.common.batiments.batiment.Batiment">lib.common.batiments.batiment.Batiment</a></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.spawnShip" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Permet de générer un nouveau batiment au joueur par exemple
 quand il meurt ou bien si il monte de niveau</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>ship</strong> (<em>Batiment</em>) – bâtiment à générer</p>
+<dd class="field-odd"><p><strong>ship</strong> (<a class="reference internal" href="#lib.common.batiments.batiment.Batiment" title="lib.common.batiments.batiment.Batiment"><em>Batiment</em></a>) – bâtiment à générer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -525,6 +546,62 @@ ou bien sa direction.</p>
 <dd class="field-odd"><p><strong>delta</strong> (<em>float</em>) – temps mis entre l’itération précédente et l’itération actuelle</p>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="intelligence-artificielle">
+<h2>Intelligence Artificielle<a class="headerlink" href="#intelligence-artificielle" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.common.ia.IA">
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.ia.</code><code class="sig-name descname">IA</code><a class="headerlink" href="#lib.common.ia.IA" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Classe héritée de Entite qui a pour particularité de possèder une FSM donc d’agir
+par états. Ce que nous appelerons ici « IA ».</p>
+<dl class="py attribute">
+<dt id="lib.common.ia.IA.brain">
+<code class="sig-name descname">brain</code><a class="headerlink" href="#lib.common.ia.IA.brain" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>cerveau qui controle les gestes de l’entité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="serveur.html#lib.server.FSM.FSM" title="lib.server.FSM.FSM">FSM</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.ia.IA.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delta</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.ia.IA.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour l’entité ainsi que son cerveau</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>delta</strong> (<em>float</em>) – temps écoulé depuis la dernière mise à jour</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="lib.common.ia.Gambader">
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.ia.</code><code class="sig-name descname">Gambader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.ia.Gambader" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Etat « d’attente », l’IA se déplace aléatoirement dans ce cas.</p>
+<dl class="py method">
+<dt id="lib.common.ia.Gambader.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.ia.Gambader.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Mise à jour de l’état</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="lib.common.ia.SuivreJoueur">
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.ia.</code><code class="sig-name descname">SuivreJoueur</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.ia.SuivreJoueur" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Etat définissant le comportement de suivi de l’entité</p>
+<dl class="py method">
+<dt id="lib.common.ia.SuivreJoueur.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.ia.SuivreJoueur.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour l’état</p>
 </dd></dl>
 
 </dd></dl>
@@ -720,8 +797,29 @@ spécifié dans file_path</p>
 </dd>
 </dl>
 <dl class="py method">
+<dt id="lib.common.carte.Carte.can_player_see">
+<em class="property">static </em><code class="sig-name descname">can_player_see</code><span class="sig-paren">(</span><em class="sig-param">entity: lib.common.entite.Entite</em>, <em class="sig-param">window_size: (&lt;class 'int'&gt;</em>, <em class="sig-param">&lt;class 'int'&gt;)</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#lib.common.carte.Carte.can_player_see" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Détermine si une entité est affichée à l’écran. Permet de savoir quoi dessiner à l’écran
+ou non pour optimiser le jeu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entity</strong> – </p></li>
+<li><p><strong>window_size</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>est-ce que le joueur voit l’entité?</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>can_player_see (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="lib.common.carte.Carte.get_tile">
-<code class="sig-name descname">get_tile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte.get_tile" title="Lien permanent vers cette définition">¶</a></dt>
+<code class="sig-name descname">get_tile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#lib.common.carte.Carte.get_tile" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Retourne la tuile aux coordonnées x, y.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -735,8 +833,9 @@ spécifié dans file_path</p>
 
 <dl class="py method">
 <dt id="lib.common.carte.Carte.render">
-<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span></em>, <em class="sig-param"><span class="n">window_size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.carte.Carte.render" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><dl class="field-list simple">
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span></em>, <em class="sig-param"><span class="n">window_size</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.carte.Carte.render" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de faire le rendu de la carte sur l’écran.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>qp</strong> (<em>QPainter</em>) – le painter du canvas qui demande à
@@ -746,6 +845,104 @@ rendre la carte.</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="json-loader">
+<h2>JSON Loader<a class="headerlink" href="#json-loader" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.common.json_loader.JsonLoader">
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.json_loader.</code><code class="sig-name descname">JsonLoader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.json_loader.JsonLoader" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Classe outil permettant de charger un fichier JSON et de récupérer ses données</p>
+<dl class="py attribute">
+<dt id="lib.common.json_loader.JsonLoader.filename">
+<code class="sig-name descname">filename</code><a class="headerlink" href="#lib.common.json_loader.JsonLoader.filename" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le nom du fichier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.json_loader.JsonLoader.init_server_config">
+<em class="property">static </em><code class="sig-name descname">init_server_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'server_config.json'</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.json_loader.JsonLoader.init_server_config" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction outil pour initialiser le fichier avec le serveur en local.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – le nom du fichier</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.json_loader.JsonLoader.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.json_loader.JsonLoader.write" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet d’écrire dans le fichier les données modifiées.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="repeating-timer">
+<h2>Repeating Timer<a class="headerlink" href="#repeating-timer" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.common.repeating_timer.RepeatingTimer">
+<em class="property">class </em><code class="sig-prename descclassname">lib.common.repeating_timer.</code><code class="sig-name descname">RepeatingTimer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">temps</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">fonction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.repeating_timer.RepeatingTimer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Un timer basé sur du threading qui se répète à l’infini.
+Utile pour définir les boucles de jeu.</p>
+<dl class="py attribute">
+<dt id="lib.common.repeating_timer.RepeatingTimer.temps">
+<code class="sig-name descname">temps</code><a class="headerlink" href="#lib.common.repeating_timer.RepeatingTimer.temps" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le temps entre deux répétitions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.repeating_timer.RepeatingTimer.fonction">
+<code class="sig-name descname">fonction</code><a class="headerlink" href="#lib.common.repeating_timer.RepeatingTimer.fonction" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>la fonction à appeler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>builtins.function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.repeating_timer.RepeatingTimer.thread">
+<code class="sig-name descname">thread</code><a class="headerlink" href="#lib.common.repeating_timer.RepeatingTimer.thread" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le timer lié à la classe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>threading.Timer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.repeating_timer.RepeatingTimer.cancel">
+<code class="sig-name descname">cancel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.repeating_timer.RepeatingTimer.cancel" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Arrete le timer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.repeating_timer.RepeatingTimer.handle_function">
+<code class="sig-name descname">handle_function</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.repeating_timer.RepeatingTimer.handle_function" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Va appeler la fonction puis relance le timer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.repeating_timer.RepeatingTimer.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.repeating_timer.RepeatingTimer.start" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Démarre le timer</p>
 </dd></dl>
 
 </dd></dl>

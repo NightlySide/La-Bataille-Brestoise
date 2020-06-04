@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from asyncio import BaseEventLoop
 
 from lib.common.logger import Logger

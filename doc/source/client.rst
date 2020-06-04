@@ -11,6 +11,11 @@ ChatBox
 .. autoclass:: lib.client.chatbox.ChatBox
    :members:
 
+Command Handler
+---------------
+.. autoclass:: lib.client.command_handler.CommandHandler
+   :members:
+
 Ecran de Connexion
 ------------------
 .. autoclass:: lib.client.connexion_screen.EcranConnexion
@@ -29,6 +34,9 @@ Global Client Registry
 Radar
 -----
 .. autoclass:: lib.client.radar.Radar
+   :members:
+
+.. autoclass:: lib.client.radar.RadarWidget
    :members:
 
 Client TCP

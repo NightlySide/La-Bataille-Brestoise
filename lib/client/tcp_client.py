@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from asyncio import Transport
 
 from lib.client.global_client_registry import GCR
@@ -5,7 +7,6 @@ import pickle
 import asyncio
 
 from lib.common.entite import Entite
-from lib.common.joueur import Joueur
 from lib.common.logger import Logger
 
 

@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 import random
 import threading
 
@@ -8,13 +10,12 @@ from lib.common.image_vers_tableau import img_vers_array
 from lib.common.logger import Logger
 from lib.common.repeating_timer import RepeatingTimer
 from lib.common.vecteur import Vecteur
-from lib.server.client import Client
 from lib.server.global_server_registry import GSR
-from lib.client.global_client_registry import GCR
+
 
 class GameState:
     """
-    classe définissant  l'état du jeu
+    Classe définissant l'état du jeu
     """
     NOTSTARTED = 0
     STARTED = 1

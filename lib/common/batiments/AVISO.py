@@ -1,3 +1,5 @@
+# Auteur : Guillaume LEINEN
+
 import os
 
 from lib.common.armes import C50, Canon, CanonAutomatique,CanonSuperRapido,Rafale,Mistral,TorpilleLegere,TorpilleLourde

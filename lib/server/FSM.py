@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from abc import ABCMeta, abstractmethod
 
 from lib.common.entite import Entite
@@ -6,13 +8,19 @@ from lib.server.global_server_registry import GSR
 
 
 class Etat(metaclass=ABCMeta):
-
-    def __init__(self, parent):
+    """
+    Classe abstraite définissant un état pour la machine
+    à états finis (FSM).
+    """
+    def __init__(self, parent: Entite):
         self.parent = parent
         self.en_vie = True
 
     @abstractmethod
-    def update(self):
+    def update(self) -> None:
+        """
+        A implémenter, permet de mettre à jour l'état et de faire agir l'entité
+        """
         pass
 
 

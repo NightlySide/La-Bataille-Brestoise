@@ -1,7 +1,10 @@
+# Auteur : Alexandre FROEHLICH
+
 import numpy as np
 from PyQt5.QtCore import Qt
 
 from lib.client.global_client_registry import GCR
+from lib.common.entite import Entite
 
 
 class Carte(np.ndarray):
@@ -46,7 +49,7 @@ class Carte(np.ndarray):
         # va donc recopier ses variables d'instance qui sont spécifiques
         self.cell_size = getattr(obj, 'cell_size', None)
 
-    def get_tile(self, x, y):
+    def get_tile(self, x: int, y: int) -> int or None:
         """
         Retourne la tuile aux coordonnées x, y.
 
@@ -60,13 +63,14 @@ class Carte(np.ndarray):
             return self[x, y]
         return None
 
-    def is_colliding(self, x, y):
+    def is_colliding(self, x: int, y: int) -> bool:
         # Si la case n'est pas définie ou bien est un mur
         # C'est qu'on est en collision
         return self.get_tile(x, y) in [None, 0]
 
-    def render(self, qp, window_size):
+    def render(self, qp, window_size) -> None:
         """
+        Permet de faire le rendu de la carte sur l'écran.
 
         Args:
             qp (QPainter): le painter du canvas qui demande à
@@ -103,7 +107,18 @@ class Carte(np.ndarray):
                             self.cell_size[1])
 
     @staticmethod
-    def can_player_see(entity, window_size):
+    def can_player_see(entity: Entite, window_size: (int, int)) -> bool:
+        """
+        Détermine si une entité est affichée à l'écran. Permet de savoir quoi dessiner à l'écran
+        ou non pour optimiser le jeu.
+
+        Args:
+            entity:
+            window_size:
+
+        Returns:
+            can_player_see (bool): est-ce que le joueur voit l'entité?
+        """
         center = (window_size[0] // 2, window_size[1] // 2)
         xp, yp = GCR.joueur.position.x, GCR.joueur.position.y
         xe, ye = entity.position.x, entity.position.y

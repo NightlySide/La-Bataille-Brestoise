@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from PyQt5.QtWidgets import QTextBrowser
 from PyQt5.QtCore import Qt, QObject
 

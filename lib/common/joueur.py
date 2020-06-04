@@ -1,20 +1,9 @@
-from lib.client.global_client_registry import GCR
+# Auteur : Guillaume LEINEN
+
 from lib.common.entite import Entite
-from lib.common.logger import Logger
-from lib.common.vecteur import Vecteur
-import random
-
-from PyQt5.QtCore import QRect, QPoint, Qt
-from PyQt5.QtGui import QImage, QPixmap, QTransform, QPainter, QColor, QBrush, QPen
-from uuid import uuid4
-from random import randint
-
 from lib.client.global_client_registry import GCR
-from lib.common.armes.arme import Arme
-from lib.common.batiments.batiment import Batiment
-from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
-import time
+
 
 class Joueur(Entite):
     """

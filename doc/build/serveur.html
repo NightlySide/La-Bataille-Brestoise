@@ -86,6 +86,8 @@
 <li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Serveur</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#client">Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-handler">Command Handler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fsm">FSM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#boucle-de-jeu">Boucle de jeu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#global-server-registry">Global Server Registry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#serveur-tcp">Serveur TCP</a></li>
@@ -242,6 +244,125 @@
 </dd></dl>
 
 </div>
+<div class="section" id="command-handler">
+<h2>Command Handler<a class="headerlink" href="#command-handler" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.server.commandhandler.CommandHandler">
+<em class="property">class </em><code class="sig-prename descclassname">lib.server.commandhandler.</code><code class="sig-name descname">CommandHandler</code><a class="headerlink" href="#lib.server.commandhandler.CommandHandler" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet de gérer les commandes envoyées depuis le serveur.
+Les commandes disponibles sont stockées dans COMMANDS et l’entrée utilisateur
+est traité dans handle_input.</p>
+<dl class="py method">
+<dt id="lib.server.commandhandler.CommandHandler.handle_input">
+<code class="sig-name descname">handle_input</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.commandhandler.CommandHandler.handle_input" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Prend en charge l’entrée utilisateur et essaie de parser la commande
+envoyée.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – commande entrée par l’utilisateur</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fsm">
+<h2>FSM<a class="headerlink" href="#fsm" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.server.FSM.FSM">
+<em class="property">class </em><code class="sig-prename descclassname">lib.server.FSM.</code><code class="sig-name descname">FSM</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span><span class="p">:</span> <span class="n"><a class="reference internal" href="mecanismes.html#lib.common.entite.Entite" title="lib.common.entite.Entite">lib.common.entite.Entite</a></span></em>, <em class="sig-param"><span class="n">nom_etat_courant</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">etat_initial</span><span class="p">:</span> <span class="n">lib.server.FSM.Etat</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.FSM.FSM" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Machine à état fini. Permet de définir un automate qui controle les I.A.
+du jeu.</p>
+<dl class="py attribute">
+<dt id="lib.server.FSM.FSM.parent">
+<code class="sig-name descname">parent</code><a class="headerlink" href="#lib.server.FSM.FSM.parent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>parent de l’automate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mecanismes.html#lib.common.entite.Entite" title="lib.common.entite.Entite">Entite</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.server.FSM.FSM.etat_initial">
+<code class="sig-name descname">etat_initial</code><a class="headerlink" href="#lib.server.FSM.FSM.etat_initial" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>état de départ</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Etat</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.server.FSM.FSM.etat_courant">
+<code class="sig-name descname">etat_courant</code><a class="headerlink" href="#lib.server.FSM.FSM.etat_courant" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>état actuel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Etat</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.server.FSM.FSM.nom_etat_courant">
+<code class="sig-name descname">nom_etat_courant</code><a class="headerlink" href="#lib.server.FSM.FSM.nom_etat_courant" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>nom de l’état actuel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.server.FSM.FSM.etats">
+<code class="sig-name descname">etats</code><a class="headerlink" href="#lib.server.FSM.FSM.etats" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>dictionnaire des états enregistrés dans l’automate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.server.FSM.FSM.prochain_etat">
+<code class="sig-name descname">prochain_etat</code><a class="headerlink" href="#lib.server.FSM.FSM.prochain_etat" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>état à suivre</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Etat</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.server.FSM.FSM.ajouter_etat">
+<code class="sig-name descname">ajouter_etat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">etat</span><span class="p">:</span> <span class="n">lib.server.FSM.Etat</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.FSM.FSM.ajouter_etat" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Permet d’ajouter un état à l’automate et de pouvoir l’identifier par un nom.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – nom de l’état</p></li>
+<li><p><strong>etat</strong> (<em>Etat</em>) – état à ajouter</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.server.FSM.FSM.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.server.FSM.FSM.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Met à jour l’automate et surtout met à jour l’état actuel.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="boucle-de-jeu">
 <h2>Boucle de jeu<a class="headerlink" href="#boucle-de-jeu" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py class">
@@ -254,7 +375,7 @@
 <dd><p>timer qui se répète pour relancer la boucle</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>RepeatingTimer</p>
+<dd class="field-odd"><p><a class="reference internal" href="mecanismes.html#lib.common.repeating_timer.RepeatingTimer" title="lib.common.repeating_timer.RepeatingTimer">RepeatingTimer</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -277,6 +398,12 @@
 <dd><p>Est appelée à intervales réguliers. Analogue à la fonction loop en arduino.</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt id="lib.server.game_loop.GameState">
+<em class="property">class </em><code class="sig-prename descclassname">lib.server.game_loop.</code><code class="sig-name descname">GameState</code><a class="headerlink" href="#lib.server.game_loop.GameState" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Classe définissant l’état du jeu</p>
 </dd></dl>
 
 </div>

@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from asyncio import Transport
 
 from lib.common.joueur import Joueur

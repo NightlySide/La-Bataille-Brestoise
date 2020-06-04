@@ -1,13 +1,13 @@
+# Auteur : Alexandre FROEHLICH
+
 import time
 import numpy as np
-from random import randint
 
 from PyQt5.QtCore import QPoint, Qt
 from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtWidgets import QWidget
 
 from lib.client.global_client_registry import GCR
-from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
 
 
@@ -141,11 +141,14 @@ class Radar:
 
 
 class RadarWidget(QWidget):
-
-    def __init__(self, radar, parent=None):
+    """
+    Widget permettant de séparer la partie IHM du code.
+    Ne sert qu'à l'IHM.
+    """
+    def __init__(self, radar : Radar, parent=None):
         super().__init__(parent)
         self.radar = radar
         self.setFixedSize(400, 300)
 
-    def paintEvent(self, pevent):
+    def paintEvent(self, pevent) -> None:
         self.radar.render(QPainter(self), self)

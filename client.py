@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from PyQt5.QtWidgets import *
 from lib.client.connexion_screen import EcranConnexion
 from lib.common.logger import Logger

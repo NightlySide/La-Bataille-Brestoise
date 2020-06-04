@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 import unittest
 
 import numpy as np

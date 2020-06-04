@@ -86,6 +86,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Client</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#canvas-jeu">Canvas Jeu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#chatbox">ChatBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-handler">Command Handler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ecran-de-connexion">Ecran de Connexion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ecran-de-jeu">Ecran de Jeu</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#global-client-registry">Global Client Registry</a></li>
@@ -354,6 +355,28 @@ pour le prochain update.</p>
 <dd><p>Met à jour la chatbox. Fonction appelée par le Thread
 contenant PyQt5.
 La mise à jour ne s’effectue que si elle est nécessaire.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="command-handler">
+<h2>Command Handler<a class="headerlink" href="#command-handler" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="py class">
+<dt id="lib.client.command_handler.CommandHandler">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.command_handler.</code><code class="sig-name descname">CommandHandler</code><a class="headerlink" href="#lib.client.command_handler.CommandHandler" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Classe permettant de gérer les commandes utilisateur dans la chatbox.
+Ne possède qu’une fonction statique pour gérer les commandes.</p>
+<dl class="py method">
+<dt id="lib.client.command_handler.CommandHandler.handle">
+<em class="property">static </em><code class="sig-name descname">handle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.client.command_handler.CommandHandler.handle" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Prend en charge les commandes utilisateur. Parse la commande et les arguments
+et agit en conséquences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – la commande et les arguments envoyés par le joueur</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -692,6 +715,61 @@ de contenir ces variables</p>
 </dl>
 </dd></dl>
 
+<dl class="py attribute">
+<dt id="lib.client.global_client_registry.GCR.adjetifs">
+<code class="sig-name descname">adjetifs</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.adjetifs" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>liste des adjectifs pour générer un pseudo aléatoire</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.client.global_client_registry.GCR.animaux">
+<code class="sig-name descname">animaux</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.animaux" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>liste des animaux pour générer un pseudo aléatoire</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.client.global_client_registry.GCR.entities">
+<code class="sig-name descname">entities</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.entities" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>liste des entités du jeu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>liste</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.client.global_client_registry.GCR.current_map">
+<code class="sig-name descname">current_map</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.current_map" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>carte de la partie actuelle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mecanismes.html#lib.common.carte.Carte" title="lib.common.carte.Carte">Carte</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.client.global_client_registry.GCR.gamestate">
+<code class="sig-name descname">gamestate</code><a class="headerlink" href="#lib.client.global_client_registry.GCR.gamestate" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>état de la partie (en cours, arrêtée, finie)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="lib.client.global_client_registry.GCR.getEventLoop">
 <em class="property">classmethod </em><code class="sig-name descname">getEventLoop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; asyncio.base_events.BaseEventLoop<a class="headerlink" href="#lib.client.global_client_registry.GCR.getEventLoop" title="Lien permanent vers cette définition">¶</a></dt>
@@ -820,6 +898,18 @@ qui va venir limiter le nombre d’appels de manière à avoir un
 taux de rafraîchissement de la surface constant.
 Cette fonction est une surcharge des fonctions implémentées par Qt.</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="lib.client.radar.RadarWidget">
+<em class="property">class </em><code class="sig-prename descclassname">lib.client.radar.</code><code class="sig-name descname">RadarWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">radar</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.client.radar.Radar" title="lib.client.radar.Radar">lib.client.radar.Radar</a></span></em>, <em class="sig-param"><span class="n">parent</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.RadarWidget" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Widget permettant de séparer la partie IHM du code.
+Ne sert qu’à l’IHM.</p>
+<dl class="py method">
+<dt id="lib.client.radar.RadarWidget.paintEvent">
+<code class="sig-name descname">paintEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">QPaintEvent</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.client.radar.RadarWidget.paintEvent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

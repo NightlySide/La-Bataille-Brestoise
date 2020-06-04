@@ -1,9 +1,11 @@
+# Auteur : Alexandre FROEHLICH
+
 from lib.common.json_loader import JsonLoader
 from lib.server.commandhandler import CommandHandler
 from lib.server.tcp_server import TCPServer
 from lib.server.global_server_registry import GSR
 from lib.common.logger import Logger
-from threading import Thread, Event
+from threading import Thread
 import asyncio
 import socket
 import colorama

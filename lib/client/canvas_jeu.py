@@ -1,3 +1,5 @@
+# Auteur : Guillaume LEINEN
+
 import os
 import random
 import time

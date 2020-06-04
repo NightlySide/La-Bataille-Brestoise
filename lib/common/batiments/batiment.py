@@ -1,5 +1,4 @@
-
-
+# Auteur : Guillaume LEINEN
 
 
 class Batiment:

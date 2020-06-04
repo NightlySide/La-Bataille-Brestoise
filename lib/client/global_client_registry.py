@@ -1,4 +1,5 @@
-import asyncio
+# Auteur : Alexandre FROEHLICH
+
 import random
 from asyncio import BaseEventLoop
 
@@ -16,6 +17,11 @@ class GCR:
         chatbox (ChatBox): chatbox du jeu
         id (str): identifiant unique du client (uuid)
         serveurs (list): liste des serveurs enregistrés
+        adjetifs (list): liste des adjectifs pour générer un pseudo aléatoire
+        animaux (list): liste des animaux pour générer un pseudo aléatoire
+        entities (liste): liste des entités du jeu
+        current_map (Carte): carte de la partie actuelle
+        gamestate (int): état de la partie (en cours, arrêtée, finie)
     """
 
     tcp_client = None # tunnel TCP

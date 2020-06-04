@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtWidgets import *
@@ -10,7 +12,8 @@ from lib.client.game_screen import EcranJeu
 from lib.client.global_client_registry import GCR
 from threading import Thread
 
-import os, sys
+import os
+import sys
 
 from lib.common.json_loader import JsonLoader
 from lib.common.logger import Logger

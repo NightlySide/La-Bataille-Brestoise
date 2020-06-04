@@ -1,6 +1,7 @@
+# Auteur : Alexandre FROEHLICH
+
 import asyncio
 import pickle
-import threading
 import uuid
 
 from lib.common.logger import Logger

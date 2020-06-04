@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 from lib.common.entite import Entite
 from lib.common.ia import IA
 from lib.common.vecteur import Vecteur

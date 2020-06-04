@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 import datetime
 from colorama import Fore
 

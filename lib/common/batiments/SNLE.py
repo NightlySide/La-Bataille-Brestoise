@@ -1,3 +1,5 @@
+# Auteur : Guillaume LEINEN
+
 import os
 
 from lib.common.batiments import batiment

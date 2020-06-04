@@ -1,3 +1,5 @@
+# Auteur : Alexandre FROEHLICH
+
 import numpy as np
 
 

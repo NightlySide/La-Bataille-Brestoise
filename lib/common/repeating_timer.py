@@ -1,3 +1,5 @@
+# Auteur : Alexabdre FROEHLICH
+
 import threading
 
 
@@ -18,12 +20,21 @@ class RepeatingTimer:
         self.thread = threading.Timer(self.temps, self.handle_function)
 
     def handle_function(self):
+        """
+        Va appeler la fonction puis relance le timer
+        """
         self.fonction()
         self.thread = threading.Timer(self.temps, self.handle_function)
         self.thread.start()
 
     def start(self):
+        """
+        Démarre le timer
+        """
         self.thread.start()
 
     def cancel(self):
+        """
+        Arrete le timer
+        """
         self.thread.cancel()

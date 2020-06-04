@@ -1,3 +1,5 @@
+# Auteur : Guillaume LEINEN
+
 import unittest
 
 from lib.common.entite import Entite

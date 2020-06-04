@@ -1,3 +1,4 @@
+import os
 import time
 from lib.common.armes import C50, Canon, CanonAutomatique,CanonSuperRapido,Rafale,Mistral,TorpilleLegere,TorpilleLourde, MM40
 from PyQt5 import QtGui, QtWidgets
@@ -36,6 +37,19 @@ class CanvasJeu(QLabel):
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
         self.last_key = None
+        self.sound_player = QMediaPlayer()
+        self.sound_player.setVolume(100)
+
+        self.background_player = QMediaPlayer()
+        self.background_player.setVolume(50)
+        playlist = QMediaPlaylist(self.background_player)
+        playlist.addMedia(QMediaContent(QUrl.fromLocalFile(os.path.join(os.getcwd(),
+                                                                        "assets",
+                                                                        "sfx",
+                                                                        "ocean_waves.mp3"))))
+        playlist.setPlaybackMode(QMediaPlaylist.Loop)
+        self.background_player.setPlaylist(playlist)
+        self.background_player.play()
 
     def keyPressEvent(self, e: QKeyEvent) -> None:
         """
@@ -52,21 +66,24 @@ class CanvasJeu(QLabel):
         # si c'est la touche espace on autorise ou non le tir
         elif e.key() == Qt.Key_Space:
             GCR.joueur.firing = not GCR.joueur.firing
-            if GCR.joueur.firing :
-                playlist = QMediaPlaylist()
-                if GCR.joueur.current_weapon in (CanonAutomatique,C50) :
-                    url = QUrl.fromLocalFile("assets\sfx\canonauto.mp3")
-                elif GCR.joueur.current_weapon in (Canon,CanonSuperRapido) :
-                    url = QUrl.fromLocalFile("assets\sfx\large_gun.mp3")
-                elif GCR.joueur.current_weapon in (Mistral, MM40,Rafale) :
-                    url = QUrl.fromLocalFile("assets\sfx\missile.mp3")
-                elif GCR.joueur.current_weapon in (TorpilleLourde, TorpilleLegere) :
-                    url = QUrl.fromLocalFile("assets\sfx\sousmarin.mp3")
-                playlist.addMedia(QMediaContent(url))
-                playlist.setPlaybackMode(QMediaPlaylist.Loop)
-                player = QMediaPlayer()
-                player.setPlaylist(playlist)
-                player.play()
+            if GCR.joueur.firing:
+                playlist = QMediaPlaylist(self.sound_player)
+                url = None
+                if type(GCR.joueur.current_weapon) in (CanonAutomatique, C50):
+                    url = QUrl.fromLocalFile(os.path.join(os.getcwd(), "assets", "sfx", "canonauto.mp3"))
+                elif type(GCR.joueur.current_weapon) in (Canon, CanonSuperRapido):
+                    url = QUrl.fromLocalFile(os.path.join(os.getcwd(), "assets", "sfx", "large_gun.mp3"))
+                elif type(GCR.joueur.current_weapon) in (Mistral, MM40, Rafale):
+                    url = QUrl.fromLocalFile(os.path.join(os.getcwd(), "assets", "sfx", "missile.mp3"))
+                elif type(GCR.joueur.current_weapon) in (TorpilleLourde, TorpilleLegere):
+                    url = QUrl.fromLocalFile(os.path.join(os.getcwd(), "assets", "sfx", "sousmarin.mp3"))
+                if url is not None:
+                    playlist.addMedia(QMediaContent(url))
+                    playlist.setPlaybackMode(QMediaPlaylist.Loop)
+                    self.sound_player.setPlaylist(playlist)
+                    self.sound_player.play()
+            else:
+                self.sound_player.stop()
 
             GCR.log.log(Logger.DEBUG, "Space")
         elif e.key() in [Qt.Key_Up, Qt.Key_Down, Qt.Key_Left, Qt.Key_Right]:
@@ -86,11 +103,11 @@ class CanvasJeu(QLabel):
                 dir.y += 1
 
             # Si c'est une touche de déplacement on regarde si c'est pour arrêter le bateau
-            if e.key() == self.last_key:
+            if e.key() in [Qt.Key_Left, Qt.Key_Right, Qt.Key_Up, Qt.Key_Down] and e.key() == self.last_key:
                 self.last_key = None
                 dir = Vecteur()
             # Sinon on enregistre juste la touche
-            else:
+            elif e.key() in [Qt.Key_Left, Qt.Key_Right, Qt.Key_Up, Qt.Key_Down]:
                 self.last_key = e.key()
 
             # On indique à l'entité joueur quelle est la direction à prendre
@@ -111,6 +128,7 @@ class CanvasJeu(QLabel):
         # On vient dessiner le joueur par dessus la carte
         GCR.joueur.render(qp, self.width() // 2, self.height() // 2)
         for entity in GCR.entities:
+            # Si l'entité peut être affichée
             if GCR.current_map.can_player_see(entity, (self.width(), self.height())):
                 dx = (entity.position.x - GCR.joueur.position.x) * GCR.current_map.cell_size[0] + self.width() // 2
                 dy = (entity.position.y - GCR.joueur.position.y) * GCR.current_map.cell_size[1] + self.height() // 2
@@ -118,6 +136,11 @@ class CanvasJeu(QLabel):
                 # Si l'entité est la cible du joueur
                 if GCR.joueur.current_target == entity.id:
                     entity.draw_target(qp, dx, dy)
+            else:
+                # Si l'entité est hors champ alors elle n'est plus ciblée
+                if GCR.joueur.current_target == entity.id:
+                    GCR.joueur.current_target = None
+                    GCR.joueur.firing = False
 
     def mouseMoveEvent(self, e: QMouseEvent) -> None:
         """

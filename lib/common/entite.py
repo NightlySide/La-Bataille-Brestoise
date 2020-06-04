@@ -50,15 +50,17 @@ class Entite:
         self.position = Vecteur(200, 200)
         self.direction = Vecteur()
         self.image_direction = self.direction
-        self.current_ship = random.choice(Entite.Tierlist[0])()
-        self.vie = self.current_ship.hitpoints
-        self.current_weapon = self.current_ship.armes[0](self)
-        self.vitesse = self.current_ship.vmax
+        self.current_ship = None
+        self.vie = 20
+        self.current_weapon = None
+        self.vitesse = None
         self.current_target = None
         self.id = uuid4()
         self.exp = 0
         self.size = (16, 16)
         self.firing = False
+
+        self.spawnShip(random.choice(Entite.Tierlist[0]))
 
     def set_image(self, img_path: str) -> None:
         """
@@ -237,6 +239,7 @@ class Entite:
         """
         self.current_ship = ship()
         self.set_image(self.current_ship.imgpath)
+        self.size = self.current_ship.size
         self.current_weapon = self.current_ship.armes[0](self)
         self.vie = self.current_ship.hitpoints
         self.vitesse = self.current_ship.vmax
@@ -253,6 +256,12 @@ class Entite:
                 tier = self.current_ship.tier
                 self.spawnShip(random.choice(Entite.Tierlist[tier]))
 
+                # Si on est du côté client
+                if GCR.joueur is not None:
+                    GCR.chatbox.add_line(f"[+] Vous avez monté au niveau {self.current_ship.tier} !")
+                    GCR.chatbox.add_line(f"[+] Vous avez obtenu le bâtiment : {self.current_ship.nom_unite} !")
+                break
+
     # TODO : a implementer dans le gameloop
 
     def isDead(self) -> None:
@@ -263,13 +272,19 @@ class Entite:
 
         if self.vie <= 0:
             if self.current_ship.tier < 3:
-                self.spawnShip(Entite.Tierlist[0][randint(0, 1)])
+                self.spawnShip(random.choice(Entite.Tierlist[0]))
                 self.exp = 0
             else:
-                tier = self.current_ship.tier
-                taille = len(Entite.Tierlist[tier - 1])
-                self.spawnShip(Entite.Tierlist[tier - 1][randint(0, taille - 1)])
+                self.spawnShip(random.choice(Entite.Tierlist[self.current_ship.tier - 1]))
                 self.exp = Entite.exp_treshold[self.current_ship.tier - 2]
+
+            # L'entité ou joueur respawn dans un endroit aléatoire pour éviter le respawnkill
+            carte = GCR.current_map if GCR.current_map is not None else GSR.carte
+            x = y = -1
+            while GSR.carte.is_colliding(x, y):
+                x = random.randint(0, carte.shape[0])
+                y = random.randint(0, carte.shape[1])
+            self.position = Vecteur(x, y)
 
     def isWinning(self) -> bool:
         """

@@ -13,4 +13,5 @@ class Batiment:
             self.tier = 1 #tier du navire de 1 à 5
             self.status = True #etat du navire ( vie /mort)
             self.imgpath = "assets/images/batiments/fremm.png"
+            self.size = (50, 50)
 

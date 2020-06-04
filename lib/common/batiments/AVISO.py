@@ -1,3 +1,4 @@
+import os
 
 from lib.common.armes import C50, Canon, CanonAutomatique,CanonSuperRapido,Rafale,Mistral,TorpilleLegere,TorpilleLourde
 from lib.common.batiments.batiment import Batiment
@@ -14,4 +15,5 @@ class AVISO(Batiment):
         self.armes = [Canon,C50,CanonAutomatique,Mistral ]  # tableau des armes equipé [str], l'arme d'indice 0 est équipé d'office
         self.tier = 2  # tier du navire de 1 à 5
         self.status = True  # etat du navire ( vie /mort)
-        self.imgpath = "assets/images/batiments/patrolboat.png"
+        self.imgpath = os.path.join(os.getcwd(), "assets", "images", "batiments", "patrolboat.png")
+        self.size = (40, 40)

@@ -44,15 +44,14 @@ class GameLoop:
         rade_data = img_vers_array("assets/carte_rade_brest.jpg")
         GSR.carte = Carte(rade_data.shape, (8, 8), rade_data)
 
-        for k in range(1):
+        for k in range(100):
             e = IA()
-            e.set_image("assets/images/plaisance.png")
             x = y = -1
             while GSR.carte.is_colliding(x, y):
                 x = random.randint(0, GSR.carte.shape[0])
                 y = random.randint(0, GSR.carte.shape[1])
-            x = 700
-            y = 300
+            #x = 700
+            #y = 300
             e.position = Vecteur(x, y)
             GSR.entities.append(e)
 

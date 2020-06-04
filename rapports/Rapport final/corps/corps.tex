@@ -17,6 +17,13 @@ Nous sommes donc parti sur un jeu de type bataille navale, en temps réel et mult
 
 Pour travailler en collaboratif sur le code, nous avons utilisé un repository sur github, le code est accessible au lien suivant :\\ \url{https://github.com/NightlySide/La-Bataille-Brestoise}.
 
+\subsection{Principe de fonctionnement du jeu}
+
+Le jeu se base sur le fonctionnement du célèbre jeu \emph{Agar.io}. Le joueur commence la partie avec le navire de plus bas niveau (un bâtiment-école de niveau 1). Le joueur va devoir trouver puis tirer sur les ennemis afin d'engranger de l'expérience en endommageant des navires ennemie ou en les coulant (il obtient un bonus proportionnel au niveau(tier) du navire coulé).\\	Après un certain palier d'expérience il monte de niveau, afin de manoeuvrer un navire de plus en plus performant. les niveaux vont de 1 à 5. Après 50000 exp le joueur est déclaré vainqueur. Le joueur possède un nombre de points de vie, et il peut mourir si ce nombre tombe à 0. Dans ce cas, le joueur revis dans un bâtiment du niveau inférieur, et son exp est réinitialisé au palier inférieur. Le joueur peut notamment consulter son expérience actuelle via une commande dans une chatbox.\\
+
+Le jeu permet donc plusieurs stratégies de victoire : s'attaquer à des ennemis plus faible mais mettre du temps à gagner de l'experience, ou viser des ennemis plus imposants sous le risque de mourir. Les commandes sont détaillés dans le fichier \emph{readme}. 
+   
+
 \subsection{Les différentes pistes envisagées}
 
 % une discussion sur les différentes pistes envisagées
@@ -36,7 +43,6 @@ Pour réduire la taille du projet et surtout le rendre réalisable, nous avons cho
 	
 \end{itemize}
 
-\clearpage
 \section{Application proprement dite}
 
 % une présentation générale du programme (un schéma vaut mieux que de longs discours)
@@ -104,7 +110,7 @@ En premier lieu, il convient de décrire les classes directement liés au fonction
 
 La classe "Entité" est la base d'une joueur, qu'il soit réel ou contrôlé par la machine. Elle va notamment avoir des attributs de points de vie, de position dans la map ou encore d'arme actuellement sélectionné par le joueur.
 
-Une entité peut être "joueur" ou "pnj". Une entité interagit avec les autres entités par le biais du client de jeu, les entité "pnj" sont elles contrôlés par le serveur. Une entité à un instant t contrôle un bâtiment et sélectionne une arme disponible sur ce bâtiment. La classe "Batiment" contient toutes les statistiques et données sur un bâtiment, cela peut être son niveau, les points de vie maximaux, ou encore la portée de détection. La classe "Armes" quand à elle définie les données des différentes armes disponibles.  (cf. \ref{fig:annexe_diagramme_mecanismes})
+Une entité peut être "joueur" ou "IA". Une entité interagit avec les autres entités par le biais du client de jeu, les entité "IA" sont elles contrôlés par le serveur. Une entité à un instant t contrôle un bâtiment et sélectionne une arme disponible sur ce bâtiment. La classe "Batiment" contient toutes les statistiques et données sur un bâtiment, cela peut être son niveau, les points de vie maximaux, ou encore la portée de détection. La classe "Armes" quand à elle définie les données des différentes armes disponibles.  (cf. \ref{fig:annexe_diagramme_mecanismes})
 
 \subsubsection{Classe de l'IHM}
 
@@ -146,7 +152,7 @@ Pour ce projet, 3 figures étaient imposées. On alors pu choisir parmi les figure
 	\centering
 	\includegraphics[width=0.5\linewidth]{../imgs/structure_fichiers}
 	\caption{Structure des fichiers du projet.}
-	\label{fig:radar}
+	\label{fig:fichiers}
 \end{figure}
 
 \textbf{Documentation et commentaires du code} : On a décidé de commenter le code à l'aide des docstrings et en suivant la nomenclature Google (\url{https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html}) qui nous correspondait le mieux en termes de lisibilité et de place prise. La documentation est à la fois présente en local (compilé avec Sphinx) dans le dossier \emph{/doc/build} ou bien en ligne sur ReadTheDocs à l'adresse suivante : \url{https://la-bataille-brestoise.readthedocs.io/fr/latest/}.
@@ -157,7 +163,7 @@ Pour ce projet, 3 figures étaient imposées. On alors pu choisir parmi les figure
 	\centering
 	\includegraphics[width=0.9\linewidth]{../imgs/test_unitaire}
 	\caption{Exemple de lancement du fichier \emph{test\_suite.py}.}
-	\label{fig:radar}
+	\label{fig:test}
 \end{figure}
 
 \textbf{Création d'un type objet (classe)} : afin de rendre le code exploitable et surtout de pouvoir le maintenir, nous avons crée des classes représentant divers objets. Que ce soit les entités ou bien leurs classes héritées, que ce soit les classe contenant l'IHM, ce projet utilise bien la Programmation Orientée Objet.
@@ -171,7 +177,7 @@ Pour ce projet, 3 figures étaient imposées. On alors pu choisir parmi les figure
 \textbf{Lecture/ écriture de fichiers} : dans ce projet, on charge des images, on charge du son et de la musique dans le canvas\_jeu (lib.client.canvas\_jeu) mais aussi on charge les paramètres du serveur stocké dans un fichier de type JSON (Javascript Object) \emph{serveur\_config.json} et les serveurs connus sont enregistrés sont de même dans le fichier \emph{known\_servers.json}. Ces deux derniers fichiers sont chargés à l'aide de la classe JsonLoader (lib.common.json\_loader).
 
 
-Au total ce sont près de 8 figures que nous respectons dans ce projet informatique.
+Au total ce sont près de 8 figures que nous respectons dans ce projet informatique.\\
 \textit{NB: Devant le nombre conséquent de classes et de portions de code implémentant les figures imposées, nous avons fait le choix de ne pas expliciter de façon exhaustive ces dernières. Nous avons cependant cités quelques exemples.}
 
 \subsection{Différents tests effectués}
@@ -181,6 +187,39 @@ Pour les tests unitaires, le script \emph{test\_suite.py} permet d'effectuer les
 Pour la connexion client/serveur, nous avons tout d'abord essayé la bibliothèque \emph{sockets} afin de créer la connexion entre le client et le serveur. Cependant cette dernière ne gère que difficilement les connexions multiples du côté du serveur. Il est vrai que l'on aurait pu utiliser comme avec python 2.7 le module \emph{selectors}, cependant cette méthode, comme \emph{asyncore} que nous avons aussi essayé, semble disparaître avec les versions après 3.6 au profit de \emph{asyncio},.
 
 Pour suivre l'évolution des tests et à fins de débug, nous avons implémenté un \emph{Logger} dans notre projet. Il va gérer l'affichage sur le terminal de commande en fonction de la sévérité du message envoyé par le programme, il peut de plus, enregistrer ces logs dans un fichier \emph{.log}.
+
+\subsection{Ajouts après la 1ère partie du projet}
+Un des ajouts principaux consiste en l'implémentation d'une IA, dont les comportements sont décrits dans la classe \emph{FSM}, pour Final State Machine. l'IA peut ainsi "Agro", comprendre suivre, un joueur "réel" (\emph{Joueur}), tirer à intervalles réguliers ou fuir devant un ennemi. 
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../imgs/FSM}
+	\caption{Diagramme de comportement de l'IA (il se peut que certaines fonctionnalités ne soit pas encore implémentés).}
+	\label{fig:FSM}
+\end{figure}
+
+En plus de cela, nous avons d'une manière plus générale relié la partie client et serveur du jeu (l'affichage et les requêtes) à l'aspect "mécaniques de jeu", notamment l'objet \emph{entite}. Il est maintenant possible pour les joueurs et les IA d'interagir. De plus les différentes statistiques des navires et des armes (points de vie, dégats par secondes, vitesse,...) ont fait l'objet d'un équilibrage afin de ne pas rendre un navire trop ou trop peu performant par rapport aux autres. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/balance}
+	\caption{Statistiques des navires, la dissimulation ,la portée de détection ou encore l'équipement ne sont pas encore implémentés}
+	\label{fig:balance}
+\end{figure} 
+
+Concernant l'aspect interface, nous avons ajouté un certains nombre d'éléments graphique comme des icônes dynamiques pour les bâtiments, une barre de vie coloré en vert pour le joueur, en rouge pour un joueur ennemi, ou encore le tier du bâtiment actuel à gauche de la barre de vie.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../imgs/healthbar}
+	\caption{Nouveaux éléments graphiques implémentés}
+	\label{fig:HP}
+\end{figure} 
+
+
+Nous avons également implémenté un objet \emph{QMediaplayer} afin de jouer pendant la partie un son d'ambiance et un son de tir. D'ailleurs nous avons ajouté la mécanique de tir (lié à la pression de la barre espace). \\
+
+
 
 \subsection{Limitations}
 
@@ -199,14 +238,16 @@ Une dernière limitation est le fait que la bibliothèque \emph{pyQt}, n'accepte p
 	\label{fig:chatbox}
 \end{figure}
 
-Nous avons pu contourner ces limitations et les seuls réels limitations de notre projet sont actuellement plus de l'ordre de la performance que du fonctionnement. 
+A l'issue de la 2ème partie, nous avons pu contourner la plupart de ces limitations, notamment au niveau des requêtes serveurs (notamment à l'aide d'un \emph{Command\_Handler}) et les seuls réels limitations de notre projet sont actuellement plus de l'ordre de la performance que du fonctionnement. 
 
 
 \subsection{Perspectives d'amélioration}
 
 On pourrait améliorer la dynamique des bâtiments, en leur donnant des caractéristiques d'inertie ou encore de rayon de giration, ce qui aurait été plus réaliste (on ne manoeuvre pas un porte-avions comme un BIN). 
-\\On pourrait encore implémenter un concept de dégât critique, avec des équipements importants du bâtiment qui pourrait être mis temporairement hors d'usage après un coup bien placé (armement, radar, propulsion).  \\ Pour améliorer le temps de calcul on pourra par exemple réfléchir à un moyen de passer en calcul vectoriel si possible.
+\\On pourrait encore implémenter un concept de dégât critique, avec des équipements importants du bâtiment qui pourrait être mis temporairement hors d'usage après un coup bien placé (armement, radar, propulsion).  \\ Pour améliorer le temps de calcul on pourra par exemple réfléchir à un moyen de passer en calcul vectoriel si possible.\\ 
 
-Enfin on pourra implémenter des sauvegarde de score ou tout simplement des sauvegarde de paramètres utilisateurs dans des fichiers internes au projet, probablement en JSON ou en YAML.
+Au niveau des fonctionnalités au coeur du projet, il était prévu de pouvoir dynamiquement changer d'arme équipé en partie à l'aide d'une roue d'équipement (en utilisant un objet de type \emph{QtPieChart} par exemple).Nous avons été pris par le temps et nous n'avons pas pu réaliser le widget, cependant la structure de la classe \emph{batiment} et certaines méthodes comme la methode \emph{equiper()} d'un objet \emph{Entite} sont deja implémentés, ce qui permettra au final de facilement ajouter la fonctionnalité \\
+
+Enfin on pourra implémenter des sauvegarde de score ou tout simplement des sauvegardes de paramètres utilisateurs dans des fichiers internes au projet, probablement en JSON ou en YAML.
 
 

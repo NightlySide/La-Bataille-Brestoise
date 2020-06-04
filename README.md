@@ -59,7 +59,7 @@ Ces serveurs seront enregistrés dans le fichier `known_servers.json`.
 * Barre espace : démarre/arrête l'attaque sur la cible
 
 Pour écrire des messages aux autres joueurs, il faut cliquer dans la barre correspondante puis pour l'envoyer en appuyant sur envoyer.
-
+Attention, pour intéragir avec son bâtiment il faut cliquer sur la carte. 
 Les commandes joueur :
 * `/help` : afficher l'aide des commandes
 * `/start` : démarrer la partie

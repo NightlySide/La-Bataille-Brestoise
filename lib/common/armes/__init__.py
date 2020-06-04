@@ -1,3 +1,6 @@
+# Auteur : Guillaume LEINEN
+
+
 from lib.common.armes.C50 import *
 from lib.common.armes.canon_automatique import *
 from lib.common.armes.canon_super_rapido import *

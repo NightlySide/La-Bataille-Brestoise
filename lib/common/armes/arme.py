@@ -18,8 +18,8 @@ class Arme:
         tps_mise_en_oeuvre(int) : temps en seconde d'équipement d'une arme par un joueur
         portee(int) : portee de tir d'une arme
         image(str) : Path vers le fichier image correspondant à l'arme (pour le QtPieChart)
-        _tps_equip_timer(int) : timer du temps d'equipement
-        can_fire(bool) : autorisation de tir d'une arme (lié au compteur du temps d'equipement )
+        _tps_equip_timer(int) : décompte temporel du temps d'equipement
+        can_fire(bool) : autorisation de tir d'une arme (lié au compteur du temps d'equipement, on empeche d'infliger des dégats tant que l'arme n'est pas équipé)
 
     """
 
@@ -35,14 +35,29 @@ class Arme:
         self.can_fire = False
 
     def first_equip(self):
+        """
+        permet d'équiper une arme en comptant le temps d'équipement [non utilisé car pas de changement d'armes pour l'instant]
+        Returns:
+        none
+        """
         self._tps_equip_timer = time.perf_counter()
         if isinstance(self.parent, lib.common.joueur.Joueur) and GCR.joueur.id == self.parent.id:
             GCR.chatbox.add_line(f"[+] L'arme est en cours d'équipement")
 
     def fire(self):
+        """
+        autorise ou non le tir (si le timer est écoulé)
+        Returns:
+
+        """
         if self.can_fire:
             pass
     def update(self):
+        """
+        met à jour l'armé équipé (nottament en cas de changement de batiment)
+        Returns:
+
+        """
         if not self.can_fire:
             if time.perf_counter() - self._tps_equip_timer > self.tps_mise_en_oeuvre:
                 self.can_fire = True

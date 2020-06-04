@@ -41,16 +41,14 @@ class CanvasJeu(QLabel):
         self.time_counter = time.perf_counter()
         self.refresh_rate = refresh_rate
         self.last_key = None
+        #on ouvre le mediaplayer pour les tirs ( géré dans keypressevent)
         self.sound_player = QMediaPlayer()
         self.sound_player.setVolume(100)
-
+        #on ouvre le mediaplayer pour le bruit de fond
         self.background_player = QMediaPlayer()
-        self.background_player.setVolume(50)
+        self.background_player.setVolume(40)
         playlist = QMediaPlaylist(self.background_player)
-        playlist.addMedia(QMediaContent(QUrl.fromLocalFile(os.path.join(os.getcwd(),
-                                                                        "assets",
-                                                                        "sfx",
-                                                                        "ocean_waves.mp3"))))
+        playlist.addMedia(QMediaContent(QUrl.fromLocalFile(os.path.join(os.getcwd(),"assets","sfx","ocean_waves.mp3"))))
         playlist.setPlaybackMode(QMediaPlaylist.Loop)
         self.background_player.setPlaylist(playlist)
         self.background_player.play()
@@ -70,7 +68,7 @@ class CanvasJeu(QLabel):
         # si c'est la touche espace on autorise ou non le tir
         elif e.key() == Qt.Key_Space:
             GCR.joueur.firing = not GCR.joueur.firing
-            if GCR.joueur.firing:
+            if GCR.joueur.firing:  #si tir on joue le son
                 playlist = QMediaPlaylist(self.sound_player)
                 url = None
                 if type(GCR.joueur.current_weapon) in (CanonAutomatique, C50):

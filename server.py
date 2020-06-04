@@ -12,6 +12,7 @@ import colorama
 
 
 def motd(port, max_players):
+    #message sur console pour l'ouverture du serveur
     host_name = socket.gethostname()
     host_ip = socket.gethostbyname(host_name)
     msg = f"""
@@ -30,6 +31,7 @@ def motd(port, max_players):
 
 if __name__ == "__main__":
     colorama.init()
+    #on cherche les configurations de serveurs deja existantes dans le configfile
     config = JsonLoader("server_config.json")
     PORT = config["port"]
     IP = config["ip"]

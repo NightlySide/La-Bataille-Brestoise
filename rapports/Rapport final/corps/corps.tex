@@ -4,9 +4,9 @@
 
 % une introduction (présentation générale des objectifs du projet)
 
-Pour ce projet d'informatique, nous avons décidé de prendre un sujet autre que ceux proposés par nos enseignants.  Ayant fait tous les deux une année zéro dans la marine nationale, un sujet proche de ce que l'on avait vécut semblait une solution évidente.
+Pour ce projet d'informatique, nous avons décidé de prendre un sujet autre que ceux proposés par nos enseignants.  Ayant fait tous les deux une année zéro dans la marine nationale, un sujet proche de ce que l'on avait vécu semblait une solution évidente. 
 
-Nous sommes donc parti sur un jeu de type bataille navale, en temps réel et jouable en multijoueurs que nous avons nommé :
+Nous sommes donc partis sur un jeu de type bataille navale, en temps réel et jouable en multijoueur que nous avons nommé : 
 
 \begin{figure}[!h]
 	\centering
@@ -19,16 +19,16 @@ Pour travailler en collaboratif sur le code, nous avons utilisé un repository su
 
 \subsection{Principe de fonctionnement du jeu}
 
-Le jeu se base sur le fonctionnement du célèbre jeu \emph{Agar.io}. Le joueur commence la partie avec le navire de plus bas niveau (un bâtiment-école de niveau 1). Le joueur va devoir trouver puis tirer sur les ennemis afin d'engranger de l'expérience en endommageant des navires ennemis ou en les coulant (il obtient un bonus proportionnel au niveau(tier) du navire coulé).\\	Après un certain palier d'expérience il monte de niveau, afin de manoeuvrer un navire de plus en plus performant. les niveaux vont de 1 à 5. Après 50000 exp le joueur est déclaré vainqueur. Le joueur possède un nombre de points de vie, et il peut mourir si ce nombre tombe à 0. Dans ce cas, le joueur revis dans un bâtiment du niveau inférieur, et son exp est réinitialisé au palier inférieur. Le joueur peut notamment consulter son expérience actuelle via une commande dans une chatbox.\\
+Le jeu se base sur le fonctionnement du célèbre jeu \url{agar.io}. Le joueur commence la partie avec le navire de plus bas niveau (un bâtiment-école de niveau 1). Le joueur va devoir trouver puis tirer sur les ennemis afin d'engranger de l'expérience en endommageant des navires ennemis ou en les coulant (il obtient un bonus proportionnel au niveau(tier) du navire coulé).\\    Après un certain palier d'expérience il monte de niveau, afin de manoeuvrer un navire de plus en plus performant. Les niveaux vont de 1 à 5. Après 50000 exp le joueur est déclaré vainqueur. Le joueur possède un nombre de points de vie, et il peut mourir si ce nombre tombe à 0. Dans ce cas, le joueur réapparait dans un bâtiment du niveau inférieur, et son exp est réinitialisé au palier inférieur. Le joueur peut notamment consulter son expérience actuelle via une commande dans une chatbox.\\ 
 
-Le jeu permet donc plusieurs stratégies de victoire : s'attaquer à des ennemis plus faible mais mettre du temps à gagner de l'experience, ou viser des ennemis plus imposants sous le risque de mourir. Les commandes sont détaillés dans le fichier \emph{readme}. 
+Le jeu permet donc plusieurs stratégies de victoire : s'attaquer à des ennemis plus faibles mais mettre du temps à gagner de l'expérience (farming), ou viser des ennemis plus imposants sous le risque de mourir. Les commandes sont détaillées dans le fichier \emph{README.md}. 
    
 
 \subsection{Les différentes pistes envisagées}
 
 % une discussion sur les différentes pistes envisagées
 
-Pour le choix de l'interface Homme-Machine (IHM) le choix s'est rapidement porté sur \textbf{PyQt5} pour sa polyvalence et sa programmation évènementielle. Concernant la connexion entre le serveur et les clients,  nous sommes tout d'abord partis sur la bibliothèque \textbf{sockets} qui permet de créer un tunnel simple entre deux clients. Nous avons finalement choisi \textbf{asyncio}, implémentée depuis python3, qui permet de gérer en asynchrone toutes les requêtes nécessaires au projet, et ce avec plusieurs clients en simultané.
+Pour le choix de l'interface Homme-Machine (IHM) le choix s'est rapidement porté sur \textbf{PyQt5} pour sa polyvalence et sa programmation évènementielle. Concernant la connexion entre le serveur et les clients, nous sommes tout d'abord partis sur la bibliothèque \textbf{sockets} qui permet de créer un tunnel simple entre deux clients. Nous avons finalement choisi \textbf{asyncio}, implémentée depuis python3, qui permet de gérer en asynchrone toutes les requêtes nécessaires au projet, et ce avec plusieurs clients en simultané. 
 
 \subsection{Différentes hypothèses réductrices choisies}
 
@@ -36,11 +36,10 @@ Pour le choix de l'interface Homme-Machine (IHM) le choix s'est rapidement porté
 
 Pour réduire la taille du projet et surtout le rendre réalisable, nous avons choisi d'établir quelques réductions pour cette première partie : 
 \begin{itemize}
-	\item Le positionnement et le déplacement des joueurs et entités se fait une une grille de $8\times 8$ pixels.
+	\item Le positionnement et le déplacement des joueurs et entités se fait sur une grille de $8\times 8$ pixels.
 	\item Les joueurs ne sont pas visibles par les autres joueurs.
 	\item Le chat ne peut accueillir que du texte, donc pas de commande\\ (du type \emph{/help}.
 	\item La vitesse de rafraichissement, ou le nombre de boucles de jeu par seconde est indépendant selon la classe.
-	
 \end{itemize}
 
 \section{Application proprement dite}
@@ -48,10 +47,10 @@ Pour réduire la taille du projet et surtout le rendre réalisable, nous avons cho
 % une présentation générale du programme (un schéma vaut mieux que de longs discours)
 
 \subsection{Présentation générale du programme}
-Le programme est scindé en deux partie : le client et le serveur avec chacun son script pour le lancer. Le script \emph{test$\_$suite.py} permet de lancer tous les tests unitaires contenus dans le dossier \emph{tests}.
+Le programme est scindé en deux parties : le client et le serveur avec chacun son script pour le lancer. Le script \emph{test$\_$suite.py} permet de lancer tous les tests unitaires contenus dans le dossier \emph{tests}.
 
 \subsubsection{Le serveur}
-Lancer le serveur avec le script \emph{serveur.py}, crée un serveur sur l'hôte \emph{localhost} (127.0.0.1 ou 0.0.0.0). sur le port 25566.
+Lancer le serveur avec le script \emph{serveur.py}, crée un serveur sur l'hôte \emph{localhost} (127.0.0.1 ou 0.0.0.0) sur le port 25566.
 Le serveur va ensuite accueillir les nouveaux joueurs, organiser le chat et gérer toutes les entités du jeu. Une fois lancé et opérationnel le terminal de commande ressemble à cela :
 
 \begin{figure}[H]
@@ -61,16 +60,16 @@ Le serveur va ensuite accueillir les nouveaux joueurs, organiser le chat et gére
 	\label{fig:serveur_screen}
 \end{figure}
 
-Une fois démarré le serveur affichera les informations utiles telles que le nom de la machine sur laquelle il est exécuté, son ip locale, le port de connexion et le nombre de joueurs maximum (pas encore implémenté).
+Une fois démarré le serveur affichera les informations utiles telles que le nom de la machine sur laquelle il est exécuté, son IP locale, le port de connexion et le nombre de joueurs maximum (pas encore implémenté).
 
 \subsubsection{Le client}
-Une fois le serveur lancé en local, on peut soit se connecter à ce dernier, soit se connecter à un serveur que nous laisserons ouvert chez nous, pré-enregistré dans la liste des serveurs disponibles.
+Une fois le serveur lancé en local, on peut soit se connecter à ce dernier, soit se connecter à un serveur que nous laisserons ouvert chez nous, pré-enregistré dans la liste des serveurs disponibles. 
 
-En démarrant le client avec le script \emph{client.py}, on se trouve devant l'écran de connexion du projet. (cf. \ref{fig:ecran_connexion})
+En démarrant le client avec le script \emph{client.py}, on se trouve devant l'écran de connexion du projet. (cf. \ref{fig:ecran_connexion}) 
 
-Sur celui-ci l'utilisateur pourra retrouver les serveurs pré-enregistrés ainsi qu'une boite pour indiquer son pseudonyme, un bouton pour se connecter au serveur sélectionné. 
+Sur celui-ci l'utilisateur pourra retrouver les serveurs pré-enregistrés ainsi qu'une boite pour indiquer son pseudonyme, un bouton pour se connecter au serveur sélectionné.  
 
-Enfin l'utilisateur trouvera  un bouton "Serveur local" pour entrer manuellement les informations de connexion au serveur (cf. \ref{fig:serveur_local})
+Enfin l'utilisateur pourra appuyer sur le bouton "Serveur local" pour entrer manuellement les informations de connexion au serveur (cf. \ref{fig:serveur_local}) 
 
 \begin{figure}[H]
 	\centering
@@ -88,7 +87,7 @@ Enfin l'utilisateur trouvera  un bouton "Serveur local" pour entrer manuellement
 
 \clearpage
 
-Une fois connecté au serveur, l'utilisateur est face à l'écran de jeu (cf. \ref{fig:ecran_jeu}) qui comporte une surface de jeu, que nous appellerons \emph{canvas}, sur laquelle sera dessinée la carte, les entités et les joueurs. On y retrouve un radar permettant de détecter les entités aux alentours (attention pas entièrement fonctionnel pour l'instant), et une chatbox pour communiquer avec les autres joueurs présent sur le serveur.
+Une fois connecté au serveur, l'utilisateur est face à l'écran de jeu (cf. \ref{fig:ecran_jeu}) qui comporte une surface de jeu, que nous appellerons \emph{canvas}, sur laquelle sera dessinée la carte, les entités et les joueurs. On y retrouve un radar permettant de détecter les entités aux alentours (attention pas entièrement fonctionnel pour l'instant), et une chatbox pour communiquer avec les autres joueurs présents sur le serveur.
 
 \begin{figure}[H]
 	\centering
@@ -97,7 +96,7 @@ Une fois connecté au serveur, l'utilisateur est face à l'écran de jeu (cf. \ref{
 	\label{fig:ecran_jeu}
 \end{figure}
 
-Pour cette première phase, nous nous sommes concentré sur la structure du jeu. Par conséquent les contrôles joueur sont limités. Pour se déplacer l'utilisateur pourra utiliser les flèches du clavier dès que le focus est sur le canvas (un click souris sur le canvas suffit à récupérer le focus).
+Pour cette première phase, nous nous sommes concentrés sur la structure du jeu. Par conséquent les contrôles joueurs sont limités. Pour se déplacer l'utilisateur pourra utiliser les flèches du clavier dès que le focus est sur le Canvas (un click souris sur le Canvas suffit à récupérer le focus). 
 
 \subsection{Description des principales classes/méthodes}
 
@@ -106,18 +105,18 @@ Pour une meilleure lisibilité, vous pouvez retrouver les diagrammes de classes e
 % décrire uniquement les mécanismes fondamentaux
 \subsubsection{Classes de jeu}
 
-En premier lieu, il convient de décrire les classes directement liés au fonctionnement du jeu.  (cf .\ref{fig:annexe_diagramme_client_jeu})
+En premier lieu, il convient de décrire les classes directement liées au fonctionnement du jeu.  (cf .\ref{fig:annexe_diagramme_client_jeu}) 
 
-La classe "Entité" est la base d'une joueur, qu'il soit réel ou contrôlé par la machine. Elle va notamment avoir des attributs de points de vie, de position dans la map ou encore d'arme actuellement sélectionné par le joueur.
+La classe "Entité" est la base d'un joueur, qu'il soit réel ou contrôlé par la machine. Elle va notamment avoir des attributs de points de vie, de position sur la carte ou encore d'arme actuellement sélectionné par le joueur. 
 
-Une entité peut être "joueur" ou "IA". Une entité interagit avec les autres entités par le biais du client de jeu, les entité "IA" sont elles contrôlés par le serveur. Une entité à un instant t contrôle un bâtiment et sélectionne une arme disponible sur ce bâtiment. La classe "Batiment" contient toutes les statistiques et données sur un bâtiment, cela peut être son niveau, les points de vie maximaux, ou encore la portée de détection. La classe "Armes" quand à elle définie les données des différentes armes disponibles.  (cf. \ref{fig:annexe_diagramme_mecanismes})
+Une entité peut être "joueur" ou "IA". Une entité interagit avec les autres entités par le biais du client de jeu, les entité "IA" sont contrôlées par le serveur. Une entité à un instant t contrôle un bâtiment et équipe une arme disponible sur ce bâtiment. La classe "Bâtiment" contient toutes les statistiques et données sur un bâtiment, cela peut être son niveau, les points de vie maximaux, ou encore la portée de détection. La classe "Armes" quant à elle définie les données des différentes armes disponibles.  (cf. \ref{fig:annexe_diagramme_mecanismes}) 
 
 \subsubsection{Classe de l'IHM}
 
 
-Dans l'IHM, nous avons intégré plusieurs éléments qui nécessite leur propre classe. 
+Dans l'IHM, nous avons intégré plusieurs éléments qui nécessite leur propre classe.  
 
-La classe "Radar" est une classe hérité de Qwidget. Elle gère le radar de détection des autres entités ennemies. \\La règle du jeu veut que si un ennemi se trouve dans notre portée de détection et que cette ennemi a une dissimulation (implémentée plus tard) supérieur à la distance qui nous sépare d'elle, cette ennemi sera affiché par un point rouge sur le radar. \\Le radar balaye l'espace à 90°/s. On garde les traces d'un ennemie détecté en rouge puis en gris lorsqu'elles s'apprêtent à disparaitre du radar. 
+La classe "Radar" est une classe héritée de QWidget. Elle gère le radar de détection des autres entités ennemies. \\La règle du jeu veut que si un ennemi se trouve dans notre portée de détection et que cet ennemi a une dissimulation (implémentée plus tard) supérieur à la distance qui nous sépare d'elle, cet ennemi sera affiché par un point rouge sur le radar. \\Le radar balaye l'espace à 90°/s. On garde les traces d'un ennemi détecté en rouge puis en gris lorsqu'elles s'apprêtent à disparaitre du radar. 
 
 
 \begin{figure}[H]
@@ -132,7 +131,7 @@ La classe "Chatbox" comme son nom l'indique renvoi à la chat box en bas à droite
 
 \subsubsection{Classe du client/serveur }
 
-Pour gérer la connexion asynchrone entre le client et le serveur il est nécessaire d'avoir deux classes supplémentaires gérant ces diffrents aspects. La classe 'TCPClientProtocol' (cf. \ref{fig:annexe_diagramme_client_jeu}) hérite du protocole de la bilbiothèque \emph{asyncio} et qui fonctionne en évènementiel. La classe 'TCPServer' du côté serveur (cf. \ref{fig:annexe_diagramme_serveur}), possède un fonctionnement similaire. On retrouve ainsi dans les deux classes une fonction pour prendre en charge l'ouverture du tunnel entre le client et le serveur, une fonction pour prendre en charge la déconnexion et enfin deux fonctions pour l'envoi et la réception de données.
+Pour gérer la connexion asynchrone entre le client et le serveur il est nécessaire d'avoir deux classes supplémentaires gérant ces différents aspects. La classe 'TCPClientProtocol' (cf. \ref{fig:annexe_diagramme_client_jeu}) hérite du protocole de la bibliothèque \emph{asyncio} et qui fonctionne en évènementiel. La classe 'TCPServer' du côté serveur (cf. \ref{fig:annexe_diagramme_serveur}), possède un fonctionnement similaire. On retrouve ainsi dans les deux classes une fonction pour prendre en charge l'ouverture du tunnel entre le client et le serveur, une fonction pour prendre en charge la déconnexion et enfin deux fonctions pour l'envoi et la réception de données. 
 
 \section{Conclusion}
 
@@ -144,7 +143,7 @@ Pour gérer la connexion asynchrone entre le client et le serveur il est nécessai
 
 \subsection{Figures imposées}
 
-Pour ce projet, 3 figures étaient imposées. On alors pu choisir parmi les figures restantes pour en respecter au minimum 7. Voici les figures imposées ainsi que l'endroit de leur implémentation dans ce projet : 
+Pour ce projet, 3 figures étaient imposées. On a alors pu choisir parmi les figures restantes pour en respecter au minimum 7. Voici les figures imposées ainsi que l'endroit de leur implémentation dans ce projet : 
 
 \textbf{Factorisation du code} : Le projet est relativement conséquent. Garder l'intégralité du code dans un unique fichier est impossible car trop difficile à maintenir. Ce projet est alors divisé en 3 grandes parties dans le dossier \textit{lib}: \textit{client} (TCP et IHM), \textit{serveur} (TCP et mécaniques de jeu) et \textit{common} (Commun au client et au serveur).
 
@@ -157,7 +156,7 @@ Pour ce projet, 3 figures étaient imposées. On alors pu choisir parmi les figure
 
 \textbf{Documentation et commentaires du code} : On a décidé de commenter le code à l'aide des docstrings et en suivant la nomenclature Google (\url{https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html}) qui nous correspondait le mieux en termes de lisibilité et de place prise. La documentation est à la fois présente en local (compilé avec Sphinx) dans le dossier \emph{/doc/build} ou bien en ligne sur ReadTheDocs à l'adresse suivante : \url{https://la-bataille-brestoise.readthedocs.io/fr/latest/}.
 
-\textbf{Tests unitaires} : les tests unitaire sont utiles pour vérifier tout au long de la conception du projet que le code de \og base \fg est toujours opérationnel. Pour se faire nous avons utilisé la bibliothèque \emph{unittest}. Pour lancer la batterie de tests unitaires (comportant des tests sur les entités, sur l'IHM et sur la classe personnalisée vecteur), il suffit de lancer le fichier \emph{test\_suite.py}.
+\textbf{Tests unitaires} : les tests unitaires sont utiles pour vérifier tout au long de la conception du projet que le code de \og base \fg est toujours opérationnel. Pour se faire nous avons utilisé la bibliothèque \emph{unittest}. Pour lancer la batterie de tests unitaires (comportant des tests sur les entités, sur l'IHM et sur la classe personnalisée vecteur), il suffit de lancer le fichier \emph{test\_suite.py}.
 
 \begin{figure}[H]
 	\centering
@@ -166,19 +165,19 @@ Pour ce projet, 3 figures étaient imposées. On alors pu choisir parmi les figure
 	\label{fig:test}
 \end{figure}
 
-\textbf{Création d'un type objet (classe)} : afin de rendre le code exploitable et surtout de pouvoir le maintenir, nous avons crée des classes représentant divers objets. Que ce soit les entités ou bien leurs classes héritées, que ce soit les classe contenant l'IHM, ce projet utilise bien la Programmation Orientée Objet.
+\textbf{Création d'un type objet (classe)} : afin de rendre le code exploitable et surtout de pouvoir le maintenir, nous avons créé des classes représentant divers objets. Que ce soit les entités ou bien leurs classes héritées, que ce soit les classe contenant l'IHM, ce projet utilise bien la Programmation Orientée Objet. 
 
-\textbf{Héritage au moins entre deux types créés} : Nous implémentons cette figure avec notamment les classes \emph{Batiment} (lib.common.batiments.batiment) et \emph{Armes} (lib.common.armes.arme) qui sont les classes de base des navires et des armes du jeu. Grâce à ces classes on peut spécifier les différents types de navires et d'armes de notre jeu en conservant un nombre faible de fonctions grâce au polymorphisme.
+\textbf{Héritage au moins entre deux types créés} : Nous implémentons cette figure avec notamment les classes \emph{Batiment} (lib.common.batiments.batiment) et \emph{Armes} (lib.common.armes.arme) qui sont les classes de base des navires et des armes du jeu. Grâce à ces classes on peut spécifier les différents types de navires et d'armes de notre jeu en conservant un nombre faible de fonctions grâce au polymorphisme. 
 
-\textbf{Héritage depuis un type intégré (hors en IHM)} : La carte du jeu (lib.common.carte), chargée à partir d'une image en noir et blanc, est directement héritée d'un array numpy afin de pouvoir profiter des fonctions avancées de slicing pour optimiser l'exécution du programme.
+\textbf{Héritage depuis un type intégré (hors IHM)} : La carte du jeu (lib.common.carte), chargée à partir d'une image en noir et blanc, est directement héritée d'un array numpy afin de pouvoir profiter des fonctions avancées de slicing pour optimiser l'exécution du programme. 
 
-\textbf{Structure de données dynamique (autre que celles intégrées à Python)} : La carte réponds à cette figure, car il s'agit d'une structure de données qui varie en fonction de son utilisation dans client ou serveur.
+\textbf{Structure de données dynamique (autre que celles intégrées à Python)} : La carte répond à cette figure, car il s'agit d'une structure de données qui varie en fonction de son utilisation dans client ou serveur. 
 
-\textbf{Lecture/ écriture de fichiers} : dans ce projet, on charge des images, on charge du son et de la musique dans le canvas\_jeu (lib.client.canvas\_jeu) mais aussi on charge les paramètres du serveur stocké dans un fichier de type JSON (Javascript Object) \emph{serveur\_config.json} et les serveurs connus sont enregistrés sont de même dans le fichier \emph{known\_servers.json}. Ces deux derniers fichiers sont chargés à l'aide de la classe JsonLoader (lib.common.json\_loader).
+\textbf{Lecture/ écriture de fichiers} : dans ce projet, on charge des images, on charge du son et de la musique dans le canvas\_jeu (lib.client.canvas\_jeu) mais aussi on charge les paramètres du serveur stocké dans un fichier de type JSON (Javascript Object) \emph{serveur\_config.json} et les serveurs connus sont enregistrés sont de même dans le fichier \emph{known\_servers.json}. Ces deux derniers fichiers sont chargés à l'aide de la classe JsonLoader (lib.common.json\_loader). 
 
 
 Au total ce sont près de 8 figures que nous respectons dans ce projet informatique.\\
-\textit{NB: Devant le nombre conséquent de classes et de portions de code implémentant les figures imposées, nous avons fait le choix de ne pas expliciter de façon exhaustive ces dernières. Nous avons cependant cités quelques exemples.}
+\textit{NB: Devant le nombre conséquent de classes et de portions de code implémentant les figures imposées, nous avons fait le choix de ne pas expliciter de façon exhaustive ces dernières. Nous avons cependant cité quelques exemples.}
 
 \subsection{Différents tests effectués}
 
@@ -189,7 +188,7 @@ Pour la connexion client/serveur, nous avons tout d'abord essayé la bibliothèque
 Pour suivre l'évolution des tests et à fins de débug, nous avons implémenté un \emph{Logger} dans notre projet. Il va gérer l'affichage sur le terminal de commande en fonction de la sévérité du message envoyé par le programme, il peut de plus, enregistrer ces logs dans un fichier \emph{.log}.
 
 \subsection{Ajouts après la 1ère partie du projet}
-Un des ajouts principaux consiste en l'implémentation d'une IA, dont les comportements sont décrits dans la classe \emph{FSM}, pour Final State Machine. l'IA peut ainsi "Agro", comprendre suivre, un joueur "réel" (\emph{Joueur}), tirer à intervalles réguliers ou fuir devant un ennemi. 
+Un des ajouts principaux consiste en l'implémentation d'une IA, dont les comportements sont décrits dans la classe \emph{FSM}, pour Final State Machine. l'IA peut ainsi "Aggresser", comprendre suivre, un joueur "réel" (\emph{Joueur}), tirer à intervalles réguliers ou fuir devant un ennemi. 
 	
 \begin{figure}[H]
 	\centering
@@ -198,7 +197,7 @@ Un des ajouts principaux consiste en l'implémentation d'une IA, dont les comport
 	\label{fig:FSM}
 \end{figure}
 
-En plus de cela, nous avons d'une manière plus générale relié la partie client et serveur du jeu (l'affichage et les requêtes) à l'aspect "mécaniques de jeu", notamment l'objet \emph{entite}. Il est maintenant possible pour les joueurs et les IA d'interagir. De plus les différentes statistiques des navires et des armes (points de vie, dégats par secondes, vitesse,...) ont fait l'objet d'un équilibrage afin de ne pas rendre un navire trop ou trop peu performant par rapport aux autres. 
+En plus de cela, nous avons d'une manière plus générale relié la partie client et serveur du jeu (l'affichage et les requêtes) à l'aspect "mécaniques de jeu", notamment l'objet \emph{entite}. Il est maintenant possible pour les joueurs et les IA d'interagir. De plus les différentes statistiques des navires et des armes (points de vie, dégâts par secondes, vitesse, ...) ont fait l'objet d'un équilibrage afin de ne pas rendre un navire trop ou trop peu performant par rapport aux autres. 
 
 \begin{figure}[H]
 	\centering
@@ -207,7 +206,7 @@ En plus de cela, nous avons d'une manière plus générale relié la partie client e
 	\label{fig:balance}
 \end{figure} 
 
-Concernant l'aspect interface, nous avons ajouté un certains nombre d'éléments graphique comme des icônes dynamiques pour les bâtiments, une barre de vie coloré en vert pour le joueur, en rouge pour un joueur ennemi, ou encore le tier du bâtiment actuel à gauche de la barre de vie.
+Concernant l'aspect interface, nous avons ajouté un certain nombre d'éléments graphique comme des icônes dynamiques pour les bâtiments, une barre de vie coloré en vert pour le joueur, en rouge pour un joueur ennemi, ou encore le tier du bâtiment actuel à gauche de la barre de vie.
 
 \begin{figure}[H]
 	\centering
@@ -227,9 +226,9 @@ Nous avons rencontré quelques limitations durant ce projet.
 
 En premier lieu, l'usage d'une mode multijoueur implique une utilisation extensive de la bande passante, ce qui nécessite d'optimiser les requêtes afin de ne pas surcharger un réseau.
 
-Ensuite le fait que Pickle ne gère pas directement QT, en raison du fait qu'il ne gère pas les objets codés en C. Hors, nos messages sont sérialisés à l'aide de \emph{pickle} et envoyés sur le réseau. Il faut donc se restreindre à de l'envoi d'objets de 'bases' reconnus par pickle lors de la communication client/serveur.
+Ensuite le fait que Pickle ne gère pas directement QT, en raison du fait qu'il ne gère pas les objets codés en C. Or, nos messages sont sérialisés à l'aide de \emph{pickle} et envoyés sur le réseau. Il faut donc se restreindre à de l'envoi d'objets de 'bases' reconnus par pickle lors de la communication client/serveur.
 
-Une dernière limitation est le fait que la bibliothèque \emph{pyQt}, n'accepte pas que l'on interragisse avec ses objets à partir d'un thread différent. La solution fut de passer par des classes annexes comme "ChatBox" afin de contourner cette limitation, en ayant d'un côté le thread TCP populant le contenu de la ChatBox, et de l'autre pyQt qui récupère ces informations pour l'afficher sur l'IHM (comme expliqué précédemment et cf. \ref{fig:chatbox})
+Une dernière limitation est le fait que la bibliothèque \emph{pyQt}, n'accepte pas que l'on interagisse  avec ses objets à partir d'un thread différent. La solution fut de passer par des classes annexes comme "ChatBox" afin de contourner cette limitation, en ayant d'un côté le thread TCP qui peuple le contenu de la ChatBox, et de l'autre PyQt qui récupère ces informations pour l'afficher sur l'IHM (comme expliqué précédemment et cf. \ref{fig:chatbox})
 
 \begin{figure}[H]
 	\centering
@@ -246,7 +245,7 @@ A l'issue de la 2ème partie, nous avons pu contourner la plupart de ces limitati
 On pourrait améliorer la dynamique des bâtiments, en leur donnant des caractéristiques d'inertie ou encore de rayon de giration, ce qui aurait été plus réaliste (on ne manoeuvre pas un porte-avions comme un BIN). 
 \\On pourrait encore implémenter un concept de dégât critique, avec des équipements importants du bâtiment qui pourrait être mis temporairement hors d'usage après un coup bien placé (armement, radar, propulsion).  \\ Pour améliorer le temps de calcul on pourra par exemple réfléchir à un moyen de passer en calcul vectoriel si possible.\\ 
 
-Au niveau des fonctionnalités au coeur du projet, il était prévu de pouvoir dynamiquement changer d'arme équipé en partie à l'aide d'une roue d'équipement (en utilisant un objet de type \emph{QtPieChart} par exemple).Nous avons été pris par le temps et nous n'avons pas pu réaliser le widget, cependant la structure de la classe \emph{batiment} et certaines méthodes comme la methode \emph{equiper()} d'un objet \emph{Entite} sont deja implémentés, ce qui permettra au final de facilement ajouter la fonctionnalité \\
+Au niveau des fonctionnalités au coeur du projet, il était prévu de pouvoir dynamiquement changer d'arme équipé en partie à l'aide d'une roue d'équipement (en utilisant un objet de type \emph{QtPieChart} par exemple).Nous avons été pris par le temps et nous n'avons pas pu réaliser le widget, cependant la structure de la classe \emph{batiment} et certaines méthodes comme la méthode \emph{equiper()} d'un objet \emph{Entite} sont deja implémentés, ce qui permettra au final de facilement ajouter la fonctionnalité \\
 
 Enfin on pourra implémenter des sauvegarde de score ou tout simplement des sauvegardes de paramètres utilisateurs dans des fichiers internes au projet, probablement en JSON ou en YAML.
 

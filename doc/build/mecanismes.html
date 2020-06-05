@@ -174,7 +174,107 @@
 <dl class="py class">
 <dt id="lib.common.batiments.batiment.Batiment">
 <em class="property">class </em><code class="sig-prename descclassname">lib.common.batiments.batiment.</code><code class="sig-name descname">Batiment</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment" title="Lien permanent vers cette définition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>La classe Batiment définit un navire, manoeuvré par une entité.</p>
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.nom_unite">
+<code class="sig-name descname">nom_unite</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.nom_unite" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>nom de l’unité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.hitpoints">
+<code class="sig-name descname">hitpoints</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.hitpoints" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>points de vie maximum de l’unité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.vmax">
+<code class="sig-name descname">vmax</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.vmax" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>vitesse de déplacement du batiment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.portee_detection">
+<code class="sig-name descname">portee_detection</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.portee_detection" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>portée de détection d’un ennemi (non implémenté)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.armes">
+<code class="sig-name descname">armes</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.armes" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>tableau des objets Armes utilisables par un navire. L’arme en première position est l’arme par défaut</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list(armes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.tier">
+<code class="sig-name descname">tier</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.tier" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>niveau du navire (de 1 à 5)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.status">
+<code class="sig-name descname">status</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.status" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>etat de vie ou de mort d’un batiment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.imgpath">
+<code class="sig-name descname">imgpath</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.imgpath" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Path vers l’icone representant un batiment sur la carte (Canevas_jeu)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.batiments.batiment.Batiment.size">
+<code class="sig-name descname">size</code><a class="headerlink" href="#lib.common.batiments.batiment.Batiment.size" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>taille par défaut de l’unité</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>tupple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="section" id="armes">
@@ -182,7 +282,118 @@
 <dl class="py class">
 <dt id="lib.common.armes.arme.Arme">
 <em class="property">class </em><code class="sig-prename descclassname">lib.common.armes.arme.</code><code class="sig-name descname">Arme</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">parent</span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.armes.arme.Arme" title="Lien permanent vers cette définition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>La classe Arme définit une unité d’armement d’un batiment. Un batiment peut posseder plusieurs types d’armement.</p>
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme.parent">
+<code class="sig-name descname">parent</code><a class="headerlink" href="#lib.common.armes.arme.Arme.parent" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>parent d’une arme</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>batiment</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme.nom_arme">
+<code class="sig-name descname">nom_arme</code><a class="headerlink" href="#lib.common.armes.arme.Arme.nom_arme" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>le nom de l’arme affiché dans le chat suite à son equipement sur un batiment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme.DPS">
+<code class="sig-name descname">DPS</code><a class="headerlink" href="#lib.common.armes.arme.Arme.DPS" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Dégats par seconde infligés par l’arme</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme.tps_mise_en_oeuvre">
+<code class="sig-name descname">tps_mise_en_oeuvre</code><a class="headerlink" href="#lib.common.armes.arme.Arme.tps_mise_en_oeuvre" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>temps en seconde d’équipement d’une arme par un joueur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme.portee">
+<code class="sig-name descname">portee</code><a class="headerlink" href="#lib.common.armes.arme.Arme.portee" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>portee de tir d’une arme</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme.image">
+<code class="sig-name descname">image</code><a class="headerlink" href="#lib.common.armes.arme.Arme.image" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Path vers le fichier image correspondant à l’arme (pour le QtPieChart)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme._tps_equip_timer">
+<code class="sig-name descname">_tps_equip_timer</code><a class="headerlink" href="#lib.common.armes.arme.Arme._tps_equip_timer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>décompte temporel du temps d’equipement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.common.armes.arme.Arme.can_fire">
+<code class="sig-name descname">can_fire</code><a class="headerlink" href="#lib.common.armes.arme.Arme.can_fire" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>autorisation de tir d’une arme (lié au compteur du temps d’equipement, on empeche d’infliger des dégats tant que l’arme n’est pas équipé)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.armes.arme.Arme.fire">
+<code class="sig-name descname">fire</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.armes.arme.Arme.fire" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>autorise ou non le tir (si le timer est écoulé)
+Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.armes.arme.Arme.first_equip">
+<code class="sig-name descname">first_equip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.armes.arme.Arme.first_equip" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>permet d’équiper une arme en comptant le temps d’équipement [non utilisé car pas de changement d’armes pour l’instant]
+Returns:
+none</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.armes.arme.Arme.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.armes.arme.Arme.update" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>met à jour l’armé équipé (nottament en cas de changement de batiment)
+Returns:</p>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="section" id="entite">
@@ -327,7 +538,7 @@
 <dt id="lib.common.entite.Entite.ciblage">
 <code class="sig-name descname">ciblage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entite</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite">lib.common.entite.Entite</a></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.ciblage" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Permet de définir une cible pour l’attaque notamment.
-La référence à la cibles est l’identifiant unique.</p>
+La référence à la cible est l’identifiant unique.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p><strong>entite</strong> (<a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite"><em>Entite</em></a>) – l’entité à cibler, doit posséder un uuid</p>
@@ -353,7 +564,7 @@ La référence à la cibles est l’identifiant unique.</p>
 <dl class="py method">
 <dt id="lib.common.entite.Entite.draw_target">
 <code class="sig-name descname">draw_target</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">qp</span><span class="p">:</span> <span class="n">PyQt5.QtGui.QPainter</span></em>, <em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">tar_width</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">2</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.draw_target" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Fait le rendu du contour lors du ciblage de l’entité à l’aide du painter
+<dd><p>Fait le rendu du contour (carré rouge) lors du ciblage de l’entité à l’aide du painter
 de l’écran.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
@@ -375,7 +586,7 @@ de l’écran.</p>
 pouvoir tirer.
 Plus l’arme est importante et plus son temps d’équipement est grand. Une arme de conception plus récente
 aura un temps d’équipement plus court.
-Les valeurs précises sont disponibles dans le tableau d’équillibrage.</p>
+Les valeurs précises sont disponibles dans le tableau d’équillibrage. (elle n’est pas implémenté à l’heure actuelle car le widget n’est pas codé)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p><strong>arme</strong> (<a class="reference internal" href="#lib.common.armes.arme.Arme" title="lib.common.armes.arme.Arme"><em>Arme</em></a>) – l’arme à équiper</p>
@@ -387,7 +598,7 @@ Les valeurs précises sont disponibles dans le tableau d’équillibrage.</p>
 <dt id="lib.common.entite.Entite.findById">
 <em class="property">static </em><code class="sig-name descname">findById</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">e_id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">entities</span><span class="p">:</span> <span class="n">list</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite">lib.common.entite.Entite</a><a class="headerlink" href="#lib.common.entite.Entite.findById" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Methode outil pour trouver une entité à partir de son
-identifiant dans une liste donnée.</p>
+identifiant dans une liste donnée. (permet de retrouver une cible notamment pour TakeDamage)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
@@ -460,7 +671,7 @@ ce dernier.</p>
 <dl class="py method">
 <dt id="lib.common.entite.Entite.set_image">
 <code class="sig-name descname">set_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">img_path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.set_image" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Affecte une image à l’entité.</p>
+<dd><p>Affecte une image à l’entité à partir d’un path (valable pour batiment ou arme par exemple)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p><strong>img_path</strong> (<em>str</em>) – chemin d’accès relatif à l’image</p>
@@ -489,7 +700,7 @@ le joueur obtient un boost d’XP proportionnel à son tier en cas de frag ( IE 
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>entite_ennemie</strong> (<a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite"><em>Entite</em></a>) – entite ennemie qui inflige les dégats</p></li>
+<li><p><strong>target_id</strong> (<em>str</em>) – entite ennemie qui subit les dégats</p></li>
 <li><p><strong>refresh_rate</strong> (<em>float</em>) – fréquence de rafraichissement du jeu</p></li>
 </ul>
 </dd>
@@ -501,7 +712,7 @@ le joueur obtient un boost d’XP proportionnel à son tier en cas de frag ( IE 
 <code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delta</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.entite.Entite.update" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Met à jour les éléments essentiels au fonctionnement de l’entité comme sa position
 ou bien sa direction.
-Le déplacement sera à implémenter du coté client (joueur) ou serveur (entite).</p>
+Le déplacement est implémenté du coté client (joueur) ou serveur (entite).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
 <dd class="field-odd"><p><strong>delta</strong> (<em>float</em>) – temps mis entre l’itération précédente et l’itération actuelle</p>
@@ -517,7 +728,7 @@ Le déplacement sera à implémenter du coté client (joueur) ou serveur (entite
 <dl class="py class">
 <dt id="lib.common.joueur.Joueur">
 <em class="property">class </em><code class="sig-prename descclassname">lib.common.joueur.</code><code class="sig-name descname">Joueur</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#lib.common.vecteur.Vecteur" title="lib.common.vecteur.Vecteur">lib.common.vecteur.Vecteur</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.common.joueur.Joueur" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Définition d’un joueur</p>
+<dd><p>Définition d’un joueur par héritage d’une entite ( comprendre Joueur = Entité humaine)</p>
 <dl class="py attribute">
 <dt id="lib.common.joueur.Joueur.detection_radius">
 <code class="sig-name descname">detection_radius</code><a class="headerlink" href="#lib.common.joueur.Joueur.detection_radius" title="Lien permanent vers cette définition">¶</a></dt>
@@ -533,7 +744,23 @@ Le déplacement sera à implémenter du coté client (joueur) ou serveur (entite
 <dt id="lib.common.joueur.Joueur.isDead">
 <code class="sig-name descname">isDead</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.joueur.Joueur.isDead" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Test si le joueur à encore assez de points de vie. si les points de vie sont à 0,
-le joueur respawn dans un navire du tier inferieur, l’exp est reset au treshold du tier inferieur</p>
+le joueur respawn dans un navire du tier inferieur, l’exp est reset au threshold du tier inferieur</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lib.common.joueur.Joueur.takeDamage">
+<code class="sig-name descname">takeDamage</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target_id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">refresh_rate</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#lib.common.joueur.Joueur.takeDamage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Fonction implementant les dégats infligés à une entite si la touche espace à été pressé. Elle test si le joueur à encore
+assez de PV, sinon elle provoque le Respawn. l’EXP gagné par le joueur ennemi est proportionnel au dégats infligés.
+le joueur obtient un boost d’XP proportionnel à son tier en cas de frag ( IE il tue un ennemi).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>entite_ennemie</strong> (<a class="reference internal" href="#lib.common.entite.Entite" title="lib.common.entite.Entite"><em>Entite</em></a>) – entite ennemie qui inflige les dégats</p></li>
+<li><p><strong>refresh_rate</strong> (<em>float</em>) – fréquence de rafraichissement du jeu</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -543,7 +770,7 @@ le joueur respawn dans un navire du tier inferieur, l’exp est reset au treshol
 ou bien sa direction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Paramètres</dt>
-<dd class="field-odd"><p><strong>delta</strong> (<em>float</em>) – temps mis entre l’itération précédente et l’itération actuelle</p>
+<dd class="field-odd"><p><strong>delta</strong> (<em>float</em>) – temps mis entre l’itération précédente et l’itération actuelle, ce temps est cruciale dans les performances du programme</p>
 </dd>
 </dl>
 </dd></dl>

@@ -367,7 +367,7 @@ du jeu.</p>
 <h2>Boucle de jeu<a class="headerlink" href="#boucle-de-jeu" title="Lien permanent vers ce titre">¶</a></h2>
 <dl class="py class">
 <dt id="lib.server.game_loop.GameLoop">
-<em class="property">class </em><code class="sig-prename descclassname">lib.server.game_loop.</code><code class="sig-name descname">GameLoop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">update_delta</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.game_loop.GameLoop" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">lib.server.game_loop.</code><code class="sig-name descname">GameLoop</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nombre_entites</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">update_delta</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.game_loop.GameLoop" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Boucle principale de fonctionnement du jeu</p>
 <dl class="py attribute">
 <dt id="lib.server.game_loop.GameLoop._timer">
@@ -376,6 +376,17 @@ du jeu.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="mecanismes.html#lib.common.repeating_timer.RepeatingTimer" title="lib.common.repeating_timer.RepeatingTimer">RepeatingTimer</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="lib.server.game_loop.GameLoop.max_entities">
+<code class="sig-name descname">max_entities</code><a class="headerlink" href="#lib.server.game_loop.GameLoop.max_entities" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>nombre d’entites controlées par le serveur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -551,7 +562,7 @@ devra utiliser.</p>
 
 <dl class="py method">
 <dt id="lib.server.tcp_server.TCPServer.create">
-<em class="property">async classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span></em>, <em class="sig-param"><span class="n">port</span></em>, <em class="sig-param"><span class="n">max_players</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.create" title="Lien permanent vers cette définition">¶</a></dt>
+<em class="property">async classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">host</span></em>, <em class="sig-param"><span class="n">port</span></em>, <em class="sig-param"><span class="n">max_players</span></em>, <em class="sig-param"><span class="n">nombre_entites</span></em><span class="sig-paren">)</span><a class="headerlink" href="#lib.server.tcp_server.TCPServer.create" title="Lien permanent vers cette définition">¶</a></dt>
 <dd><p>Fonction usine qui instancie le serveur et utilise
 cette classe comme protocole.</p>
 <dl class="field-list simple">

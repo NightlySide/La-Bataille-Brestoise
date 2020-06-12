@@ -12,6 +12,7 @@ from PyQt5.QtMultimedia import *
 from lib.client.global_client_registry import GCR
 from lib.common.carte import Carte
 from lib.common.entite import Entite
+from lib.common.joueur import Joueur
 from lib.common.logger import Logger
 from lib.common.vecteur import Vecteur
 
